@@ -1,0 +1,2 @@
+# Stdlib-only server — no third-party packages required.
+# File kept so Render/Python hosts detect a Python service.

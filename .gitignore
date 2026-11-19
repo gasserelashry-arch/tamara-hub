@@ -1,0 +1,14 @@
+.env
+.env.*
+!.env.example
+admin_pass.txt
+hub_store.json
+hub_store.json.tmp
+__pycache__/
+*.pyc
+.Python
+.venv/
+venv/
+.DS_Store
+Thumbs.db
+*.log

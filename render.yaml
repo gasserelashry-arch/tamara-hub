@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: tamara-hub
+    runtime: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python tamara_hub_server.py"
+    healthCheckPath: /api/health
+    envVars:
+      - key: ADMIN_PASS
+        sync: false
+      - key: PYTHON_VERSION
+        value: "3.12.0"
+      # Optional: persist hub_store.json across free-tier restarts via GitHub Contents API
+      - key: GITHUB_TOKEN
+        sync: false
+      - key: GITHUB_REPO
+        sync: false
+      - key: GITHUB_PATH
+        value: hub_store.json
+      - key: GITHUB_BRANCH
+        value: main
