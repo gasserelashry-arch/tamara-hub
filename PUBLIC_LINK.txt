@@ -1,0 +1,29 @@
+CURRENT PUBLIC LINK (agents can use this while your PC + tunnel are running)
+=========================================================================
+
+https://navigate-departure-pda-luke.trycloudflare.com
+
+Verified: /api/health OK, admin save bumps /api/version for all agents on this same URL.
+
+Admin password: see admin_pass.txt (local only — never share this file).
+Rotate this password after first cloud deploy.
+
+HOW TO KEEP A PUBLIC LINK WITHOUT REDISTRIBUTING FILES
+------------------------------------------------------
+Option A — Permanent 24/7 cloud (Render) — preferred
+  1. Create a free Render account (GitHub or Google).
+  2. Push this folder to GitHub (private repo is fine).
+  3. In Render: New → Blueprint (uses render.yaml) OR run:
+       render login
+       .\deploy-to-render.ps1 -RepoUrl https://github.com/YOU/tamara-hub
+  4. Set ADMIN_PASS in Render env vars.
+  5. Share the https://….onrender.com URL once. Never changes.
+
+Option B — Public tunnel from your PC (works now)
+  1. Run Start_Public_Tunnel.bat (keeps Python server + Cloudflare tunnel up).
+  2. Copy the https://….trycloudflare.com URL shown in the window.
+  3. Note: URL changes each time you restart the tunnel unless you use a
+     Cloudflare named tunnel (free Cloudflare account) or Render (Option A).
+
+Agents never need a new ZIP — they keep one bookmark; you only push updates
+via AI Update Agent unlock + save.

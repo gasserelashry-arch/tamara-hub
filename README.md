@@ -9,6 +9,14 @@ One HTTPS URL for every agent. When you unlock AI Update Agent and save, all ope
 3. Run `Start_Tamara_Hub_Server.bat` (Windows) or `Start_Tamara_Hub_Server.command` (Mac).
 4. Open `http://localhost:8080`.
 
+## Public link right now (any network)
+
+1. Run `Start_Public_Tunnel.bat` (starts the hub + Cloudflare public HTTPS tunnel).
+2. Copy the `https://….trycloudflare.com` URL printed in the tunnel window.
+3. Share that URL once with agents. Admin saves sync live on the same link.
+4. For a URL that never changes and stays up 24/7 without your PC, use Render below.
+5. See `PUBLIC_LINK.txt` for the last verified public URL from this machine.
+
 ## Deploy to Render (public link for all agents)
 
 1. Push this folder to a GitHub repository (private is fine).
