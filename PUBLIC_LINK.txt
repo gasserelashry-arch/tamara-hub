@@ -4,8 +4,9 @@ CURRENT PUBLIC LINK (agents can use this while your PC + tunnel are running)
 https://navigate-departure-pda-luke.trycloudflare.com
 
 Verified: /api/health OK, admin save bumps /api/version for all agents on this same URL.
+Keep Start_Public_Tunnel.bat / the tunnel window open or the public link goes offline.
 
-Admin password: see admin_pass.txt (local only — never share this file).
+Admin password: see admin_pass.txt (local only — never share this file with agents).
 Rotate this password after first cloud deploy.
 
 HOW TO KEEP A PUBLIC LINK WITHOUT REDISTRIBUTING FILES
