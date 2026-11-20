@@ -49,7 +49,8 @@ for /f "tokens=2 delims=:" %%a in ('ipconfig ^| findstr /c:"IPv4 Address"') do (
 )
 echo.
 echo   Keep this window open while using the tool.
-echo   For a public permanent link, deploy to Render (see README.md).
+echo   Permanent Tamara-internal link: run Install_AlwaysOn_Internal.bat
+echo   (agents use http://%COMPUTERNAME%:8080 on Tamara VPN / office LAN).
 echo ============================================================================
 echo.
 
