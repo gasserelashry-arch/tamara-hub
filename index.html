@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Atlas — Decision Engine</title>
   <link rel="icon" type="image/png" href="assets/atlas-icon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Source+Sans+3:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <style>
     /* Theme Palettes */
     html[data-theme="dark"] {
@@ -63,10 +63,10 @@
     }
 
     html[data-theme="light"] .brand-title {
-      background: linear-gradient(180deg, #fff3b0 0%, #f5d061 45%, #d4af37 100%) !important;
+      background: linear-gradient(180deg, #8b6914 0%, #c9a227 40%, #d4af37 70%, #a67c00 100%) !important;
       -webkit-background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
-      filter: drop-shadow(0 1px 0 rgba(0,0,0,0.35)) !important;
+      filter: drop-shadow(0 1px 0 rgba(90, 60, 20, 0.25)) !important;
       text-shadow: none !important;
     }
 
@@ -441,7 +441,7 @@
       --radius-lg: 18px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Source Sans 3', sans-serif; }
     body { background-color: var(--bg-canvas); color: var(--text-bright); padding: 16px; min-height: 100vh; }
     .container { max-width: 1480px; margin: 0 auto; }
 
@@ -456,44 +456,71 @@
       content: ''; position: absolute; top: 0; left: 24px; right: 24px; height: 3px;
       background: linear-gradient(90deg, transparent, var(--gold-metallic), transparent);
     }
-    .brand-group { display: flex; align-items: center; gap: 12px; }
+    .brand-group { display: flex; align-items: center; gap: 14px; }
+    .brand-logo-wrap {
+      position: relative;
+      width: 54px; height: 54px;
+      border-radius: 14px;
+      padding: 2px;
+      background: linear-gradient(145deg, #f5d061 0%, #d4af37 45%, #a67c00 100%);
+      box-shadow: 0 3px 10px rgba(90, 60, 20, 0.22);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      flex-shrink: 0;
+    }
+    .brand-logo-wrap::after {
+      content: '';
+      position: absolute; inset: 0;
+      border-radius: 14px;
+      background: linear-gradient(120deg, transparent 35%, rgba(255,245,200,0.45) 50%, transparent 65%);
+      opacity: 0;
+      transform: translateX(-40%);
+      transition: opacity 0.35s ease, transform 0.45s ease;
+      pointer-events: none;
+    }
+    .brand-logo-wrap:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 16px rgba(212, 175, 55, 0.35);
+    }
+    .brand-logo-wrap:hover::after {
+      opacity: 1;
+      transform: translateX(40%);
+    }
     .brand-logo {
-      width: 46px; height: 46px; border-radius: 12px; object-fit: cover;
-      border: 1.5px solid var(--gold-border); box-shadow: 0 4px 14px rgba(100, 21, 194, 0.28);
-      background: #efe6d7;
+      width: 100%; height: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+      display: block;
+      background: #d6c4a8;
+      border: 1.5px solid #c4a574;
     }
     .brand-pill {
       background: #000; color: #FFF; font-weight: 800; font-size: 14px; padding: 5px 14px;
       border-radius: var(--radius-sm); border: 1.5px solid var(--gold-metallic); letter-spacing: -0.5px;
     }
     .brand-title {
-      font-size: 24px;
-      font-weight: 900;
-      letter-spacing: 1.2px;
+      font-family: 'Cinzel', serif;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 2.4px;
       text-transform: uppercase;
-      background: linear-gradient(180deg, #fff3b0 0%, #f5d061 38%, #d4af37 68%, #9b6b94 100%);
+      background: linear-gradient(180deg, #fff3b0 0%, #f5d061 38%, #d4af37 68%, #a67c00 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter:
-        drop-shadow(0 1px 0 #d4af37)
-        drop-shadow(0 2px 0 #8c4a80)
-        drop-shadow(0 3px 0 #602f58)
-        drop-shadow(0 4px 0 #3f1d3a)
-        drop-shadow(0 6px 8px rgba(0, 0, 0, 0.85));
+      filter: drop-shadow(0 1px 0 rgba(0,0,0,0.35));
       display: inline-block;
-      transform: perspective(600px) rotateX(6deg);
-      transition: transform 0.25s ease, filter 0.25s ease;
+      transition: filter 0.3s ease, letter-spacing 0.3s ease;
     }
-    .brand-title:hover {
-      transform: perspective(600px) rotateX(0deg) scale(1.02);
-      filter:
-        drop-shadow(0 1px 0 #fef08a)
-        drop-shadow(0 2px 0 #a85597)
-        drop-shadow(0 3px 0 #602f58)
-        drop-shadow(0 4px 0 #3f1d3a)
-        drop-shadow(0 7px 12px rgba(212, 175, 55, 0.65));
+    .brand-group:hover .brand-title {
+      filter: drop-shadow(0 0 6px rgba(245, 208, 97, 0.45)) drop-shadow(0 1px 0 rgba(0,0,0,0.3));
+      letter-spacing: 2.8px;
     }
-    .brand-sub { font-size: 11.5px; color: var(--text-muted); font-weight: 500; }
+    .brand-sub {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 11.5px;
+      color: var(--text-muted);
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
 
     .nav-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
     .btn-group { display: flex; background: rgba(0, 0, 0, 0.4); border-radius: var(--radius-sm); border: 1px solid var(--border-soft); padding: 2px; gap: 2px; }
@@ -640,16 +667,12 @@
       box-shadow: 0 8px 28px rgba(83, 0, 186, 0.35) !important;
     }
     html[data-theme="light"] .top-nav .brand-title {
-      background: linear-gradient(180deg, #fff7cc 0%, #f5d061 40%, #d4af37 70%, #b57aa9 100%) !important;
+      font-family: 'Cinzel', serif !important;
+      background: linear-gradient(180deg, #fff7cc 0%, #f5d061 40%, #d4af37 75%, #a67c00 100%) !important;
       -webkit-background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
       text-shadow: none !important;
-      filter:
-        drop-shadow(0 1px 0 #d4af37)
-        drop-shadow(0 2px 0 #8c4a80)
-        drop-shadow(0 3px 0 #602f58)
-        drop-shadow(0 4px 0 #3f1d3a)
-        drop-shadow(0 6px 8px rgba(0, 0, 0, 0.7)) !important;
+      filter: drop-shadow(0 1px 0 rgba(0,0,0,0.35)) !important;
     }
     html[data-theme="light"] .top-nav .brand-sub {
       color: #f3e8ff !important;
@@ -691,7 +714,9 @@
   <!-- Top Global Header -->
   <header class="top-nav">
     <div class="brand-group">
-      <img class="brand-logo" src="assets/atlas-icon.png" alt="Atlas">
+      <div class="brand-logo-wrap" title="Atlas">
+        <img class="brand-logo" src="assets/atlas-logo.png" alt="Atlas">
+      </div>
       <div>
         <div class="brand-title">Atlas</div>
         <div class="brand-sub">Decision Engine &bull; Agent Playbook</div>
