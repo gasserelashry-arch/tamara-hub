@@ -29,7 +29,7 @@
       --primary-deep: #3b0764;
       --bg-canvas: #e8dcc8;
       --card-bg: #faf6f0;
-      --card-subtle: #f0e6d6;
+      --card-subtle: #efe6d7;
       --border-soft: #b8a48a;
       --border-purple: #6415C2;
       --text-bright: #1a120b;
@@ -361,7 +361,7 @@
       opacity: 1 !important;
     }
     html[data-theme="light"] .section-card .section-body div[style*="border-left"] {
-      background: #fffbf5 !important;
+      background: #efe6d7 !important;
       border-left-color: #6415C2 !important;
       color: #111111 !important;
     }
@@ -370,6 +370,23 @@
     html[data-theme="light"] .section-card .section-body strong {
       color: #111111 !important;
       opacity: 1 !important;
+    }
+    /* Kill olive/grey dark overlays — use same sand beige as the rest */
+    html[data-theme="light"] #macro-view-body,
+    html[data-theme="light"] #out-macro-full-preview,
+    html[data-theme="light"] #out-cust-msg,
+    html[data-theme="light"] div[style*="background:rgba(0,0,0,0.3)"],
+    html[data-theme="light"] div[style*="background:rgba(0,0,0,0.35)"],
+    html[data-theme="light"] div[style*="background:rgba(0,0,0,0.28)"],
+    html[data-theme="light"] div[style*="background:rgba(0,0,0,0.4)"] {
+      background: #efe6d7 !important;
+      color: #111111 !important;
+      border-color: #b8a48a !important;
+    }
+    html[data-theme="light"] .policy-banner,
+    html[data-theme="light"] .meta-box,
+    html[data-theme="light"] .chat-stream {
+      background: #efe6d7 !important;
     }
     html[data-theme="light"] tr[style*="border-bottom"] {
       border-bottom-color: #b8a48a !important;
