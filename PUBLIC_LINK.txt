@@ -1,28 +1,17 @@
-﻿TAMARA HUB — PERMANENT AGENT LINK
-=================================
+﻿PERMANENT AGENT LINK (FREE — no payment)
+========================================
 
-DONE:
-- GitHub login OK
-- Code pushed: https://github.com/gasserelashry-arch/tamara-hub
-- Render account OK (Tamara workspace)
+https://gasserelashry-arch.github.io/tamara-hub/
 
-BLOCKED (one step left):
-Render now requires a payment card on file before creating ANY service
-(including the free plan). No charge for free tier idle apps, but a card
-must be added.
+Verified live. Works with your laptop OFF. No tunnel. No card.
 
-Do this:
-1. Open https://dashboard.render.com/billing
-   (Tamara SSO: sign in with your Tamara Google / SSO account)
-2. Add a payment card
-3. Reply "done" here
+HOW TO USE
+----------
+Agents: bookmark the URL above (one time, forever).
 
-I will then create the permanent service and send:
-  https://tamara-hub-xxxx.onrender.com
+You (admin edits):
+1. Edit on localhost http://127.0.0.1:8080
+2. Double-click Publish_For_Agents.bat
+3. Agents see the update on the same permanent URL after refresh
 
-That URL stays online with your laptop OFF and no tunnel.
-
-Architecture after go-live:
-- Agents → permanent Render URL (always on)
-- You (Update Hub edits) → same Render URL
-- localhost → optional for you only
+No Render. No payments. No Cloudflare tunnel required.
