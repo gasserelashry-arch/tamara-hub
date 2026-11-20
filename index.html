@@ -157,25 +157,28 @@
       background: #efe4d4 !important;
       border: 1.5px solid #6415C2 !important;
     }
-    html[data-theme="light"] .topic-menu-btn {
-      background: #faf6f0;
-      border: 1px solid #c4b09a;
-      color: #1a120b;
+    html[data-theme="light"] .topic-menu-btn,
+    html[data-theme="light"] .topic-menu-btn.active {
+      background: #faf6f0 !important;
+      border: 1px solid #c4b09a !important;
+      color: #1a120b !important;
+      font-weight: 700;
+    }
+    html[data-theme="light"] .topic-menu-btn.active {
+      font-weight: 800;
+      border-color: #b8a48a !important;
     }
     html[data-theme="light"] .topic-menu-btn:hover {
       background: #6415C2 !important;
       border-color: #3b0764 !important;
       color: #ffffff !important;
     }
-    html[data-theme="light"] .topic-menu-btn.active {
-      background: #6415C2 !important;
-      border-color: #3b0764 !important;
+    html[data-theme="light"] .topic-menu-btn:hover span {
       color: #ffffff !important;
-      font-weight: 800;
     }
-    html[data-theme="light"] .topic-menu-btn:hover span,
-    html[data-theme="light"] .topic-menu-btn.active span {
-      color: #ffffff !important;
+    html[data-theme="light"] .topic-menu-btn.active span,
+    html[data-theme="light"] .topic-menu-btn.active [style*="color:var(--gold-metallic)"] {
+      color: #b45309 !important;
     }
     html[data-theme="light"] .meta-box {
       background: #f0e6d6;
@@ -402,7 +405,6 @@
     html[data-theme="light"] .section-header [style*="color:var(--gold-metallic)"] {
       color: #ffffff !important;
     }
-    html[data-theme="light"] .topic-menu-btn.active [style*="color:var(--gold-metallic)"],
     html[data-theme="light"] .topic-menu-btn:hover [style*="color:var(--gold-metallic)"] {
       color: #ffffff !important;
     }
