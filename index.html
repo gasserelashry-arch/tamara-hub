@@ -410,7 +410,7 @@
       border: 1px solid #b8a48a;
     }
     html[data-theme="light"] .outcome-panel,
-    html[data-theme="light"] .gate-card:not(#gate-screen),
+    html[data-theme="light"] .gate-card,
     html[data-theme="light"] .workflow-main-panel {
       background: #faf6f0 !important;
       border-color: #6415C2 !important;
@@ -575,47 +575,12 @@
     .btn-copy:hover { filter: brightness(1.1); transform: translateY(-1px); }
     .btn-copy.copied { background: var(--accent-green) !important; color: #fff !important; border-color: #047857 !important; }
 
-    /* Gate panel stays solid black — Atlas only on full-page behind it */
-    #gate-screen.gate-card {
-      position: relative;
-      z-index: 2;
-      background: #07030d !important;
-      border: 2px solid var(--gold-metallic);
-      border-radius: var(--radius-lg);
-      padding: 30px;
-      box-shadow: var(--shadow-card);
-      max-width: 820px;
-      margin: 20px auto;
-    }
+    /* Gate Screen */
     .gate-card {
       background: var(--card-bg); border: 2px solid var(--gold-metallic); border-radius: var(--radius-lg);
       padding: 30px; box-shadow: var(--shadow-card); max-width: 820px; margin: 20px auto;
     }
     .checklist-stack { display: flex; flex-direction: column; gap: 10px; margin: 18px 0; }
-    #gate-screen .check-item {
-      display: flex; align-items: flex-start; gap: 12px;
-      background: #0f0818 !important;
-      border: 1.5px solid rgba(212, 175, 55, 0.55);
-      padding: 12px 16px; border-radius: var(--radius-md);
-      cursor: pointer; user-select: none; transition: all 0.2s ease;
-      opacity: 1 !important;
-    }
-    #gate-screen .check-item:hover {
-      border-color: var(--gold-metallic);
-      background: #161022 !important;
-      box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.35);
-    }
-    #gate-screen .check-item input[type="checkbox"] {
-      width: 18px; height: 18px; margin-top: 2px;
-      accent-color: var(--gold-metallic); cursor: pointer;
-      flex-shrink: 0;
-    }
-    #gate-screen .btn-gate-enter {
-      background: linear-gradient(135deg, #3a2a0a, #2a1f08) !important;
-      color: #e8dcc8 !important;
-      border: 1px solid rgba(212, 175, 55, 0.45) !important;
-      opacity: 1 !important;
-    }
     .check-item {
       display: flex; align-items: flex-start; gap: 12px; background: var(--card-subtle); border: 1.5px solid var(--border-soft);
       padding: 12px 16px; border-radius: var(--radius-md); cursor: pointer; user-select: none; transition: all 0.2s ease;
@@ -632,69 +597,6 @@
       background: linear-gradient(135deg, #d4af37, #aa8214) !important; color: #000000 !important;
       border-color: #ffffff !important; opacity: 1 !important; cursor: pointer !important;
       box-shadow: 0 0 25px rgba(212, 175, 55, 0.75);
-    }
-    html[data-theme="light"] #gate-screen.gate-card {
-      background: #07030d !important;
-      border-color: #d4af37 !important;
-      color: #ffffff !important;
-    }
-    html[data-theme="light"] #gate-screen h1,
-    html[data-theme="light"] #gate-screen .check-item,
-    html[data-theme="light"] #gate-screen .check-item * {
-      color: #f8fafc !important;
-    }
-    html[data-theme="light"] #gate-screen .check-item {
-      background: #0f0818 !important;
-      border: 1.5px solid rgba(212, 175, 55, 0.55) !important;
-      box-shadow: none !important;
-    }
-    html[data-theme="light"] #gate-screen .check-item:hover {
-      background: #161022 !important;
-      border-color: #d4af37 !important;
-    }
-    html[data-theme="light"] #gate-screen .check-item div[style*="color:var(--text-muted)"] {
-      color: #cbd5e1 !important;
-    }
-    /* Full-page Atlas behind the gate only; disappears after verification */
-    #tab-workflow.gate-active {
-      position: relative;
-      min-height: calc(100vh - 90px);
-      margin: -16px;
-      padding: 16px;
-      width: calc(100% + 32px);
-      box-sizing: border-box;
-      background:
-        url('assets/atlas-logo.png') center center / cover no-repeat,
-        #07030d;
-    }
-    #tab-workflow.gate-active::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(7, 3, 13, 0.42);
-      pointer-events: none;
-      z-index: 0;
-    }
-    #tab-workflow.gate-active > * {
-      position: relative;
-      z-index: 1;
-    }
-    html[data-theme="light"] #tab-workflow.gate-active {
-      background:
-        url('assets/atlas-logo.png') center center / cover no-repeat,
-        #3c2f23;
-    }
-    html[data-theme="light"] #tab-workflow.gate-active::before {
-      background: rgba(40, 28, 18, 0.38);
-    }
-    #tab-workflow:not(.gate-active) {
-      background: transparent;
-      margin: 0;
-      padding: 0;
-      width: auto;
-    }
-    #tab-workflow:not(.gate-active)::before {
-      display: none;
     }
 
     /* Workflow Screen */
@@ -864,7 +766,7 @@
   </header>
 
   <!-- TAB 1: WORK FLOW -->
-  <main id="tab-workflow" class="view-content active gate-active">
+  <main id="tab-workflow" class="view-content active">
     <div id="gate-screen" class="gate-card">
       <span style="font-size:11px; font-weight:800; color:var(--gold-metallic); text-transform:uppercase;">Pre-Call Mandatory Verification Gate</span>
       <h1 style="font-size:22px; font-weight:800; margin:6px 0 8px;">Customer Authentication &amp; Intent Verification</h1>
@@ -6689,10 +6591,8 @@ function initData() {
     try {
       var gateScreen = document.getElementById('gate-screen');
       var workflowScreen = document.getElementById('workflow-screen');
-      var tabWorkflow = document.getElementById('tab-workflow');
       if (gateScreen) gateScreen.style.display = 'none';
       if (workflowScreen) workflowScreen.style.display = 'grid';
-      if (tabWorkflow) tabWorkflow.classList.remove('gate-active');
       renderSidebarTopics();
       if (cmsData && cmsData.topics && cmsData.topics.length > 0) {
         selectTopic(cmsData.topics[0].id);
@@ -6710,10 +6610,8 @@ function initData() {
     validateGate();
     var workflowScreen = document.getElementById('workflow-screen');
     var gateScreen = document.getElementById('gate-screen');
-    var tabWorkflow = document.getElementById('tab-workflow');
     if (workflowScreen) workflowScreen.style.display = 'none';
     if (gateScreen) gateScreen.style.display = 'block';
-    if (tabWorkflow) tabWorkflow.classList.add('gate-active');
   }
 
   function renderSidebarTopics() {
