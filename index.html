@@ -32,8 +32,8 @@
       --card-subtle: #f0e6d6;
       --border-soft: #b8a48a;
       --border-purple: #6415C2;
-      --text-bright: #2c2118;
-      --text-muted: #5c4a38;
+      --text-bright: #1a120b;
+      --text-muted: #3d2e22;
       --gold-metallic: #b45309;
       --gold-border: #6415C2;
       --input-bg: #fffbf5;
@@ -141,14 +141,17 @@
     html[data-theme="light"] .opt-card {
       background: #faf6f0;
       border: 1.5px solid #6415C2;
-      color: #2c2118;
+      color: #1a120b;
       box-shadow: 0 2px 8px rgba(60, 40, 20, 0.08);
     }
     html[data-theme="light"] .opt-card:hover {
-      background: #f0e6d6;
-      border-color: #3b0764;
-      color: #2c2118;
-      box-shadow: 0 4px 12px rgba(100, 21, 194, 0.16);
+      background: #6415C2 !important;
+      border-color: #3b0764 !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 14px rgba(100, 21, 194, 0.35);
+    }
+    html[data-theme="light"] .opt-card:hover::after {
+      color: #ffffff !important;
     }
     html[data-theme="light"] .topics-sidebar {
       background: #efe4d4 !important;
@@ -157,18 +160,22 @@
     html[data-theme="light"] .topic-menu-btn {
       background: #faf6f0;
       border: 1px solid #c4b09a;
-      color: #2c2118;
+      color: #1a120b;
     }
     html[data-theme="light"] .topic-menu-btn:hover {
-      background: #e8dcc8;
-      border-color: #6415C2;
-      color: #2c2118;
+      background: #6415C2 !important;
+      border-color: #3b0764 !important;
+      color: #ffffff !important;
     }
     html[data-theme="light"] .topic-menu-btn.active {
-      background: #6415C2;
-      border-color: #3b0764;
-      color: #ffffff;
+      background: #6415C2 !important;
+      border-color: #3b0764 !important;
+      color: #ffffff !important;
       font-weight: 800;
+    }
+    html[data-theme="light"] .topic-menu-btn:hover span,
+    html[data-theme="light"] .topic-menu-btn.active span {
+      color: #ffffff !important;
     }
     html[data-theme="light"] .meta-box {
       background: #f0e6d6;
@@ -187,11 +194,12 @@
     html[data-theme="light"] .check-item {
       background: #faf6f0;
       border: 1.5px solid #b8a48a;
-      color: #2c2118;
+      color: #1a120b;
     }
     html[data-theme="light"] .check-item:hover {
-      border-color: #6415C2;
-      background: #f0e6d6;
+      border-color: #3b0764;
+      background: #6415C2;
+      color: #ffffff;
     }
     html[data-theme="light"] .sidebar-search,
     html[data-theme="light"] .agent-step-input {
@@ -338,18 +346,27 @@
     }
     
     html[data-theme="light"] #out-cust-msg {
-      color: #2c2118 !important;
-      font-weight: 600;
+      color: #111111 !important;
+      font-weight: 700 !important;
+      font-style: normal !important;
+      opacity: 1 !important;
     }
     html[data-theme="light"] #out-agent-expl,
     html[data-theme="light"] #out-system-action {
-      color: #2c2118 !important;
-      font-weight: 600;
+      color: #111111 !important;
+      font-weight: 700 !important;
+      opacity: 1 !important;
     }
     html[data-theme="light"] .section-card .section-body div[style*="border-left"] {
-      background: #f0e6d6 !important;
+      background: #fffbf5 !important;
       border-left-color: #6415C2 !important;
-      color: #2c2118 !important;
+      color: #111111 !important;
+    }
+    html[data-theme="light"] .section-card .section-body,
+    html[data-theme="light"] .section-card .section-body p,
+    html[data-theme="light"] .section-card .section-body strong {
+      color: #111111 !important;
+      opacity: 1 !important;
     }
     html[data-theme="light"] tr[style*="border-bottom"] {
       border-bottom-color: #b8a48a !important;
@@ -380,8 +397,13 @@
     html[data-theme="light"] [style*="color:var(--gold-metallic)"] {
       color: #b45309 !important;
     }
-    html[data-theme="light"] .section-header [style*="color:var(--gold-metallic)"],
-    html[data-theme="light"] .section-header {
+    html[data-theme="light"] .section-header,
+    html[data-theme="light"] .section-header *,
+    html[data-theme="light"] .section-header [style*="color:var(--gold-metallic)"] {
+      color: #ffffff !important;
+    }
+    html[data-theme="light"] .topic-menu-btn.active [style*="color:var(--gold-metallic)"],
+    html[data-theme="light"] .topic-menu-btn:hover [style*="color:var(--gold-metallic)"] {
       color: #ffffff !important;
     }
 
