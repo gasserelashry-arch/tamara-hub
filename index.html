@@ -53,7 +53,7 @@
       background: linear-gradient(90deg, transparent, #f5d061, transparent);
     }
     html[data-theme="light"] .brand-sub {
-      color: #f3e8ff !important;
+      color: transparent !important;
     }
     html[data-theme="light"] h1,
     html[data-theme="light"] h2,
@@ -62,10 +62,15 @@
       letter-spacing: -0.2px;
     }
 
-    html[data-theme="light"] .brand-title {
+    html[data-theme="light"] .brand-title,
+    html[data-theme="light"] .brand-sub {
       font-family: 'Cinzel Decorative', 'Cinzel', serif !important;
-      background: linear-gradient(180deg, #c9a227 0%, #d4af37 35%, #8b6914 70%, #5c4014 100%) !important;
+      background-image:
+        linear-gradient(180deg, #c9a227 0%, #d4af37 35%, #8b6914 70%, #5c4014 100%),
+        url('assets/atlas-brown-mottle.png') !important;
+      background-size: 100% 100%, 180px 180px !important;
       -webkit-background-clip: text !important;
+      background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
       filter: drop-shadow(0 1px 0 rgba(90, 60, 20, 0.28)) !important;
       text-shadow: none !important;
@@ -498,29 +503,45 @@
       background: #000; color: #FFF; font-weight: 800; font-size: 14px; padding: 5px 14px;
       border-radius: var(--radius-sm); border: 1.5px solid var(--gold-metallic); letter-spacing: -0.5px;
     }
+    .brand-title,
+    .brand-sub {
+      background-image:
+        linear-gradient(180deg, #f0d78c 0%, #d4af37 32%, #a67c00 58%, #6b4a1e 100%),
+        url('assets/atlas-brown-mottle.png');
+      background-size: 100% 100%, 180px 180px;
+      background-blend-mode: multiply, soft-light;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
     .brand-title {
       font-family: 'Cinzel Decorative', 'Cinzel', serif;
       font-size: 28px;
       font-weight: 700;
       letter-spacing: 3.2px;
       text-transform: uppercase;
-      background: linear-gradient(180deg, #f0d78c 0%, #d4af37 35%, #a67c00 62%, #6b4a1e 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
       filter: drop-shadow(0 1px 0 rgba(60, 35, 10, 0.4));
       display: inline-block;
       transition: filter 0.3s ease, letter-spacing 0.3s ease;
     }
-    .brand-group:hover .brand-title {
+    .brand-group:hover .brand-title,
+    .brand-group:hover .brand-sub {
       filter: drop-shadow(0 0 7px rgba(245, 208, 97, 0.4)) drop-shadow(0 1px 0 rgba(60, 35, 10, 0.35));
+    }
+    .brand-group:hover .brand-title {
       letter-spacing: 3.6px;
     }
     .brand-sub {
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 11.5px;
-      color: var(--text-muted);
-      font-weight: 600;
-      letter-spacing: 0.3px;
+      font-family: 'Cinzel', 'Source Sans 3', serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      margin-top: 2px;
+      filter: drop-shadow(0 1px 0 rgba(60, 35, 10, 0.28));
+      display: inline-block;
+      transition: filter 0.3s ease;
     }
 
     .nav-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
@@ -667,17 +688,19 @@
       border: 2px solid #d4af37 !important;
       box-shadow: 0 8px 28px rgba(83, 0, 186, 0.35) !important;
     }
-    html[data-theme="light"] .top-nav .brand-title {
+    html[data-theme="light"] .top-nav .brand-title,
+    html[data-theme="light"] .top-nav .brand-sub {
       font-family: 'Cinzel Decorative', 'Cinzel', serif !important;
-      background: linear-gradient(180deg, #fff0b8 0%, #f5d061 35%, #d4af37 65%, #8b6914 100%) !important;
+      background-image:
+        linear-gradient(180deg, #fff0b8 0%, #f5d061 35%, #d4af37 65%, #8b6914 100%),
+        url('assets/atlas-brown-mottle.png') !important;
+      background-size: 100% 100%, 180px 180px !important;
       -webkit-background-clip: text !important;
+      background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
       text-shadow: none !important;
       filter: drop-shadow(0 1px 0 rgba(0,0,0,0.35)) !important;
-    }
-    html[data-theme="light"] .top-nav .brand-sub {
-      color: #f3e8ff !important;
-      font-weight: 600 !important;
+      color: transparent !important;
     }
     html[data-theme="light"] .top-nav .btn-group {
       background: rgba(0, 0, 0, 0.35) !important;
@@ -720,7 +743,7 @@
       </div>
       <div>
         <div class="brand-title">Atlas</div>
-        <div class="brand-sub">Decision Engine &bull; Agent Playbook</div>
+        <div class="brand-sub">Decision Engine</div>
       </div>
     </div>
     <div class="nav-actions">
