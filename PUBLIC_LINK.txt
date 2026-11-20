@@ -1,25 +1,28 @@
-﻿TAMARA HUB — PERMANENT AGENT LINK (in progress)
-==============================================
+﻿TAMARA HUB — PERMANENT AGENT LINK
+=================================
 
-Your requirement: agents keep ONE link that works even when your laptop
-and tunnel are closed. That requires always-on cloud hosting (Render).
+DONE:
+- GitHub login OK
+- Code pushed: https://github.com/gasserelashry-arch/tamara-hub
+- Render account OK (Tamara workspace)
 
-Status:
-- Render account: READY (gasser.elashry@tamara.co)
-- Waiting on: ONE GitHub approval so we can deploy
+BLOCKED (one step left):
+Render now requires a payment card on file before creating ANY service
+(including the free plan). No charge for free tier idle apps, but a card
+must be added.
 
-Do this now (2 minutes):
-1. Open https://github.com/login/device
-2. Sign in with your GitHub account
-3. Enter code: F3C9-64B9
-4. Click Authorize
-5. Reply "done" in chat
+Do this:
+1. Open https://dashboard.render.com/billing
+   (Tamara SSO: sign in with your Tamara Google / SSO account)
+2. Add a payment card
+3. Reply "done" here
 
-Then you will get:
-  https://tamara-hub-xxxx.onrender.com   ← permanent agent + admin Update Hub link
+I will then create the permanent service and send:
+  https://tamara-hub-xxxx.onrender.com
 
-Architecture after deploy:
-- Agents + your Update Hub edits → permanent Render URL (always on)
-- localhost:8080 → optional, for you only if you want offline edits
+That URL stays online with your laptop OFF and no tunnel.
 
-Admin password stays in admin_pass.txt / Render ADMIN_PASS env (never share with agents).
+Architecture after go-live:
+- Agents → permanent Render URL (always on)
+- You (Update Hub edits) → same Render URL
+- localhost → optional for you only
