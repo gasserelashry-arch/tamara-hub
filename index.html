@@ -575,25 +575,17 @@
     .btn-copy:hover { filter: brightness(1.1); transform: translateY(-1px); }
     .btn-copy.copied { background: var(--accent-green) !important; color: #fff !important; border-color: #047857 !important; }
 
-    /* Gate Screen — Atlas logo fills the dark empty space; constraints stay on steps */
+    /* Gate panel stays solid black — Atlas only on full-page behind it */
     #gate-screen.gate-card {
       position: relative;
-      overflow: hidden;
-      isolation: isolate;
-      background:
-        linear-gradient(160deg, rgba(7, 3, 13, 0.72) 0%, rgba(27, 4, 48, 0.55) 45%, rgba(7, 3, 13, 0.78) 100%),
-        url('assets/atlas-logo.png') center 42% / min(72%, 520px) no-repeat,
-        #0b0614;
+      z-index: 2;
+      background: #07030d !important;
       border: 2px solid var(--gold-metallic);
       border-radius: var(--radius-lg);
       padding: 30px;
       box-shadow: var(--shadow-card);
       max-width: 820px;
       margin: 20px auto;
-    }
-    #gate-screen.gate-card > * {
-      position: relative;
-      z-index: 1;
     }
     .gate-card {
       background: var(--card-bg); border: 2px solid var(--gold-metallic); border-radius: var(--radius-lg);
@@ -602,21 +594,27 @@
     .checklist-stack { display: flex; flex-direction: column; gap: 10px; margin: 18px 0; }
     #gate-screen .check-item {
       display: flex; align-items: flex-start; gap: 12px;
-      background: rgba(12, 6, 22, 0.92);
+      background: #0f0818 !important;
       border: 1.5px solid rgba(212, 175, 55, 0.55);
       padding: 12px 16px; border-radius: var(--radius-md);
       cursor: pointer; user-select: none; transition: all 0.2s ease;
-      backdrop-filter: blur(2px);
+      opacity: 1 !important;
     }
     #gate-screen .check-item:hover {
       border-color: var(--gold-metallic);
-      background: rgba(30, 14, 48, 0.96);
+      background: #161022 !important;
       box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.35);
     }
     #gate-screen .check-item input[type="checkbox"] {
       width: 18px; height: 18px; margin-top: 2px;
       accent-color: var(--gold-metallic); cursor: pointer;
       flex-shrink: 0;
+    }
+    #gate-screen .btn-gate-enter {
+      background: linear-gradient(135deg, #3a2a0a, #2a1f08) !important;
+      color: #e8dcc8 !important;
+      border: 1px solid rgba(212, 175, 55, 0.45) !important;
+      opacity: 1 !important;
     }
     .check-item {
       display: flex; align-items: flex-start; gap: 12px; background: var(--card-subtle); border: 1.5px solid var(--border-soft);
@@ -636,42 +634,67 @@
       box-shadow: 0 0 25px rgba(212, 175, 55, 0.75);
     }
     html[data-theme="light"] #gate-screen.gate-card {
-      background:
-        linear-gradient(160deg, rgba(232, 220, 200, 0.78) 0%, rgba(214, 196, 168, 0.62) 50%, rgba(232, 220, 200, 0.82) 100%),
-        url('assets/atlas-logo.png') center 42% / min(72%, 520px) no-repeat,
-        #d6c4a8 !important;
-      border-color: #a67c00 !important;
-      color: #1a120b !important;
+      background: #07030d !important;
+      border-color: #d4af37 !important;
+      color: #ffffff !important;
+    }
+    html[data-theme="light"] #gate-screen h1,
+    html[data-theme="light"] #gate-screen .check-item,
+    html[data-theme="light"] #gate-screen .check-item * {
+      color: #f8fafc !important;
     }
     html[data-theme="light"] #gate-screen .check-item {
-      background: rgba(250, 246, 240, 0.96) !important;
-      border: 1.5px solid #8b6914 !important;
-      color: #1a120b !important;
-      box-shadow: 0 2px 8px rgba(60, 40, 20, 0.12);
+      background: #0f0818 !important;
+      border: 1.5px solid rgba(212, 175, 55, 0.55) !important;
+      box-shadow: none !important;
     }
     html[data-theme="light"] #gate-screen .check-item:hover {
-      background: #f5efe4 !important;
-      border-color: #6415C2 !important;
+      background: #161022 !important;
+      border-color: #d4af37 !important;
     }
     html[data-theme="light"] #gate-screen .check-item div[style*="color:var(--text-muted)"] {
-      color: #3d2e22 !important;
+      color: #cbd5e1 !important;
     }
-    /* Fill black empty canvas around the gate with Atlas; gone after verification */
+    /* Full-page Atlas behind the gate only; disappears after verification */
     #tab-workflow.gate-active {
-      min-height: calc(100vh - 110px);
+      position: relative;
+      min-height: calc(100vh - 90px);
+      margin: -16px;
+      padding: 16px;
+      width: calc(100% + 32px);
+      box-sizing: border-box;
       background:
-        radial-gradient(ellipse at center, rgba(7,3,13,0.35) 0%, rgba(7,3,13,0.88) 70%),
-        url('assets/atlas-logo.png') center 48% / min(58vw, 640px) no-repeat,
-        var(--bg-canvas);
+        url('assets/atlas-logo.png') center center / cover no-repeat,
+        #07030d;
+    }
+    #tab-workflow.gate-active::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(7, 3, 13, 0.42);
+      pointer-events: none;
+      z-index: 0;
+    }
+    #tab-workflow.gate-active > * {
+      position: relative;
+      z-index: 1;
     }
     html[data-theme="light"] #tab-workflow.gate-active {
       background:
-        radial-gradient(ellipse at center, rgba(214,196,168,0.45) 0%, rgba(200,178,148,0.82) 72%),
-        url('assets/atlas-logo.png') center 48% / min(58vw, 640px) no-repeat,
-        #cbb89a;
+        url('assets/atlas-logo.png') center center / cover no-repeat,
+        #3c2f23;
+    }
+    html[data-theme="light"] #tab-workflow.gate-active::before {
+      background: rgba(40, 28, 18, 0.38);
     }
     #tab-workflow:not(.gate-active) {
       background: transparent;
+      margin: 0;
+      padding: 0;
+      width: auto;
+    }
+    #tab-workflow:not(.gate-active)::before {
+      display: none;
     }
 
     /* Workflow Screen */
