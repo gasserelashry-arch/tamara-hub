@@ -1,0 +1,76 @@
+{
+  "generated_at": "2026-11-21T10:03:35.481041+00:00",
+  "kb_records_extracted": 6,
+  "transfers_catalog_items": 73,
+  "mismatch_count": 3,
+  "matched_ok_count": 1,
+  "kb_unmatched_count": 2,
+  "mismatches": [
+    {
+      "node_id": "UNREG_DUES_ID_FRAUD",
+      "headline": "Unregistered Citizen Facing Dues on National ID (ID Theft)",
+      "hub_issueType": "Account > Account Security > National ID Fraud",
+      "kb_issueType": "Account >  Account  Security > National ID Fraud",
+      "match_score": 100,
+      "kb_scenario": "The customer is the legitimate account owner but has incorrect personal information on file (first name, last name, date of birth, or 1–2 digits of the ID number). Action →  - Validate the data mismatching by requesting a clear screenshot of the customer’s national ID and compare all details against CS Hub records. If any discrepancies are identified such as:1. Incorrect first or last name.2. Incorrect date of birth.3. One or more incorrect digits in the national ID displayed in the app.4. Minor spelling variations.5. The customer has legally changed their name.- Add the customer ID, a brief description of the mismatch, and the ID screenshot to the SF case comment. Escalate the case to the Tech Support team by following the steps in [Customer/Merchant] Transferring Sales Force Cases.",
+      "diffs": [
+        {
+          "field": "sla",
+          "hub": "5 Business Days",
+          "kb": "7 business days"
+        }
+      ]
+    },
+    {
+      "node_id": "UNREG_DUES_ID_FRAUD",
+      "headline": "Unregistered Citizen Facing Dues on National ID (ID Theft)",
+      "hub_issueType": "Account > Account Security > National ID Fraud",
+      "kb_issueType": "Account >  Account  Security > National ID Fraud",
+      "match_score": 100,
+      "kb_scenario": "The customer is complaining about identity theft or fraud related concerns on their account. Action: Check for fraudulent activity, identity theft, account take over or suspicious behavior on the account and request the IDAdd a picture of the customer’s ID and a brief issue summary. to the SF case comments and Escalate the case to the Trust & Safety team by following the steps in the below section.",
+      "diffs": [
+        {
+          "field": "sla",
+          "hub": "5 Business Days",
+          "kb": "7 business days"
+        }
+      ]
+    },
+    {
+      "node_id": "PUR_LIMIT_EXPLAIN",
+      "headline": "Pre-Approved Amount Guidance (Pre-Check Feature)",
+      "hub_issueType": "Order > Placing an Order > Maximum/minimum purchase limit",
+      "kb_issueType": "Order > Placing an Order > Maximum/minimum purchase limit",
+      "match_score": 100,
+      "kb_scenario": "",
+      "diffs": [
+        {
+          "field": "sla",
+          "hub": "Immediate",
+          "kb": "7 business days"
+        }
+      ]
+    }
+  ],
+  "kb_unmatched_sample": [
+    {
+      "issueType": "Payment > Murabha - Pay By Finance > Early Settlement",
+      "sla": "7-10 days",
+      "team": "Tech Support",
+      "status": "Closed",
+      "macro": "Early settlement - How much will I pay - BNPL/BNBL+",
+      "scenario": "",
+      "paraIndex": 561
+    },
+    {
+      "issueType": "Issue type matching the customer’s complaint",
+      "sla": ":",
+      "team": "",
+      "status": "ClosedActions and Follow up  Claim Cancellation through App.   Claim Resolution",
+      "macro": "[Dispute Closing] - Invalid email",
+      "scenario": "",
+      "paraIndex": 920
+    }
+  ],
+  "note": "No hub SLAs were auto-changed from KB Ashry. Confirm which mismatches to apply."
+}

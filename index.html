@@ -416,6 +416,16 @@
       border-color: #6415C2 !important;
       color: #2c2118 !important;
     }
+    html[data-theme="light"] #transfers-sla-panel .meta-box strong,
+    html[data-theme="light"] #trf-out-template,
+    html[data-theme="light"] #trf-out-issue {
+      color: #111111 !important;
+    }
+    @media (max-width: 900px) {
+      #transfers-sla-panel .section-body > div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+      }
+    }
     html[data-theme="light"] #out-case-comment-content,
     html[data-theme="light"] div[style*="background:#000"] {
       color: #f8fafc !important;
@@ -829,6 +839,41 @@
           <strong style="display:block; margin-bottom:2px; color:var(--gold-metallic);">Mandatory Policy &amp; Compliance Guardrail</strong>
           <div id="topic-policy-text" style="white-space:pre-line; line-height:1.65; margin-top:4px;">Follow standard verification rules.</div>
         </div>
+        <!-- Unique Transfers SLA browser (pinned Topic 00) -->
+        <div id="transfers-sla-panel" style="display:none; margin-bottom:16px;">
+          <div class="section-card" style="overflow:visible;">
+            <div class="section-header purple">📊 Transfers SLA Browser</div>
+            <div class="section-body">
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px;">
+                <div>
+                  <label style="font-size:10.5px; font-weight:800; color:var(--gold-metallic); text-transform:uppercase; display:block; margin-bottom:4px;">1. Category / Topic</label>
+                  <select id="trf-category-select" class="sidebar-search" style="margin:0; width:100%; font-weight:700;" onchange="window.onTransfersCategoryChange()"></select>
+                </div>
+                <div>
+                  <label style="font-size:10.5px; font-weight:800; color:var(--gold-metallic); text-transform:uppercase; display:block; margin-bottom:4px;">2. Situation</label>
+                  <select id="trf-situation-select" class="sidebar-search" style="margin:0; width:100%; font-weight:700;" onchange="window.onTransfersSituationChange()"></select>
+                </div>
+              </div>
+              <div class="salesforce-meta-grid" style="margin-bottom:12px;">
+                <div class="meta-box"><span>Team (Escalate To)</span><strong id="trf-out-team">-</strong></div>
+                <div class="meta-box"><span>SLA</span><strong id="trf-out-sla">-</strong></div>
+                <div class="meta-box"><span>Case Status</span><strong id="trf-out-status">-</strong></div>
+                <div class="meta-box"><span>LOB</span><strong id="trf-out-lob">-</strong></div>
+              </div>
+              <div style="background:rgba(0,0,0,0.28); border:1px solid var(--border-soft); border-left:4px solid var(--gold-metallic); border-radius:8px; padding:12px 14px; margin-bottom:10px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; gap:8px; flex-wrap:wrap;">
+                  <span style="font-size:10.5px; font-weight:800; color:var(--gold-metallic); text-transform:uppercase;">Escalation Template</span>
+                  <button type="button" class="btn-copy" style="padding:3px 8px; font-size:9.5px;" onclick="window.copyTransfersEscalationTemplate()">Copy Template</button>
+                </div>
+                <pre id="trf-out-template" style="white-space:pre-wrap; font-family:'JetBrains Mono',monospace; font-size:11.5px; line-height:1.55; margin:0; color:var(--text-bright);">Select a situation…</pre>
+              </div>
+              <div style="font-size:11.5px; color:var(--text-muted);">
+                <strong style="color:var(--gold-metallic);">Full issue path:</strong>
+                <div id="trf-out-issue" style="white-space:pre-line; margin-top:4px; color:var(--text-bright);">-</div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div id="step-container">
           <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
             <span style="font-size:11px; font-weight:800; color:var(--gold-metallic);" id="step-counter-text">Investigation Step 1</span>
@@ -1041,9 +1086,10 @@
         <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:6px;">
           <a id="sla-link-transfers" href="https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0" target="_blank" class="btn-copy" style="text-decoration:none; padding:4px 9px; font-size:10px;">📊 Transfers SLA Sheet</a>
           <a id="sla-link-duedate" href="https://docs.google.com/document/d/1bjsyr6dclJIIwSoJx8TVYOA3y5_lVVkKcwee7QJKOTA/edit?tab=t.0" target="_blank" class="btn-copy" style="text-decoration:none; padding:4px 9px; font-size:10px;">📄 Due Date Preference SLAs</a>
+          <span class="btn-copy" style="padding:4px 9px; font-size:10px; cursor:default;" title="C:\Users\gasser.elashry\Downloads\KB Ashry.docx">📘 KB Ashry (local linked)</span>
         </div>
         <div id="sla-sources-status" style="font-size:11.5px; color:var(--text-muted); line-height:1.45;">
-          Linked. If Google sharing is private, update the files in Downloads then run <strong>Sync_SLA_From_Downloads.bat</strong> (same folder as the server package) and refresh.
+          Linked. Update <strong>Transfers SLA.xlsx</strong> / <strong>KB Ashry.docx</strong> in Downloads, then run <strong>Sync_SLA_From_Downloads.bat</strong> and refresh. KB mismatches are reported only — confirm before applying.
         </div>
       </div>
 
@@ -1587,9 +1633,18 @@
     "pay_next_month": "PAY NEXT MONTH (PNM): Allows shoppers to buy now and pay in a single lump sum at the end of the calendar month. Default due date is the last day of the month.",
     "compensation_policy": "CUSTOMER COMPENSATION POLICY: Compensation vouchers or wallet goodwill are issued exclusively for confirmed Tamara system errors or SLA breaches. Merchant stock issues are ineligible.",
     "aecb_support": "MANDATORY POLICY (UAE AECB - Al Etihad Credit Bureau): AECB records update on scheduled weekly batch cycles (allow up to 5–7 business days after full settlement). Never disclose internal credit scoring formulas. If a customer disputes an unrecognized AECB record under their Emirates ID, verify identity and collect ID + AECB report snippet before escalating to Trust & Safety / Credit Bureau Operations.",
-    "deceased_customer": "MANDATORY COMPASSIONATE POLICY (DECEASED CUSTOMER):\n• Step 1 — Immediate Collections Freeze: Express sincere condolences and immediately freeze all outbound collection calls and SMS reminders in CS Hub.\n• Step 2 — Mandatory Documents Required: Request (1) Official Death Certificate, (2) Deceased Customer's National ID / Iqama / Emirates ID copy, and (3) Reporter / Next-of-Kin ID & Family Relationship / Inheritance Proof.\n• Step 3 — Routing & SLA: Never demand immediate repayment from grieving family members. Escalate complete documentation to Legal & Compliance (SLA: 2 Business Days | Issue Type: Other > Vulnerable Customer > Deceased Customer Case)."
+    "deceased_customer": "MANDATORY COMPASSIONATE POLICY (DECEASED CUSTOMER):\n• Step 1 — Immediate Collections Freeze: Express sincere condolences and immediately freeze all outbound collection calls and SMS reminders in CS Hub.\n• Step 2 — Mandatory Documents Required: Request (1) Official Death Certificate, (2) Deceased Customer's National ID / Iqama / Emirates ID copy, and (3) Reporter / Next-of-Kin ID & Family Relationship / Inheritance Proof.\n• Step 3 — Routing & SLA: Never demand immediate repayment from grieving family members. Escalate complete documentation to Legal & Compliance (SLA: 2 Business Days | Issue Type: Other > Vulnerable Customer > Deceased Customer Case).",
+    "transfers_sla": "TRANSFERS SLA BROWSER\n• Select Category, then Situation from the Transfers SLA sheet.\n• Confirm Team, SLA, and Salesforce Status before escalating.\n• Escalation template field is reserved — template will be shared and linked.\n• Source sheet: https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0"
   },
   "topics": [
+    {
+      "id": "transfers_sla",
+      "tag": "Topic 00",
+      "name": "Transfers SLA",
+      "desc": "Full Transfers SLA matrix — pick category & situation to view Team, SLA, Status, and escalation template.",
+      "pinned": true,
+      "uniqueType": "transfers_sla_browser"
+    },
     {
       "id": "contact_merchant",
       "tag": "Topic 07",
@@ -3138,6 +3193,12 @@
             "next": "DEC_CUST_PENDING_DOCS"
           }
         ]
+      }
+    },
+    "transfers_sla": {
+      "step1": {
+        "prompt": "Use the Transfers SLA dropdowns above to select a category and situation.",
+        "options": []
       }
     }
   },
@@ -6774,8 +6835,965 @@
         "sla": "10 Days"
       }
     ],
-    "note": "Update Downloads files (or public Google links), then run Sync_SLA_From_Downloads.bat / Sync SLA in Update Hub."
-  }
+    "note": "Update Transfers SLA.xlsx or KB Ashry.docx in Downloads, then run Sync_SLA_From_Downloads.bat / rebuild script.",
+    "kbAshryLocalPath": "C:\\Users\\gasser.elashry\\Downloads\\KB Ashry.docx",
+    "kbAshryLinked": true,
+    "lastTransfersCatalogCount": 73,
+    "lastTransfersBuiltAt": "2026-11-21T10:03:33.808865+00:00",
+    "kbAshryLastCompareAt": "2026-11-21T10:03:35.481041+00:00",
+    "kbAshryMismatchCount": 3
+  },
+  "transfersSlaCatalog": [
+    {
+      "id": "TRF_2_1",
+      "sheetRow": 2,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Account",
+      "situation": "For Tahaqaq ID failure",
+      "issueFull": "Account > ID verification\n\nFor Tahaqaq ID failure",
+      "sla": "5 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_3_1",
+      "sheetRow": 3,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Account",
+      "situation": "For any sign up/registration issues",
+      "issueFull": "Account > Registration & login\n\nFor any sign up/registration issues",
+      "sla": "3 business days                                       5 business days for app issues",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_4_1",
+      "sheetRow": 4,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Account",
+      "situation": "For any other login issues",
+      "issueFull": "Account > Registration & login\n\nFor any other login issues",
+      "sla": "3 business days                                       5 business days for app issues",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_5_1",
+      "sheetRow": 5,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Other",
+      "situation": "For app issues",
+      "issueFull": "Other > About Tamara (General)\n\nFor app issues",
+      "sla": "3 business days                                       5 business days for app issues",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_6_1",
+      "sheetRow": 6,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Other",
+      "situation": "Jailbroken / Rooted Device",
+      "issueFull": "Other > Feedback > Feedback about Tamara\n\nJailbroken / Rooted Device",
+      "sla": "5 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_7_1",
+      "sheetRow": 7,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Refunds and Cancellations",
+      "situation": "Refund has not been triggered.",
+      "issueFull": "Refunds and Cancellations > Late Refund > Refund not processed\n\n- Refund has not been triggered.\n- Incorrect refund amount.\n- Loan is not matching the order status (Verify the order and loan status on CS Hub. If the mismatch is confirmed).",
+      "sla": "5 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_7_2",
+      "sheetRow": 7,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Refunds and Cancellations",
+      "situation": "Incorrect refund amount.",
+      "issueFull": "Refunds and Cancellations > Late Refund > Refund not processed\n\n- Refund has not been triggered.\n- Incorrect refund amount.\n- Loan is not matching the order status (Verify the order and loan status on CS Hub. If the mismatch is confirmed).",
+      "sla": "5 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_7_3",
+      "sheetRow": 7,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Refunds and Cancellations",
+      "situation": "Loan is not matching the order status (Verify the order and loan status on CS Hub. If the mismatch is confirmed).",
+      "issueFull": "Refunds and Cancellations > Late Refund > Refund not processed\n\n- Refund has not been triggered.\n- Incorrect refund amount.\n- Loan is not matching the order status (Verify the order and loan status on CS Hub. If the mismatch is confirmed).",
+      "sla": "5 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_8_1",
+      "sheetRow": 8,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Smart",
+      "situation": "Smart Membership > Statement",
+      "issueFull": "Smart\n\n- Smart Membership > Statement \n- Smart Membership > How to subscribe\n- Smart Membership > How to unsubscribe\n- Smart Membership > About Tamara Smart Membership & Benefits (Cashback issue)",
+      "sla": "7 days (3 days for multiple charges with no subscription benefit)",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_8_2",
+      "sheetRow": 8,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Smart",
+      "situation": "Smart Membership > How to subscribe",
+      "issueFull": "Smart\n\n- Smart Membership > Statement \n- Smart Membership > How to subscribe\n- Smart Membership > How to unsubscribe\n- Smart Membership > About Tamara Smart Membership & Benefits (Cashback issue)",
+      "sla": "7 days (3 days for multiple charges with no subscription benefit)",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_8_3",
+      "sheetRow": 8,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Smart",
+      "situation": "Smart Membership > How to unsubscribe",
+      "issueFull": "Smart\n\n- Smart Membership > Statement \n- Smart Membership > How to subscribe\n- Smart Membership > How to unsubscribe\n- Smart Membership > About Tamara Smart Membership & Benefits (Cashback issue)",
+      "sla": "7 days (3 days for multiple charges with no subscription benefit)",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_8_4",
+      "sheetRow": 8,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Smart",
+      "situation": "Smart Membership > About Tamara Smart Membership & Benefits (Cashback issue)",
+      "issueFull": "Smart\n\n- Smart Membership > Statement \n- Smart Membership > How to subscribe\n- Smart Membership > How to unsubscribe\n- Smart Membership > About Tamara Smart Membership & Benefits (Cashback issue)",
+      "sla": "7 days (3 days for multiple charges with no subscription benefit)",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_9_1",
+      "sheetRow": 9,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Due Date Preference",
+      "situation": "Account > Due Date Preference> General inquiries",
+      "issueFull": "Due Date Preference\n\n- Account > Due Date Preference> General inquiries\n- Account > Due Date Preference> Preference not saved\n- Account >Due Date Preference > Opt-out or lock issue\n- Account > Due Date Preference> Missing email or SMS\n- Account > Due Date Preference> Wrong due date on new order",
+      "sla": "7 Days - 5 Days - 4 Days - 10 Days           Check the link below to know the SLA: https://docs.google.com/document/d/1bjsyr6dclJIIwSoJx8TVYOA3y5_lVVkKcwee7QJKOTA/edit?tab=t.0",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_9_2",
+      "sheetRow": 9,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Due Date Preference",
+      "situation": "Account > Due Date Preference> Preference not saved",
+      "issueFull": "Due Date Preference\n\n- Account > Due Date Preference> General inquiries\n- Account > Due Date Preference> Preference not saved\n- Account >Due Date Preference > Opt-out or lock issue\n- Account > Due Date Preference> Missing email or SMS\n- Account > Due Date Preference> Wrong due date on new order",
+      "sla": "7 Days - 5 Days - 4 Days - 10 Days           Check the link below to know the SLA: https://docs.google.com/document/d/1bjsyr6dclJIIwSoJx8TVYOA3y5_lVVkKcwee7QJKOTA/edit?tab=t.0",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_9_3",
+      "sheetRow": 9,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Due Date Preference",
+      "situation": "Account >Due Date Preference > Opt-out or lock issue",
+      "issueFull": "Due Date Preference\n\n- Account > Due Date Preference> General inquiries\n- Account > Due Date Preference> Preference not saved\n- Account >Due Date Preference > Opt-out or lock issue\n- Account > Due Date Preference> Missing email or SMS\n- Account > Due Date Preference> Wrong due date on new order",
+      "sla": "7 Days - 5 Days - 4 Days - 10 Days           Check the link below to know the SLA: https://docs.google.com/document/d/1bjsyr6dclJIIwSoJx8TVYOA3y5_lVVkKcwee7QJKOTA/edit?tab=t.0",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_9_4",
+      "sheetRow": 9,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Due Date Preference",
+      "situation": "Account > Due Date Preference> Missing email or SMS",
+      "issueFull": "Due Date Preference\n\n- Account > Due Date Preference> General inquiries\n- Account > Due Date Preference> Preference not saved\n- Account >Due Date Preference > Opt-out or lock issue\n- Account > Due Date Preference> Missing email or SMS\n- Account > Due Date Preference> Wrong due date on new order",
+      "sla": "7 Days - 5 Days - 4 Days - 10 Days           Check the link below to know the SLA: https://docs.google.com/document/d/1bjsyr6dclJIIwSoJx8TVYOA3y5_lVVkKcwee7QJKOTA/edit?tab=t.0",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_9_5",
+      "sheetRow": 9,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Due Date Preference",
+      "situation": "Account > Due Date Preference> Wrong due date on new order",
+      "issueFull": "Due Date Preference\n\n- Account > Due Date Preference> General inquiries\n- Account > Due Date Preference> Preference not saved\n- Account >Due Date Preference > Opt-out or lock issue\n- Account > Due Date Preference> Missing email or SMS\n- Account > Due Date Preference> Wrong due date on new order",
+      "sla": "7 Days - 5 Days - 4 Days - 10 Days           Check the link below to know the SLA: https://docs.google.com/document/d/1bjsyr6dclJIIwSoJx8TVYOA3y5_lVVkKcwee7QJKOTA/edit?tab=t.0",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_10_1",
+      "sheetRow": 10,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Payment",
+      "situation": "Payment > Unrecorded charges > Payment authorization failed",
+      "issueFull": "- Payment > Unrecorded charges > Payment not reflected\n- Payment > Unrecorded charges > Payment authorization failed\n- Payment > Unrecorded charges > Other unrecorded charge issues",
+      "sla": "5 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_10_2",
+      "sheetRow": 10,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Payment",
+      "situation": "Payment > Unrecorded charges > Other unrecorded charge issues",
+      "issueFull": "- Payment > Unrecorded charges > Payment not reflected\n- Payment > Unrecorded charges > Payment authorization failed\n- Payment > Unrecorded charges > Other unrecorded charge issues",
+      "sla": "5 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_11_1",
+      "sheetRow": 11,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Payment",
+      "situation": "Pending dues on the Customer Detail page do not match with Payments tab",
+      "issueFull": "Payment > Other\n\n- Pending dues on the Customer Detail page do not match with Payments tab\n- Order > Placing an Order > In Store - did not receive the payment link SMS\n- Fully paid orders (aptured amount NOT equal to paid amount)\n- Issues while placing an order in store (that are not listed)\n- Issues while placing an order online (that are not listed)\n- Complaints related to paying using wallet credit\n- The third installment is paid before the second\n- For false pending dues/payment reminders\n- Payment > Autocharge > Other\n- Pending dues are in negative\n- Wallet amount issue\n- Payment > Late fee\n- Pay in Full issue",
+      "sla": "5 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_11_2",
+      "sheetRow": 11,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Payment",
+      "situation": "Order > Placing an Order > In Store - did not receive the payment link SMS",
+      "issueFull": "Payment > Other\n\n- Pending dues on the Customer Detail page do not match with Payments tab\n- Order > Placing an Order > In Store - did not receive the payment link SMS\n- Fully paid orders (aptured amount NOT equal to paid amount)\n- Issues while placing an order in store (that are not listed)\n- Issues while placing an order online (that are not listed)\n- Complaints related to paying using wallet credit\n- The third installment is paid before the second\n- For false pending dues/payment reminders\n- Payment > Autocharge > Other\n- Pending dues are in negative\n- Wallet amount issue\n- Payment > Late fee\n- Pay in Full issue",
+      "sla": "5 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_11_3",
+      "sheetRow": 11,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Payment",
+      "situation": "Fully paid orders (aptured amount NOT equal to paid amount)",
+      "issueFull": "Payment > Other\n\n- Pending dues on the Customer Detail page do not match with Payments tab\n- Order > Placing an Order > In Store - did not receive the payment link SMS\n- Fully paid orders (aptured amount NOT equal to paid amount)\n- Issues while placing an order in store (that are not listed)\n- Issues while placing an order online (that are not listed)\n- Complaints related to paying using wallet credit\n- The third installment is paid before the second\n- For false pending dues/payment reminders\n- Payment > Autocharge > Other\n- Pending dues are in negative\n- Wallet amount issue\n- Payment > Late fee\n- Pay in Full issue",
+      "sla": "5 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_11_4",
+      "sheetRow": 11,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Payment",
+      "situation": "Issues while placing an order in store (that are not listed)",
+      "issueFull": "Payment > Other\n\n- Pending dues on the Customer Detail page do not match with Payments tab\n- Order > Placing an Order > In Store - did not receive the payment link SMS\n- Fully paid orders (aptured amount NOT equal to paid amount)\n- Issues while placing an order in store (that are not listed)\n- Issues while placing an order online (that are not listed)\n- Complaints related to paying using wallet credit\n- The third installment is paid before the second\n- For false pending dues/payment reminders\n- Payment > Autocharge > Other\n- Pending dues are in negative\n- Wallet amount issue\n- Payment > Late fee\n- Pay in Full issue",
+      "sla": "5 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_11_5",
+      "sheetRow": 11,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Payment",
+      "situation": "Issues while placing an order online (that are not listed)",
+      "issueFull": "Payment > Other\n\n- Pending dues on the Customer Detail page do not match with Payments tab\n- Order > Placing an Order > In Store - did not receive the payment link SMS\n- Fully paid orders (aptured amount NOT equal to paid amount)\n- Issues while placing an order in store (that are not listed)\n- Issues while placing an order online (that are not listed)\n- Complaints related to paying using wallet credit\n- The third installment is paid before the second\n- For false pending dues/payment reminders\n- Payment > Autocharge > Other\n- Pending dues are in negative\n- Wallet amount issue\n- Payment > Late fee\n- Pay in Full issue",
+      "sla": "5 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_11_6",
+      "sheetRow": 11,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Payment",
+      "situation": "Complaints related to paying using wallet credit",
+      "issueFull": "Payment > Other\n\n- Pending dues on the Customer Detail page do not match with Payments tab\n- Order > Placing an Order > In Store - did not receive the payment link SMS\n- Fully paid orders (aptured amount NOT equal to paid amount)\n- Issues while placing an order in store (that are not listed)\n- Issues while placing an order online (that are not listed)\n- Complaints related to paying using wallet credit\n- The third installment is paid before the second\n- For false pending dues/payment reminders\n- Payment > Autocharge > Other\n- Pending dues are in negative\n- Wallet amount issue\n- Payment > Late fee\n- Pay in Full issue",
+      "sla": "5 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_11_7",
+      "sheetRow": 11,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Payment",
+      "situation": "The third installment is paid before the second",
+      "issueFull": "Payment > Other\n\n- Pending dues on the Customer Detail page do not match with Payments tab\n- Order > Placing an Order > In Store - did not receive the payment link SMS\n- Fully paid orders (aptured amount NOT equal to paid amount)\n- Issues while placing an order in store (that are not listed)\n- Issues while placing an order online (that are not listed)\n- Complaints related to paying using wallet credit\n- The third installment is paid before the second\n- For false pending dues/payment reminders\n- Payment > Autocharge > Other\n- Pending dues are in negative\n- Wallet amount issue\n- Payment > Late fee\n- Pay in Full issue",
+      "sla": "5 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_11_8",
+      "sheetRow": 11,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Payment",
+      "situation": "For false pending dues/payment reminders",
+      "issueFull": "Payment > Other\n\n- Pending dues on the Customer Detail page do not match with Payments tab\n- Order > Placing an Order > In Store - did not receive the payment link SMS\n- Fully paid orders (aptured amount NOT equal to paid amount)\n- Issues while placing an order in store (that are not listed)\n- Issues while placing an order online (that are not listed)\n- Complaints related to paying using wallet credit\n- The third installment is paid before the second\n- For false pending dues/payment reminders\n- Payment > Autocharge > Other\n- Pending dues are in negative\n- Wallet amount issue\n- Payment > Late fee\n- Pay in Full issue",
+      "sla": "5 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_11_9",
+      "sheetRow": 11,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Payment",
+      "situation": "Payment > Autocharge > Other",
+      "issueFull": "Payment > Other\n\n- Pending dues on the Customer Detail page do not match with Payments tab\n- Order > Placing an Order > In Store - did not receive the payment link SMS\n- Fully paid orders (aptured amount NOT equal to paid amount)\n- Issues while placing an order in store (that are not listed)\n- Issues while placing an order online (that are not listed)\n- Complaints related to paying using wallet credit\n- The third installment is paid before the second\n- For false pending dues/payment reminders\n- Payment > Autocharge > Other\n- Pending dues are in negative\n- Wallet amount issue\n- Payment > Late fee\n- Pay in Full issue",
+      "sla": "5 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_11_10",
+      "sheetRow": 11,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Payment",
+      "situation": "Pending dues are in negative",
+      "issueFull": "Payment > Other\n\n- Pending dues on the Customer Detail page do not match with Payments tab\n- Order > Placing an Order > In Store - did not receive the payment link SMS\n- Fully paid orders (aptured amount NOT equal to paid amount)\n- Issues while placing an order in store (that are not listed)\n- Issues while placing an order online (that are not listed)\n- Complaints related to paying using wallet credit\n- The third installment is paid before the second\n- For false pending dues/payment reminders\n- Payment > Autocharge > Other\n- Pending dues are in negative\n- Wallet amount issue\n- Payment > Late fee\n- Pay in Full issue",
+      "sla": "5 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_11_11",
+      "sheetRow": 11,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Payment",
+      "situation": "Wallet amount issue",
+      "issueFull": "Payment > Other\n\n- Pending dues on the Customer Detail page do not match with Payments tab\n- Order > Placing an Order > In Store - did not receive the payment link SMS\n- Fully paid orders (aptured amount NOT equal to paid amount)\n- Issues while placing an order in store (that are not listed)\n- Issues while placing an order online (that are not listed)\n- Complaints related to paying using wallet credit\n- The third installment is paid before the second\n- For false pending dues/payment reminders\n- Payment > Autocharge > Other\n- Pending dues are in negative\n- Wallet amount issue\n- Payment > Late fee\n- Pay in Full issue",
+      "sla": "5 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_11_12",
+      "sheetRow": 11,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Payment",
+      "situation": "Payment > Late fee",
+      "issueFull": "Payment > Other\n\n- Pending dues on the Customer Detail page do not match with Payments tab\n- Order > Placing an Order > In Store - did not receive the payment link SMS\n- Fully paid orders (aptured amount NOT equal to paid amount)\n- Issues while placing an order in store (that are not listed)\n- Issues while placing an order online (that are not listed)\n- Complaints related to paying using wallet credit\n- The third installment is paid before the second\n- For false pending dues/payment reminders\n- Payment > Autocharge > Other\n- Pending dues are in negative\n- Wallet amount issue\n- Payment > Late fee\n- Pay in Full issue",
+      "sla": "5 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_11_13",
+      "sheetRow": 11,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Payment",
+      "situation": "Pay in Full issue",
+      "issueFull": "Payment > Other\n\n- Pending dues on the Customer Detail page do not match with Payments tab\n- Order > Placing an Order > In Store - did not receive the payment link SMS\n- Fully paid orders (aptured amount NOT equal to paid amount)\n- Issues while placing an order in store (that are not listed)\n- Issues while placing an order online (that are not listed)\n- Complaints related to paying using wallet credit\n- The third installment is paid before the second\n- For false pending dues/payment reminders\n- Payment > Autocharge > Other\n- Pending dues are in negative\n- Wallet amount issue\n- Payment > Late fee\n- Pay in Full issue",
+      "sla": "5 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_12_1",
+      "sheetRow": 12,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Smart Membership",
+      "situation": "Smart Membership > Free Tier > Lavender",
+      "issueFull": "Smart Membership > Free Tier > Lavender",
+      "sla": "5 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_13_1",
+      "sheetRow": 13,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Account",
+      "situation": "Account > Passcode",
+      "issueFull": "Account > Passcode",
+      "sla": "5 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_14_1",
+      "sheetRow": 14,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Order",
+      "situation": "Order > Placing an Order > Cannot see order (stuck order)",
+      "issueFull": "Order > Placing an Order > Cannot see order (stuck order)",
+      "sla": "5 days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_15_1",
+      "sheetRow": 15,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Refunds and Cancellations",
+      "situation": "Refunds and Cancellations > Incorrect refund amount",
+      "issueFull": "Refunds and Cancellations > Incorrect refund amount",
+      "sla": "5 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_16_1",
+      "sheetRow": 16,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Refunds and Cancellations",
+      "situation": "Refunds and Cancellations > Late Refund > Refund not processed",
+      "issueFull": "Refunds and Cancellations > Late Refund > Refund not processed",
+      "sla": "5 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_17_1",
+      "sheetRow": 17,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Payment",
+      "situation": "Payment > Unrecognized charge > Duplicate charge",
+      "issueFull": "Payment > Unrecognized charge > Duplicate charge",
+      "sla": "5 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_18_1",
+      "sheetRow": 18,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Refunds and Cancellations",
+      "situation": "Refunds and Cancellations > Wallet refund",
+      "issueFull": "Refunds and Cancellations > Wallet refund",
+      "sla": "5 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_19_1",
+      "sheetRow": 19,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Order",
+      "situation": "Order > Placing an Order > Order verification IVR call",
+      "issueFull": "Order > Placing an Order > Order verification IVR call",
+      "sla": "3 days from the engineering team",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_20_1",
+      "sheetRow": 20,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Refunds and Cancellations",
+      "situation": "Refunds and Cancellations > Late Refund > Refund already processed",
+      "issueFull": "Refunds and Cancellations > Late Refund > Refund already processed",
+      "sla": "3 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_21_1",
+      "sheetRow": 21,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Promotions & Cashback",
+      "situation": "Tamara Challenges",
+      "issueFull": "Promotions & Cashback > Cashback\n\nTamara Challenges",
+      "sla": "5 working days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_22_1",
+      "sheetRow": 22,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Account",
+      "situation": "(Accessing the account)",
+      "issueFull": "Account > Registration & login > Didn't receive the login / registration OTP \n\n(Accessing the account)",
+      "sla": "3 business days                                       5 business days for app issues",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_23_1",
+      "sheetRow": 23,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Account",
+      "situation": "( Revoke ID Verification)",
+      "issueFull": "Account > ID verification\n\n( Revoke ID Verification)",
+      "sla": "5 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_24_1",
+      "sheetRow": 24,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Account",
+      "situation": "(Creating an account)",
+      "issueFull": "Account > Registration & login > Didn't receive the login / registration OTP \n\n(Creating an account)",
+      "sla": "3 business days                                       5 business days for app issues",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_25_1",
+      "sheetRow": 25,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Order",
+      "situation": "Order > Placing an Order > Didn't receive the order OTP",
+      "issueFull": "Order > Placing an Order > Didn't receive the order OTP",
+      "sla": "3 business days                                       5 business days for app issues",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_26_1",
+      "sheetRow": 26,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Order",
+      "situation": "Order > Placing an Order > Cannot see order (expired order)",
+      "issueFull": "Order > Placing an Order > Cannot see order (expired order)",
+      "sla": "7 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_27_1",
+      "sheetRow": 27,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Payment",
+      "situation": "Payment > Payment Methods > Card is not accepted",
+      "issueFull": "Payment > Payment Methods > Card is not accepted",
+      "sla": "7 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_28_1",
+      "sheetRow": 28,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Other",
+      "situation": "Other > Vulnerable Customer > Deceased Customer Case",
+      "issueFull": "Other > Vulnerable Customer > Deceased Customer Case",
+      "sla": "10 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_29_1",
+      "sheetRow": 29,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Other",
+      "situation": "Other > Vulnerable Customer > Customer with total physical disability",
+      "issueFull": "Other > Vulnerable Customer > Customer with total physical disability",
+      "sla": "10 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_30_1",
+      "sheetRow": 30,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Payment",
+      "situation": "Payment > Murabha - Pay By Finance > Early Settlement",
+      "issueFull": "Payment > Murabha - Pay By Finance > Early Settlement",
+      "sla": "7-10 days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_31_1",
+      "sheetRow": 31,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Account",
+      "situation": "Account > Tamara Health > Technical Issue",
+      "issueFull": "- Account > Tamara Health > Grade or Pillar Issue\n- Account > Tamara Health > Technical Issue",
+      "sla": "7 calendar days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_32_1",
+      "sheetRow": 32,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Promotions & Cashback",
+      "situation": "Promotions & Cashback > Cashback",
+      "issueFull": "Promotions & Cashback > Cashback",
+      "sla": "1–2 business days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_33_1",
+      "sheetRow": 33,
+      "team": "Tech Support",
+      "lob": "Customer Care",
+      "category": "Promotions & Cashback",
+      "situation": "Promotions & Cashback > Discount — Deals",
+      "issueFull": "Promotions & Cashback > Discount\n\nDeals",
+      "sla": "5 Business Days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_34_1",
+      "sheetRow": 34,
+      "team": "Trust & Safety",
+      "lob": "Customer Care",
+      "category": "Claims / Trust & Safety",
+      "situation": "Claims Fraud Flags",
+      "issueFull": "Claims Fraud Flags",
+      "sla": "5 days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_35_1",
+      "sheetRow": 35,
+      "team": "Trust & Safety",
+      "lob": "Customer Care",
+      "category": "Refunds and Cancellations",
+      "situation": "Refunds and Cancellations > Refund Blocked by Merchant",
+      "issueFull": "Refunds and Cancellations > Refund Blocked by Merchant",
+      "sla": "5 days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_36_1",
+      "sheetRow": 36,
+      "team": "Trust & Safety",
+      "lob": "Customer Care",
+      "category": "Account",
+      "situation": "(Revoke ID)",
+      "issueFull": "Account > Account Security > National ID Fraud \n\n(Revoke ID)",
+      "sla": "5 calendar days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_37_1",
+      "sheetRow": 37,
+      "team": "Trust & Safety",
+      "lob": "Customer Care",
+      "category": "Account",
+      "situation": "(Phone Number Archiving)",
+      "issueFull": "Account > Registration & Login > Phone number already in use\n\n(Phone Number Archiving)",
+      "sla": "5 calendar days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_38_1",
+      "sheetRow": 38,
+      "team": "Trust & Safety",
+      "lob": "Customer Care",
+      "category": "Payment",
+      "situation": "2. For Payment Fraud Complaints",
+      "issueFull": "Payment > Unrecognized charge > Suspected fraud\n\n2. For Payment Fraud Complaints",
+      "sla": "5 calendar days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_39_1",
+      "sheetRow": 39,
+      "team": "Trust & Safety",
+      "lob": "Customer Care",
+      "category": "Payment",
+      "situation": "Payment > Unrecognized charge > Suspected fraud",
+      "issueFull": "Payment > Unrecognized charge > Suspected fraud",
+      "sla": "5 days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_40_1",
+      "sheetRow": 40,
+      "team": "Trust & Safety",
+      "lob": "Customer Care",
+      "category": "Account",
+      "situation": "(Potential fraud, customer didn't recognize the account owner )",
+      "issueFull": "Account > Account Security > National ID Fraud \n\n(Potential fraud, customer didn't recognize the account owner )",
+      "sla": "5 calendar days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_41_1",
+      "sheetRow": 41,
+      "team": "Trust & Safety",
+      "lob": "Customer Care",
+      "category": "Order",
+      "situation": "(Blacklisted Customers) RCF-91 / RCF-243 / RCF-121 / RCF-221",
+      "issueFull": "Order > Placing an Order > Declined order\n\n- (Blacklisted Customers) RCF-91 / RCF-243 / RCF-121 / RCF-221\n- (Blacklisted Customers) Shared devices",
+      "sla": "5 calendar days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_41_2",
+      "sheetRow": 41,
+      "team": "Trust & Safety",
+      "lob": "Customer Care",
+      "category": "Order",
+      "situation": "(Blacklisted Customers) Shared devices",
+      "issueFull": "Order > Placing an Order > Declined order\n\n- (Blacklisted Customers) RCF-91 / RCF-243 / RCF-121 / RCF-221\n- (Blacklisted Customers) Shared devices",
+      "sla": "5 calendar days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_42_1",
+      "sheetRow": 42,
+      "team": "Trust & Safety",
+      "lob": "Customer Care",
+      "category": "Account",
+      "situation": "Customer new phone number is blacklisted.",
+      "issueFull": "Account > Update Account > Change phone number\n\n- Customer new phone number is blacklisted.\n- Customer exceeded their quarterly phone number change limit.",
+      "sla": "5 calendar days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_42_2",
+      "sheetRow": 42,
+      "team": "Trust & Safety",
+      "lob": "Customer Care",
+      "category": "Account",
+      "situation": "Customer exceeded their quarterly phone number change limit.",
+      "issueFull": "Account > Update Account > Change phone number\n\n- Customer new phone number is blacklisted.\n- Customer exceeded their quarterly phone number change limit.",
+      "sla": "5 calendar days",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_43_1",
+      "sheetRow": 43,
+      "team": "Manager Escalation",
+      "lob": "Customer Care",
+      "category": "Manager Escalation",
+      "situation": "According to the customer's issue",
+      "issueFull": "According to the customer's issue",
+      "sla": "24 hours",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_44_1",
+      "sheetRow": 44,
+      "team": "Manager Escalation",
+      "lob": "Customer Care",
+      "category": "Manager Escalation",
+      "situation": "Compensation Exception",
+      "issueFull": "Compensation Exception",
+      "sla": "24 hours",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_45_1",
+      "sheetRow": 45,
+      "team": "Credit - Risk",
+      "lob": "Customer Care",
+      "category": "Legal and Government",
+      "situation": "Legal and Government > Credit Bureau > Incorrect Reporting",
+      "issueFull": "-Legal and Government > Credit Bureau > Delayed Report \n-Legal and Government > Credit Bureau > Incorrect Reporting\n-Legal and Government > Credit Bureau > Disputed-Order Related Reporting\n-Legal and Government > Credit Bureau > Fraudulent Bureau Entry",
+      "sla": "5 business days.",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_45_2",
+      "sheetRow": 45,
+      "team": "Credit - Risk",
+      "lob": "Customer Care",
+      "category": "Legal and Government",
+      "situation": "Legal and Government > Credit Bureau > Disputed-Order Related Reporting",
+      "issueFull": "-Legal and Government > Credit Bureau > Delayed Report \n-Legal and Government > Credit Bureau > Incorrect Reporting\n-Legal and Government > Credit Bureau > Disputed-Order Related Reporting\n-Legal and Government > Credit Bureau > Fraudulent Bureau Entry",
+      "sla": "5 business days.",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_45_3",
+      "sheetRow": 45,
+      "team": "Credit - Risk",
+      "lob": "Customer Care",
+      "category": "Legal and Government",
+      "situation": "Legal and Government > Credit Bureau > Fraudulent Bureau Entry",
+      "issueFull": "-Legal and Government > Credit Bureau > Delayed Report \n-Legal and Government > Credit Bureau > Incorrect Reporting\n-Legal and Government > Credit Bureau > Disputed-Order Related Reporting\n-Legal and Government > Credit Bureau > Fraudulent Bureau Entry",
+      "sla": "5 business days.",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_46_1",
+      "sheetRow": 46,
+      "team": "Government Escalation",
+      "lob": "Customer Care",
+      "category": "Legal and Government",
+      "situation": "Legal and Government > Credit Bureau > Inquiry Update (UAE)",
+      "issueFull": "Legal and Government > Credit Bureau > Inquiry Update (UAE)",
+      "sla": "24 hours",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_47_1",
+      "sheetRow": 47,
+      "team": "Collections",
+      "lob": "Customer Care",
+      "category": "Other",
+      "situation": "Other > Related to Collection agency",
+      "issueFull": "Other > Related to Collection agency",
+      "sla": "48 business hours",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    },
+    {
+      "id": "TRF_48_1",
+      "sheetRow": 48,
+      "team": "Cross - Vertical Transfers",
+      "lob": "Customer Care",
+      "category": "Other",
+      "situation": "Other > Contact from Customer",
+      "issueFull": "Other > Contact from Customer",
+      "sla": "",
+      "status": "Working",
+      "macro": "Ticket Escalated",
+      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card."
+    }
+  ]
 }
   </script>
   <script id="tamara-articles-data" type="application/json">
@@ -7387,15 +8405,126 @@ function initData() {
     list.innerHTML = '';
     var searchInput = document.getElementById('sidebar-filter');
     var q = (searchInput ? searchInput.value : '').toLowerCase().trim();
-    cmsData.topics.filter(function(t) {
-      return t.name.toLowerCase().indexOf(q) !== -1 || t.tag.toLowerCase().indexOf(q) !== -1;
+    var topics = (cmsData.topics || []).slice().sort(function(a, b) {
+      var ap = (a.pinned || a.id === 'transfers_sla') ? 0 : 1;
+      var bp = (b.pinned || b.id === 'transfers_sla') ? 0 : 1;
+      if (ap !== bp) return ap - bp;
+      return 0;
+    });
+    topics.filter(function(t) {
+      return t.name.toLowerCase().indexOf(q) !== -1 || (t.tag || '').toLowerCase().indexOf(q) !== -1;
     }).forEach(function(t) {
       var btn = document.createElement('button');
       btn.className = 'topic-menu-btn ' + (activeTopic === t.id ? 'active' : '');
-      btn.innerHTML = '<span>' + t.name + '</span><span style="font-size:10px; color:var(--gold-metallic); white-space:nowrap; margin-left:6px;">' + t.tag + '</span>';
+      var tagLabel = t.tag || '';
+      if (t.id === 'transfers_sla') tagLabel = '★ TOP';
+      btn.innerHTML = '<span>' + t.name + '</span><span style="font-size:10px; color:var(--gold-metallic); white-space:nowrap; margin-left:6px;">' + tagLabel + '</span>';
       btn.onclick = function() { selectTopic(t.id); };
       list.appendChild(btn);
     });
+  }
+
+  function getTransfersCatalog() {
+    return (cmsData && cmsData.transfersSlaCatalog) ? cmsData.transfersSlaCatalog : [];
+  }
+
+  function showTransfersSlaPanel(show) {
+    var panel = document.getElementById('transfers-sla-panel');
+    var stepBox = document.getElementById('step-container');
+    var outcomeBox = document.getElementById('outcome-container');
+    if (panel) panel.style.display = show ? 'block' : 'none';
+    if (show) {
+      if (stepBox) stepBox.style.display = 'none';
+      if (outcomeBox) outcomeBox.style.display = 'none';
+      populateTransfersSlaDropdowns();
+    } else if (stepBox) {
+      stepBox.style.display = 'block';
+    }
+  }
+
+  function populateTransfersSlaDropdowns() {
+    var catSel = document.getElementById('trf-category-select');
+    var sitSel = document.getElementById('trf-situation-select');
+    if (!catSel || !sitSel) return;
+    var catalog = getTransfersCatalog();
+    var cats = [];
+    var seen = {};
+    catalog.forEach(function(item) {
+      if (!seen[item.category]) {
+        seen[item.category] = true;
+        cats.push(item.category);
+      }
+    });
+    cats.sort();
+    var prevCat = catSel.value;
+    catSel.innerHTML = '';
+    cats.forEach(function(c) {
+      var opt = document.createElement('option');
+      opt.value = c;
+      opt.textContent = c;
+      catSel.appendChild(opt);
+    });
+    if (prevCat && seen[prevCat]) catSel.value = prevCat;
+    else if (cats.length) catSel.value = cats[0];
+    onTransfersCategoryChange();
+  }
+
+  function onTransfersCategoryChange() {
+    var catSel = document.getElementById('trf-category-select');
+    var sitSel = document.getElementById('trf-situation-select');
+    if (!catSel || !sitSel) return;
+    var cat = catSel.value;
+    var items = getTransfersCatalog().filter(function(x) { return x.category === cat; });
+    sitSel.innerHTML = '';
+    items.forEach(function(item) {
+      var opt = document.createElement('option');
+      opt.value = item.id;
+      opt.textContent = item.situation.length > 110 ? (item.situation.slice(0, 107) + '…') : item.situation;
+      sitSel.appendChild(opt);
+    });
+    onTransfersSituationChange();
+  }
+
+  function onTransfersSituationChange() {
+    var sitSel = document.getElementById('trf-situation-select');
+    if (!sitSel) return;
+    var item = getTransfersCatalog().find(function(x) { return x.id === sitSel.value; });
+    var teamEl = document.getElementById('trf-out-team');
+    var slaEl = document.getElementById('trf-out-sla');
+    var statusEl = document.getElementById('trf-out-status');
+    var lobEl = document.getElementById('trf-out-lob');
+    var tplEl = document.getElementById('trf-out-template');
+    var issueEl = document.getElementById('trf-out-issue');
+    if (!item) {
+      if (teamEl) teamEl.innerText = '-';
+      if (slaEl) slaEl.innerText = '-';
+      if (statusEl) statusEl.innerText = '-';
+      if (lobEl) lobEl.innerText = '-';
+      if (tplEl) tplEl.innerText = 'Select a situation…';
+      if (issueEl) issueEl.innerText = '-';
+      return;
+    }
+    if (teamEl) teamEl.innerText = item.team || '-';
+    if (slaEl) slaEl.innerText = item.sla || '-';
+    if (statusEl) statusEl.innerText = item.status || 'Working';
+    if (lobEl) lobEl.innerText = item.lob || 'Customer Care';
+    if (tplEl) {
+      tplEl.innerText =
+        (item.escalationTemplate || 'PENDING — Escalation template will be shared.') +
+        '\n\nMacro: ' + (item.macro || 'Ticket Escalated') +
+        '\nTeam: ' + (item.team || '-') +
+        '\nSLA: ' + (item.sla || '-') +
+        '\nStatus: ' + (item.status || 'Working') +
+        '\nSituation: ' + (item.situation || '-');
+    }
+    if (issueEl) issueEl.innerText = item.issueFull || item.situation || '-';
+  }
+
+  function copyTransfersEscalationTemplate() {
+    var tplEl = document.getElementById('trf-out-template');
+    if (!tplEl) return;
+    navigator.clipboard.writeText(tplEl.innerText || '');
+    alert('Escalation template copied.');
   }
 
   function selectTopic(topicId) {
@@ -7422,6 +8551,12 @@ function initData() {
         banner.style.display = 'none';
       }
     }
+
+    if (meta.uniqueType === 'transfers_sla_browser' || topicId === 'transfers_sla') {
+      showTransfersSlaPanel(true);
+      return;
+    }
+    showTransfersSlaPanel(false);
     resetWorkflowTopic();
   }
 
@@ -7430,6 +8565,7 @@ function initData() {
     var stepBox = document.getElementById('step-container');
     if (outcomeBox) outcomeBox.style.display = 'none';
     if (stepBox) stepBox.style.display = 'block';
+    showTransfersSlaPanel(false);
     renderWorkflowStep('step1', 1);
   }
 
@@ -10872,6 +12008,9 @@ var officialIssueTypes = DEFAULT_OFFICIAL_ISSUE_TYPES.slice();
   window.applyPastedChatPatch = applyPastedChatPatch;
   window.pullRemoteCloudUpdates = pullRemoteCloudUpdates;
   window.syncSlaSourcesFromLinks = syncSlaSourcesFromLinks;
+  window.onTransfersCategoryChange = onTransfersCategoryChange;
+  window.onTransfersSituationChange = onTransfersSituationChange;
+  window.copyTransfersEscalationTemplate = copyTransfersEscalationTemplate;
   window.downloadSelfContainedHtml = downloadSelfContainedHtml;
   window.pushLiveUpdateToServer = pushLiveUpdateToServer;
   window.unlockAgentHub = unlockAgentHub;

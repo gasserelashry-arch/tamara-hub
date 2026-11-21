@@ -9,12 +9,15 @@ if errorlevel 1 goto fail
 echo Strict curated Transfers SLA finalize (5x verified)...
 python _sla_strict_finalize.py
 if errorlevel 1 goto fail
+echo Building Transfers SLA topic catalog + KB Ashry compare...
+python _build_transfers_sla_topic.py
+if errorlevel 1 goto fail
 echo Embedding into index.html...
 python _embed_store.py
 if errorlevel 1 goto fail
 echo.
 echo DONE. Restart/refresh Atlas (localhost) to load updated SLAs.
-echo Reports: _sla_strict_report.json
+echo Reports: _sla_strict_report.json  _kb_ashry_mismatch_report.json
 pause
 exit /b 0
 :fail
