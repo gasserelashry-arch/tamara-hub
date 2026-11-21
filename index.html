@@ -187,6 +187,28 @@
     html[data-theme="light"] .topic-menu-btn.active [style*="color:var(--gold-metallic)"] {
       color: #b45309 !important;
     }
+    /* Keep Transfers SLA pin purple/gold even in light theme */
+    html[data-theme="light"] .transfers-sla-pin,
+    html[data-theme="light"] .transfers-sla-pin.active {
+      background: #4a0082 !important;
+      border: 1.5px solid #e8a017 !important;
+      color: #f0b429 !important;
+    }
+    html[data-theme="light"] .transfers-sla-pin span,
+    html[data-theme="light"] .transfers-sla-pin .transfers-sla-top,
+    html[data-theme="light"] .transfers-sla-pin.active span,
+    html[data-theme="light"] .transfers-sla-pin.active .transfers-sla-top {
+      color: #f0b429 !important;
+    }
+    html[data-theme="light"] .transfers-sla-pin:hover {
+      background: #5c0a9e !important;
+      border-color: #ffc107 !important;
+      color: #ffd54f !important;
+    }
+    html[data-theme="light"] .transfers-sla-pin:hover span,
+    html[data-theme="light"] .transfers-sla-pin:hover .transfers-sla-top {
+      color: #ffd54f !important;
+    }
     html[data-theme="light"] .meta-box {
       background: #f0e6d6;
       border: 1px solid #b8a48a;
@@ -632,6 +654,32 @@
       background: linear-gradient(90deg, rgba(83,0,186,0.5), rgba(150,0,241,0.25));
       border-color: var(--gold-metallic); color: var(--gold-metallic); font-weight: 800;
     }
+    /* Transfers SLA — pinned above search, distinct purple/gold */
+    .transfers-sla-pin {
+      flex-shrink: 0;
+      margin-bottom: 10px;
+      background: #4a0082 !important;
+      border: 1.5px solid #e8a017 !important;
+      color: #f0b429 !important;
+      font-weight: 800 !important;
+      box-shadow: 0 2px 10px rgba(74, 0, 130, 0.35);
+    }
+    .transfers-sla-pin span { color: #f0b429 !important; }
+    .transfers-sla-pin .transfers-sla-top {
+      font-size: 10px; font-weight: 800; letter-spacing: 0.4px; white-space: nowrap; margin-left: 6px;
+      color: #f0b429 !important;
+    }
+    .transfers-sla-pin:hover,
+    .transfers-sla-pin.active {
+      background: #5c0a9e !important;
+      border-color: #ffc107 !important;
+      color: #ffd54f !important;
+      box-shadow: 0 0 14px rgba(232, 160, 23, 0.45);
+    }
+    .transfers-sla-pin:hover span,
+    .transfers-sla-pin.active span,
+    .transfers-sla-pin:hover .transfers-sla-top,
+    .transfers-sla-pin.active .transfers-sla-top { color: #ffd54f !important; }
     .updated-badge { background: var(--accent-green); color: #000; font-size: 9px; font-weight: 800; padding: 2px 5px; border-radius: 4px; margin-left: 6px; }
 
     .decision-display {
@@ -823,7 +871,10 @@
 
     <div id="workflow-screen" style="display:none;" class="workflow-layout">
       <aside class="topics-sidebar">
-        <input type="text" class="sidebar-search" id="sidebar-filter" placeholder="Filter 53 Topics (Deceased, Unrecognized, AECB, Dispute)..." oninput="renderSidebarTopics()">
+        <button type="button" id="transfers-sla-pin" class="topic-menu-btn transfers-sla-pin" onclick="selectTopic('transfers_sla')">
+          <span>Transfers SLA</span><span class="transfers-sla-top">★ TOP</span>
+        </button>
+        <input type="text" class="sidebar-search" id="sidebar-filter" placeholder="Filter topics (Deceased, Unrecognized, AECB, Dispute)..." oninput="renderSidebarTopics()">
         <div class="topic-list-scroll" id="sidebar-topics-render"></div>
       </aside>
       <section class="decision-display">
@@ -1634,7 +1685,11 @@
     "compensation_policy": "CUSTOMER COMPENSATION POLICY: Compensation vouchers or wallet goodwill are issued exclusively for confirmed Tamara system errors or SLA breaches. Merchant stock issues are ineligible.",
     "aecb_support": "MANDATORY POLICY (UAE AECB - Al Etihad Credit Bureau): AECB records update on scheduled weekly batch cycles (allow up to 5–7 business days after full settlement). Never disclose internal credit scoring formulas. If a customer disputes an unrecognized AECB record under their Emirates ID, verify identity and collect ID + AECB report snippet before escalating to Trust & Safety / Credit Bureau Operations.",
     "deceased_customer": "MANDATORY COMPASSIONATE POLICY (DECEASED CUSTOMER):\n• Step 1 — Immediate Collections Freeze: Express sincere condolences and immediately freeze all outbound collection calls and SMS reminders in CS Hub.\n• Step 2 — Mandatory Documents Required: Request (1) Official Death Certificate, (2) Deceased Customer's National ID / Iqama / Emirates ID copy, and (3) Reporter / Next-of-Kin ID & Family Relationship / Inheritance Proof.\n• Step 3 — Routing & SLA: Never demand immediate repayment from grieving family members. Escalate complete documentation to Legal & Compliance (SLA: 2 Business Days | Issue Type: Other > Vulnerable Customer > Deceased Customer Case).",
-    "transfers_sla": "TRANSFERS SLA — SOURCE OF TRUTH\n• This topic mirrors Transfers SLA.xlsx.\n• Select Category then Situation.\n• Use Team / SLA / Status shown before escalating.\n• Sheet: https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0"
+    "transfers_sla": "TRANSFERS SLA — SOURCE OF TRUTH\n• This topic mirrors Transfers SLA.xlsx.\n• Select Category then Situation.\n• Use Team / SLA / Status shown before escalating.\n• Sheet: https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+    "about_tamara_general": "TRANSFERS SLA AUTHORITY\n• Team: Tech Support\n• SLA: 3 business days                                       5 business days for app issues\n• Sheet row: 5\n• Source: https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+    "feedback_jailbroken": "TRANSFERS SLA AUTHORITY\n• Team: Tech Support\n• SLA: 5 business days\n• Sheet row: 6\n• Source: https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+    "account_passcode": "TRANSFERS SLA AUTHORITY\n• Team: Tech Support\n• SLA: 5 business days\n• Sheet row: 13\n• Source: https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+    "murabha_early_settlement": "TRANSFERS SLA AUTHORITY\n• Team: Tech Support\n• SLA: 7-10 days\n• Sheet row: 30\n• Source: https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0"
   },
   "topics": [
     {
@@ -1962,6 +2017,30 @@
       "tag": "Topic 53",
       "name": "Deceased Customer",
       "desc": "Dedicated for deceased customer cases: immediate collections freeze, mandatory death certificate & next-of-kin verification steps, Legal & Compliance escalation, and account closure/settlement."
+    },
+    {
+      "id": "about_tamara_general",
+      "tag": "Topic NEW",
+      "name": "About Tamara (General) — App Issues",
+      "desc": "Other > About Tamara (General) — app issues. Transfers SLA: 3 business days / 5 business days for app issues (Tech Support)."
+    },
+    {
+      "id": "feedback_jailbroken",
+      "tag": "Topic NEW",
+      "name": "Feedback — Jailbroken / Rooted Device",
+      "desc": "Other > Feedback about Tamara — Jailbroken / Rooted Device. Transfers SLA: 5 business days (Tech Support)."
+    },
+    {
+      "id": "account_passcode",
+      "tag": "Topic NEW",
+      "name": "Account Passcode",
+      "desc": "Account > Passcode. Transfers SLA: 5 business days (Tech Support)."
+    },
+    {
+      "id": "murabha_early_settlement",
+      "tag": "Topic NEW",
+      "name": "Murabha — Early Settlement",
+      "desc": "Payment > Murabha - Pay By Finance > Early Settlement. Transfers SLA: 7-10 days (Tech Support)."
     }
   ],
   "tree": {
@@ -3200,6 +3279,50 @@
         "prompt": "Use the Transfers SLA dropdowns to select category and situation.",
         "options": []
       }
+    },
+    "about_tamara_general": {
+      "step1": {
+        "prompt": "About Tamara (General) — App Issues — escalate using Transfers SLA (3 business days                                       5 business days for app issues).",
+        "options": [
+          {
+            "text": "Escalate to Tech Support — SLA 3 business days                                       5 business days for app issues",
+            "next": "ABOUT_TAMARA_APP_ESC"
+          }
+        ]
+      }
+    },
+    "feedback_jailbroken": {
+      "step1": {
+        "prompt": "Feedback — Jailbroken / Rooted Device — escalate using Transfers SLA (5 business days).",
+        "options": [
+          {
+            "text": "Escalate to Tech Support — SLA 5 business days",
+            "next": "FEEDBACK_JAILBREAK_ESC"
+          }
+        ]
+      }
+    },
+    "account_passcode": {
+      "step1": {
+        "prompt": "Account Passcode — escalate using Transfers SLA (5 business days).",
+        "options": [
+          {
+            "text": "Escalate to Tech Support — SLA 5 business days",
+            "next": "PASSCODE_ESC"
+          }
+        ]
+      }
+    },
+    "murabha_early_settlement": {
+      "step1": {
+        "prompt": "Murabha — Early Settlement — escalate using Transfers SLA (7-10 days).",
+        "options": [
+          {
+            "text": "Escalate to Tech Support — SLA 7-10 days",
+            "next": "MURABHA_EARLY_SETTLE_ESC"
+          }
+        ]
+      }
     }
   },
   "nodes": {
@@ -3260,8 +3383,9 @@
       "macro_lob": "Customer Care",
       "macro_channel": "Email;Phone;Messaging",
       "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
-      "_sla_updated_at": "2026-11-21T10:14:06.419645+00:00",
-      "_sla_authority": "Transfers SLA.xlsx"
+      "_sla_updated_at": "2026-11-21T10:25:28.762630+00:00",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_sheet_row": 36
     },
     "UNREG_DUES_PENDING_DOCS": {
       "headline": "National ID Dues Dispute - Proof Pending",
@@ -3302,7 +3426,8 @@
       "macro_channel": "Email;Phone;Messaging",
       "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
       "_sla_authority": "Transfers SLA.xlsx",
-      "_sla_updated_at": "2026-11-21T10:14:06.419651+00:00"
+      "_sla_updated_at": "2026-11-21T10:25:28.762635+00:00",
+      "_sla_sheet_row": 37
     },
     "UNREG_DUES_ARCHIVE_EVIDENCE": {
       "headline": "Recycled Line Dues - Proof of Ownership Required",
@@ -3748,7 +3873,7 @@
       "system_action": "Attach NID, telecom contract, and Absher screenshot to Salesforce comments. Escalate to Trust & Safety.",
       "comment_template": "Action: Phone Number Archiving Transfer\nCustomer ID: [CUST_ID]\nTelecom Contract Date: [DATE] (Postdates original account creation)\nVerified via Tawakkalna. Escalated to Trust & Safety.",
       "team": "Trust & Safety",
-      "sla": "5 Business Days",
+      "sla": "5 calendar days",
       "sf_status": "Working",
       "macro": "[Customer] Escalated to Trust & Safety",
       "interaction_type": "Request",
@@ -3758,7 +3883,11 @@
       "issue_type_leaf": "Phone number already in use",
       "macro_id": "MAC_084",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_sheet_row": 37,
+      "_sla_updated_at": "2026-11-21T10:25:28.762638+00:00"
     },
     "DUE_STANDARD": {
       "headline": "Installment Due Date Standard Policy",
@@ -3995,7 +4124,7 @@
       "system_action": "Freeze upcoming payment dates. Note order references and store URL in case comments. Escalate to Trust & Safety.",
       "comment_template": "Action: Merchant Fraud Flag\nUnfulfilled captured orders / merchant uncontactable. Collections frozen. Escalated to T&S.",
       "team": "Trust & Safety",
-      "sla": "5 Business Days",
+      "sla": "5 days",
       "sf_status": "Working",
       "macro": "[Customer] Escalated to Trust & Safety",
       "interaction_type": "Request",
@@ -4005,7 +4134,11 @@
       "issue_type_leaf": "Merchant Fraud",
       "macro_id": "MAC_084",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_sheet_row": 35,
+      "_sla_updated_at": "2026-11-21T10:25:28.762628+00:00"
     },
     "PTP_REQUEST": {
       "headline": "Postpone Payment Request — No Manual Postponement (No Extra or Late Fees)",
@@ -4141,7 +4274,8 @@
       "macro_channel": "Email;Phone;Messaging",
       "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
       "_sla_authority": "Transfers SLA.xlsx",
-      "_sla_updated_at": "2026-11-21T10:14:06.419647+00:00"
+      "_sla_updated_at": "2026-11-21T10:25:28.762643+00:00",
+      "_sla_sheet_row": 40
     },
     "NID_COLL_AGENCY": {
       "headline": "Collection Agency Dues Dispute",
@@ -4163,7 +4297,8 @@
       "macro_channel": "Email;Phone;Messaging",
       "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
       "_sla_authority": "Transfers SLA.xlsx",
-      "_sla_updated_at": "2026-11-21T10:14:06.419650+00:00"
+      "_sla_updated_at": "2026-11-21T10:25:28.762633+00:00",
+      "_sla_sheet_row": 36
     },
     "NID_SIMAH_KNOWN": {
       "headline": "SIMAH Record - Recognized Phone Number",
@@ -4242,7 +4377,8 @@
       "macro_channel": "Email;Phone;Messaging",
       "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
       "_sla_authority": "Transfers SLA.xlsx",
-      "_sla_updated_at": "2026-11-21T10:14:06.419648+00:00"
+      "_sla_updated_at": "2026-11-21T10:25:28.762646+00:00",
+      "_sla_sheet_row": 40
     },
     "CRD_DELAYED": {
       "headline": "Delayed Credit Bureau (SIMAH) Status Update",
@@ -4434,8 +4570,9 @@
       "macro_lob": "Customer Care",
       "macro_channel": "Email;Phone;Messaging",
       "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
-      "_sla_updated_at": "2026-11-21T10:14:06.419606+00:00",
-      "_sla_authority": "Transfers SLA.xlsx"
+      "_sla_updated_at": "2026-11-21T10:25:28.762595+00:00",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_sheet_row": 14
     },
     "PLAN_CHANGE_REJECT": {
       "headline": "Wrong Installment Plan Selected",
@@ -4463,7 +4600,7 @@
       "system_action": "Check SMS delivery logs in CS Hub. If telecom issue, advise waiting 15 minutes.",
       "comment_template": "Resolution: OTP Troubleshooting\nChecked SMS delivery logs in CS Hub. Advised customer on telecom carrier short-code unblocking.",
       "team": "Tech Support",
-      "sla": "3 business days                                       5 business days for app issues",
+      "sla": "3 business days / 5 business days for app issues",
       "sf_status": "Closed",
       "macro": "[Tech Support] Troubleshooting 1",
       "interaction_type": "Inquiry",
@@ -4475,8 +4612,9 @@
       "macro_lob": "Customer Care",
       "macro_channel": "Email;Phone;Messaging",
       "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
-      "_sla_updated_at": "2026-11-21T10:14:06.419625+00:00",
-      "_sla_authority": "Transfers SLA.xlsx"
+      "_sla_updated_at": "2026-11-21T10:25:28.762601+00:00",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_sheet_row": 25
     },
     "POS_SMS_FALLBACK": {
       "headline": "In-Store POS Payment SMS Failure",
@@ -4535,8 +4673,9 @@
       "macro_lob": "Customer Care",
       "macro_channel": "Email;Phone;Messaging",
       "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
-      "_sla_updated_at": "2026-11-21T10:14:06.419621+00:00",
-      "_sla_authority": "Transfers SLA.xlsx"
+      "_sla_updated_at": "2026-11-21T10:25:28.762597+00:00",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_sheet_row": 19
     },
     "VUL_DECEASED": {
       "headline": "Deceased Customer Protocol",
@@ -4557,8 +4696,9 @@
       "macro_lob": "Customer Care",
       "macro_channel": "Email;Phone;Messaging",
       "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
-      "_sla_updated_at": "2026-11-21T10:14:06.419636+00:00",
-      "_sla_authority": "Transfers SLA.xlsx"
+      "_sla_updated_at": "2026-11-21T10:25:28.762617+00:00",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_sheet_row": 28
     },
     "VUL_HARDSHIP": {
       "headline": "Vulnerable Customer Hardship Protocol",
@@ -4693,8 +4833,9 @@
       "macro_lob": "Customer Care",
       "macro_channel": "Email;Phone;Messaging",
       "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
-      "_sla_updated_at": "2026-11-21T10:14:06.419641+00:00",
-      "_sla_authority": "Transfers SLA.xlsx"
+      "_sla_updated_at": "2026-11-21T10:25:28.762589+00:00",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_sheet_row": 10
     },
     "VOID_HOLD_RELEASE": {
       "headline": "Voided Payment Authorization Hold Release",
@@ -4816,8 +4957,8 @@
       "cust_msg": "We have initiated a dispute review for this Tamara Card transaction. Our payments team will investigate the authorization logs with the card network.",
       "system_action": "Check Tamara Card dashboard. Collect transaction reference. Escalate to Tamara Card Operations. Advise customer to raise a claim via app or we will raise it for them from our end.",
       "comment_template": "Action: Tamara Card Dispute\nDisputed Card Transaction Reference: [REF_ID]\nEscalated to Tamara Card Operations.\nAdvised customer on claim process.",
-      "team": "Customer Care",
-      "sla": "3-5 Business Days",
+      "team": "Trust & Safety",
+      "sla": "5 calendar days",
       "sf_status": "Working",
       "macro": "Unrecognized charge pushback - UAE",
       "interaction_type": "Complain",
@@ -4827,7 +4968,11 @@
       "issue_type_leaf": "Unauthorized Charge",
       "macro_id": "MAC_075",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_sheet_row": 38,
+      "_sla_updated_at": "2026-11-21T10:25:28.762641+00:00"
     },
     "LAV_PERKS": {
       "headline": "Lavender Membership Tier & Perks",
@@ -5133,8 +5278,9 @@
       "macro_lob": "Customer Care",
       "macro_channel": "Email;Phone;Messaging",
       "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
-      "_sla_updated_at": "2026-11-21T10:14:06.419639+00:00",
-      "_sla_authority": "Transfers SLA.xlsx"
+      "_sla_updated_at": "2026-11-21T10:25:28.762584+00:00",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_sheet_row": 10
     },
     "UNREC_STATUS_DECLINED_HOLD": {
       "headline": "Payment Attempt Declined: Temporary Bank Pre-Authorization Hold",
@@ -5295,7 +5441,7 @@
       "system_action": "In CS Hub Collections tab, register Promise to Pay (PTP) or add collections hold note. Escalate to Collections if manual freeze needed. SLA: 24h.",
       "comment_template": "Action: Collections Freeze Request\nReason: Active Dispute / Pending Proof\nRegistered temporary hold in Collections portal. Status: Working",
       "team": "Collections",
-      "sla": "24 Hours",
+      "sla": "48 business hours",
       "sf_status": "Working",
       "macro": "Clubbed Reminder - Reminder Sent After Payment",
       "interaction_type": "Request",
@@ -5305,7 +5451,11 @@
       "issue_type_leaf": "Collection Process",
       "macro_id": "MAC_005",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_sheet_row": 47,
+      "_sla_updated_at": "2026-11-21T10:25:28.762656+00:00"
     },
     "MGR_DEESCALATE": {
       "headline": "Manager Escalation: First/Second De-escalation Protocol",
@@ -5332,8 +5482,8 @@
       "cust_msg": "I have escalated your request to our Customer Care Team Lead. A supervisor will review your file and contact you directly within 2 hours.",
       "system_action": "Log customer's preferred callback number and summary of dispute in Salesforce case comment. Assign case to Team Lead queue with 2-hour SLA.",
       "comment_template": "Action: Supervisor Callback Requested\nCustomer insisted on management escalation after de-escalation.\nPreferred Phone: [PHONE]\nSummary: [ISSUE_SUMMARY]\nEscalated to Team Lead. SLA: 2 Hours. Status: Working",
-      "team": "Customer Care Team Lead",
-      "sla": "2 Hours",
+      "team": "Manager Escalation",
+      "sla": "24 hours",
       "sf_status": "Working",
       "macro": "Manager Call Back Request",
       "interaction_type": "Request",
@@ -5343,7 +5493,11 @@
       "issue_type_leaf": "Feedback about Tamara",
       "macro_id": "MAC_242",
       "macro_lob": "General",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_sheet_row": 43,
+      "_sla_updated_at": "2026-11-21T10:25:28.762653+00:00"
     },
     "PROF_WARNING_1": {
       "headline": "Profanity Process: First Warning Script",
@@ -5459,8 +5613,9 @@
       "macro_lob": "Customer Care",
       "macro_channel": "Email;Phone;Messaging",
       "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
-      "_sla_updated_at": "2026-11-21T10:14:06.419643+00:00",
-      "_sla_authority": "Transfers SLA.xlsx"
+      "_sla_updated_at": "2026-11-21T10:25:28.762592+00:00",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_sheet_row": 10
     },
     "CPF_KSA_EXP": {
       "headline": "Customer Processing Fees (CPF) - KSA",
@@ -5639,8 +5794,8 @@
       "cust_msg": "I have verified that all your Tamara installments are cleared with a zero balance. We have initiated your official Clearance / Non-Liability Certificate, which will be delivered to your registered email within 24 hours.",
       "system_action": "1. Verify in CS Hub that active dues = 0.00 AED and no open claims exist.\n2. Trigger / request official Clearance Certificate for the UAE customer.\n3. Confirm registered email address with caller and submit case.",
       "comment_template": "Action: AECB Support - Clearance Certificate Request\nCountry: UAE\nVerified 0.00 AED outstanding balance & zero active orders.\nClearance certificate issued to registered email.\nStatus: Closed",
-      "team": "Customer Care",
-      "sla": "24 Hours",
+      "team": "Government Escalation",
+      "sla": "24 hours",
       "sf_status": "Closed",
       "macro": "Inquiry Update - Status Updated",
       "interaction_type": "Request",
@@ -5650,7 +5805,11 @@
       "issue_type_leaf": "Credit Bureau Process & Report",
       "macro_id": "MAC_010",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_sheet_row": 46,
+      "_sla_updated_at": "2026-11-21T10:25:28.762651+00:00"
     },
     "AECB_DISPUTE_ESCALATE": {
       "headline": "AECB Unrecognized Record Dispute — Escalate to Trust & Safety",
@@ -5658,8 +5817,8 @@
       "cust_msg": "Thank you for providing your Emirates ID and AECB report documentation. We have frozen any collection activity on the disputed record and escalated your case to our Trust & Safety team for investigation and AECB correction within 5 business days.",
       "system_action": "1. Verify Emirates ID snippet and AECB report reference number.\n2. Complete the 6 Mandatory Fraud Questions in Salesforce comments.\n3. Place collections hold on the disputed profile in CS Hub.\n4. Escalate to Trust & Safety with 5 Business Days SLA and set Status to Working.",
       "comment_template": "Action: AECB Support - Unrecognized Bureau Record Dispute\nCountry: UAE\nAECB Reference / Account ID: [AECB_REF_ID]\nEmirates ID & AECB Report Attached: YES\nCollections Hold Applied: YES\nEscalated to: Trust & Safety | SLA: 5 Business Days | Status: Working",
-      "team": "Trust & Safety",
-      "sla": "5 Business Days",
+      "team": "Credit - Risk",
+      "sla": "5 business days.",
       "sf_status": "Working",
       "macro": "[Customer] Escalated to Trust & Safety",
       "interaction_type": "Request",
@@ -5669,7 +5828,11 @@
       "issue_type_leaf": "Credit Bureau Process & Report",
       "macro_id": "MAC_084",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_sheet_row": 45,
+      "_sla_updated_at": "2026-11-21T10:25:28.762648+00:00"
     },
     "AECB_DISPUTE_PENDING_DOCS": {
       "headline": "AECB Record Dispute — Awaiting Emirates ID & AECB Report",
@@ -5747,8 +5910,9 @@
       "macro_lob": "Customer Care",
       "macro_channel": "Email;Phone;Messaging",
       "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
-      "_sla_updated_at": "2026-11-21T10:14:06.419631+00:00",
-      "_sla_authority": "Transfers SLA.xlsx"
+      "_sla_updated_at": "2026-11-21T10:25:28.762609+00:00",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_sheet_row": 28
     },
     "DEC_CUST_ZERO_DUES_CLOSE": {
       "headline": "Deceased Customer (Zero Dues + Death Certificate Verified) -> Permanent Account Closure",
@@ -5769,8 +5933,9 @@
       "macro_lob": "Customer Care",
       "macro_channel": "Email;Phone;Messaging",
       "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
-      "_sla_updated_at": "2026-11-21T10:14:06.419633+00:00",
-      "_sla_authority": "Transfers SLA.xlsx"
+      "_sla_updated_at": "2026-11-21T10:25:28.762611+00:00",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_sheet_row": 28
     },
     "DEC_CUST_PENDING_DOCS": {
       "headline": "Deceased Customer — Collections Frozen Immediately & Awaiting Required Documents",
@@ -5791,8 +5956,9 @@
       "macro_lob": "Customer Care",
       "macro_channel": "Email;Phone;Messaging",
       "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
-      "_sla_updated_at": "2026-11-21T10:14:06.419635+00:00",
-      "_sla_authority": "Transfers SLA.xlsx"
+      "_sla_updated_at": "2026-11-21T10:25:28.762615+00:00",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_sheet_row": 28
     },
     "VUL_PHYSICAL_ESCALATE": {
       "headline": "Vulnerable Customer: Total Physical Disability -> Escalate to Special Operations",
@@ -5813,8 +5979,9 @@
       "macro_lob": "Customer Care",
       "macro_channel": "Email;Phone;Messaging",
       "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
-      "_sla_updated_at": "2026-11-21T10:14:06.419638+00:00",
-      "_sla_authority": "Transfers SLA.xlsx"
+      "_sla_updated_at": "2026-11-21T10:25:28.762620+00:00",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_sheet_row": 29
     },
     "VUL_PENDING_DOCS": {
       "headline": "Vulnerable Customer — Reminders Paused & Awaiting Official Documentation",
@@ -5860,8 +6027,8 @@
       "cust_msg": "Thank you for providing your updated identity documentation. We have escalated your legal name update to our Trust & Safety team for verification within 5 business days.",
       "system_action": "1. Attach updated ID & civil registry proof in Salesforce comments.\n2. Apply Macro: 'Ticket Escalated' -> Escalate to Trust & Safety (SLA: 5 Business Days) -> Next Step: Working.",
       "comment_template": "Action: Revoke ID Verification — Legal Name Change\nCustomer ID: [CUST_ID]\nDocuments Attached: Updated ID + Civil Registry Name Change Proof\nMacro Applied: Ticket Escalated\nEscalated to: Trust & Safety | SLA: 5 Business Days | Next Step: Working",
-      "team": "Trust & Safety",
-      "sla": "5 Business Days",
+      "team": "Tech Support",
+      "sla": "5 business days",
       "sf_status": "Working",
       "macro": "[Customer] Escalated to Trust & Safety",
       "interaction_type": "Request",
@@ -5871,7 +6038,11 @@
       "issue_type_leaf": "ID verification",
       "macro_id": "MAC_084",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_sheet_row": 2,
+      "_sla_updated_at": "2026-11-21T10:25:28.762577+00:00"
     },
     "VOID_HOLD_OVER_14D": {
       "headline": "Voided Payment Hold Exceeded 14 Business Days -> Escalate to Tech Support",
@@ -5910,8 +6081,9 @@
       "issueType": "Payment > Payment Methods > Card is not accepted",
       "macro_channel": "Email;Phone;Messaging",
       "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
-      "_sla_updated_at": "2026-11-21T10:14:06.419629+00:00",
-      "_sla_authority": "Transfers SLA.xlsx"
+      "_sla_updated_at": "2026-11-21T10:25:28.762606+00:00",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_sheet_row": 27
     },
     "NODE_BRANCH_801196_874_MAIN": {
       "headline": "How to add/remove a card",
@@ -5949,8 +6121,9 @@
       "issueType": "Payment > Payment Methods > Card is not accepted",
       "macro_channel": "Email;Phone;Messaging",
       "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
-      "_sla_updated_at": "2026-11-21T10:14:06.419627+00:00",
-      "_sla_authority": "Transfers SLA.xlsx"
+      "_sla_updated_at": "2026-11-21T10:25:28.762603+00:00",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_sheet_row": 27
     },
     "NODE_BRANCH_073357_390_MAIN": {
       "headline": "Cards Can be added or removed from the APP",
@@ -6044,7 +6217,11 @@
       "issue_type_leaf": "Wrong due date on new order",
       "macro_id": "",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_sheet_row": 0,
+      "_sla_updated_at": "2026-11-21T10:25:28.762622+00:00"
     },
     "DUE_ESC_LOCK_ISSUE": {
       "headline": "Due Date Preference — Opt-out or Lock Issue",
@@ -6101,7 +6278,11 @@
       "issue_type_leaf": "Preference not saved",
       "macro_id": "",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_sheet_row": 0,
+      "_sla_updated_at": "2026-11-21T10:25:28.762624+00:00"
     },
     "DUE_ESC_DUPLICATE_STATE": {
       "headline": "Due Date Preference — Duplicate / Conflicting States",
@@ -6120,7 +6301,11 @@
       "issue_type_leaf": "Preference not saved",
       "macro_id": "",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_sheet_row": 0,
+      "_sla_updated_at": "2026-11-21T10:25:28.762625+00:00"
     },
     "DUE_ESC_MISSING_COMMS": {
       "headline": "Due Date Preference — Missing Email or SMS",
@@ -6159,6 +6344,50 @@
       "macro_id": "",
       "macro_lob": "Customer Care",
       "macro_channel": "Email;Phone;Messaging"
+    },
+    "ABOUT_TAMARA_APP_ESC": {
+      "type": "outcome",
+      "title": "About Tamara (General) — App Issues",
+      "prompt": "Escalate per Transfers SLA. Issue: Other > About Tamara (General) — app issues. Transfers SLA: 3 business days / 5 business days for app issues (Tech Support).",
+      "sla": "3 business days                                       5 business days for app issues",
+      "team": "Tech Support",
+      "system_action": "Escalate to Tech Support. Use Transfers SLA row 5.",
+      "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_updated_at": "2026-11-21T10:25:28.762486+00:00"
+    },
+    "FEEDBACK_JAILBREAK_ESC": {
+      "type": "outcome",
+      "title": "Feedback — Jailbroken / Rooted Device",
+      "prompt": "Escalate per Transfers SLA. Issue: Other > Feedback about Tamara — Jailbroken / Rooted Device. Transfers SLA: 5 business days (Tech Support).",
+      "sla": "5 business days",
+      "team": "Tech Support",
+      "system_action": "Escalate to Tech Support. Use Transfers SLA row 6.",
+      "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_updated_at": "2026-11-21T10:25:28.762508+00:00"
+    },
+    "PASSCODE_ESC": {
+      "type": "outcome",
+      "title": "Account Passcode",
+      "prompt": "Escalate per Transfers SLA. Issue: Account > Passcode. Transfers SLA: 5 business days (Tech Support).",
+      "sla": "5 business days",
+      "team": "Tech Support",
+      "system_action": "Escalate to Tech Support. Use Transfers SLA row 13.",
+      "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_updated_at": "2026-11-21T10:25:28.762517+00:00"
+    },
+    "MURABHA_EARLY_SETTLE_ESC": {
+      "type": "outcome",
+      "title": "Murabha — Early Settlement",
+      "prompt": "Escalate per Transfers SLA. Issue: Payment > Murabha - Pay By Finance > Early Settlement. Transfers SLA: 7-10 days (Tech Support).",
+      "sla": "7-10 days",
+      "team": "Tech Support",
+      "system_action": "Escalate to Tech Support. Use Transfers SLA row 30.",
+      "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+      "_sla_authority": "Transfers SLA.xlsx",
+      "_sla_updated_at": "2026-11-21T10:25:28.762525+00:00"
     }
   },
   "officialIssueTypes": [
@@ -6867,11 +7096,12 @@
     "kbAshryLocalPath": "C:\\Users\\gasser.elashry\\Downloads\\KB Ashry.docx",
     "kbAshryLinked": true,
     "lastTransfersCatalogCount": 73,
-    "lastTransfersBuiltAt": "2026-11-21T10:14:06.420694+00:00",
+    "lastTransfersBuiltAt": "2026-11-21T10:25:28.763719+00:00",
     "kbAshryLastCompareAt": "2026-11-21T10:03:35.481041+00:00",
     "kbAshryMismatchCount": 3,
     "authority": "Transfers SLA.xlsx",
-    "kbAshrySyncedFromTransfersAt": "2026-11-21T10:14:06.420691+00:00"
+    "kbAshrySyncedFromTransfersAt": "2026-11-21T10:25:28.763715+00:00",
+    "accuracyMode": "sheet_exact_sla_text + curated_node_map + missing_topics_created"
   },
   "transfersSlaCatalog": [
     {
@@ -8433,13 +8663,15 @@ function initData() {
     var list = document.getElementById('sidebar-topics-render');
     if (!list || !cmsData) return;
     list.innerHTML = '';
+    var pin = document.getElementById('transfers-sla-pin');
+    if (pin) {
+      if (activeTopic === 'transfers_sla') pin.classList.add('active');
+      else pin.classList.remove('active');
+    }
     var searchInput = document.getElementById('sidebar-filter');
     var q = (searchInput ? searchInput.value : '').toLowerCase().trim();
-    var topics = (cmsData.topics || []).slice().sort(function(a, b) {
-      var ap = (a.pinned || a.id === 'transfers_sla') ? 0 : 1;
-      var bp = (b.pinned || b.id === 'transfers_sla') ? 0 : 1;
-      if (ap !== bp) return ap - bp;
-      return 0;
+    var topics = (cmsData.topics || []).slice().filter(function(t) {
+      return t.id !== 'transfers_sla';
     });
     topics.filter(function(t) {
       return t.name.toLowerCase().indexOf(q) !== -1 || (t.tag || '').toLowerCase().indexOf(q) !== -1;
@@ -8447,7 +8679,6 @@ function initData() {
       var btn = document.createElement('button');
       btn.className = 'topic-menu-btn ' + (activeTopic === t.id ? 'active' : '');
       var tagLabel = t.tag || '';
-      if (t.id === 'transfers_sla') tagLabel = '★ TOP';
       btn.innerHTML = '<span>' + t.name + '</span><span style="font-size:10px; color:var(--gold-metallic); white-space:nowrap; margin-left:6px;">' + tagLabel + '</span>';
       btn.onclick = function() { selectTopic(t.id); };
       list.appendChild(btn);

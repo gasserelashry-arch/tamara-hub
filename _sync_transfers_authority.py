@@ -128,32 +128,93 @@ def build_catalog(rows):
 
 # Curated node updates from Transfers SLA (escalation outcomes only)
 # (sheet_row, node_id, sla, team)
+# Exact sheet wording preferred via apply_node_updates (row SLA wins when present).
 CURATED_NODE_UPDATES = [
+    # Tech Support
+    (2, "REV_LEGAL_ESCALATE", "5 business days", "Tech Support"),  # ID verification / Tahaqaq
+    (10, "UNREC_STATUS_CAPTURED_ESC", "5 business days", "Tech Support"),
+    (10, "UNREC_SYSTEM_ERROR", "5 business days", "Tech Support"),
+    (10, "LINK_RECONCILE", "5 business days", "Tech Support"),
     (14, "ORD_STUCK_ESC", "5 days", "Tech Support"),
     (19, "IVR_CALL_RETRY", "3 days from the engineering team", "Tech Support"),
-    (25, "OTP_TROUBLESHOOT", "3 business days                                       5 business days for app issues", "Tech Support"),
-    (27, "NODE_BRANCH_889157_581_MAIN", "7 business days", "Tech Support"),
+    (25, "OTP_TROUBLESHOOT", "3 business days / 5 business days for app issues", "Tech Support"),
+    (27, "NODE_BRANCH_889157_581_MAIN", "7 business days", "Tech Support"),  # Card not accepted
     (27, "NODE_BRANCH_377157_293_MAIN", "7 business days", "Tech Support"),
     (28, "DEC_CUST_DUES_ESCALATE", "10 business days", "Tech Support"),
     (28, "DEC_CUST_ZERO_DUES_CLOSE", "10 business days", "Tech Support"),
     (28, "DEC_CUST_PENDING_DOCS", "10 business days", "Tech Support"),
     (28, "VUL_DECEASED", "10 business days", "Tech Support"),
     (29, "VUL_PHYSICAL_ESCALATE", "10 business days", "Tech Support"),
-    (10, "UNREC_STATUS_CAPTURED_ESC", "5 business days", "Tech Support"),
-    (10, "UNREC_SYSTEM_ERROR", "5 business days", "Tech Support"),
-    (10, "LINK_RECONCILE", "5 business days", "Tech Support"),
-    # National ID Fraud / related T&S — Transfers is authority (5 calendar days)
+    # Due Date Preference — sheet row 9 points to Due Date Preference doc;
+    # keep situation-specific SLAs (do NOT replace with the combined sheet cell).
+    # Mark with sheet_row 0 so apply_node_updates keeps curated exact wording.
+    (0, "DUE_ESC_OPT_OUT_STILL_APPLIED", "7 Days", "Tech Support"),
+    (0, "DUE_ESC_PREF_DISAPPEARED", "4 Days", "Tech Support"),
+    (0, "DUE_ESC_DUPLICATE_STATE", "5 Days", "Tech Support"),
+    # Trust & Safety
+    (35, "MFR_ESCALATE", "5 days", "Trust & Safety"),  # Refund blocked by merchant
     (36, "UNREG_DUES_ID_FRAUD", "5 calendar days", "Trust & Safety"),
-    (40, "NID_TNS_ESCALATE", "5 calendar days", "Trust & Safety"),
-    (40, "NID_TAKEOVER_ACT", "5 calendar days", "Trust & Safety"),
     (36, "NID_COLL_AGENCY", "5 calendar days", "Trust & Safety"),
     (37, "UNREG_DUES_PHONE_ARCHIVE", "5 calendar days", "Trust & Safety"),
+    (37, "PHN_ARCH_ESCALATE", "5 calendar days", "Trust & Safety"),
+    (38, "CRD_CARD_DISPUTE", "5 calendar days", "Trust & Safety"),  # Payment fraud complaints
+    (40, "NID_TNS_ESCALATE", "5 calendar days", "Trust & Safety"),
+    (40, "NID_TAKEOVER_ACT", "5 calendar days", "Trust & Safety"),
+    # Credit / Manager / Collections
+    (45, "AECB_DISPUTE_ESCALATE", "5 business days", "Credit - Risk"),
+    (46, "AECB_CLEARANCE_LETTER", "24 hours", "Government Escalation"),
+    (43, "MGR_WARM_TRANSFER", "24 hours", "Manager Escalation"),
+    (47, "COLL_HOLD_REQUEST", "48 business hours", "Collections"),
 ]
 
-# Map sheet themes -> expected Atlas topic ids (for missing-topic report)
+# Missing product topics to create so sheet coverage is complete (SLA-only shells).
+MISSING_TOPICS_TO_CREATE = [
+    {
+        "id": "about_tamara_general",
+        "tag": "Topic NEW",
+        "name": "About Tamara (General) — App Issues",
+        "desc": "Other > About Tamara (General) — app issues. Transfers SLA: 3 business days / 5 business days for app issues (Tech Support).",
+        "sheet_row": 5,
+        "sla": "3 business days / 5 business days for app issues",
+        "team": "Tech Support",
+        "node_id": "ABOUT_TAMARA_APP_ESC",
+    },
+    {
+        "id": "feedback_jailbroken",
+        "tag": "Topic NEW",
+        "name": "Feedback — Jailbroken / Rooted Device",
+        "desc": "Other > Feedback about Tamara — Jailbroken / Rooted Device. Transfers SLA: 5 business days (Tech Support).",
+        "sheet_row": 6,
+        "sla": "5 business days",
+        "team": "Tech Support",
+        "node_id": "FEEDBACK_JAILBREAK_ESC",
+    },
+    {
+        "id": "account_passcode",
+        "tag": "Topic NEW",
+        "name": "Account Passcode",
+        "desc": "Account > Passcode. Transfers SLA: 5 business days (Tech Support).",
+        "sheet_row": 13,
+        "sla": "5 business days",
+        "team": "Tech Support",
+        "node_id": "PASSCODE_ESC",
+    },
+    {
+        "id": "murabha_early_settlement",
+        "tag": "Topic NEW",
+        "name": "Murabha — Early Settlement",
+        "desc": "Payment > Murabha - Pay By Finance > Early Settlement. Transfers SLA: 7-10 days (Tech Support).",
+        "sheet_row": 30,
+        "sla": "7-10 days",
+        "team": "Tech Support",
+        "node_id": "MURABHA_EARLY_SETTLE_ESC",
+    },
+]
+
+# Map sheet themes -> Atlas topic ids (existing + newly created)
 SHEET_THEME_TO_TOPICS = {
-    "id verification": ["nid_fraud", "unregistered_dues", "change_phone"],
-    "registration": ["phone_archiving", "change_phone"],
+    "id verification": ["revoke_id", "nid_fraud"],
+    "registration": ["phone_archiving"],
     "login": ["phone_archiving"],
     "otp": ["no_order_otp"],
     "unrecorded": ["unrecorded_charges"],
@@ -165,29 +226,33 @@ SHEET_THEME_TO_TOPICS = {
     "disability": ["vulnerable_customer"],
     "due date": ["due_date"],
     "smart": ["smart_membership"],
-    "cashback": ["cashback", "promotions"],
-    "discount": ["promotions"],
-    "murabha": ["murabha", "bnpl_plus", "early_settlement"],
+    "cashback": ["promo_cashback"],
+    "discount": ["promo_cashback"],
+    "murabha": ["murabha_bnpl_plus", "murabha_early_settlement"],
+    "early settlement": ["murabha_early_settlement"],
     "national id fraud": ["nid_fraud", "unregistered_dues"],
     "phone number already": ["phone_archiving"],
-    "suspected fraud": ["unrecognized_charge", "fraud"],
-    "refund blocked": ["refunds", "merchant_fraud"],
+    "suspected fraud": ["unrecognized_charge"],
+    "refund blocked": ["refunds_cancellations", "merchant_fraud"],
     "declined order": ["declined_order"],
     "change phone": ["change_phone"],
-    "credit bureau": ["aecb_support", "simah", "credit_bureau"],
-    "collection agency": ["collections", "unregistered_dues"],
-    "contact from": ["contact_merchant", "contact_customer"],
+    "credit bureau": ["aecb_support", "credit_bureau"],
+    "collection agency": ["collection_process"],
+    "contact from": ["contact_merchant"],
     "manager": ["manager_escalation"],
-    "compensation": ["manager_escalation"],
-    "passcode": ["passcode", "account"],
-    "lavender": ["smart_membership"],
+    "compensation": ["compensation_policy", "manager_escalation"],
+    "passcode": ["account_passcode"],
+    "lavender": ["lavender_membership", "smart_membership"],
     "tamara health": ["tamara_health"],
-    "claims fraud": ["claims", "merchant_fraud", "trust_safety"],
-    "wallet refund": ["wallet", "refunds"],
+    "claims fraud": ["dispute", "merchant_fraud"],
+    "wallet refund": ["tamaras_wallet", "refunds_cancellations"],
     "duplicate charge": ["unrecognized_charge"],
-    "incorrect refund": ["incorrect_refund", "refunds"],
-    "app issues": ["general", "feedback"],
-    "jailbroken": ["feedback"],
+    "incorrect refund": ["incorrect_refund", "refunds_cancellations"],
+    "late refund": ["refunds_cancellations"],
+    "about tamara": ["about_tamara_general"],
+    "app issues": ["about_tamara_general"],
+    "jailbroken": ["feedback_jailbroken"],
+    "feedback": ["feedback_jailbroken"],
 }
 
 
@@ -222,36 +287,83 @@ def missing_topics_report(rows, cms):
     return covered, missing
 
 
+def ensure_missing_topics(cms, rows_by):
+    """Create SLA shell topics + escalation nodes for sheet rows with no Atlas topic."""
+    created = []
+    existing_ids = {t["id"] for t in cms.get("topics") or []}
+    cms.setdefault("nodes", {})
+    cms.setdefault("tree", {})
+    cms.setdefault("policies", {})
+    for spec in MISSING_TOPICS_TO_CREATE:
+        row = rows_by.get(spec["sheet_row"])
+        sla = (row["sla"] if row and row.get("sla") else spec["sla"])
+        team = spec["team"]
+        node_id = spec["node_id"]
+        cms["nodes"][node_id] = {
+            "type": "outcome",
+            "title": spec["name"],
+            "prompt": f"Escalate per Transfers SLA. Issue: {spec['desc']}",
+            "sla": sla,
+            "team": team,
+            "system_action": f"Escalate to {team}. Use Transfers SLA row {spec['sheet_row']}.",
+            "_sla_source": TRANSFERS_URL,
+            "_sla_authority": "Transfers SLA.xlsx",
+            "_sla_updated_at": datetime.now(timezone.utc).isoformat(),
+        }
+        if spec["id"] not in existing_ids:
+            cms["topics"].append({
+                "id": spec["id"],
+                "tag": spec["tag"],
+                "name": spec["name"],
+                "desc": spec["desc"],
+            })
+            existing_ids.add(spec["id"])
+            created.append({"topic_id": spec["id"], "node_id": node_id, "sheet_row": spec["sheet_row"], "sla": sla})
+        else:
+            # refresh desc/sla on existing shell
+            for t in cms["topics"]:
+                if t["id"] == spec["id"]:
+                    t["desc"] = spec["desc"]
+                    break
+            created.append({"topic_id": spec["id"], "node_id": node_id, "sheet_row": spec["sheet_row"], "sla": sla, "refreshed": True})
+        cms["tree"][spec["id"]] = {
+            "step1": {
+                "prompt": f"{spec['name']} — escalate using Transfers SLA ({sla}).",
+                "options": [{"text": f"Escalate to {team} — SLA {sla}", "next": node_id}],
+            }
+        }
+        cms["policies"][spec["id"]] = (
+            f"TRANSFERS SLA AUTHORITY\n• Team: {team}\n• SLA: {sla}\n"
+            f"• Sheet row: {spec['sheet_row']}\n• Source: {TRANSFERS_URL}"
+        )
+    return created
+
+
 def apply_node_updates(cms, rows_by):
     applied = []
     skipped = []
-    # dedupe curated by preferring first occurrence of node except allow later overrides for NID
     seen = {}
     for sheet_row, node_id, sla, team in CURATED_NODE_UPDATES:
         seen[node_id] = (sheet_row, sla, team)
-    # Force NID authority from transfers rows 36/40
-    seen["UNREG_DUES_ID_FRAUD"] = (36, "5 calendar days", "Trust & Safety")
-    seen["NID_TNS_ESCALATE"] = (40, "5 calendar days", "Trust & Safety")
-    seen["NID_TAKEOVER_ACT"] = (40, "5 calendar days", "Trust & Safety")
-    seen["NID_COLL_AGENCY"] = (36, "5 calendar days", "Trust & Safety")
 
     for node_id, (sheet_row, sla, team) in seen.items():
         node = cms["nodes"].get(node_id)
         if not node:
             skipped.append({"node_id": node_id, "reason": "missing node"})
             continue
-        row = rows_by.get(sheet_row)
-        new_sla = (row["sla"] if row and row.get("sla") else sla)
-        # For NID rows use exact transfers text
-        if sheet_row in (36, 40) and row:
-            new_sla = row["sla"]
+        row = rows_by.get(sheet_row) if sheet_row else None
+        # Prefer exact sheet SLA text; sheet_row 0 = curated exact (Due Date Preference exceptions)
+        if row and row.get("sla"):
+            new_sla = re.sub(r"[ \t]{2,}", " / ", row["sla"].strip()).strip()
+        else:
+            new_sla = sla
         old = node.get("sla")
         node["sla"] = new_sla
         if team:
-            # only set team on escalation-ish nodes
             node["team"] = team
         node["_sla_source"] = TRANSFERS_URL
         node["_sla_authority"] = "Transfers SLA.xlsx"
+        node["_sla_sheet_row"] = sheet_row
         node["_sla_updated_at"] = datetime.now(timezone.utc).isoformat()
         applied.append({"node_id": node_id, "sheet_row": sheet_row, "old_sla": old, "new_sla": new_sla, "team": team})
     return applied, skipped
@@ -408,8 +520,29 @@ def main():
         f"• Sheet: {TRANSFERS_URL}"
     )
 
+    created_topics = ensure_missing_topics(cms, rows_by)
     applied, skipped = apply_node_updates(cms, rows_by)
     covered, missing = missing_topics_report(rows, cms)
+
+    # Row-by-row audit (sheet → topics/nodes)
+    node_by_row = {}
+    for a in applied:
+        node_by_row.setdefault(a["sheet_row"], []).append(a["node_id"])
+    for c in created_topics:
+        node_by_row.setdefault(c["sheet_row"], []).append(c["node_id"])
+    row_audit = []
+    for r in rows:
+        matched = next((x for x in covered if x["sheet_row"] == r["row"]), None)
+        miss = next((x for x in missing if x["sheet_row"] == r["row"]), None)
+        row_audit.append({
+            "row": r["row"],
+            "team": r["team"],
+            "sla": r["sla"],
+            "issue": r["issue"][:160].replace("\n", " | "),
+            "matched_topics": (matched or miss or {}).get("matched_topics", []),
+            "mapped_nodes": node_by_row.get(r["row"], []),
+            "coverage": "covered" if matched else ("missing_topic" if miss else "unknown"),
+        })
 
     cms.setdefault("slaSources", {})
     cms["slaSources"].update({
@@ -420,6 +553,7 @@ def main():
         "kbAshrySyncedFromTransfersAt": datetime.now(timezone.utc).isoformat(),
         "lastTransfersCatalogCount": len(catalog),
         "lastTransfersBuiltAt": datetime.now(timezone.utc).isoformat(),
+        "accuracyMode": "sheet_exact_sla_text + curated_node_map + missing_topics_created",
     })
 
     kb_result = update_kb_ashry(rows, len(catalog))
@@ -433,18 +567,23 @@ def main():
         "authority": "Transfers SLA.xlsx",
         "catalog_count": len(catalog),
         "sheet_rows": len(rows),
+        "topics_created": created_topics,
         "nodes_updated": applied,
         "nodes_skipped": skipped,
         "topics_covered_rows": len(covered),
         "topics_missing_rows": missing,
+        "row_audit": row_audit,
         "kb_update": kb_result,
         "existing_atlas_topics": [{"id": t["id"], "name": t["name"]} for t in cms["topics"]],
     }
     REPORT.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    print("catalog", len(catalog), "updated nodes", len(applied), "missing topic rows", len(missing))
+    print("catalog", len(catalog), "updated nodes", len(applied), "created topics", len(created_topics), "missing topic rows", len(missing))
     for a in applied:
         print("NODE", a["node_id"], a["old_sla"], "->", a["new_sla"])
+    print("--- CREATED TOPICS ---")
+    for c in created_topics:
+        print(c)
     print("--- MISSING TOPIC COVERAGE ---")
     for m in missing:
         print(f"Row {m['sheet_row']}: [{m['team']}] {m['sla']} | {m['issue']}")
