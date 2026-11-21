@@ -1,0 +1,397 @@
+{
+  "generated_at": "2026-11-21T10:14:06.946522+00:00",
+  "authority": "Transfers SLA.xlsx",
+  "catalog_count": 73,
+  "sheet_rows": 47,
+  "nodes_updated": [
+    {
+      "node_id": "ORD_STUCK_ESC",
+      "sheet_row": 14,
+      "old_sla": "5 days",
+      "new_sla": "5 days",
+      "team": "Tech Support"
+    },
+    {
+      "node_id": "IVR_CALL_RETRY",
+      "sheet_row": 19,
+      "old_sla": "3 days from the engineering team",
+      "new_sla": "3 days from the engineering team",
+      "team": "Tech Support"
+    },
+    {
+      "node_id": "OTP_TROUBLESHOOT",
+      "sheet_row": 25,
+      "old_sla": "3 business days                                       5 business days for app issues",
+      "new_sla": "3 business days                                       5 business days for app issues",
+      "team": "Tech Support"
+    },
+    {
+      "node_id": "NODE_BRANCH_889157_581_MAIN",
+      "sheet_row": 27,
+      "old_sla": "7 business days",
+      "new_sla": "7 business days",
+      "team": "Tech Support"
+    },
+    {
+      "node_id": "NODE_BRANCH_377157_293_MAIN",
+      "sheet_row": 27,
+      "old_sla": "7 business days",
+      "new_sla": "7 business days",
+      "team": "Tech Support"
+    },
+    {
+      "node_id": "DEC_CUST_DUES_ESCALATE",
+      "sheet_row": 28,
+      "old_sla": "10 business days",
+      "new_sla": "10 business days",
+      "team": "Tech Support"
+    },
+    {
+      "node_id": "DEC_CUST_ZERO_DUES_CLOSE",
+      "sheet_row": 28,
+      "old_sla": "10 business days",
+      "new_sla": "10 business days",
+      "team": "Tech Support"
+    },
+    {
+      "node_id": "DEC_CUST_PENDING_DOCS",
+      "sheet_row": 28,
+      "old_sla": "10 business days",
+      "new_sla": "10 business days",
+      "team": "Tech Support"
+    },
+    {
+      "node_id": "VUL_DECEASED",
+      "sheet_row": 28,
+      "old_sla": "10 business days",
+      "new_sla": "10 business days",
+      "team": "Tech Support"
+    },
+    {
+      "node_id": "VUL_PHYSICAL_ESCALATE",
+      "sheet_row": 29,
+      "old_sla": "10 business days",
+      "new_sla": "10 business days",
+      "team": "Tech Support"
+    },
+    {
+      "node_id": "UNREC_STATUS_CAPTURED_ESC",
+      "sheet_row": 10,
+      "old_sla": "5 business days",
+      "new_sla": "5 business days",
+      "team": "Tech Support"
+    },
+    {
+      "node_id": "UNREC_SYSTEM_ERROR",
+      "sheet_row": 10,
+      "old_sla": "5 business days",
+      "new_sla": "5 business days",
+      "team": "Tech Support"
+    },
+    {
+      "node_id": "LINK_RECONCILE",
+      "sheet_row": 10,
+      "old_sla": "5 business days",
+      "new_sla": "5 business days",
+      "team": "Tech Support"
+    },
+    {
+      "node_id": "UNREG_DUES_ID_FRAUD",
+      "sheet_row": 36,
+      "old_sla": "7 business days",
+      "new_sla": "5 calendar days",
+      "team": "Trust & Safety"
+    },
+    {
+      "node_id": "NID_TNS_ESCALATE",
+      "sheet_row": 40,
+      "old_sla": "5 Business Days",
+      "new_sla": "5 calendar days",
+      "team": "Trust & Safety"
+    },
+    {
+      "node_id": "NID_TAKEOVER_ACT",
+      "sheet_row": 40,
+      "old_sla": "5 Business Days",
+      "new_sla": "5 calendar days",
+      "team": "Trust & Safety"
+    },
+    {
+      "node_id": "NID_COLL_AGENCY",
+      "sheet_row": 36,
+      "old_sla": "5 Business Days",
+      "new_sla": "5 calendar days",
+      "team": "Trust & Safety"
+    },
+    {
+      "node_id": "UNREG_DUES_PHONE_ARCHIVE",
+      "sheet_row": 37,
+      "old_sla": "5 Business Days",
+      "new_sla": "5 calendar days",
+      "team": "Trust & Safety"
+    }
+  ],
+  "nodes_skipped": [],
+  "topics_covered_rows": 42,
+  "topics_missing_rows": [
+    {
+      "sheet_row": 5,
+      "team": "Tech Support",
+      "sla": "3 business days                                       5 business days for app issues",
+      "issue": "Other > About Tamara (General) |  | For app issues",
+      "matched_topics": []
+    },
+    {
+      "sheet_row": 6,
+      "team": "Tech Support",
+      "sla": "5 business days",
+      "issue": "Other > Feedback > Feedback about Tamara |  | Jailbroken / Rooted Device",
+      "matched_topics": []
+    },
+    {
+      "sheet_row": 13,
+      "team": "Tech Support",
+      "sla": "5 business days",
+      "issue": "Account > Passcode",
+      "matched_topics": []
+    },
+    {
+      "sheet_row": 30,
+      "team": "Tech Support",
+      "sla": "7-10 days",
+      "issue": "Payment > Murabha - Pay By Finance > Early Settlement",
+      "matched_topics": []
+    },
+    {
+      "sheet_row": 43,
+      "team": "Manager Escalation",
+      "sla": "24 hours",
+      "issue": "According to the customer's issue",
+      "matched_topics": []
+    }
+  ],
+  "kb_update": {
+    "ok": true,
+    "replacements": 0,
+    "backup": "C:\\Users\\gasser.elashry\\Downloads\\KB Ashry.BACKUP_before_transfers_sync.docx",
+    "appendix_rows": 47
+  },
+  "existing_atlas_topics": [
+    {
+      "id": "transfers_sla",
+      "name": "Transfers SLA"
+    },
+    {
+      "id": "contact_merchant",
+      "name": "Contact from Merchant"
+    },
+    {
+      "id": "unregistered_dues",
+      "name": "Never Registered Having Pending Dues"
+    },
+    {
+      "id": "declined_order",
+      "name": "Declined Order"
+    },
+    {
+      "id": "cant_see_split_pif",
+      "name": "Can't see split payment options (only PIF)"
+    },
+    {
+      "id": "purchase_limits",
+      "name": "Maximum / Minimum Purchase Limit"
+    },
+    {
+      "id": "change_phone",
+      "name": "Change Phone Number (SOP & CS Panel)"
+    },
+    {
+      "id": "phone_archiving",
+      "name": "Phone Number Archiving"
+    },
+    {
+      "id": "due_date",
+      "name": "Due Date Preference"
+    },
+    {
+      "id": "tamara_health",
+      "name": "Tamara Health"
+    },
+    {
+      "id": "change_email",
+      "name": "Change Email"
+    },
+    {
+      "id": "delete_account",
+      "name": "Delete Account"
+    },
+    {
+      "id": "reactivate_account",
+      "name": "Reactivate Account"
+    },
+    {
+      "id": "fraud_ads",
+      "name": "Fraudulent / Misleading Ads"
+    },
+    {
+      "id": "incorrect_refund",
+      "name": "Incorrect Refund Amount"
+    },
+    {
+      "id": "merchant_fraud",
+      "name": "Merchant Fraud"
+    },
+    {
+      "id": "postpone_dues",
+      "name": "Postpone Payment + Unable to Pay Pending Dues"
+    },
+    {
+      "id": "shariah",
+      "name": "Shariah Compliance"
+    },
+    {
+      "id": "nid_fraud",
+      "name": "National ID Fraud"
+    },
+    {
+      "id": "credit_bureau",
+      "name": "Credit Bureau Process & Report (SIMAH / Dispute)"
+    },
+    {
+      "id": "murabha_bnpl_plus",
+      "name": "Murabha - Pay By Finance (BNPL+)"
+    },
+    {
+      "id": "cant_see_six",
+      "name": "Can't see a specific split payment option (SiX)"
+    },
+    {
+      "id": "cant_see_tamara",
+      "name": "Can't see Tamara as a payment option"
+    },
+    {
+      "id": "expired_order",
+      "name": "Cannot see order (expired order)"
+    },
+    {
+      "id": "stuck_order",
+      "name": "Cannot see order (stuck order)"
+    },
+    {
+      "id": "wrong_plan",
+      "name": "Chose the wrong installment plan"
+    },
+    {
+      "id": "no_order_otp",
+      "name": "Didn't receive the order OTP"
+    },
+    {
+      "id": "instore_no_sms",
+      "name": "Instore - did not receive payment link SMS"
+    },
+    {
+      "id": "link_bank",
+      "name": "Link Bank Account"
+    },
+    {
+      "id": "order_ivr",
+      "name": "Order verification IVR call"
+    },
+    {
+      "id": "vulnerable_customer",
+      "name": "Vulnerable Customer"
+    },
+    {
+      "id": "autocharge",
+      "name": "Autocharge"
+    },
+    {
+      "id": "payment_methods",
+      "name": "Payment Methods"
+    },
+    {
+      "id": "unrecognized_charge",
+      "name": "Unrecognized Charge"
+    },
+    {
+      "id": "unrecorded_charges",
+      "name": "Unrecorded Charges"
+    },
+    {
+      "id": "voided_payment",
+      "name": "Voided Payment"
+    },
+    {
+      "id": "promo_cashback",
+      "name": "Promotions & Cashback"
+    },
+    {
+      "id": "refunds_cancellations",
+      "name": "Refunds and Cancellations"
+    },
+    {
+      "id": "smart_membership",
+      "name": "Smart Membership"
+    },
+    {
+      "id": "tamara_card",
+      "name": "Tamara Card"
+    },
+    {
+      "id": "lavender_membership",
+      "name": "Lavender Membership"
+    },
+    {
+      "id": "revoke_id",
+      "name": "Revoke ID Verification"
+    },
+    {
+      "id": "dispute",
+      "name": "Dispute & Claims Handling"
+    },
+    {
+      "id": "open_banking",
+      "name": "Open Banking (Linking Bank Account)"
+    },
+    {
+      "id": "tamaras_wallet",
+      "name": "Tamara's Wallet"
+    },
+    {
+      "id": "collection_process",
+      "name": "Collection Process"
+    },
+    {
+      "id": "manager_escalation",
+      "name": "Manager Escalation Policy"
+    },
+    {
+      "id": "profanity_process",
+      "name": "Profanity Process"
+    },
+    {
+      "id": "payment_link_feature",
+      "name": "Payment Link Feature"
+    },
+    {
+      "id": "customer_processing_fees",
+      "name": "Processing Fees (CPF)"
+    },
+    {
+      "id": "pay_next_month",
+      "name": "Pay Next Month (PNM)"
+    },
+    {
+      "id": "compensation_policy",
+      "name": "Compensation Policy"
+    },
+    {
+      "id": "aecb_support",
+      "name": "AECB Support (UAE Credit Bureau)"
+    },
+    {
+      "id": "deceased_customer",
+      "name": "Deceased Customer"
+    }
+  ]
+}
