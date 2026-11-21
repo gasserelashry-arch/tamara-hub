@@ -297,6 +297,7 @@ def ensure_missing_topics(cms, rows_by):
     for spec in MISSING_TOPICS_TO_CREATE:
         row = rows_by.get(spec["sheet_row"])
         sla = (row["sla"] if row and row.get("sla") else spec["sla"])
+        sla = re.sub(r"[ \t]{2,}", " / ", (sla or "").strip()).strip()
         team = spec["team"]
         node_id = spec["node_id"]
         cms["nodes"][node_id] = {

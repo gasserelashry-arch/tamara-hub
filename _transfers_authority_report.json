@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-21T10:25:29.286131+00:00",
+  "generated_at": "2026-11-21T10:25:40.563548+00:00",
   "authority": "Transfers SLA.xlsx",
   "catalog_count": 73,
   "sheet_rows": 47,
@@ -8,7 +8,7 @@
       "topic_id": "about_tamara_general",
       "node_id": "ABOUT_TAMARA_APP_ESC",
       "sheet_row": 5,
-      "sla": "3 business days                                       5 business days for app issues",
+      "sla": "3 business days / 5 business days for app issues",
       "refreshed": true
     },
     {
@@ -135,21 +135,21 @@
     {
       "node_id": "DUE_ESC_OPT_OUT_STILL_APPLIED",
       "sheet_row": 0,
-      "old_sla": "7 Days - 5 Days - 4 Days - 10 Days / Check the link below to know the SLA: https://docs.google.com/document/d/1bjsyr6dclJIIwSoJx8TVYOA3y5_lVVkKcwee7QJKOTA/edit?tab=t.0",
+      "old_sla": "7 Days",
       "new_sla": "7 Days",
       "team": "Tech Support"
     },
     {
       "node_id": "DUE_ESC_PREF_DISAPPEARED",
       "sheet_row": 0,
-      "old_sla": "7 Days - 5 Days - 4 Days - 10 Days / Check the link below to know the SLA: https://docs.google.com/document/d/1bjsyr6dclJIIwSoJx8TVYOA3y5_lVVkKcwee7QJKOTA/edit?tab=t.0",
+      "old_sla": "4 Days",
       "new_sla": "4 Days",
       "team": "Tech Support"
     },
     {
       "node_id": "DUE_ESC_DUPLICATE_STATE",
       "sheet_row": 0,
-      "old_sla": "7 Days - 5 Days - 4 Days - 10 Days / Check the link below to know the SLA: https://docs.google.com/document/d/1bjsyr6dclJIIwSoJx8TVYOA3y5_lVVkKcwee7QJKOTA/edit?tab=t.0",
+      "old_sla": "5 Days",
       "new_sla": "5 Days",
       "team": "Tech Support"
     },
