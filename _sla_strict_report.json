@@ -1,0 +1,3652 @@
+{
+  "reverted": [
+    {
+      "node_id": "REF_POST_COOLING",
+      "restored_sla": "Immediate",
+      "from": "index.html embed"
+    },
+    {
+      "node_id": "SMT_BENEFITS",
+      "restored_sla": "Immediate",
+      "from": "index.html embed"
+    },
+    {
+      "node_id": "SMT_CANCEL",
+      "restored_sla": "Immediate",
+      "from": "index.html embed"
+    },
+    {
+      "node_id": "REF_POST_COOLING",
+      "restored_sla": "Immediate",
+      "from": "index.html embed"
+    },
+    {
+      "node_id": "REF_POST_COOLING",
+      "restored_sla": "Immediate",
+      "from": "index.html embed"
+    },
+    {
+      "node_id": "ORD_EXPIRED_NODUES",
+      "restored_sla": "Immediate",
+      "from": "index.html embed"
+    },
+    {
+      "node_id": "REF_POST_COOLING",
+      "restored_sla": "Immediate",
+      "from": "forced first-contact restore"
+    },
+    {
+      "node_id": "SMT_BENEFITS",
+      "restored_sla": "Immediate",
+      "from": "forced first-contact restore"
+    },
+    {
+      "node_id": "SMT_CANCEL",
+      "restored_sla": "Immediate",
+      "from": "forced first-contact restore"
+    },
+    {
+      "node_id": "ORD_EXPIRED_NODUES",
+      "restored_sla": "Immediate",
+      "from": "forced first-contact restore"
+    }
+  ],
+  "curated_applied": [
+    {
+      "sheet_row": 14,
+      "node_id": "ORD_STUCK_ESC",
+      "topics": [
+        "stuck_order"
+      ],
+      "sla": "5 days",
+      "verify": [
+        {
+          "round": 1,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 2,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 3,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 4,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 5,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        }
+      ],
+      "node_issue": "Order > Placing an Order > cannot see order (stuck order)",
+      "sheet_issue": "Order > Placing an Order > Cannot see order (stuck order)",
+      "old_sla": "5 days",
+      "new_sla": "5 days",
+      "verify_second_pass": [
+        {
+          "round": 1,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 2,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 3,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 4,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 5,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "sheet_row": 19,
+      "node_id": "IVR_CALL_RETRY",
+      "topics": [
+        "order_ivr"
+      ],
+      "sla": "3 days from the engineering team",
+      "verify": [
+        {
+          "round": 1,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 2,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 3,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 4,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 5,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        }
+      ],
+      "node_issue": "Order > Placing an Order > Order verification IVR call",
+      "sheet_issue": "Order > Placing an Order > Order verification IVR call",
+      "old_sla": "3 days from the engineering team",
+      "new_sla": "3 days from the engineering team",
+      "verify_second_pass": [
+        {
+          "round": 1,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 2,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 3,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 4,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 5,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "sheet_row": 25,
+      "node_id": "OTP_TROUBLESHOOT",
+      "topics": [
+        "no_order_otp"
+      ],
+      "sla": "3 business days                                       5 business days for app issues",
+      "verify": [
+        {
+          "round": 1,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 2,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 3,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 4,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 5,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        }
+      ],
+      "node_issue": "Order > Placing an Order > Didn't receive the order OTP",
+      "sheet_issue": "Order > Placing an Order > Didn't receive the order OTP",
+      "old_sla": "3 business days                                       5 business days for app issues",
+      "new_sla": "3 business days                                       5 business days for app issues",
+      "verify_second_pass": [
+        {
+          "round": 1,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 2,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 3,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 4,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 5,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "sheet_row": 27,
+      "node_id": "NODE_BRANCH_889157_581_MAIN",
+      "topics": [
+        "payment_methods"
+      ],
+      "sla": "7 business days",
+      "verify": [
+        {
+          "round": 1,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 2,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 3,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 4,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 5,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        }
+      ],
+      "node_issue": "Payment > Payment Methods > Card is not accepted",
+      "sheet_issue": "Payment > Payment Methods > Card is not accepted",
+      "old_sla": "7 business days",
+      "new_sla": "7 business days",
+      "verify_second_pass": [
+        {
+          "round": 1,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 2,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 3,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 4,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 5,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "sheet_row": 27,
+      "node_id": "NODE_BRANCH_377157_293_MAIN",
+      "topics": [],
+      "sla": "7 business days",
+      "verify": [
+        {
+          "round": 1,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 2,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 3,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 4,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 5,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        }
+      ],
+      "node_issue": "Payment > Payment Methods > Card is not accepted",
+      "sheet_issue": "Payment > Payment Methods > Card is not accepted",
+      "old_sla": "7 business days",
+      "new_sla": "7 business days",
+      "verify_second_pass": [
+        {
+          "round": 1,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 2,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 3,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 4,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 5,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "sheet_row": 28,
+      "node_id": "DEC_CUST_DUES_ESCALATE",
+      "topics": [
+        "deceased_customer"
+      ],
+      "sla": "10 business days",
+      "verify": [
+        {
+          "round": 1,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 2,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 3,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 4,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 5,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        }
+      ],
+      "node_issue": "Other > Vulnerable Customer > Deceased Customer Case",
+      "sheet_issue": "Other > Vulnerable Customer > Deceased Customer Case",
+      "old_sla": "10 business days",
+      "new_sla": "10 business days",
+      "verify_second_pass": [
+        {
+          "round": 1,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 2,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 3,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 4,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 5,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "sheet_row": 28,
+      "node_id": "DEC_CUST_ZERO_DUES_CLOSE",
+      "topics": [
+        "deceased_customer"
+      ],
+      "sla": "10 business days",
+      "verify": [
+        {
+          "round": 1,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 2,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 3,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 4,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 5,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        }
+      ],
+      "node_issue": "Other > Vulnerable Customer > Deceased Customer Case",
+      "sheet_issue": "Other > Vulnerable Customer > Deceased Customer Case",
+      "old_sla": "10 business days",
+      "new_sla": "10 business days",
+      "verify_second_pass": [
+        {
+          "round": 1,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 2,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 3,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 4,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 5,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "sheet_row": 28,
+      "node_id": "DEC_CUST_PENDING_DOCS",
+      "topics": [
+        "deceased_customer"
+      ],
+      "sla": "10 business days",
+      "verify": [
+        {
+          "round": 1,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 2,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 3,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 4,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 5,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        }
+      ],
+      "node_issue": "Other > Vulnerable Customer > Deceased Customer Case",
+      "sheet_issue": "Other > Vulnerable Customer > Deceased Customer Case",
+      "old_sla": "10 business days",
+      "new_sla": "10 business days",
+      "verify_second_pass": [
+        {
+          "round": 1,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 2,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 3,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 4,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 5,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "sheet_row": 28,
+      "node_id": "VUL_DECEASED",
+      "topics": [],
+      "sla": "10 business days",
+      "verify": [
+        {
+          "round": 1,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 2,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 3,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 4,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 5,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        }
+      ],
+      "node_issue": "Other > Vulnerable Customer > Deceased Customer Case",
+      "sheet_issue": "Other > Vulnerable Customer > Deceased Customer Case",
+      "old_sla": "10 business days",
+      "new_sla": "10 business days",
+      "verify_second_pass": [
+        {
+          "round": 1,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 2,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 3,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 4,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 5,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "sheet_row": 29,
+      "node_id": "VUL_PHYSICAL_ESCALATE",
+      "topics": [
+        "vulnerable_customer"
+      ],
+      "sla": "10 business days",
+      "verify": [
+        {
+          "round": 1,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 2,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 3,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 4,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 5,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        }
+      ],
+      "node_issue": "Other > Vulnerable Customer > Customer with total physical disability",
+      "sheet_issue": "Other > Vulnerable Customer > Customer with total physical disability",
+      "old_sla": "10 business days",
+      "new_sla": "10 business days",
+      "verify_second_pass": [
+        {
+          "round": 1,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 2,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 3,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 4,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 5,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "sheet_row": 10,
+      "node_id": "UNREC_STATUS_CAPTURED_ESC",
+      "topics": [
+        "unrecorded_charges"
+      ],
+      "sla": "5 business days",
+      "verify": [
+        {
+          "round": 1,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 2,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 3,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 4,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 5,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        }
+      ],
+      "node_issue": "Payment > N/A > Unrecorded charges",
+      "sheet_issue": "- Payment > Unrecorded charges > Payment not reflected\n- Payment > Unrecorded charges > Payment authorization failed\n- Payment > Unrecorded charges > Other unrecorded charge issues",
+      "old_sla": "5 business days",
+      "new_sla": "5 business days",
+      "verify_second_pass": [
+        {
+          "round": 1,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 2,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 3,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 4,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 5,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "sheet_row": 10,
+      "node_id": "UNREC_SYSTEM_ERROR",
+      "topics": [],
+      "sla": "5 business days",
+      "verify": [
+        {
+          "round": 1,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 2,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 3,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 4,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 5,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        }
+      ],
+      "node_issue": "Payment > N/A > Unrecorded charges",
+      "sheet_issue": "- Payment > Unrecorded charges > Payment not reflected\n- Payment > Unrecorded charges > Payment authorization failed\n- Payment > Unrecorded charges > Other unrecorded charge issues",
+      "old_sla": "5 business days",
+      "new_sla": "5 business days",
+      "verify_second_pass": [
+        {
+          "round": 1,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 2,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 3,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 4,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 5,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "sheet_row": 10,
+      "node_id": "LINK_RECONCILE",
+      "topics": [
+        "payment_link_feature"
+      ],
+      "sla": "5 business days",
+      "verify": [
+        {
+          "round": 1,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 2,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 3,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 4,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 5,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        }
+      ],
+      "node_issue": "Payment > N/A > Unrecorded charges",
+      "sheet_issue": "- Payment > Unrecorded charges > Payment not reflected\n- Payment > Unrecorded charges > Payment authorization failed\n- Payment > Unrecorded charges > Other unrecorded charge issues",
+      "old_sla": "5 business days",
+      "new_sla": "5 business days",
+      "verify_second_pass": [
+        {
+          "round": 1,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 2,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 3,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 4,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        },
+        {
+          "round": 5,
+          "pass": true,
+          "details": [
+            [
+              "sheet_row_exists_and_tech",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_text_equals_sheet",
+              true
+            ],
+            [
+              "issue_needle_in_sheet_or_node",
+              true
+            ],
+            [
+              "topic_match_or_escalation_orphan",
+              true
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "curated_rejected": [],
+  "due_esc_nodes": [
+    "DUE_ESC_BANNER_ELIGIBILITY",
+    "DUE_ESC_PREF_NOT_SAVED",
+    "DUE_ESC_WRONG_DUE_NEW_ORDER",
+    "DUE_ESC_OPT_OUT_STILL_APPLIED",
+    "DUE_ESC_LOCK_ISSUE",
+    "DUE_ESC_OPT_OUT_UNAVAILABLE",
+    "DUE_ESC_PREF_DISAPPEARED",
+    "DUE_ESC_DUPLICATE_STATE",
+    "DUE_ESC_MISSING_COMMS",
+    "DUE_ESC_STATUS_MISMATCH"
+  ],
+  "due_tree_ok": true
+}

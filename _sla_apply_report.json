@@ -1,0 +1,6430 @@
+{
+  "generated_at": "2026-11-21T09:39:23.643277+00:00",
+  "due_date_applied": [
+    {
+      "node_id": "DUE_ESC_BANNER_ELIGIBILITY",
+      "sla": "5 Days",
+      "issueType": "Account > Due Date Preference > General inquiries",
+      "scenario": "Eligible customer repeatedly cannot see banner with no Profile preference and no post-opt-out block",
+      "verify": [
+        {
+          "pass": true,
+          "round": 1,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 2,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 3,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 4,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 5,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        }
+      ],
+      "extra": [
+        [
+          "leaf_in_issueType",
+          true
+        ]
+      ]
+    },
+    {
+      "node_id": "DUE_ESC_PREF_NOT_SAVED",
+      "sla": "4 Days",
+      "issueType": "Account > Due Date Preference > Preference not saved",
+      "scenario": "Customer confirmed but preference not saved / Profile empty after successful UI success",
+      "verify": [
+        {
+          "pass": true,
+          "round": 1,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 2,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 3,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 4,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 5,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        }
+      ],
+      "extra": [
+        [
+          "leaf_in_issueType",
+          true
+        ]
+      ]
+    },
+    {
+      "node_id": "DUE_ESC_WRONG_DUE_NEW_ORDER",
+      "sla": "7 Days",
+      "issueType": "Account > Due Date Preference > Wrong due date on new order",
+      "scenario": "New order placed after Confirm still uses wrong / old due date",
+      "verify": [
+        {
+          "pass": true,
+          "round": 1,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 2,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 3,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 4,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 5,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        }
+      ],
+      "extra": [
+        [
+          "leaf_in_issueType",
+          true
+        ]
+      ]
+    },
+    {
+      "node_id": "DUE_ESC_OPT_OUT_STILL_APPLIED",
+      "sla": "7 Days",
+      "issueType": "Account > Due Date Preference > Wrong due date on new order",
+      "scenario": "After opt-out, new order still uses preferred due date",
+      "verify": [
+        {
+          "pass": true,
+          "round": 1,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 2,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 3,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 4,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 5,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        }
+      ],
+      "extra": [
+        [
+          "leaf_in_issueType",
+          true
+        ]
+      ]
+    },
+    {
+      "node_id": "DUE_ESC_LOCK_ISSUE",
+      "sla": "5 Days",
+      "issueType": "Account > Due Date Preference > Opt-out or lock issue",
+      "scenario": "Lock end date wrong, or customer blocked from re-select after lock ended",
+      "verify": [
+        {
+          "pass": true,
+          "round": 1,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 2,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 3,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 4,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 5,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        }
+      ],
+      "extra": [
+        [
+          "leaf_in_issueType",
+          true
+        ]
+      ]
+    },
+    {
+      "node_id": "DUE_ESC_OPT_OUT_UNAVAILABLE",
+      "sla": "5 Days",
+      "issueType": "Account > Due Date Preference > Opt-out or lock issue",
+      "scenario": "Opt-out not available though preference is active / lock rules allow it",
+      "verify": [
+        {
+          "pass": true,
+          "round": 1,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 2,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 3,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 4,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 5,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        }
+      ],
+      "extra": [
+        [
+          "leaf_in_issueType",
+          true
+        ]
+      ]
+    },
+    {
+      "node_id": "DUE_ESC_PREF_DISAPPEARED",
+      "sla": "4 Days",
+      "issueType": "Account > Due Date Preference > Preference not saved",
+      "scenario": "Preference disappeared or changed without customer action",
+      "verify": [
+        {
+          "pass": true,
+          "round": 1,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 2,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 3,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 4,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 5,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        }
+      ],
+      "extra": [
+        [
+          "leaf_in_issueType",
+          true
+        ]
+      ]
+    },
+    {
+      "node_id": "DUE_ESC_DUPLICATE_STATE",
+      "sla": "5 Days",
+      "issueType": "Account > Due Date Preference > Preference not saved",
+      "scenario": "Confirm/opt-out succeeded twice / duplicate conflicting states",
+      "verify": [
+        {
+          "pass": true,
+          "round": 1,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 2,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 3,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 4,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 5,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        }
+      ],
+      "extra": [
+        [
+          "leaf_in_issueType",
+          true
+        ]
+      ]
+    },
+    {
+      "node_id": "DUE_ESC_MISSING_COMMS",
+      "sla": "4 Days",
+      "issueType": "Account > Due Date Preference > Missing email or SMS",
+      "scenario": "Email/SMS never sent and Profile shows saved preference (comms failure)",
+      "verify": [
+        {
+          "pass": true,
+          "round": 1,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 2,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 3,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 4,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 5,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        }
+      ],
+      "extra": [
+        [
+          "leaf_in_issueType",
+          true
+        ]
+      ]
+    },
+    {
+      "node_id": "DUE_ESC_STATUS_MISMATCH",
+      "sla": "10 Days",
+      "issueType": "Account > Due Date Preference > Preference not saved",
+      "scenario": "CS Hub / app preference status mismatch",
+      "verify": [
+        {
+          "pass": true,
+          "round": 1,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 2,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 3,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 4,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 5,
+          "details": [
+            [
+              "topic_is_due_date",
+              true
+            ],
+            [
+              "doc_row_found",
+              true
+            ],
+            [
+              "sla_matches_doc",
+              true
+            ],
+            [
+              "issue_matches_doc",
+              true
+            ],
+            [
+              "scenario_aligned",
+              true
+            ]
+          ]
+        }
+      ],
+      "extra": [
+        [
+          "leaf_in_issueType",
+          true
+        ]
+      ]
+    }
+  ],
+  "due_date_rejected": [],
+  "transfers_applied": [
+    {
+      "row": 7,
+      "node_id": "REF_POST_COOLING",
+      "topics": [
+        "incorrect_refund"
+      ],
+      "old_sla": "Immediate",
+      "new_sla": "5 business days",
+      "old_team": "None (Resolved on First Contact)",
+      "node_issue": "Refunds and Cancellations > Late Refund > Refund already processed",
+      "sheet_issue_chunk": "Refunds and Cancellations > Late Refund > Refund not processed",
+      "score": 60,
+      "verify": [
+        {
+          "pass": true,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 2,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 3,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 4,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 5,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 8,
+      "node_id": "SMT_BENEFITS",
+      "topics": [
+        "smart_membership"
+      ],
+      "old_sla": "Immediate",
+      "new_sla": "7 days (3 days for multiple charges with no subscription benefit)",
+      "old_team": "None (Resolved on First Contact)",
+      "node_issue": "Smart Membership > N/A > N/A",
+      "sheet_issue_chunk": "Smart",
+      "score": 90,
+      "verify": [
+        {
+          "pass": true,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 2,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 3,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 4,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 5,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 8,
+      "node_id": "SMT_CANCEL",
+      "topics": [
+        "smart_membership"
+      ],
+      "old_sla": "Immediate",
+      "new_sla": "7 days (3 days for multiple charges with no subscription benefit)",
+      "old_team": "None (Self-Service)",
+      "node_issue": "Smart Membership > N/A > N/A",
+      "sheet_issue_chunk": "Smart",
+      "score": 90,
+      "verify": [
+        {
+          "pass": true,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 2,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 3,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 4,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 5,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 14,
+      "node_id": "ORD_STUCK_ESC",
+      "topics": [
+        "stuck_order"
+      ],
+      "old_sla": "24-48 Hours",
+      "new_sla": "5 days",
+      "old_team": "Tech Support",
+      "node_issue": "Order > Placing an Order > cannot see order (stuck order)",
+      "sheet_issue_chunk": "Order > Placing an Order > Cannot see order (stuck order)",
+      "score": 100,
+      "verify": [
+        {
+          "pass": true,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 2,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 3,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 4,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 5,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 16,
+      "node_id": "REF_POST_COOLING",
+      "topics": [
+        "incorrect_refund"
+      ],
+      "old_sla": "5 business days",
+      "new_sla": "5 business days",
+      "old_team": "None (Resolved on First Contact)",
+      "node_issue": "Refunds and Cancellations > Late Refund > Refund already processed",
+      "sheet_issue_chunk": "Refunds and Cancellations > Late Refund > Refund not processed",
+      "score": 60,
+      "verify": [
+        {
+          "pass": true,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 2,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 3,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 4,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 5,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 19,
+      "node_id": "IVR_CALL_RETRY",
+      "topics": [
+        "order_ivr"
+      ],
+      "old_sla": "Immediate",
+      "new_sla": "3 days from the engineering team",
+      "old_team": "None (Resolved on First Contact)",
+      "node_issue": "Order > Placing an Order > Order verification IVR call",
+      "sheet_issue_chunk": "Order > Placing an Order > Order verification IVR call",
+      "score": 100,
+      "verify": [
+        {
+          "pass": true,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 2,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 3,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 4,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 5,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 20,
+      "node_id": "REF_POST_COOLING",
+      "topics": [
+        "incorrect_refund"
+      ],
+      "old_sla": "5 business days",
+      "new_sla": "3 business days",
+      "old_team": "None (Resolved on First Contact)",
+      "node_issue": "Refunds and Cancellations > Late Refund > Refund already processed",
+      "sheet_issue_chunk": "Refunds and Cancellations > Late Refund > Refund already processed",
+      "score": 100,
+      "verify": [
+        {
+          "pass": true,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 2,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 3,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 4,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 5,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 25,
+      "node_id": "OTP_TROUBLESHOOT",
+      "topics": [
+        "no_order_otp"
+      ],
+      "old_sla": "Immediate",
+      "new_sla": "3 business days                                       5 business days for app issues",
+      "old_team": "Customer Care",
+      "node_issue": "Order > Placing an Order > Didn't receive the order OTP",
+      "sheet_issue_chunk": "Order > Placing an Order > Didn't receive the order OTP",
+      "score": 100,
+      "verify": [
+        {
+          "pass": true,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 2,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 3,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 4,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 5,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 26,
+      "node_id": "ORD_EXPIRED_NODUES",
+      "topics": [
+        "expired_order"
+      ],
+      "old_sla": "Immediate",
+      "new_sla": "7 business days",
+      "old_team": "None (Resolved on First Contact)",
+      "node_issue": "Order > Placing an order > cannot see order (expired order)",
+      "sheet_issue_chunk": "Order > Placing an Order > Cannot see order (expired order)",
+      "score": 100,
+      "verify": [
+        {
+          "pass": true,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 2,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 3,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 4,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 5,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 27,
+      "node_id": "NODE_BRANCH_377157_293_MAIN",
+      "topics": [],
+      "old_sla": "5 days",
+      "new_sla": "7 business days",
+      "old_team": "Tech.",
+      "node_issue": "Payment > Payment Methods > Card is not accepted",
+      "sheet_issue_chunk": "Payment > Payment Methods > Card is not accepted",
+      "score": 100,
+      "verify": [
+        {
+          "pass": true,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 2,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 3,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 4,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 5,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 27,
+      "node_id": "NODE_BRANCH_889157_581_MAIN",
+      "topics": [
+        "payment_methods"
+      ],
+      "old_sla": "5 Day",
+      "new_sla": "7 business days",
+      "old_team": "TECH.",
+      "node_issue": "Payment > Payment Methods > Card is not accepted",
+      "sheet_issue_chunk": "Payment > Payment Methods > Card is not accepted",
+      "score": 100,
+      "verify": [
+        {
+          "pass": true,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 2,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 3,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 4,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 5,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 28,
+      "node_id": "VUL_DECEASED",
+      "topics": [],
+      "old_sla": "2 Business Days",
+      "new_sla": "10 business days",
+      "old_team": "Legal & Compliance",
+      "node_issue": "Other > Vulnerable Customer > Deceased Customer Case",
+      "sheet_issue_chunk": "Other > Vulnerable Customer > Deceased Customer Case",
+      "score": 100,
+      "verify": [
+        {
+          "pass": true,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 2,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 3,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 4,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 5,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 28,
+      "node_id": "DEC_CUST_DUES_ESCALATE",
+      "topics": [
+        "deceased_customer"
+      ],
+      "old_sla": "2 Business Days",
+      "new_sla": "10 business days",
+      "old_team": "Legal & Compliance",
+      "node_issue": "Other > Vulnerable Customer > Deceased Customer Case",
+      "sheet_issue_chunk": "Other > Vulnerable Customer > Deceased Customer Case",
+      "score": 100,
+      "verify": [
+        {
+          "pass": true,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 2,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 3,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 4,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 5,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 28,
+      "node_id": "DEC_CUST_ZERO_DUES_CLOSE",
+      "topics": [
+        "deceased_customer"
+      ],
+      "old_sla": "2 Business Days",
+      "new_sla": "10 business days",
+      "old_team": "Legal & Compliance",
+      "node_issue": "Other > Vulnerable Customer > Deceased Customer Case",
+      "sheet_issue_chunk": "Other > Vulnerable Customer > Deceased Customer Case",
+      "score": 100,
+      "verify": [
+        {
+          "pass": true,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 2,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 3,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 4,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 5,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 28,
+      "node_id": "DEC_CUST_PENDING_DOCS",
+      "topics": [
+        "deceased_customer"
+      ],
+      "old_sla": "Pending Customer",
+      "new_sla": "10 business days",
+      "old_team": "Customer Care",
+      "node_issue": "Other > Vulnerable Customer > Deceased Customer Case",
+      "sheet_issue_chunk": "Other > Vulnerable Customer > Deceased Customer Case",
+      "score": 100,
+      "verify": [
+        {
+          "pass": true,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 2,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 3,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 4,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 5,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 29,
+      "node_id": "VUL_PHYSICAL_ESCALATE",
+      "topics": [
+        "vulnerable_customer"
+      ],
+      "old_sla": "3 Business Days",
+      "new_sla": "10 business days",
+      "old_team": "Special Operations",
+      "node_issue": "Other > Vulnerable Customer > Customer with total physical disability",
+      "sheet_issue_chunk": "Other > Vulnerable Customer > Customer with total physical disability",
+      "score": 100,
+      "verify": [
+        {
+          "pass": true,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 2,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 3,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 4,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        },
+        {
+          "pass": true,
+          "round": 5,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "transfers_rejected": [
+    {
+      "row": 3,
+      "node_id": "UNREG_DUES_PHONE_ARCHIVE",
+      "topics": [
+        "unregistered_dues"
+      ],
+      "old_sla": "5 Business Days",
+      "new_sla": "3 business days                                       5 business days for app issues",
+      "old_team": "Trust & Safety",
+      "node_issue": "Account > Registration & login > Phone number already in use",
+      "sheet_issue_chunk": "Account > Registration & login",
+      "score": 90,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 3,
+      "node_id": "UNREG_DUES_ARCHIVE_EVIDENCE",
+      "topics": [
+        "unregistered_dues"
+      ],
+      "old_sla": "Pending Customer",
+      "new_sla": "3 business days                                       5 business days for app issues",
+      "old_team": "Customer Care",
+      "node_issue": "Account > Registration & login > Phone number already in use",
+      "sheet_issue_chunk": "Account > Registration & login",
+      "score": 90,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 3,
+      "node_id": "PHN_ARCH_REDIRECT",
+      "topics": [
+        "change_phone"
+      ],
+      "old_sla": "Pending Customer",
+      "new_sla": "3 business days                                       5 business days for app issues",
+      "old_team": "Customer Care",
+      "node_issue": "Account > Registration & login > Phone number already in use",
+      "sheet_issue_chunk": "Account > Registration & login",
+      "score": 90,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 3,
+      "node_id": "PHN_ARCH_EVIDENCE",
+      "topics": [
+        "phone_archiving"
+      ],
+      "old_sla": "Pending Customer",
+      "new_sla": "3 business days                                       5 business days for app issues",
+      "old_team": "Customer Care",
+      "node_issue": "Account > Registration & login > Phone number already in use",
+      "sheet_issue_chunk": "Account > Registration & login",
+      "score": 90,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 3,
+      "node_id": "PHN_ARCH_ESCALATE",
+      "topics": [
+        "phone_archiving"
+      ],
+      "old_sla": "5 Business Days",
+      "new_sla": "3 business days                                       5 business days for app issues",
+      "old_team": "Trust & Safety",
+      "node_issue": "Account > Registration & login > Phone number already in use",
+      "sheet_issue_chunk": "Account > Registration & login",
+      "score": 90,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 3,
+      "node_id": "NID_RECYCLED_LINE",
+      "topics": [
+        "nid_fraud"
+      ],
+      "old_sla": "5 Business Days",
+      "new_sla": "3 business days                                       5 business days for app issues",
+      "old_team": "Trust & Safety",
+      "node_issue": "Account > Registration & login > Phone number already in use",
+      "sheet_issue_chunk": "Account > Registration & login",
+      "score": 90,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 4,
+      "node_id": "UNREG_DUES_PHONE_ARCHIVE",
+      "topics": [
+        "unregistered_dues"
+      ],
+      "old_sla": "5 Business Days",
+      "new_sla": "3 business days                                       5 business days for app issues",
+      "old_team": "Trust & Safety",
+      "node_issue": "Account > Registration & login > Phone number already in use",
+      "sheet_issue_chunk": "Account > Registration & login",
+      "score": 90,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 4,
+      "node_id": "UNREG_DUES_ARCHIVE_EVIDENCE",
+      "topics": [
+        "unregistered_dues"
+      ],
+      "old_sla": "Pending Customer",
+      "new_sla": "3 business days                                       5 business days for app issues",
+      "old_team": "Customer Care",
+      "node_issue": "Account > Registration & login > Phone number already in use",
+      "sheet_issue_chunk": "Account > Registration & login",
+      "score": 90,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 4,
+      "node_id": "PHN_ARCH_REDIRECT",
+      "topics": [
+        "change_phone"
+      ],
+      "old_sla": "Pending Customer",
+      "new_sla": "3 business days                                       5 business days for app issues",
+      "old_team": "Customer Care",
+      "node_issue": "Account > Registration & login > Phone number already in use",
+      "sheet_issue_chunk": "Account > Registration & login",
+      "score": 90,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 4,
+      "node_id": "PHN_ARCH_EVIDENCE",
+      "topics": [
+        "phone_archiving"
+      ],
+      "old_sla": "Pending Customer",
+      "new_sla": "3 business days                                       5 business days for app issues",
+      "old_team": "Customer Care",
+      "node_issue": "Account > Registration & login > Phone number already in use",
+      "sheet_issue_chunk": "Account > Registration & login",
+      "score": 90,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 4,
+      "node_id": "PHN_ARCH_ESCALATE",
+      "topics": [
+        "phone_archiving"
+      ],
+      "old_sla": "5 Business Days",
+      "new_sla": "3 business days                                       5 business days for app issues",
+      "old_team": "Trust & Safety",
+      "node_issue": "Account > Registration & login > Phone number already in use",
+      "sheet_issue_chunk": "Account > Registration & login",
+      "score": 90,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 4,
+      "node_id": "NID_RECYCLED_LINE",
+      "topics": [
+        "nid_fraud"
+      ],
+      "old_sla": "5 Business Days",
+      "new_sla": "3 business days                                       5 business days for app issues",
+      "old_team": "Trust & Safety",
+      "node_issue": "Account > Registration & login > Phone number already in use",
+      "sheet_issue_chunk": "Account > Registration & login",
+      "score": 90,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 5,
+      "node_id": "WAL_BALANCE_EXP",
+      "topics": [
+        "tamaras_wallet"
+      ],
+      "old_sla": "Immediate",
+      "new_sla": "3 business days                                       5 business days for app issues",
+      "old_team": "None (Resolved on First Contact)",
+      "node_issue": "Other > About Tamara (General) > Tamara's Wallet",
+      "sheet_issue_chunk": "Other > About Tamara (General)",
+      "score": 90,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 5,
+      "node_id": "WAL_WITHDRAW_GUIDE",
+      "topics": [
+        "tamaras_wallet"
+      ],
+      "old_sla": "Immediate",
+      "new_sla": "3 business days                                       5 business days for app issues",
+      "old_team": "None (Resolved on First Contact)",
+      "node_issue": "Other > About Tamara (General) > Tamara's Wallet",
+      "sheet_issue_chunk": "Other > About Tamara (General)",
+      "score": 90,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 5,
+      "node_id": "WAL_DISPUTE_ESC",
+      "topics": [
+        "tamaras_wallet"
+      ],
+      "old_sla": "24-48 Hours",
+      "new_sla": "3 business days                                       5 business days for app issues",
+      "old_team": "Payment Operations",
+      "node_issue": "Other > About Tamara (General) > Tamara's Wallet",
+      "sheet_issue_chunk": "Other > About Tamara (General)",
+      "score": 90,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 6,
+      "node_id": "MGR_DEESCALATE",
+      "topics": [
+        "manager_escalation"
+      ],
+      "old_sla": "Immediate",
+      "new_sla": "5 business days",
+      "old_team": "None (Resolved on First Contact)",
+      "node_issue": "Other > Feedback > Feedback about Tamara",
+      "sheet_issue_chunk": "Other > Feedback > Feedback about Tamara",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 6,
+      "node_id": "MGR_WARM_TRANSFER",
+      "topics": [
+        "manager_escalation"
+      ],
+      "old_sla": "2 Hours",
+      "new_sla": "5 business days",
+      "old_team": "Customer Care Team Lead",
+      "node_issue": "Other > Feedback > Feedback about Tamara",
+      "sheet_issue_chunk": "Other > Feedback > Feedback about Tamara",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 6,
+      "node_id": "COMP_ELIGIBLE_REQ",
+      "topics": [
+        "compensation_policy"
+      ],
+      "old_sla": "48 Hours",
+      "new_sla": "5 business days",
+      "old_team": "Special Operations / CX",
+      "node_issue": "Other > Feedback > Feedback about Tamara",
+      "sheet_issue_chunk": "Other > Feedback > Feedback about Tamara",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 6,
+      "node_id": "COMP_INELIGIBLE_EXP",
+      "topics": [
+        "compensation_policy"
+      ],
+      "old_sla": "Immediate",
+      "new_sla": "5 business days",
+      "old_team": "None (Resolved on First Contact)",
+      "node_issue": "Other > Feedback > Feedback about Tamara",
+      "sheet_issue_chunk": "Other > Feedback > Feedback about Tamara",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 6,
+      "node_id": "COMP_GOODWILL_CREDIT",
+      "topics": [
+        "compensation_policy"
+      ],
+      "old_sla": "Immediate",
+      "new_sla": "5 business days",
+      "old_team": "Customer Care",
+      "node_issue": "Other > Feedback > Feedback about Tamara",
+      "sheet_issue_chunk": "Other > Feedback > Feedback about Tamara",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 14,
+      "node_id": "CLAIM_STUCK_APPROVED_ORDER",
+      "topics": [
+        "dispute"
+      ],
+      "old_sla": "Immediate",
+      "new_sla": "5 days",
+      "old_team": "Customer Care",
+      "node_issue": "Order > Placing an Order > cannot see order (stuck order)",
+      "sheet_issue_chunk": "Order > Placing an Order > Cannot see order (stuck order)",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 20,
+      "node_id": "BNP_POST_COOLING",
+      "topics": [
+        "murabha_bnpl_plus"
+      ],
+      "old_sla": "Immediate",
+      "new_sla": "3 business days",
+      "old_team": "None (Resolved on First Contact)",
+      "node_issue": "Refunds and Cancellations > Late Refund > Refund already processed",
+      "sheet_issue_chunk": "Refunds and Cancellations > Late Refund > Refund already processed",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              true
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 36,
+      "node_id": "UNREG_DUES_ID_FRAUD",
+      "topics": [
+        "unregistered_dues"
+      ],
+      "old_sla": "5 Business Days",
+      "new_sla": "5 calendar days",
+      "old_team": "Trust & Safety",
+      "node_issue": "Account > Account Security > National ID Fraud",
+      "sheet_issue_chunk": "Account > Account Security > National ID Fraud",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 36,
+      "node_id": "UNREG_DUES_PENDING_DOCS",
+      "topics": [
+        "unregistered_dues"
+      ],
+      "old_sla": "Pending Customer",
+      "new_sla": "5 calendar days",
+      "old_team": "Customer Care",
+      "node_issue": "Account > Account Security > National ID Fraud",
+      "sheet_issue_chunk": "Account > Account Security > National ID Fraud",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 36,
+      "node_id": "NID_PENDING_DOCS",
+      "topics": [
+        "nid_fraud"
+      ],
+      "old_sla": "Pending Customer",
+      "new_sla": "5 calendar days",
+      "old_team": "Customer Care",
+      "node_issue": "Account > Account Security > National ID Fraud",
+      "sheet_issue_chunk": "Account > Account Security > National ID Fraud",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 36,
+      "node_id": "NID_NOT_FOUND",
+      "topics": [
+        "nid_fraud"
+      ],
+      "old_sla": "Immediate",
+      "new_sla": "5 calendar days",
+      "old_team": "None (Resolved on First Contact)",
+      "node_issue": "Account > Account Security > National ID Fraud",
+      "sheet_issue_chunk": "Account > Account Security > National ID Fraud",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 36,
+      "node_id": "NID_FRIENDLY_USE",
+      "topics": [
+        "nid_fraud"
+      ],
+      "old_sla": "Immediate",
+      "new_sla": "5 calendar days",
+      "old_team": "None (Resolved on First Contact)",
+      "node_issue": "Account > Account Security > National ID Fraud",
+      "sheet_issue_chunk": "Account > Account Security > National ID Fraud",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 36,
+      "node_id": "NID_TNS_ESCALATE",
+      "topics": [
+        "nid_fraud"
+      ],
+      "old_sla": "5 Business Days",
+      "new_sla": "5 calendar days",
+      "old_team": "Trust & Safety",
+      "node_issue": "Account > Account Security > National ID Fraud",
+      "sheet_issue_chunk": "Account > Account Security > National ID Fraud",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 36,
+      "node_id": "NID_COLL_AGENCY",
+      "topics": [
+        "nid_fraud"
+      ],
+      "old_sla": "5 Business Days",
+      "new_sla": "5 calendar days",
+      "old_team": "Trust & Safety",
+      "node_issue": "Account > Account Security > National ID Fraud",
+      "sheet_issue_chunk": "Account > Account Security > National ID Fraud",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 36,
+      "node_id": "NID_TAKEOVER_ACT",
+      "topics": [
+        "nid_fraud"
+      ],
+      "old_sla": "5 Business Days",
+      "new_sla": "5 calendar days",
+      "old_team": "Trust & Safety",
+      "node_issue": "Account > Account Security > National ID Fraud",
+      "sheet_issue_chunk": "Account > Account Security > National ID Fraud",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 37,
+      "node_id": "UNREG_DUES_PHONE_ARCHIVE",
+      "topics": [
+        "unregistered_dues"
+      ],
+      "old_sla": "5 Business Days",
+      "new_sla": "5 calendar days",
+      "old_team": "Trust & Safety",
+      "node_issue": "Account > Registration & login > Phone number already in use",
+      "sheet_issue_chunk": "Account > Registration & Login > Phone number already in use",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 37,
+      "node_id": "UNREG_DUES_ARCHIVE_EVIDENCE",
+      "topics": [
+        "unregistered_dues"
+      ],
+      "old_sla": "Pending Customer",
+      "new_sla": "5 calendar days",
+      "old_team": "Customer Care",
+      "node_issue": "Account > Registration & login > Phone number already in use",
+      "sheet_issue_chunk": "Account > Registration & Login > Phone number already in use",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 37,
+      "node_id": "PHN_ARCH_REDIRECT",
+      "topics": [
+        "change_phone"
+      ],
+      "old_sla": "Pending Customer",
+      "new_sla": "5 calendar days",
+      "old_team": "Customer Care",
+      "node_issue": "Account > Registration & login > Phone number already in use",
+      "sheet_issue_chunk": "Account > Registration & Login > Phone number already in use",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 37,
+      "node_id": "PHN_ARCH_EVIDENCE",
+      "topics": [
+        "phone_archiving"
+      ],
+      "old_sla": "Pending Customer",
+      "new_sla": "5 calendar days",
+      "old_team": "Customer Care",
+      "node_issue": "Account > Registration & login > Phone number already in use",
+      "sheet_issue_chunk": "Account > Registration & Login > Phone number already in use",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 37,
+      "node_id": "PHN_ARCH_ESCALATE",
+      "topics": [
+        "phone_archiving"
+      ],
+      "old_sla": "5 Business Days",
+      "new_sla": "5 calendar days",
+      "old_team": "Trust & Safety",
+      "node_issue": "Account > Registration & login > Phone number already in use",
+      "sheet_issue_chunk": "Account > Registration & Login > Phone number already in use",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 37,
+      "node_id": "NID_RECYCLED_LINE",
+      "topics": [
+        "nid_fraud"
+      ],
+      "old_sla": "5 Business Days",
+      "new_sla": "5 calendar days",
+      "old_team": "Trust & Safety",
+      "node_issue": "Account > Registration & login > Phone number already in use",
+      "sheet_issue_chunk": "Account > Registration & Login > Phone number already in use",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              false
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 38,
+      "node_id": "CHG_OTHER_ACCOUNT",
+      "topics": [
+        "unrecognized_charge"
+      ],
+      "old_sla": "Immediate",
+      "new_sla": "5 calendar days",
+      "old_team": "None (Resolved on First Contact)",
+      "node_issue": "Payment > Unrecognized charge > Suspected fraud",
+      "sheet_issue_chunk": "Payment > Unrecognized charge > Suspected fraud",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 39,
+      "node_id": "CHG_OTHER_ACCOUNT",
+      "topics": [
+        "unrecognized_charge"
+      ],
+      "old_sla": "Immediate",
+      "new_sla": "5 days",
+      "old_team": "None (Resolved on First Contact)",
+      "node_issue": "Payment > Unrecognized charge > Suspected fraud",
+      "sheet_issue_chunk": "Payment > Unrecognized charge > Suspected fraud",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 40,
+      "node_id": "UNREG_DUES_ID_FRAUD",
+      "topics": [
+        "unregistered_dues"
+      ],
+      "old_sla": "5 Business Days",
+      "new_sla": "5 calendar days",
+      "old_team": "Trust & Safety",
+      "node_issue": "Account > Account Security > National ID Fraud",
+      "sheet_issue_chunk": "Account > Account Security > National ID Fraud",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 40,
+      "node_id": "UNREG_DUES_PENDING_DOCS",
+      "topics": [
+        "unregistered_dues"
+      ],
+      "old_sla": "Pending Customer",
+      "new_sla": "5 calendar days",
+      "old_team": "Customer Care",
+      "node_issue": "Account > Account Security > National ID Fraud",
+      "sheet_issue_chunk": "Account > Account Security > National ID Fraud",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 40,
+      "node_id": "NID_PENDING_DOCS",
+      "topics": [
+        "nid_fraud"
+      ],
+      "old_sla": "Pending Customer",
+      "new_sla": "5 calendar days",
+      "old_team": "Customer Care",
+      "node_issue": "Account > Account Security > National ID Fraud",
+      "sheet_issue_chunk": "Account > Account Security > National ID Fraud",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 40,
+      "node_id": "NID_NOT_FOUND",
+      "topics": [
+        "nid_fraud"
+      ],
+      "old_sla": "Immediate",
+      "new_sla": "5 calendar days",
+      "old_team": "None (Resolved on First Contact)",
+      "node_issue": "Account > Account Security > National ID Fraud",
+      "sheet_issue_chunk": "Account > Account Security > National ID Fraud",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 40,
+      "node_id": "NID_FRIENDLY_USE",
+      "topics": [
+        "nid_fraud"
+      ],
+      "old_sla": "Immediate",
+      "new_sla": "5 calendar days",
+      "old_team": "None (Resolved on First Contact)",
+      "node_issue": "Account > Account Security > National ID Fraud",
+      "sheet_issue_chunk": "Account > Account Security > National ID Fraud",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 40,
+      "node_id": "NID_TNS_ESCALATE",
+      "topics": [
+        "nid_fraud"
+      ],
+      "old_sla": "5 Business Days",
+      "new_sla": "5 calendar days",
+      "old_team": "Trust & Safety",
+      "node_issue": "Account > Account Security > National ID Fraud",
+      "sheet_issue_chunk": "Account > Account Security > National ID Fraud",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 40,
+      "node_id": "NID_COLL_AGENCY",
+      "topics": [
+        "nid_fraud"
+      ],
+      "old_sla": "5 Business Days",
+      "new_sla": "5 calendar days",
+      "old_team": "Trust & Safety",
+      "node_issue": "Account > Account Security > National ID Fraud",
+      "sheet_issue_chunk": "Account > Account Security > National ID Fraud",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 40,
+      "node_id": "NID_TAKEOVER_ACT",
+      "topics": [
+        "nid_fraud"
+      ],
+      "old_sla": "5 Business Days",
+      "new_sla": "5 calendar days",
+      "old_team": "Trust & Safety",
+      "node_issue": "Account > Account Security > National ID Fraud",
+      "sheet_issue_chunk": "Account > Account Security > National ID Fraud",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 41,
+      "node_id": "DEC_SOFT_LIMIT",
+      "topics": [
+        "declined_order"
+      ],
+      "old_sla": "Immediate",
+      "new_sla": "5 calendar days",
+      "old_team": "None (Resolved on First Contact)",
+      "node_issue": "Order > Placing an Order > Declined order",
+      "sheet_issue_chunk": "Order > Placing an Order > Declined order",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 41,
+      "node_id": "DEC_SOFT_3DS",
+      "topics": [
+        "declined_order"
+      ],
+      "old_sla": "Immediate",
+      "new_sla": "5 calendar days",
+      "old_team": "None (Resolved on First Contact)",
+      "node_issue": "Order > Placing an Order > Declined order",
+      "sheet_issue_chunk": "Order > Placing an Order > Declined order",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 41,
+      "node_id": "DEC_SOFT_CARDTYPE",
+      "topics": [
+        "declined_order"
+      ],
+      "old_sla": "Immediate",
+      "new_sla": "5 calendar days",
+      "old_team": "None (Resolved on First Contact)",
+      "node_issue": "Order > Placing an Order > Declined order",
+      "sheet_issue_chunk": "Order > Placing an Order > Declined order",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 41,
+      "node_id": "DEC_SOFT_BANKBLOCK",
+      "topics": [
+        "declined_order"
+      ],
+      "old_sla": "Immediate",
+      "new_sla": "5 calendar days",
+      "old_team": "None (Resolved on First Contact)",
+      "node_issue": "Order > Placing an Order > Declined order",
+      "sheet_issue_chunk": "Order > Placing an Order > Declined order",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 41,
+      "node_id": "DEC_HARD_RISK",
+      "topics": [
+        "declined_order"
+      ],
+      "old_sla": "Immediate",
+      "new_sla": "5 calendar days",
+      "old_team": "None (Resolved on First Contact)",
+      "node_issue": "Order > Placing an Order > Declined order",
+      "sheet_issue_chunk": "Order > Placing an Order > Declined order",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 41,
+      "node_id": "DEC_HARD_OVERDUE",
+      "topics": [
+        "declined_order"
+      ],
+      "old_sla": "Immediate",
+      "new_sla": "5 calendar days",
+      "old_team": "None (Resolved on First Contact)",
+      "node_issue": "Order > Placing an Order > Declined order",
+      "sheet_issue_chunk": "Order > Placing an Order > Declined order",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 41,
+      "node_id": "DEC_HARD_AGE",
+      "topics": [
+        "declined_order"
+      ],
+      "old_sla": "Immediate",
+      "new_sla": "5 calendar days",
+      "old_team": "None (Resolved on First Contact)",
+      "node_issue": "Order > Placing an Order > Declined order",
+      "sheet_issue_chunk": "Order > Placing an Order > Declined order",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 42,
+      "node_id": "PHN_CSPANEL_ACTIVE_EXEC",
+      "topics": [
+        "change_phone"
+      ],
+      "old_sla": "Immediate (Real-Time)",
+      "new_sla": "5 calendar days",
+      "old_team": "Customer Care",
+      "node_issue": "Account > Update Account > Change phone number",
+      "sheet_issue_chunk": "Account > Update Account > Change phone number",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 42,
+      "node_id": "PHN_CSPANEL_INACTIVE_BLOCK",
+      "topics": [
+        "change_phone"
+      ],
+      "old_sla": "24-48 Hours",
+      "new_sla": "5 calendar days",
+      "old_team": "Operations / Risk",
+      "node_issue": "Account > Update Account > Change phone number",
+      "sheet_issue_chunk": "Account > Update Account > Change phone number",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 42,
+      "node_id": "PHN_AUTH_FAILED",
+      "topics": [
+        "change_phone"
+      ],
+      "old_sla": "Immediate",
+      "new_sla": "5 calendar days",
+      "old_team": "Customer Care (Self-Resolved)",
+      "node_issue": "Account > Update Account > Change phone number",
+      "sheet_issue_chunk": "Account > Update Account > Change phone number",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 42,
+      "node_id": "PHN_DOCS_REQUIRED",
+      "topics": [
+        "change_phone"
+      ],
+      "old_sla": "Pending Customer",
+      "new_sla": "5 calendar days",
+      "old_team": "Customer Care",
+      "node_issue": "Account > Update Account > Change phone number",
+      "sheet_issue_chunk": "Account > Update Account > Change phone number",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 42,
+      "node_id": "PHN_KSA_ABSHER",
+      "topics": [
+        "change_phone"
+      ],
+      "old_sla": "Immediate",
+      "new_sla": "5 calendar days",
+      "old_team": "None (Self-Service)",
+      "node_issue": "Account > Update Account > Change phone number",
+      "sheet_issue_chunk": "Account > Update Account > Change phone number",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "row": 42,
+      "node_id": "PHN_UAE_MANUAL",
+      "topics": [
+        "change_phone"
+      ],
+      "old_sla": "Immediate (Real-Time)",
+      "new_sla": "5 calendar days",
+      "old_team": "Customer Care",
+      "node_issue": "Account > Update Account > Change phone number",
+      "sheet_issue_chunk": "Account > Update Account > Change phone number",
+      "score": 100,
+      "verify": [
+        {
+          "pass": false,
+          "round": 1,
+          "details": [
+            [
+              "issueType_score_ge_60",
+              true
+            ],
+            [
+              "topic_compatible_or_orphan",
+              true
+            ],
+            [
+              "node_exists",
+              true
+            ],
+            [
+              "sla_nonempty",
+              true
+            ],
+            [
+              "team_is_tech_support_source",
+              false
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "transfers_unmatched": [
+    {
+      "row": 2,
+      "reason": "Weak matches only",
+      "best": [
+        {
+          "node_id": "REV_TECH_01",
+          "score": 58,
+          "chunk": "Account > ID verification",
+          "node_issue": "Account > N/A > ID verification",
+          "topics": [
+            "revoke_id"
+          ],
+          "old_sla": "7 Business Days",
+          "old_team": "Tech Support",
+          "new_sla": "5 business days"
+        },
+        {
+          "node_id": "REV_PENDING_DOCS",
+          "score": 58,
+          "chunk": "Account > ID verification",
+          "node_issue": "Account > N/A > ID verification",
+          "topics": [
+            "revoke_id"
+          ],
+          "old_sla": "Pending Customer",
+          "old_team": "Customer Care",
+          "new_sla": "5 business days"
+        },
+        {
+          "node_id": "REV_LEGAL_ESCALATE",
+          "score": 58,
+          "chunk": "Account > ID verification",
+          "node_issue": "Account > N/A > ID verification",
+          "topics": [
+            "revoke_id"
+          ],
+          "old_sla": "5 Business Days",
+          "old_team": "Trust & Safety",
+          "new_sla": "5 business days"
+        }
+      ],
+      "issue": "Account > ID verification\n\nFor Tahaqaq ID failure",
+      "sla": "5 business days"
+    },
+    {
+      "row": 9,
+      "reason": "Deferred to Due Date Preference document granular SLAs",
+      "issue": "Due Date Preference\n\n- Account > Due Date Preference> General inquiries\n- Account > Due Date Preference> Preference not "
+    },
+    {
+      "row": 10,
+      "reason": "No node match >=55",
+      "issue": "- Payment > Unrecorded charges > Payment not reflected\n- Payment > Unrecorded charges > Payment authorization failed\n- Payment > Unrecorded charges > Other unre",
+      "sla": "5 business days"
+    },
+    {
+      "row": 11,
+      "reason": "Weak matches only",
+      "best": [
+        {
+          "node_id": "POS_SMS_FALLBACK",
+          "score": 61,
+          "chunk": "Order > Placing an Order > In Store - did not receive the payment link SMS",
+          "node_issue": "Order > Placing an Order > Instore - did not receive the payment link SMS",
+          "topics": [
+            "instore_no_sms"
+          ],
+          "old_sla": "Immediate",
+          "old_team": "None (Resolved on First Contact)",
+          "new_sla": "5 business days"
+        }
+      ],
+      "issue": "Payment > Other\n\n- Pending dues on the Customer Detail page do not match with Payments tab\n- Order > Placing an Order > In Store - did not receive the payment l",
+      "sla": "5 business days"
+    },
+    {
+      "row": 12,
+      "reason": "No node match >=55",
+      "issue": "Smart Membership > Free Tier > Lavender",
+      "sla": "5 business days"
+    },
+    {
+      "row": 13,
+      "reason": "No node match >=55",
+      "issue": "Account > Passcode",
+      "sla": "5 business days"
+    },
+    {
+      "row": 15,
+      "reason": "No node match >=55",
+      "issue": "Refunds and Cancellations > Incorrect refund amount",
+      "sla": "5 business days"
+    },
+    {
+      "row": 17,
+      "reason": "No node match >=55",
+      "issue": "Payment > Unrecognized charge > Duplicate charge",
+      "sla": "5 business days"
+    },
+    {
+      "row": 18,
+      "reason": "No node match >=55",
+      "issue": "Refunds and Cancellations > Wallet refund",
+      "sla": "5 business days"
+    },
+    {
+      "row": 21,
+      "reason": "No node match >=55",
+      "issue": "Promotions & Cashback > Cashback\n\nTamara Challenges",
+      "sla": "5 working days"
+    },
+    {
+      "row": 22,
+      "reason": "No node match >=55",
+      "issue": "Account > Registration & login > Didn't receive the login / registration OTP \n\n(Accessing the account)",
+      "sla": "3 business days                                       5 business days for app issues"
+    },
+    {
+      "row": 23,
+      "reason": "Weak matches only",
+      "best": [
+        {
+          "node_id": "REV_TECH_01",
+          "score": 58,
+          "chunk": "Account > ID verification",
+          "node_issue": "Account > N/A > ID verification",
+          "topics": [
+            "revoke_id"
+          ],
+          "old_sla": "7 Business Days",
+          "old_team": "Tech Support",
+          "new_sla": "5 business days"
+        },
+        {
+          "node_id": "REV_PENDING_DOCS",
+          "score": 58,
+          "chunk": "Account > ID verification",
+          "node_issue": "Account > N/A > ID verification",
+          "topics": [
+            "revoke_id"
+          ],
+          "old_sla": "Pending Customer",
+          "old_team": "Customer Care",
+          "new_sla": "5 business days"
+        },
+        {
+          "node_id": "REV_LEGAL_ESCALATE",
+          "score": 58,
+          "chunk": "Account > ID verification",
+          "node_issue": "Account > N/A > ID verification",
+          "topics": [
+            "revoke_id"
+          ],
+          "old_sla": "5 Business Days",
+          "old_team": "Trust & Safety",
+          "new_sla": "5 business days"
+        }
+      ],
+      "issue": "Account > ID verification\n\n( Revoke ID Verification)",
+      "sla": "5 business days"
+    },
+    {
+      "row": 24,
+      "reason": "No node match >=55",
+      "issue": "Account > Registration & login > Didn't receive the login / registration OTP \n\n(Creating an account)",
+      "sla": "3 business days                                       5 business days for app issues"
+    },
+    {
+      "row": 30,
+      "reason": "No node match >=55",
+      "issue": "Payment > Murabha - Pay By Finance > Early Settlement",
+      "sla": "7-10 days"
+    },
+    {
+      "row": 31,
+      "reason": "No node match >=55",
+      "issue": "- Account > Tamara Health > Grade or Pillar Issue\n- Account > Tamara Health > Technical Issue",
+      "sla": "7 calendar days"
+    },
+    {
+      "row": 32,
+      "reason": "No node match >=55",
+      "issue": "Promotions & Cashback > Cashback",
+      "sla": "1–2 business days"
+    },
+    {
+      "row": 33,
+      "reason": "No node match >=55",
+      "issue": "Promotions & Cashback > Discount\n\nDeals",
+      "sla": "5 Business Days"
+    },
+    {
+      "row": 34,
+      "reason": "No node match >=55",
+      "issue": "Claims Fraud Flags",
+      "sla": "5 days"
+    },
+    {
+      "row": 35,
+      "reason": "No node match >=55",
+      "issue": "Refunds and Cancellations > Refund Blocked by Merchant",
+      "sla": "5 days"
+    },
+    {
+      "row": 43,
+      "reason": "No node match >=55",
+      "issue": "According to the customer's issue",
+      "sla": "24 hours"
+    },
+    {
+      "row": 44,
+      "reason": "No node match >=55",
+      "issue": "Compensation Exception",
+      "sla": "24 hours"
+    },
+    {
+      "row": 45,
+      "reason": "No node match >=55",
+      "issue": "-Legal and Government > Credit Bureau > Delayed Report \n-Legal and Government > Credit Bureau > Incorrect Reporting\n-Legal and Government > Credit Bureau > Disp",
+      "sla": "5 business days."
+    },
+    {
+      "row": 46,
+      "reason": "No node match >=55",
+      "issue": "Legal and Government > Credit Bureau > Inquiry Update (UAE)",
+      "sla": "24 hours"
+    },
+    {
+      "row": 47,
+      "reason": "No node match >=55",
+      "issue": "Other > Related to Collection agency",
+      "sla": "48 business hours"
+    },
+    {
+      "row": 48,
+      "reason": "No node match >=55",
+      "issue": "Other > Contact from Customer",
+      "sla": ""
+    }
+  ],
+  "links": {
+    "transfers_sheet": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+    "due_date_doc": "https://docs.google.com/document/d/1bjsyr6dclJIIwSoJx8TVYOA3y5_lVVkKcwee7QJKOTA/edit?tab=t.0"
+  }
+}

@@ -1032,6 +1032,21 @@
         </div>
       </div>
 
+      <!-- SLA SOURCE LINKS (Transfers sheet + Due Date Preference doc) -->
+      <div id="sla-sources-panel" style="background:rgba(212,175,55,0.08); border:1.5px solid var(--gold-border); border-radius:8px; padding:10px 14px; margin-bottom:10px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px;">
+          <span style="font-size:11px; font-weight:800; color:var(--gold-metallic); text-transform:uppercase;">⏱ Escalation SLA Sources (Linked)</span>
+          <button type="button" class="btn-copy" style="padding:4px 10px; font-size:10.5px; background:linear-gradient(135deg,#5300BA,#9600F1); color:#fff;" onclick="window.syncSlaSourcesFromLinks()">↻ Sync SLA from Linked Sources</button>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:6px;">
+          <a id="sla-link-transfers" href="https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0" target="_blank" class="btn-copy" style="text-decoration:none; padding:4px 9px; font-size:10px;">📊 Transfers SLA Sheet</a>
+          <a id="sla-link-duedate" href="https://docs.google.com/document/d/1bjsyr6dclJIIwSoJx8TVYOA3y5_lVVkKcwee7QJKOTA/edit?tab=t.0" target="_blank" class="btn-copy" style="text-decoration:none; padding:4px 9px; font-size:10px;">📄 Due Date Preference SLAs</a>
+        </div>
+        <div id="sla-sources-status" style="font-size:11.5px; color:var(--text-muted); line-height:1.45;">
+          Linked. If Google sharing is private, update the files in Downloads then run <strong>Sync_SLA_From_Downloads.bat</strong> (same folder as the server package) and refresh.
+        </div>
+      </div>
+
       <!-- COLLAPSIBLE 1-CLICK AI CHAT PATCH RECEIVER DRAWER -->
       <div id="ai-chat-patch-drawer" style="display:none; background:rgba(83,0,186,0.18); border:1.5px solid var(--gold-border); border-radius:8px; padding:10px 14px; margin-bottom:10px;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
@@ -2174,6 +2189,55 @@
           {
             "text": "Requesting to change installment due date from default 1st of the month",
             "next": "DUE_STANDARD"
+          },
+          {
+            "text": "Technical issue with Due Date Preference (banner / save / lock / wrong date / missing SMS) — escalate",
+            "next": "step_due_tech"
+          }
+        ]
+      },
+      "step_due_tech": {
+        "prompt": "Which Due Date Preference technical issue is the customer reporting?",
+        "options": [
+          {
+            "text": "Eligible but cannot see banner / general inquiries",
+            "next": "DUE_ESC_BANNER_ELIGIBILITY"
+          },
+          {
+            "text": "Confirmed but preference not saved / profile empty",
+            "next": "DUE_ESC_PREF_NOT_SAVED"
+          },
+          {
+            "text": "New order still shows wrong / old due date after confirm",
+            "next": "DUE_ESC_WRONG_DUE_NEW_ORDER"
+          },
+          {
+            "text": "After opt-out, new order still uses preferred due date",
+            "next": "DUE_ESC_OPT_OUT_STILL_APPLIED"
+          },
+          {
+            "text": "Lock end date wrong / blocked after lock ended",
+            "next": "DUE_ESC_LOCK_ISSUE"
+          },
+          {
+            "text": "Opt-out not available though preference is active",
+            "next": "DUE_ESC_OPT_OUT_UNAVAILABLE"
+          },
+          {
+            "text": "Preference disappeared or changed without customer action",
+            "next": "DUE_ESC_PREF_DISAPPEARED"
+          },
+          {
+            "text": "Confirm/opt-out succeeded twice / conflicting states",
+            "next": "DUE_ESC_DUPLICATE_STATE"
+          },
+          {
+            "text": "Email/SMS never sent though preference saved",
+            "next": "DUE_ESC_MISSING_COMMS"
+          },
+          {
+            "text": "CS Hub / app preference status mismatch",
+            "next": "DUE_ESC_STATUS_MISMATCH"
           }
         ]
       }
@@ -4282,7 +4346,7 @@
       "system_action": "Copy Customer ID, Order ID, and transaction timestamp. Escalate to Tech Support team.",
       "comment_template": "Action: Stuck Order Escalation\nCustomer ID: [CUST_ID] | Order ID: [ORDER_ID]\nCaptured at bank but stuck in Tamara gateway. Escalated to Tech.",
       "team": "Tech Support",
-      "sla": "24-48 Hours",
+      "sla": "5 days",
       "sf_status": "Working",
       "macro": "Approved less than 72 hours / Time-sensitive",
       "interaction_type": "Request",
@@ -4292,7 +4356,9 @@
       "issue_type_leaf": "cannot see order (stuck order)",
       "macro_id": "MAC_021",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+      "_sla_updated_at": "2026-11-21T09:42:23.777959+00:00"
     },
     "PLAN_CHANGE_REJECT": {
       "headline": "Wrong Installment Plan Selected",
@@ -4320,7 +4386,7 @@
       "system_action": "Check SMS delivery logs in CS Hub. If telecom issue, advise waiting 15 minutes.",
       "comment_template": "Resolution: OTP Troubleshooting\nChecked SMS delivery logs in CS Hub. Advised customer on telecom carrier short-code unblocking.",
       "team": "Customer Care",
-      "sla": "Immediate",
+      "sla": "3 business days                                       5 business days for app issues",
       "sf_status": "Closed",
       "macro": "[Tech Support] Troubleshooting 1",
       "interaction_type": "Inquiry",
@@ -4330,7 +4396,9 @@
       "issue_type_leaf": "Didn't receive the order OTP",
       "macro_id": "MAC_107",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+      "_sla_updated_at": "2026-11-21T09:42:23.778213+00:00"
     },
     "POS_SMS_FALLBACK": {
       "headline": "In-Store POS Payment SMS Failure",
@@ -4377,7 +4445,7 @@
       "system_action": "Check IVR status in CS Hub. Trigger manual call retry if button enabled. Submit Closed.",
       "comment_template": "Resolution: IVR Call Guidance\nAdvised customer automated verification call will trigger within 5 minutes.",
       "team": "None (Resolved on First Contact)",
-      "sla": "Immediate",
+      "sla": "3 days from the engineering team",
       "sf_status": "Closed",
       "macro": "[Tech Support] App issue - Ordering",
       "interaction_type": "Inquiry",
@@ -4387,7 +4455,9 @@
       "issue_type_leaf": "Order verification IVR call",
       "macro_id": "MAC_104",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+      "_sla_updated_at": "2026-11-21T09:42:23.778109+00:00"
     },
     "VUL_DECEASED": {
       "headline": "Deceased Customer Protocol",
@@ -4395,8 +4465,8 @@
       "cust_msg": "Please accept our sincere condolences. We have paused all account communications and will handle this file with the utmost priority and care.",
       "system_action": "Freeze collections flag immediately in CS Hub. Obtain death certificate and national ID copy. Escalate to Legal/Special Operations.",
       "comment_template": "Action: Deceased Customer Protocol\nCollections frozen immediately. Requested death certificate. Escalated to Legal.",
-      "team": "Legal & Compliance",
-      "sla": "2 Business Days",
+      "team": "Tech Support",
+      "sla": "10 business days",
       "sf_status": "Working",
       "macro": "Pending dues Paid - Account deactivated",
       "interaction_type": "Request",
@@ -4406,7 +4476,9 @@
       "issue_type_leaf": "Deceased Customer Case",
       "macro_id": "MAC_060",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+      "_sla_updated_at": "2026-11-21T09:42:23.778583+00:00"
     },
     "VUL_HARDSHIP": {
       "headline": "Vulnerable Customer Hardship Protocol",
@@ -4529,7 +4601,7 @@
       "system_action": "Collect customer's bank statement showing RRN / Auth code, exact amount, timestamp, and card first 6/last 4 digits. Escalate case directly to Tech Support. Macro: Ticket Escalated. Set Status = Working, SLA = 5 Days.",
       "comment_template": "Action: Unrecorded Charge Escalation\nPayment Status: Captured at gateway (Not reflected on CS Panel)\nRRN / Auth Code: [AUTH_CODE]\nTransaction Amount: [AMOUNT]\nTransaction Date/Time: [TIMESTAMP]\nCard First 6 & Last 4: [XXXXXX******XXXX]\nEscalated to: Tech Support\nSLA: 5 Days\nStatus: Working",
       "team": "Tech Support",
-      "sla": "5 Days",
+      "sla": "5 business days",
       "sf_status": "Working",
       "macro": "[Tech Support] Escalation Follow Up",
       "interaction_type": "Complain",
@@ -4539,7 +4611,9 @@
       "issue_type_leaf": "Unrecorded charges",
       "macro_id": "MAC_095",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+      "_sla_updated_at": "2026-11-21T09:42:23.778784+00:00"
     },
     "VOID_HOLD_RELEASE": {
       "headline": "Voided Payment Authorization Hold Release",
@@ -4966,7 +5040,7 @@
       "system_action": "Collect customer's bank statement showing RRN / Auth code, exact amount, timestamp, and card first 6/last 4 digits. Escalate case directly to Tech Support. Macro: Ticket Escalated. Set Status = Working, SLA = 5 Days.",
       "comment_template": "Action: Unrecorded Charge Escalation\nPayment Status: Captured at gateway (Not reflected on CS Panel)\nRRN / Auth Code: [AUTH_CODE]\nTransaction Amount: [AMOUNT]\nTransaction Date/Time: [TIMESTAMP]\nCard First 6 & Last 4: [XXXXXX******XXXX]\nEscalated to: Tech Support\nSLA: 5 Days\nStatus: Working",
       "team": "Tech Support",
-      "sla": "5 Days",
+      "sla": "5 business days",
       "sf_status": "Working",
       "macro": "[Tech Support] Escalation Follow Up",
       "interaction_type": "Complain",
@@ -4976,7 +5050,9 @@
       "issue_type_leaf": "Unrecorded charges",
       "macro_id": "MAC_095",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+      "_sla_updated_at": "2026-11-21T09:42:23.778713+00:00"
     },
     "UNREC_STATUS_DECLINED_HOLD": {
       "headline": "Payment Attempt Declined: Temporary Bank Pre-Authorization Hold",
@@ -5289,7 +5365,7 @@
       "system_action": "Collect bank debit receipt showing RRN code. Route directly to Tech Support under Unrecorded Charges with a 5-day SLA.",
       "comment_template": "Action: Payment Link Paid but Unreflected\nRRN Code: [AUTH_CODE] | Amount: [AMOUNT]\nEscalated to Tech Support under Unrecorded Charges. Status: Working",
       "team": "Tech Support",
-      "sla": "5 Days",
+      "sla": "5 business days",
       "sf_status": "Working",
       "macro": "[Tech Support] Escalation Follow Up",
       "interaction_type": "Complain",
@@ -5299,7 +5375,9 @@
       "issue_type_leaf": "Unrecorded charges",
       "macro_id": "MAC_095",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+      "_sla_updated_at": "2026-11-21T09:42:23.778849+00:00"
     },
     "CPF_KSA_EXP": {
       "headline": "Customer Processing Fees (CPF) - KSA",
@@ -5573,8 +5651,8 @@
       "cust_msg": "Please accept our sincere condolences during this difficult time. We have immediately paused all payment reminders and collection communications on the account, and escalated the official documentation you provided to our Legal & Compliance team to handle the file within 2 business days.",
       "system_action": "1. Open deceased customer profile in CS Hub and immediately enable Collections Freeze / Pause Reminders.\n2. Attach Official Death Certificate, Deceased ID copy, and Reporter ID / kinship proof to Salesforce.\n3. Document Deceased Customer ID, Reporter Name/Phone, and active order balances in case comments.\n4. Apply Macro: 'Deceased Customer Policy' -> Escalate to Legal & Compliance (SLA: 2 Business Days) -> Next Step: Set Status = Working.",
       "comment_template": "Action: Deceased Customer Protocol — Complete Documentation Escalation\nDeceased Customer ID: [CUST_ID] | Full Name: [DECEASED_NAME]\nReporter Name & Relationship: [REPORTER_NAME] ([RELATIONSHIP]) | Phone: [PHONE]\nCollections Freeze Applied: YES (Immediate)\nDocuments Attached:\n1. Official Death Certificate: YES\n2. Deceased National/Emirates ID Copy: YES\n3. Reporter ID & Kinship Proof: YES\nOutstanding Balance / Order IDs: [BALANCE_AND_ORDERS]\nMacro Applied: Deceased Customer Policy\nEscalated to: Legal & Compliance | SLA: 2 Business Days | Next Step: Working",
-      "team": "Legal & Compliance",
-      "sla": "2 Business Days",
+      "team": "Tech Support",
+      "sla": "10 business days",
       "sf_status": "Working",
       "macro": "Pending dues Paid - Account deactivated",
       "interaction_type": "Request",
@@ -5584,7 +5662,9 @@
       "issue_type_leaf": "Deceased Customer Case",
       "macro_id": "MAC_060",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+      "_sla_updated_at": "2026-11-21T09:42:23.778396+00:00"
     },
     "DEC_CUST_ZERO_DUES_CLOSE": {
       "headline": "Deceased Customer (Zero Dues + Death Certificate Verified) -> Permanent Account Closure",
@@ -5592,8 +5672,8 @@
       "cust_msg": "Please accept our sincere condolences. We have confirmed there are zero outstanding dues on the account, paused all communications immediately, and forwarded the death certificate to our compliance team to permanently close the profile within 2 business days.",
       "system_action": "1. Confirm 0.00 balance & 0 open orders in CS Hub.\n2. Disable all account notifications immediately.\n3. Attach Death Certificate & ID copy to Salesforce.\n4. Apply Macro: 'Deceased Customer Policy' -> Escalate to Legal & Compliance (SLA: 2 Business Days) -> Next Step: Set Status = Working.",
       "comment_template": "Action: Deceased Customer Protocol — Zero-Dues Account Closure\nDeceased Customer ID: [CUST_ID] | Balance: 0.00\nNotifications Disabled: YES\nDocuments Attached: Official Death Certificate + Deceased ID Copy\nMacro Applied: Deceased Customer Policy\nEscalated to: Legal & Compliance | SLA: 2 Business Days | Next Step: Working",
-      "team": "Legal & Compliance",
-      "sla": "2 Business Days",
+      "team": "Tech Support",
+      "sla": "10 business days",
       "sf_status": "Working",
       "macro": "Pending dues Paid - Account deactivated",
       "interaction_type": "Request",
@@ -5603,7 +5683,9 @@
       "issue_type_leaf": "Deceased Customer Case",
       "macro_id": "MAC_060",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+      "_sla_updated_at": "2026-11-21T09:42:23.778467+00:00"
     },
     "DEC_CUST_PENDING_DOCS": {
       "headline": "Deceased Customer — Collections Frozen Immediately & Awaiting Required Documents",
@@ -5611,8 +5693,8 @@
       "cust_msg": "Please accept our heartfelt condolences. I have immediately placed a freeze on all payment reminders and calls so your family will not be disturbed. Whenever you are ready, please reply with a copy of the official death certificate, the deceased's ID, and your ID showing family relationship so our Legal & Compliance team can finalize the file.",
       "system_action": "1. Open CS Hub immediately and apply Collections Freeze / Pause Reminder Calls.\n2. List the 3 required documents clearly for the family member.\n3. Apply Macro: 'Deceased Customer Policy' -> Next Step: Set Salesforce Status = Pending Customer.",
       "comment_template": "Action: Deceased Customer Protocol — Collections Frozen / Pending Documents\nDeceased Customer ID: [CUST_ID]\nCollections Freeze Applied Immediately: YES\nRequested from Reporter:\n1. Official Death Certificate\n2. Deceased National/Emirates ID Copy\n3. Reporter ID & Kinship Proof\nMacro Applied: Deceased Customer Policy\nNext Step: Pending Customer",
-      "team": "Customer Care",
-      "sla": "Pending Customer",
+      "team": "Tech Support",
+      "sla": "10 business days",
       "sf_status": "Pending Customer",
       "macro": "Pending dues Paid - Account deactivated",
       "interaction_type": "Request",
@@ -5622,7 +5704,9 @@
       "issue_type_leaf": "Deceased Customer Case",
       "macro_id": "MAC_060",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+      "_sla_updated_at": "2026-11-21T09:42:23.778524+00:00"
     },
     "VUL_PHYSICAL_ESCALATE": {
       "headline": "Vulnerable Customer: Total Physical Disability -> Escalate to Special Operations",
@@ -5630,8 +5714,8 @@
       "cust_msg": "We appreciate you sharing your documentation with us. We have paused collection reminder calls on your account and escalated your file to our Special Operations team for compassionate review within 3 business days.",
       "system_action": "1. Pause collections in CS Hub.\n2. Attach official physical disability report in Salesforce comments.\n3. Apply Macro: 'Vulnerable Customers Policy' -> Escalate to Special Operations (SLA: 3 Business Days) -> Next Step: Working.",
       "comment_template": "Action: Vulnerable Customer Protocol (Total Physical Disability)\nCollections Paused: YES\nOfficial Disability Certificate Attached: YES\nMacro Applied: Vulnerable Customers Policy\nEscalated to: Special Operations | SLA: 3 Business Days | Next Step: Working",
-      "team": "Special Operations",
-      "sla": "3 Business Days",
+      "team": "Tech Support",
+      "sla": "10 business days",
       "sf_status": "Working",
       "macro": "Pending dues Paid - Account deactivated",
       "interaction_type": "Request",
@@ -5641,7 +5725,9 @@
       "issue_type_leaf": "Customer with total physical disability",
       "macro_id": "MAC_060",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+      "_sla_updated_at": "2026-11-21T09:42:23.778643+00:00"
     },
     "VUL_PENDING_DOCS": {
       "headline": "Vulnerable Customer — Reminders Paused & Awaiting Official Documentation",
@@ -5725,8 +5811,8 @@
       "cust_msg": "You can pay using , Visa, Mastercard, and Apple Pay. Please note that prepaid cards cannot be used for installment plans",
       "system_action": "In case the issue not sorted yet please follow the escalation path  through Salesforce to Tech. Team",
       "comment_template": "Issue with payment card \nadvised with TS. steps \nSorted \\\\ Escalated to tech",
-      "team": "Tech.",
-      "sla": "5 days",
+      "team": "Tech Support",
+      "sla": "7 business days",
       "sf_status": "Working",
       "macro": "Why my payment was declined",
       "macro_id": "MAC_270",
@@ -5735,7 +5821,9 @@
       "issue_category": "Payment",
       "issue_sub_category": "Payment Methods",
       "issueType": "Payment > Payment Methods > Card is not accepted",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+      "_sla_updated_at": "2026-11-21T09:42:23.778333+00:00"
     },
     "NODE_BRANCH_801196_874_MAIN": {
       "headline": "How to add/remove a card",
@@ -5761,8 +5849,8 @@
       "cust_msg": "You can pay using , Visa, Mastercard, and Apple Pay. Please note that prepaid cards cannot be used for installment plans",
       "system_action": "IF THE ISSUE STILL EXIST PLEASE ESCALATE TO TECH",
       "comment_template": "Card not accepted - Tried TS steps \n1- Sorted or 2- Escalated to tech.",
-      "team": "TECH.",
-      "sla": "5 Day",
+      "team": "Tech Support",
+      "sla": "7 business days",
       "sf_status": "Working",
       "macro": "Why my payment was declined",
       "macro_id": "MAC_270",
@@ -5771,7 +5859,9 @@
       "issue_category": "Payment",
       "issue_sub_category": "Payment Methods",
       "issueType": "Payment > Payment Methods > Card is not accepted",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+      "_sla_updated_at": "2026-11-21T09:42:23.778277+00:00"
     },
     "NODE_BRANCH_073357_390_MAIN": {
       "headline": "Cards Can be added or removed from the APP",
@@ -5789,6 +5879,196 @@
       "issue_category": "Payment",
       "issue_sub_category": "Payment Methods",
       "issueType": "Payment > Payment Methods > How to add/remove a card",
+      "macro_channel": "Email;Phone;Messaging"
+    },
+    "DUE_ESC_BANNER_ELIGIBILITY": {
+      "headline": "Due Date Preference — Banner / Eligibility Escalation",
+      "agent_expl": "Due Date Preference technical escalation.\nScenario: Eligible customer repeatedly cannot see banner with no Profile preference and no post-opt-out block\n1) Confirm customer eligibility and what appears in Profile / CS Hub.\n2) Capture screenshots of app preference + CS Hub preference status.\n3) Escalate to Tech Support using Macro: Ticket Escalated.\n4) Apply Issue Type: Account > Due Date Preference > General inquiries.\n5) Set SLA to 5 Days per Due Date Preference SLA document.",
+      "cust_msg": "Thank you for contacting Tamara. I have escalated your Due Date Preference case to our specialized technical team. They will review it within 5 Days.",
+      "system_action": "1. Escalate to Tech Support.\n2. Macro: Ticket Escalated.\n3. Issue Type: Account > Due Date Preference > General inquiries.\n4. SLA: 5 Days.\n5. Status: Working.\n6. Source: https://docs.google.com/document/d/1bjsyr6dclJIIwSoJx8TVYOA3y5_lVVkKcwee7QJKOTA/edit?tab=t.0",
+      "comment_template": "Action: Due Date Preference Escalation\nScenario: Eligible customer repeatedly cannot see banner with no Profile preference and no post-opt-out block\nIssue Type: Account > Due Date Preference > General inquiries\nSLA: 5 Days\nMacro: Ticket Escalated\nStatus: Working",
+      "team": "Tech Support",
+      "sla": "5 Days",
+      "sf_status": "Working",
+      "macro": "Ticket Escalated",
+      "interaction_type": "Messaging;Phone;Email",
+      "issue_category": "Account",
+      "issue_sub_category": "Due Date Preference",
+      "issueType": "Account > Due Date Preference > General inquiries",
+      "issue_type_leaf": "General inquiries",
+      "macro_id": "",
+      "macro_lob": "Customer Care",
+      "macro_channel": "Email;Phone;Messaging"
+    },
+    "DUE_ESC_PREF_NOT_SAVED": {
+      "headline": "Due Date Preference — Preference Not Saved",
+      "agent_expl": "Due Date Preference technical escalation.\nScenario: Customer confirmed but preference not saved / Profile empty after successful UI success\n1) Confirm customer eligibility and what appears in Profile / CS Hub.\n2) Capture screenshots of app preference + CS Hub preference status.\n3) Escalate to Tech Support using Macro: Ticket Escalated.\n4) Apply Issue Type: Account > Due Date Preference > Preference not saved.\n5) Set SLA to 4 Days per Due Date Preference SLA document.",
+      "cust_msg": "Thank you for contacting Tamara. I have escalated your Due Date Preference case to our specialized technical team. They will review it within 4 Days.",
+      "system_action": "1. Escalate to Tech Support.\n2. Macro: Ticket Escalated.\n3. Issue Type: Account > Due Date Preference > Preference not saved.\n4. SLA: 4 Days.\n5. Status: Working.\n6. Source: https://docs.google.com/document/d/1bjsyr6dclJIIwSoJx8TVYOA3y5_lVVkKcwee7QJKOTA/edit?tab=t.0",
+      "comment_template": "Action: Due Date Preference Escalation\nScenario: Customer confirmed but preference not saved / Profile empty after successful UI success\nIssue Type: Account > Due Date Preference > Preference not saved\nSLA: 4 Days\nMacro: Ticket Escalated\nStatus: Working",
+      "team": "Tech Support",
+      "sla": "4 Days",
+      "sf_status": "Working",
+      "macro": "Ticket Escalated",
+      "interaction_type": "Messaging;Phone;Email",
+      "issue_category": "Account",
+      "issue_sub_category": "Due Date Preference",
+      "issueType": "Account > Due Date Preference > Preference not saved",
+      "issue_type_leaf": "Preference not saved",
+      "macro_id": "",
+      "macro_lob": "Customer Care",
+      "macro_channel": "Email;Phone;Messaging"
+    },
+    "DUE_ESC_WRONG_DUE_NEW_ORDER": {
+      "headline": "Due Date Preference — Wrong Due Date on New Order",
+      "agent_expl": "Due Date Preference technical escalation.\nScenario: New order placed after Confirm still uses wrong / old due date\n1) Confirm customer eligibility and what appears in Profile / CS Hub.\n2) Capture screenshots of app preference + CS Hub preference status.\n3) Escalate to Tech Support using Macro: Ticket Escalated.\n4) Apply Issue Type: Account > Due Date Preference > Wrong due date on new order.\n5) Set SLA to 7 Days per Due Date Preference SLA document.",
+      "cust_msg": "Thank you for contacting Tamara. I have escalated your Due Date Preference case to our specialized technical team. They will review it within 7 Days.",
+      "system_action": "1. Escalate to Tech Support.\n2. Macro: Ticket Escalated.\n3. Issue Type: Account > Due Date Preference > Wrong due date on new order.\n4. SLA: 7 Days.\n5. Status: Working.\n6. Source: https://docs.google.com/document/d/1bjsyr6dclJIIwSoJx8TVYOA3y5_lVVkKcwee7QJKOTA/edit?tab=t.0",
+      "comment_template": "Action: Due Date Preference Escalation\nScenario: New order placed after Confirm still uses wrong / old due date\nIssue Type: Account > Due Date Preference > Wrong due date on new order\nSLA: 7 Days\nMacro: Ticket Escalated\nStatus: Working",
+      "team": "Tech Support",
+      "sla": "7 Days",
+      "sf_status": "Working",
+      "macro": "Ticket Escalated",
+      "interaction_type": "Messaging;Phone;Email",
+      "issue_category": "Account",
+      "issue_sub_category": "Due Date Preference",
+      "issueType": "Account > Due Date Preference > Wrong due date on new order",
+      "issue_type_leaf": "Wrong due date on new order",
+      "macro_id": "",
+      "macro_lob": "Customer Care",
+      "macro_channel": "Email;Phone;Messaging"
+    },
+    "DUE_ESC_OPT_OUT_STILL_APPLIED": {
+      "headline": "Due Date Preference — Opt-out Still Applied on New Order",
+      "agent_expl": "Due Date Preference technical escalation.\nScenario: After opt-out, new order still uses preferred due date\n1) Confirm customer eligibility and what appears in Profile / CS Hub.\n2) Capture screenshots of app preference + CS Hub preference status.\n3) Escalate to Tech Support using Macro: Ticket Escalated.\n4) Apply Issue Type: Account > Due Date Preference > Wrong due date on new order.\n5) Set SLA to 7 Days per Due Date Preference SLA document.",
+      "cust_msg": "Thank you for contacting Tamara. I have escalated your Due Date Preference case to our specialized technical team. They will review it within 7 Days.",
+      "system_action": "1. Escalate to Tech Support.\n2. Macro: Ticket Escalated.\n3. Issue Type: Account > Due Date Preference > Wrong due date on new order.\n4. SLA: 7 Days.\n5. Status: Working.\n6. Source: https://docs.google.com/document/d/1bjsyr6dclJIIwSoJx8TVYOA3y5_lVVkKcwee7QJKOTA/edit?tab=t.0",
+      "comment_template": "Action: Due Date Preference Escalation\nScenario: After opt-out, new order still uses preferred due date\nIssue Type: Account > Due Date Preference > Wrong due date on new order\nSLA: 7 Days\nMacro: Ticket Escalated\nStatus: Working",
+      "team": "Tech Support",
+      "sla": "7 Days",
+      "sf_status": "Working",
+      "macro": "Ticket Escalated",
+      "interaction_type": "Messaging;Phone;Email",
+      "issue_category": "Account",
+      "issue_sub_category": "Due Date Preference",
+      "issueType": "Account > Due Date Preference > Wrong due date on new order",
+      "issue_type_leaf": "Wrong due date on new order",
+      "macro_id": "",
+      "macro_lob": "Customer Care",
+      "macro_channel": "Email;Phone;Messaging"
+    },
+    "DUE_ESC_LOCK_ISSUE": {
+      "headline": "Due Date Preference — Opt-out or Lock Issue",
+      "agent_expl": "Due Date Preference technical escalation.\nScenario: Lock end date wrong, or customer blocked from re-select after lock ended\n1) Confirm customer eligibility and what appears in Profile / CS Hub.\n2) Capture screenshots of app preference + CS Hub preference status.\n3) Escalate to Tech Support using Macro: Ticket Escalated.\n4) Apply Issue Type: Account > Due Date Preference > Opt-out or lock issue.\n5) Set SLA to 5 Days per Due Date Preference SLA document.",
+      "cust_msg": "Thank you for contacting Tamara. I have escalated your Due Date Preference case to our specialized technical team. They will review it within 5 Days.",
+      "system_action": "1. Escalate to Tech Support.\n2. Macro: Ticket Escalated.\n3. Issue Type: Account > Due Date Preference > Opt-out or lock issue.\n4. SLA: 5 Days.\n5. Status: Working.\n6. Source: https://docs.google.com/document/d/1bjsyr6dclJIIwSoJx8TVYOA3y5_lVVkKcwee7QJKOTA/edit?tab=t.0",
+      "comment_template": "Action: Due Date Preference Escalation\nScenario: Lock end date wrong, or customer blocked from re-select after lock ended\nIssue Type: Account > Due Date Preference > Opt-out or lock issue\nSLA: 5 Days\nMacro: Ticket Escalated\nStatus: Working",
+      "team": "Tech Support",
+      "sla": "5 Days",
+      "sf_status": "Working",
+      "macro": "Ticket Escalated",
+      "interaction_type": "Messaging;Phone;Email",
+      "issue_category": "Account",
+      "issue_sub_category": "Due Date Preference",
+      "issueType": "Account > Due Date Preference > Opt-out or lock issue",
+      "issue_type_leaf": "Opt-out or lock issue",
+      "macro_id": "",
+      "macro_lob": "Customer Care",
+      "macro_channel": "Email;Phone;Messaging"
+    },
+    "DUE_ESC_OPT_OUT_UNAVAILABLE": {
+      "headline": "Due Date Preference — Opt-out Unavailable",
+      "agent_expl": "Due Date Preference technical escalation.\nScenario: Opt-out not available though preference is active / lock rules allow it\n1) Confirm customer eligibility and what appears in Profile / CS Hub.\n2) Capture screenshots of app preference + CS Hub preference status.\n3) Escalate to Tech Support using Macro: Ticket Escalated.\n4) Apply Issue Type: Account > Due Date Preference > Opt-out or lock issue.\n5) Set SLA to 5 Days per Due Date Preference SLA document.",
+      "cust_msg": "Thank you for contacting Tamara. I have escalated your Due Date Preference case to our specialized technical team. They will review it within 5 Days.",
+      "system_action": "1. Escalate to Tech Support.\n2. Macro: Ticket Escalated.\n3. Issue Type: Account > Due Date Preference > Opt-out or lock issue.\n4. SLA: 5 Days.\n5. Status: Working.\n6. Source: https://docs.google.com/document/d/1bjsyr6dclJIIwSoJx8TVYOA3y5_lVVkKcwee7QJKOTA/edit?tab=t.0",
+      "comment_template": "Action: Due Date Preference Escalation\nScenario: Opt-out not available though preference is active / lock rules allow it\nIssue Type: Account > Due Date Preference > Opt-out or lock issue\nSLA: 5 Days\nMacro: Ticket Escalated\nStatus: Working",
+      "team": "Tech Support",
+      "sla": "5 Days",
+      "sf_status": "Working",
+      "macro": "Ticket Escalated",
+      "interaction_type": "Messaging;Phone;Email",
+      "issue_category": "Account",
+      "issue_sub_category": "Due Date Preference",
+      "issueType": "Account > Due Date Preference > Opt-out or lock issue",
+      "issue_type_leaf": "Opt-out or lock issue",
+      "macro_id": "",
+      "macro_lob": "Customer Care",
+      "macro_channel": "Email;Phone;Messaging"
+    },
+    "DUE_ESC_PREF_DISAPPEARED": {
+      "headline": "Due Date Preference — Preference Disappeared / Changed",
+      "agent_expl": "Due Date Preference technical escalation.\nScenario: Preference disappeared or changed without customer action\n1) Confirm customer eligibility and what appears in Profile / CS Hub.\n2) Capture screenshots of app preference + CS Hub preference status.\n3) Escalate to Tech Support using Macro: Ticket Escalated.\n4) Apply Issue Type: Account > Due Date Preference > Preference not saved.\n5) Set SLA to 4 Days per Due Date Preference SLA document.",
+      "cust_msg": "Thank you for contacting Tamara. I have escalated your Due Date Preference case to our specialized technical team. They will review it within 4 Days.",
+      "system_action": "1. Escalate to Tech Support.\n2. Macro: Ticket Escalated.\n3. Issue Type: Account > Due Date Preference > Preference not saved.\n4. SLA: 4 Days.\n5. Status: Working.\n6. Source: https://docs.google.com/document/d/1bjsyr6dclJIIwSoJx8TVYOA3y5_lVVkKcwee7QJKOTA/edit?tab=t.0",
+      "comment_template": "Action: Due Date Preference Escalation\nScenario: Preference disappeared or changed without customer action\nIssue Type: Account > Due Date Preference > Preference not saved\nSLA: 4 Days\nMacro: Ticket Escalated\nStatus: Working",
+      "team": "Tech Support",
+      "sla": "4 Days",
+      "sf_status": "Working",
+      "macro": "Ticket Escalated",
+      "interaction_type": "Messaging;Phone;Email",
+      "issue_category": "Account",
+      "issue_sub_category": "Due Date Preference",
+      "issueType": "Account > Due Date Preference > Preference not saved",
+      "issue_type_leaf": "Preference not saved",
+      "macro_id": "",
+      "macro_lob": "Customer Care",
+      "macro_channel": "Email;Phone;Messaging"
+    },
+    "DUE_ESC_DUPLICATE_STATE": {
+      "headline": "Due Date Preference — Duplicate / Conflicting States",
+      "agent_expl": "Due Date Preference technical escalation.\nScenario: Confirm/opt-out succeeded twice / duplicate conflicting states\n1) Confirm customer eligibility and what appears in Profile / CS Hub.\n2) Capture screenshots of app preference + CS Hub preference status.\n3) Escalate to Tech Support using Macro: Ticket Escalated.\n4) Apply Issue Type: Account > Due Date Preference > Preference not saved.\n5) Set SLA to 5 Days per Due Date Preference SLA document.",
+      "cust_msg": "Thank you for contacting Tamara. I have escalated your Due Date Preference case to our specialized technical team. They will review it within 5 Days.",
+      "system_action": "1. Escalate to Tech Support.\n2. Macro: Ticket Escalated.\n3. Issue Type: Account > Due Date Preference > Preference not saved.\n4. SLA: 5 Days.\n5. Status: Working.\n6. Source: https://docs.google.com/document/d/1bjsyr6dclJIIwSoJx8TVYOA3y5_lVVkKcwee7QJKOTA/edit?tab=t.0",
+      "comment_template": "Action: Due Date Preference Escalation\nScenario: Confirm/opt-out succeeded twice / duplicate conflicting states\nIssue Type: Account > Due Date Preference > Preference not saved\nSLA: 5 Days\nMacro: Ticket Escalated\nStatus: Working",
+      "team": "Tech Support",
+      "sla": "5 Days",
+      "sf_status": "Working",
+      "macro": "Ticket Escalated",
+      "interaction_type": "Messaging;Phone;Email",
+      "issue_category": "Account",
+      "issue_sub_category": "Due Date Preference",
+      "issueType": "Account > Due Date Preference > Preference not saved",
+      "issue_type_leaf": "Preference not saved",
+      "macro_id": "",
+      "macro_lob": "Customer Care",
+      "macro_channel": "Email;Phone;Messaging"
+    },
+    "DUE_ESC_MISSING_COMMS": {
+      "headline": "Due Date Preference — Missing Email or SMS",
+      "agent_expl": "Due Date Preference technical escalation.\nScenario: Email/SMS never sent and Profile shows saved preference (comms failure)\n1) Confirm customer eligibility and what appears in Profile / CS Hub.\n2) Capture screenshots of app preference + CS Hub preference status.\n3) Escalate to Tech Support using Macro: Ticket Escalated.\n4) Apply Issue Type: Account > Due Date Preference > Missing email or SMS.\n5) Set SLA to 4 Days per Due Date Preference SLA document.",
+      "cust_msg": "Thank you for contacting Tamara. I have escalated your Due Date Preference case to our specialized technical team. They will review it within 4 Days.",
+      "system_action": "1. Escalate to Tech Support.\n2. Macro: Ticket Escalated.\n3. Issue Type: Account > Due Date Preference > Missing email or SMS.\n4. SLA: 4 Days.\n5. Status: Working.\n6. Source: https://docs.google.com/document/d/1bjsyr6dclJIIwSoJx8TVYOA3y5_lVVkKcwee7QJKOTA/edit?tab=t.0",
+      "comment_template": "Action: Due Date Preference Escalation\nScenario: Email/SMS never sent and Profile shows saved preference (comms failure)\nIssue Type: Account > Due Date Preference > Missing email or SMS\nSLA: 4 Days\nMacro: Ticket Escalated\nStatus: Working",
+      "team": "Tech Support",
+      "sla": "4 Days",
+      "sf_status": "Working",
+      "macro": "Ticket Escalated",
+      "interaction_type": "Messaging;Phone;Email",
+      "issue_category": "Account",
+      "issue_sub_category": "Due Date Preference",
+      "issueType": "Account > Due Date Preference > Missing email or SMS",
+      "issue_type_leaf": "Missing email or SMS",
+      "macro_id": "",
+      "macro_lob": "Customer Care",
+      "macro_channel": "Email;Phone;Messaging"
+    },
+    "DUE_ESC_STATUS_MISMATCH": {
+      "headline": "Due Date Preference — CS Hub / App Status Mismatch",
+      "agent_expl": "Due Date Preference technical escalation.\nScenario: CS Hub / app preference status mismatch\n1) Confirm customer eligibility and what appears in Profile / CS Hub.\n2) Capture screenshots of app preference + CS Hub preference status.\n3) Escalate to Tech Support using Macro: Ticket Escalated.\n4) Apply Issue Type: Account > Due Date Preference > Preference not saved.\n5) Set SLA to 10 Days per Due Date Preference SLA document.",
+      "cust_msg": "Thank you for contacting Tamara. I have escalated your Due Date Preference case to our specialized technical team. They will review it within 10 Days.",
+      "system_action": "1. Escalate to Tech Support.\n2. Macro: Ticket Escalated.\n3. Issue Type: Account > Due Date Preference > Preference not saved.\n4. SLA: 10 Days.\n5. Status: Working.\n6. Source: https://docs.google.com/document/d/1bjsyr6dclJIIwSoJx8TVYOA3y5_lVVkKcwee7QJKOTA/edit?tab=t.0",
+      "comment_template": "Action: Due Date Preference Escalation\nScenario: CS Hub / app preference status mismatch\nIssue Type: Account > Due Date Preference > Preference not saved\nSLA: 10 Days\nMacro: Ticket Escalated\nStatus: Working",
+      "team": "Tech Support",
+      "sla": "10 Days",
+      "sf_status": "Working",
+      "macro": "Ticket Escalated",
+      "interaction_type": "Messaging;Phone;Email",
+      "issue_category": "Account",
+      "issue_sub_category": "Due Date Preference",
+      "issueType": "Account > Due Date Preference > Preference not saved",
+      "issue_type_leaf": "Preference not saved",
+      "macro_id": "",
+      "macro_lob": "Customer Care",
       "macro_channel": "Email;Phone;Messaging"
     }
   },
@@ -6047,7 +6327,455 @@
     "Tamara Card > Tamara Card Payment > Tamara Card Refund Not Received",
     "Tamara Card > Tamara Card Payment > Tamara Card Transaction Declined",
     "Tamara Card > Tamara Card Payment > Unauthorized Charge"
-  ]
+  ],
+  "slaSources": {
+    "transfersSheetUrl": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+    "transfersSheetId": "1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c",
+    "dueDateDocUrl": "https://docs.google.com/document/d/1bjsyr6dclJIIwSoJx8TVYOA3y5_lVVkKcwee7QJKOTA/edit?tab=t.0",
+    "dueDateDocId": "1bjsyr6dclJIIwSoJx8TVYOA3y5_lVVkKcwee7QJKOTA",
+    "localTransfersPath": "C:\\Users\\gasser.elashry\\Downloads\\Transfers SLA.xlsx",
+    "localDueDatePath": "C:\\Users\\gasser.elashry\\Downloads\\DUE DATE Preference SLA's.docx",
+    "lastAppliedAt": "2026-11-21T09:42:23.778915+00:00",
+    "catalog": [
+      {
+        "source": "transfers_sheet",
+        "row": 2,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Account > ID verification\n\nFor Tahaqaq ID failure",
+        "sla": "5 business days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 3,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Account > Registration & login\n\nFor any sign up/registration issues",
+        "sla": "3 business days                                       5 business days for app issues"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 4,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Account > Registration & login\n\nFor any other login issues",
+        "sla": "3 business days                                       5 business days for app issues"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 5,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Other > About Tamara (General)\n\nFor app issues",
+        "sla": "3 business days                                       5 business days for app issues"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 6,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Other > Feedback > Feedback about Tamara\n\nJailbroken / Rooted Device",
+        "sla": "5 business days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 7,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Refunds and Cancellations > Late Refund > Refund not processed\n\n- Refund has not been triggered.\n- Incorrect refund amount.\n- Loan is not matching the order status (Verify the order and loan status on CS Hub. If the mismatch is confirmed).",
+        "sla": "5 business days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 8,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Smart\n\n- Smart Membership > Statement \n- Smart Membership > How to subscribe\n- Smart Membership > How to unsubscribe\n- Smart Membership > About Tamara Smart Membership & Benefits (Cashback issue)",
+        "sla": "7 days (3 days for multiple charges with no subscription benefit)"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 9,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Due Date Preference\n\n- Account > Due Date Preference> General inquiries\n- Account > Due Date Preference> Preference not saved\n- Account >Due Date Preference > Opt-out or lock issue\n- Account > Due Date Preference> Missing email or SMS\n- Account > Due Date Preference> Wrong due date on new order",
+        "sla": "7 Days - 5 Days - 4 Days - 10 Days           Check the link below to know the SLA: https://docs.google.com/document/d/1bjsyr6dclJIIwSoJx8TVYOA3y5_lVVkKcwee7QJKOTA/edit?tab=t.0"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 10,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "- Payment > Unrecorded charges > Payment not reflected\n- Payment > Unrecorded charges > Payment authorization failed\n- Payment > Unrecorded charges > Other unrecorded charge issues",
+        "sla": "5 business days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 11,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Payment > Other\n\n- Pending dues on the Customer Detail page do not match with Payments tab\n- Order > Placing an Order > In Store - did not receive the payment link SMS\n- Fully paid orders (aptured amount NOT equal to paid amount)\n- Issues while placing an order in store (that are not listed)\n- Issues while placing an order online (that are not listed)\n- Complaints related to paying using wallet credit\n- The third installment is paid before the second\n- For false pending dues/payment reminders\n- Payment > Autocharge > Other\n- Pending dues are in negative\n- Wallet amount issue\n- Payment > Late fee\n- Pay in Full issue",
+        "sla": "5 business days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 12,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Smart Membership > Free Tier > Lavender",
+        "sla": "5 business days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 13,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Account > Passcode",
+        "sla": "5 business days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 14,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Order > Placing an Order > Cannot see order (stuck order)",
+        "sla": "5 days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 15,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Refunds and Cancellations > Incorrect refund amount",
+        "sla": "5 business days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 16,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Refunds and Cancellations > Late Refund > Refund not processed",
+        "sla": "5 business days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 17,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Payment > Unrecognized charge > Duplicate charge",
+        "sla": "5 business days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 18,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Refunds and Cancellations > Wallet refund",
+        "sla": "5 business days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 19,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Order > Placing an Order > Order verification IVR call",
+        "sla": "3 days from the engineering team"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 20,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Refunds and Cancellations > Late Refund > Refund already processed",
+        "sla": "3 business days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 21,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Promotions & Cashback > Cashback\n\nTamara Challenges",
+        "sla": "5 working days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 22,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Account > Registration & login > Didn't receive the login / registration OTP \n\n(Accessing the account)",
+        "sla": "3 business days                                       5 business days for app issues"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 23,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Account > ID verification\n\n( Revoke ID Verification)",
+        "sla": "5 business days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 24,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Account > Registration & login > Didn't receive the login / registration OTP \n\n(Creating an account)",
+        "sla": "3 business days                                       5 business days for app issues"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 25,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Order > Placing an Order > Didn't receive the order OTP",
+        "sla": "3 business days                                       5 business days for app issues"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 26,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Order > Placing an Order > Cannot see order (expired order)",
+        "sla": "7 business days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 27,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Payment > Payment Methods > Card is not accepted",
+        "sla": "7 business days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 28,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Other > Vulnerable Customer > Deceased Customer Case",
+        "sla": "10 business days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 29,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Other > Vulnerable Customer > Customer with total physical disability",
+        "sla": "10 business days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 30,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Payment > Murabha - Pay By Finance > Early Settlement",
+        "sla": "7-10 days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 31,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "- Account > Tamara Health > Grade or Pillar Issue\n- Account > Tamara Health > Technical Issue",
+        "sla": "7 calendar days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 32,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Promotions & Cashback > Cashback",
+        "sla": "1–2 business days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 33,
+        "team": "Tech Support",
+        "lob": "Customer Care",
+        "issue": "Promotions & Cashback > Discount\n\nDeals",
+        "sla": "5 Business Days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 34,
+        "team": "Trust & Safety",
+        "lob": "Customer Care",
+        "issue": "Claims Fraud Flags",
+        "sla": "5 days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 35,
+        "team": "Trust & Safety",
+        "lob": "Customer Care",
+        "issue": "Refunds and Cancellations > Refund Blocked by Merchant",
+        "sla": "5 days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 36,
+        "team": "Trust & Safety",
+        "lob": "Customer Care",
+        "issue": "Account > Account Security > National ID Fraud \n\n(Revoke ID)",
+        "sla": "5 calendar days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 37,
+        "team": "Trust & Safety",
+        "lob": "Customer Care",
+        "issue": "Account > Registration & Login > Phone number already in use\n\n(Phone Number Archiving)",
+        "sla": "5 calendar days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 38,
+        "team": "Trust & Safety",
+        "lob": "Customer Care",
+        "issue": "Payment > Unrecognized charge > Suspected fraud\n\n2. For Payment Fraud Complaints",
+        "sla": "5 calendar days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 39,
+        "team": "Trust & Safety",
+        "lob": "Customer Care",
+        "issue": "Payment > Unrecognized charge > Suspected fraud",
+        "sla": "5 days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 40,
+        "team": "Trust & Safety",
+        "lob": "Customer Care",
+        "issue": "Account > Account Security > National ID Fraud \n\n(Potential fraud, customer didn't recognize the account owner )",
+        "sla": "5 calendar days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 41,
+        "team": "Trust & Safety",
+        "lob": "Customer Care",
+        "issue": "Order > Placing an Order > Declined order\n\n- (Blacklisted Customers) RCF-91 / RCF-243 / RCF-121 / RCF-221\n- (Blacklisted Customers) Shared devices",
+        "sla": "5 calendar days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 42,
+        "team": "Trust & Safety",
+        "lob": "Customer Care",
+        "issue": "Account > Update Account > Change phone number\n\n- Customer new phone number is blacklisted.\n- Customer exceeded their quarterly phone number change limit.",
+        "sla": "5 calendar days"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 43,
+        "team": "Manager Escalation",
+        "lob": "Customer Care",
+        "issue": "According to the customer's issue",
+        "sla": "24 hours"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 44,
+        "team": "Manager Escalation",
+        "lob": "Customer Care",
+        "issue": "Compensation Exception",
+        "sla": "24 hours"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 45,
+        "team": "Credit - Risk",
+        "lob": "Customer Care",
+        "issue": "-Legal and Government > Credit Bureau > Delayed Report \n-Legal and Government > Credit Bureau > Incorrect Reporting\n-Legal and Government > Credit Bureau > Disputed-Order Related Reporting\n-Legal and Government > Credit Bureau > Fraudulent Bureau Entry",
+        "sla": "5 business days."
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 46,
+        "team": "Government Escalation",
+        "lob": "Customer Care",
+        "issue": "Legal and Government > Credit Bureau > Inquiry Update (UAE)",
+        "sla": "24 hours"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 47,
+        "team": "Collections",
+        "lob": "Customer Care",
+        "issue": "Other > Related to Collection agency",
+        "sla": "48 business hours"
+      },
+      {
+        "source": "transfers_sheet",
+        "row": 48,
+        "team": "Cross - Vertical Transfers",
+        "lob": "Customer Care",
+        "issue": "Other > Contact from Customer",
+        "sla": ""
+      },
+      {
+        "source": "due_date_doc",
+        "scenario": "Eligible customer repeatedly cannot see banner with no Profile preference and no post-opt-out block",
+        "issue_type": "Account > Due Date Preference> General inquiries",
+        "sla": "5 Days"
+      },
+      {
+        "source": "due_date_doc",
+        "scenario": "Customer confirmed but preference not saved / Profile empty after successful UI success",
+        "issue_type": "Account > Due Date Preference> Preference not saved",
+        "sla": "4 Days"
+      },
+      {
+        "source": "due_date_doc",
+        "scenario": "New order placed after Confirm still uses wrong / old due date",
+        "issue_type": "Account > Due Date Preference> Wrong due date on new order",
+        "sla": "7 Days"
+      },
+      {
+        "source": "due_date_doc",
+        "scenario": "After opt-out, new order still uses preferred due date",
+        "issue_type": "Account > Due Date Preference > Wrong due date on new order",
+        "sla": "7 Days"
+      },
+      {
+        "source": "due_date_doc",
+        "scenario": "Lock end date wrong, or customer blocked from re-select after lock ended",
+        "issue_type": "Account >Due Date Preference > Opt-out or lock issue",
+        "sla": "5 Days"
+      },
+      {
+        "source": "due_date_doc",
+        "scenario": "Opt-out not available though preference is active / lock rules allow it",
+        "issue_type": "Account > Due Date Preference> Opt-out or lock issue",
+        "sla": "5 Days"
+      },
+      {
+        "source": "due_date_doc",
+        "scenario": "Preference disappeared or changed without customer action",
+        "issue_type": "Account > Due Date Preference> Preference not saved",
+        "sla": "4 Days"
+      },
+      {
+        "source": "due_date_doc",
+        "scenario": "Confirm/opt-out succeeded twice / duplicate conflicting states",
+        "issue_type": "Account > Due Date Preference> Preference not saved",
+        "sla": "5 Days"
+      },
+      {
+        "source": "due_date_doc",
+        "scenario": "Email/SMS never sent and Profile shows saved preference (comms failure)",
+        "issue_type": "Account > Due Date Preference> Missing email or SMS",
+        "sla": "4 Days"
+      },
+      {
+        "source": "due_date_doc",
+        "scenario": "CS Hub / app preference status mismatch",
+        "issue_type": "Account > Due Date Preference> Preference not saved",
+        "sla": "10 Days"
+      }
+    ],
+    "note": "Update Downloads files (or public Google links), then run Sync_SLA_From_Downloads.bat / Sync SLA in Update Hub."
+  }
 }
   </script>
   <script id="tamara-articles-data" type="application/json">
@@ -6316,6 +7044,45 @@ function initData() {
         if (manualTrigger) {
           alert('ℹ️ Remote Google Sheet is private or offline. Make sure "Anyone with the link can view" is enabled on the Remote Feed Sheet, or use "📥 Paste AI Chat Patch".');
         }
+      });
+  }
+
+  function syncSlaSourcesFromLinks() {
+    if (!cmsData) cmsData = {};
+    var src = cmsData.slaSources || {};
+    var sheetId = src.transfersSheetId || '1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c';
+    var statusEl = document.getElementById('sla-sources-status');
+    var transfersA = document.getElementById('sla-link-transfers');
+    var dueA = document.getElementById('sla-link-duedate');
+    if (transfersA && src.transfersSheetUrl) transfersA.href = src.transfersSheetUrl;
+    if (dueA && src.dueDateDocUrl) dueA.href = src.dueDateDocUrl;
+    if (statusEl) statusEl.innerHTML = 'Checking linked Transfers SLA sheet…';
+    var csvUrl = 'https://docs.google.com/spreadsheets/d/' + sheetId + '/export?format=csv&gid=0&_ts=' + Date.now();
+    fetch(csvUrl)
+      .then(function(r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.text();
+      })
+      .then(function(csvText) {
+        if (/ServiceLogin|accounts\.google|document-root/i.test(csvText.slice(0, 500))) {
+          throw new Error('private');
+        }
+        var lines = csvText.split(/\r?\n/).filter(function(l) { return l.trim(); });
+        cmsData.slaSources = cmsData.slaSources || src;
+        cmsData.slaSources.lastRemoteCsvRows = Math.max(0, lines.length - 1);
+        cmsData.slaSources.lastRemoteSyncAt = new Date().toISOString();
+        cmsData.slaSources.lastRemoteCsvPreview = lines.slice(0, 6).join('\n');
+        try { localStorage.setItem('tamara_live_hub_data_v63', JSON.stringify(cmsData)); } catch (e) {}
+        if (statusEl) {
+          statusEl.innerHTML = '✅ Linked sheet reachable (' + cmsData.slaSources.lastRemoteCsvRows + ' data rows). Due Date doc stays linked for reference. For full verified re-apply (5× topic checks), run <strong>Sync_SLA_From_Downloads.bat</strong> after updating the local files.';
+        }
+        alert('Transfers SLA sheet is reachable. Run Sync_SLA_From_Downloads.bat to re-apply with 5× topic verification.');
+      })
+      .catch(function() {
+        if (statusEl) {
+          statusEl.innerHTML = '⚠️ Google links are still private from this browser. Update <code>Transfers SLA.xlsx</code> and <code>DUE DATE Preference SLA\'s.docx</code> in Downloads, then run <strong>Sync_SLA_From_Downloads.bat</strong> in the Atlas package folder.';
+        }
+        alert('Could not read the Google sheet (private/org policy). Use Sync_SLA_From_Downloads.bat with the local files instead.');
       });
   }
 
@@ -10104,6 +10871,7 @@ var officialIssueTypes = DEFAULT_OFFICIAL_ISSUE_TYPES.slice();
   window.toggleQuickPatchDrawer = toggleQuickPatchDrawer;
   window.applyPastedChatPatch = applyPastedChatPatch;
   window.pullRemoteCloudUpdates = pullRemoteCloudUpdates;
+  window.syncSlaSourcesFromLinks = syncSlaSourcesFromLinks;
   window.downloadSelfContainedHtml = downloadSelfContainedHtml;
   window.pushLiveUpdateToServer = pushLiveUpdateToServer;
   window.unlockAgentHub = unlockAgentHub;
