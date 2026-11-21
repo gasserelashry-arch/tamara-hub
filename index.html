@@ -1161,10 +1161,11 @@
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; background:var(--card-bg); padding:12px 18px; border-radius:var(--radius-md); border:1px solid var(--border-soft);">
       <div>
         <h2 style="font-size:16px; font-weight:800; color:var(--text-bright); margin:0;">⚡ Granular SOP &amp; Policy Update Architect</h2>
-        <div style="font-size:11.5px; color:var(--gold-metallic);">Update Macro, Resolution, System Action, Escalation &amp; SLA, or Issue Type individually — or launch Topic 52+</div>
+        <div style="font-size:11.5px; color:var(--gold-metallic);">Update Macro, Resolution, System Action, Escalation &amp; SLA, Issue Type — or use <strong>SLA Manager</strong> to add/edit Transfers SLAs live</div>
       </div>
       <div class="btn-group">
         <button class="sub-btn active" id="btn-agent-mode-form" onclick="window.setAgentMode('form')">📝 Granular Field Editor</button>
+        <button class="sub-btn" id="btn-agent-mode-sla" onclick="window.setAgentMode('sla')">⏱ SLA Manager</button>
         <button class="sub-btn" id="btn-agent-mode-taxonomy" onclick="window.setAgentMode('taxonomy')">📂 Issue Type Taxonomy</button>
         <button class="sub-btn" id="btn-agent-mode-macros" onclick="window.setAgentMode('macros')">💬 Macro Library Updater</button>
         <button class="sub-btn" id="btn-agent-mode-kbashry" onclick="window.setAgentMode('kbashry')">📚 KB Ashry Auto-Sync</button>
@@ -1211,6 +1212,7 @@
                 <option value="resolution">📌 Resolution &amp; Explanation Only (Agent + Customer Script)</option>
                 <option value="system_action">🛠️ System Action Only (CS Panel &amp; Salesforce + Case Comment)</option>
                 <option value="escalation">🚀 Escalation &amp; SLA Only (Team, SLA &amp; Salesforce Status)</option>
+                <option value="sla">⏱ SLA Only (Team + SLA Timing)</option>
                 <option value="issue_type">📂 Issue Type Only (Locked Official Taxonomy)</option>
                 <option value="policy">🛡️ Mandatory Policy Guardrail Banner Only</option>
               </select>
@@ -1332,6 +1334,125 @@
             <div style="margin-top:6px; font-size:11px; color:var(--text-muted);">
               To add or edit presets, open the <strong style="color:var(--accent-green);">📂 Issue Type Taxonomy</strong> tab above.
             </div>
+          </div>
+        </div>
+
+        <!-- MODE: SLA MANAGER (Transfers catalog + node SLA) -->
+        <div id="agent-workspace-sla" style="display:none;">
+          <div style="background:rgba(74,0,130,0.28); border:1.5px solid #e8a017; border-radius:8px; padding:10px 12px; margin-bottom:12px;">
+            <div style="font-size:11px; font-weight:800; color:#f0b429; text-transform:uppercase; margin-bottom:2px;">⏱ SLA Manager — Transfers Authority</div>
+            <div style="font-size:11.5px; color:var(--text-muted); line-height:1.45;">
+              Add or edit escalation SLAs live. Updates the <strong>Transfers SLA</strong> browser catalog and/or a decision-node Team + SLA, then pushes to all agents on the same link.
+            </div>
+          </div>
+
+          <div style="display:flex; gap:12px; margin-bottom:10px; flex-wrap:wrap;">
+            <label style="font-size:11.5px; font-weight:700; color:var(--text-bright); display:flex; align-items:center; gap:5px; cursor:pointer;">
+              <input type="radio" name="sla-mgr-scope" id="sla-scope-catalog-existing" value="catalog_edit" checked onchange="window.toggleSlaManagerScope('catalog_edit')">
+              🔄 Edit Catalog SLA
+            </label>
+            <label style="font-size:11.5px; font-weight:700; color:var(--gold-metallic); display:flex; align-items:center; gap:5px; cursor:pointer;">
+              <input type="radio" name="sla-mgr-scope" id="sla-scope-catalog-new" value="catalog_new" onchange="window.toggleSlaManagerScope('catalog_new')">
+              ✨ Add Catalog SLA
+            </label>
+            <label style="font-size:11.5px; font-weight:700; color:#c4b5fd; display:flex; align-items:center; gap:5px; cursor:pointer;">
+              <input type="radio" name="sla-mgr-scope" id="sla-scope-node" value="node" onchange="window.toggleSlaManagerScope('node')">
+              🎯 Update Node SLA
+            </label>
+          </div>
+
+          <div id="sla-mgr-catalog-existing-wrap" style="margin-bottom:8px;">
+            <label style="font-size:10px; font-weight:800; color:#f0b429; display:block; margin-bottom:2px;">SELECT TRANSFERS SLA ENTRY (<span id="sla-catalog-count-label">0</span>)</label>
+            <select id="sla-mgr-catalog-select" class="sidebar-search" style="margin:0; width:100%; font-size:12px; font-weight:700;" onchange="window.onSlaCatalogSelectChanged()"></select>
+          </div>
+
+          <div id="sla-mgr-node-wrap" style="display:none; margin-bottom:8px;">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+              <div>
+                <label style="font-size:10px; font-weight:800; color:#c4b5fd; display:block; margin-bottom:2px;">TOPIC</label>
+                <select id="sla-mgr-topic-select" class="sidebar-search" style="margin:0; width:100%; font-size:12px;" onchange="window.onSlaMgrTopicChanged()"></select>
+              </div>
+              <div>
+                <label style="font-size:10px; font-weight:800; color:#c4b5fd; display:block; margin-bottom:2px;">OUTCOME / NODE</label>
+                <select id="sla-mgr-node-select" class="sidebar-search" style="margin:0; width:100%; font-size:12px;" onchange="window.onSlaMgrNodeChanged()"></select>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:8px;">
+            <div>
+              <label style="font-size:10px; font-weight:800; color:var(--accent-blue); display:block; margin-bottom:2px;">TEAM</label>
+              <select id="sla-mgr-team" class="sidebar-search" style="margin:0; width:100%; font-size:12px;" onchange="window.updateSlaManagerPreview()">
+                <option value="Tech Support">Tech Support</option>
+                <option value="Trust &amp; Safety">Trust &amp; Safety</option>
+                <option value="Manager Escalation">Manager Escalation</option>
+                <option value="Credit - Risk">Credit - Risk</option>
+                <option value="Government Escalation">Government Escalation</option>
+                <option value="Collections">Collections</option>
+                <option value="Customer Care">Customer Care</option>
+                <option value="Cross - Vertical Transfers">Cross - Vertical Transfers</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size:10px; font-weight:800; color:var(--accent-blue); display:block; margin-bottom:2px;">LOB</label>
+              <input type="text" id="sla-mgr-lob" class="agent-step-input" style="margin:0; font-size:12px;" value="Customer Care" oninput="window.updateSlaManagerPreview()">
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:8px;">
+            <div>
+              <label style="font-size:10px; font-weight:800; color:var(--accent-blue); display:block; margin-bottom:2px;">CATEGORY</label>
+              <input type="text" id="sla-mgr-category" class="agent-step-input" style="margin:0; font-size:12px;" placeholder="e.g. Account / Payment / Order" oninput="window.updateSlaManagerPreview()">
+            </div>
+            <div>
+              <label style="font-size:10px; font-weight:800; color:var(--accent-blue); display:block; margin-bottom:2px;">SITUATION / ISSUE</label>
+              <input type="text" id="sla-mgr-situation" class="agent-step-input" style="margin:0; font-size:12px;" placeholder="e.g. National ID Fraud (Revoke ID)" oninput="window.updateSlaManagerPreview()">
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 120px 140px; gap:8px; margin-bottom:8px;">
+            <div>
+              <label style="font-size:10px; font-weight:800; color:#f0b429; display:block; margin-bottom:2px;">SLA (exact timing text)</label>
+              <input type="text" id="sla-mgr-sla" class="agent-step-input" style="margin:0; font-size:12px; font-weight:700; border-color:#e8a017;" placeholder="e.g. 5 calendar days" list="sla-mgr-presets" oninput="window.updateSlaManagerPreview()">
+              <datalist id="sla-mgr-presets">
+                <option value="Immediate"></option>
+                <option value="24 hours"></option>
+                <option value="48 business hours"></option>
+                <option value="3 business days"></option>
+                <option value="3 business days / 5 business days for app issues"></option>
+                <option value="5 days"></option>
+                <option value="5 business days"></option>
+                <option value="5 calendar days"></option>
+                <option value="7 business days"></option>
+                <option value="7-10 days"></option>
+                <option value="10 business days"></option>
+              </datalist>
+            </div>
+            <div>
+              <label style="font-size:10px; font-weight:800; color:var(--accent-blue); display:block; margin-bottom:2px;">STATUS</label>
+              <select id="sla-mgr-status" class="sidebar-search" style="margin:0; width:100%; font-size:11px;" onchange="window.updateSlaManagerPreview()">
+                <option value="Working" selected>Working</option>
+                <option value="Closed">Closed</option>
+                <option value="Pending Customer">Pending Customer</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size:10px; font-weight:800; color:var(--accent-blue); display:block; margin-bottom:2px;">ALSO UPDATE NODE?</label>
+              <select id="sla-mgr-link-node" class="sidebar-search" style="margin:0; width:100%; font-size:11px;" onchange="window.updateSlaManagerPreview()">
+                <option value="">Catalog only</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="sla-mgr-staging-preview" style="margin-bottom:10px; padding:8px 10px; border-radius:6px; background:rgba(0,0,0,0.28); font-size:12px; color:var(--text-muted);"></div>
+
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button type="button" class="btn-copy" style="flex:1; min-width:180px; padding:11px; font-size:12px; background:linear-gradient(135deg,#4a0082,#7c3aed); color:#ffd54f; border-color:#e8a017;" onclick="window.saveSlaManagerUpdate()">
+              ✅ Save SLA Live
+            </button>
+            <button type="button" id="sla-mgr-delete-btn" class="btn-copy" style="padding:11px 14px; font-size:11.5px; background:#ef4444; color:#fff; border-color:#b91c1c;" onclick="window.deleteSlaCatalogEntry()">
+              🗑 Delete Catalog Entry
+            </button>
           </div>
         </div>
 
@@ -9438,25 +9559,427 @@ var officialIssueTypes = DEFAULT_OFFICIAL_ISSUE_TYPES.slice();
     alert('🗑 Deleted taxonomy preset and pushed live to agents.');
   }
 
+  function getSlaManagerScope() {
+    if (document.getElementById('sla-scope-catalog-new') && document.getElementById('sla-scope-catalog-new').checked) return 'catalog_new';
+    if (document.getElementById('sla-scope-node') && document.getElementById('sla-scope-node').checked) return 'node';
+    return 'catalog_edit';
+  }
+
+  function ensureTransfersCatalog() {
+    if (!cmsData) return [];
+    if (!Array.isArray(cmsData.transfersSlaCatalog)) cmsData.transfersSlaCatalog = [];
+    return cmsData.transfersSlaCatalog;
+  }
+
+  function populateSlaCatalogSelect(preferId) {
+    var sel = document.getElementById('sla-mgr-catalog-select');
+    var countEl = document.getElementById('sla-catalog-count-label');
+    var catalog = ensureTransfersCatalog();
+    if (countEl) countEl.textContent = String(catalog.length);
+    if (!sel) return;
+    var prev = preferId || sel.value;
+    sel.innerHTML = '';
+    catalog.forEach(function(item, idx) {
+      var opt = document.createElement('option');
+      opt.value = item.id || ('idx_' + idx);
+      opt.textContent = (item.team || '-') + ' | ' + (item.sla || '-') + ' | ' + (item.category || '') + ' — ' + (item.situation || item.issueFull || '').slice(0, 70);
+      sel.appendChild(opt);
+    });
+    if (prev && Array.prototype.some.call(sel.options, function(o) { return o.value === prev; })) sel.value = prev;
+  }
+
+  function populateSlaMgrNodeLinkSelect() {
+    var linkSel = document.getElementById('sla-mgr-link-node');
+    if (!linkSel || !cmsData || !cmsData.nodes) return;
+    var prev = linkSel.value;
+    linkSel.innerHTML = '<option value="">Catalog only</option>';
+    Object.keys(cmsData.nodes).sort().forEach(function(nid) {
+      var n = cmsData.nodes[nid] || {};
+      var label = nid + (n.sla ? (' — ' + n.sla) : '');
+      var opt = document.createElement('option');
+      opt.value = nid;
+      opt.textContent = label.slice(0, 90);
+      linkSel.appendChild(opt);
+    });
+    if (prev) linkSel.value = prev;
+  }
+
+  function populateSlaMgrTopicSelect() {
+    var topicSel = document.getElementById('sla-mgr-topic-select');
+    if (!topicSel || !cmsData) return;
+    var prev = topicSel.value;
+    topicSel.innerHTML = '';
+    (cmsData.topics || []).forEach(function(t) {
+      if (t.id === 'transfers_sla') return;
+      var opt = document.createElement('option');
+      opt.value = t.id;
+      opt.textContent = (t.tag || '') + ': ' + t.name;
+      topicSel.appendChild(opt);
+    });
+    if (prev) topicSel.value = prev;
+    onSlaMgrTopicChanged();
+  }
+
+  function collectOutcomeNodesFromTree(topicId) {
+    var ids = [];
+    var seen = {};
+    function walk(nodeKey) {
+      if (!nodeKey || seen[nodeKey]) return;
+      seen[nodeKey] = true;
+      var node = cmsData.nodes[nodeKey];
+      if (!node) return;
+      if (node.type === 'outcome' || node.sla || node.headline || node.system_action) {
+        ids.push(nodeKey);
+      }
+      (node.options || []).forEach(function(o) {
+        if (o.next) walk(o.next);
+      });
+    }
+    var tree = (cmsData.tree || {})[topicId];
+    if (!tree) return ids;
+    Object.keys(tree).forEach(function(stepKey) {
+      var step = tree[stepKey];
+      if (!step) return;
+      (step.options || []).forEach(function(o) {
+        if (o.next) walk(o.next);
+      });
+    });
+    return ids;
+  }
+
+  function onSlaMgrTopicChanged() {
+    var topicSel = document.getElementById('sla-mgr-topic-select');
+    var nodeSel = document.getElementById('sla-mgr-node-select');
+    if (!topicSel || !nodeSel || !cmsData) return;
+    var topicId = topicSel.value;
+    var prev = nodeSel.value;
+    nodeSel.innerHTML = '';
+    var ids = collectOutcomeNodesFromTree(topicId);
+    if (!ids.length) {
+      Object.keys(cmsData.nodes || {}).forEach(function(nid) {
+        var n = cmsData.nodes[nid];
+        if (n && (n.type === 'outcome' || n.sla)) ids.push(nid);
+      });
+      ids = ids.slice(0, 80);
+    }
+    ids.forEach(function(nid) {
+      var n = cmsData.nodes[nid] || {};
+      var opt = document.createElement('option');
+      opt.value = nid;
+      opt.textContent = nid + ' — ' + (n.sla || n.headline || 'no SLA').toString().slice(0, 40);
+      nodeSel.appendChild(opt);
+    });
+    if (prev && Array.prototype.some.call(nodeSel.options, function(o) { return o.value === prev; })) nodeSel.value = prev;
+    onSlaMgrNodeChanged();
+  }
+
+  function onSlaMgrNodeChanged() {
+    var nodeSel = document.getElementById('sla-mgr-node-select');
+    if (!nodeSel || !cmsData) return;
+    var node = cmsData.nodes[nodeSel.value];
+    if (!node) { updateSlaManagerPreview(); return; }
+    var teamEl = document.getElementById('sla-mgr-team');
+    var slaEl = document.getElementById('sla-mgr-sla');
+    var statusEl = document.getElementById('sla-mgr-status');
+    if (teamEl && node.team) {
+      teamEl.value = node.team;
+      if (!Array.prototype.some.call(teamEl.options, function(o) { return o.value === node.team; })) {
+        var opt = document.createElement('option');
+        opt.value = node.team;
+        opt.textContent = node.team;
+        teamEl.appendChild(opt);
+        teamEl.value = node.team;
+      }
+    }
+    if (slaEl) slaEl.value = node.sla || '';
+    if (statusEl && node.sf_status) statusEl.value = node.sf_status;
+    updateSlaManagerPreview();
+  }
+
+  function onSlaCatalogSelectChanged() {
+    var sel = document.getElementById('sla-mgr-catalog-select');
+    var catalog = ensureTransfersCatalog();
+    if (!sel) return;
+    var item = catalog.find(function(c) { return (c.id || '') === sel.value; });
+    if (!item) {
+      var idx = sel.selectedIndex;
+      item = catalog[idx];
+    }
+    if (!item) { updateSlaManagerPreview(); return; }
+    var teamEl = document.getElementById('sla-mgr-team');
+    var lobEl = document.getElementById('sla-mgr-lob');
+    var catEl = document.getElementById('sla-mgr-category');
+    var sitEl = document.getElementById('sla-mgr-situation');
+    var slaEl = document.getElementById('sla-mgr-sla');
+    var statusEl = document.getElementById('sla-mgr-status');
+    if (teamEl) {
+      teamEl.value = item.team || 'Tech Support';
+      if (!Array.prototype.some.call(teamEl.options, function(o) { return o.value === item.team; }) && item.team) {
+        var opt = document.createElement('option');
+        opt.value = item.team;
+        opt.textContent = item.team;
+        teamEl.appendChild(opt);
+        teamEl.value = item.team;
+      }
+    }
+    if (lobEl) lobEl.value = item.lob || 'Customer Care';
+    if (catEl) catEl.value = item.category || '';
+    if (sitEl) sitEl.value = item.situation || '';
+    if (slaEl) slaEl.value = item.sla || '';
+    if (statusEl) statusEl.value = item.status || 'Working';
+    updateSlaManagerPreview();
+  }
+
+  function toggleSlaManagerScope(scope) {
+    scope = scope || getSlaManagerScope();
+    var catWrap = document.getElementById('sla-mgr-catalog-existing-wrap');
+    var nodeWrap = document.getElementById('sla-mgr-node-wrap');
+    var delBtn = document.getElementById('sla-mgr-delete-btn');
+    if (catWrap) catWrap.style.display = (scope === 'catalog_edit') ? 'block' : 'none';
+    if (nodeWrap) nodeWrap.style.display = (scope === 'node') ? 'block' : 'none';
+    if (delBtn) delBtn.style.display = (scope === 'catalog_edit') ? 'inline-flex' : 'none';
+    if (scope === 'catalog_edit') onSlaCatalogSelectChanged();
+    else if (scope === 'catalog_new') {
+      var sitEl = document.getElementById('sla-mgr-situation');
+      var slaEl = document.getElementById('sla-mgr-sla');
+      var catEl = document.getElementById('sla-mgr-category');
+      if (sitEl) sitEl.value = '';
+      if (slaEl) slaEl.value = '';
+      if (catEl) catEl.value = '';
+      updateSlaManagerPreview();
+    } else if (scope === 'node') {
+      populateSlaMgrTopicSelect();
+    }
+  }
+
+  function initSlaManager() {
+    populateSlaCatalogSelect();
+    populateSlaMgrNodeLinkSelect();
+    populateSlaMgrTopicSelect();
+    toggleSlaManagerScope(getSlaManagerScope());
+    updateSlaManagerPreview();
+  }
+
+  function updateSlaManagerPreview() {
+    var preview = document.getElementById('sla-mgr-staging-preview');
+    var badge = document.getElementById('agent-staging-badge');
+    var staging = document.getElementById('agent-staging-diff');
+    var scope = getSlaManagerScope();
+    var team = document.getElementById('sla-mgr-team') ? document.getElementById('sla-mgr-team').value : '';
+    var lob = document.getElementById('sla-mgr-lob') ? document.getElementById('sla-mgr-lob').value : '';
+    var category = document.getElementById('sla-mgr-category') ? document.getElementById('sla-mgr-category').value : '';
+    var situation = document.getElementById('sla-mgr-situation') ? document.getElementById('sla-mgr-situation').value : '';
+    var sla = document.getElementById('sla-mgr-sla') ? document.getElementById('sla-mgr-sla').value : '';
+    var status = document.getElementById('sla-mgr-status') ? document.getElementById('sla-mgr-status').value : '';
+    var linkNode = document.getElementById('sla-mgr-link-node') ? document.getElementById('sla-mgr-link-node').value : '';
+    var scopeLabel = scope === 'catalog_new' ? 'ADD CATALOG SLA' : (scope === 'node' ? 'UPDATE NODE SLA' : 'EDIT CATALOG SLA');
+    var html =
+      '<strong style="color:#f0b429;">' + scopeLabel + '</strong><br>' +
+      '<span style="color:#fff; font-weight:700;">' + team + ' | ' + (sla || '<em>SLA required</em>') + '</span><br>' +
+      '<span style="color:var(--text-muted);">' + (category || '-') + ' — ' + (situation || '-') + ' · LOB ' + lob + ' · Status ' + status + '</span>';
+    if (scope !== 'node' && linkNode) html += '<br><span style="color:#c4b5fd;">Also update node: ' + linkNode + '</span>';
+    if (scope === 'node') {
+      var nodeId = document.getElementById('sla-mgr-node-select') ? document.getElementById('sla-mgr-node-select').value : '';
+      html += '<br><span style="color:#c4b5fd; font-family:monospace;">Node: ' + (nodeId || '-') + '</span>';
+    }
+    if (preview) preview.innerHTML = html;
+    if (badge) badge.innerText = 'SLA Manager: ' + scopeLabel;
+    if (staging) {
+      staging.innerHTML =
+        '<div style="border-bottom:1.5px solid var(--border-soft); padding-bottom:8px; margin-bottom:10px;">' +
+        '<span style="font-size:10px; font-weight:800; color:#f0b429; text-transform:uppercase;">⏱ SLA MANAGER STAGING</span>' +
+        '<h3 style="font-size:14.5px; font-weight:800; color:#fff; margin:2px 0;">' + scopeLabel + '</h3></div>' +
+        '<div style="background:rgba(74,0,130,0.35); padding:10px; border-radius:6px; border-left:3px solid #e8a017;">' +
+        '<div style="font-size:12px; color:#fff; font-weight:700; margin-bottom:4px;">Team: ' + team + '</div>' +
+        '<div style="font-size:13px; color:#ffd54f; font-weight:800; margin-bottom:6px;">SLA: ' + (sla || '—') + '</div>' +
+        '<div style="font-size:11.5px; color:#e2e8f0;">Category: ' + (category || '—') + '</div>' +
+        '<div style="font-size:11.5px; color:#e2e8f0;">Situation: ' + (situation || '—') + '</div>' +
+        '<div style="font-size:11.5px; color:#e2e8f0;">LOB: ' + lob + ' · Status: ' + status + '</div>' +
+        '</div>' +
+        '<div style="margin-top:10px; font-size:11px; color:var(--text-muted);">Click <strong>Save SLA Live</strong> in the left panel (admin password required).</div>';
+    }
+  }
+
+  function persistSlaManager(reasonLabel) {
+    if (!cmsData) return;
+    try { localStorage.setItem('tamara_live_hub_data_v63', JSON.stringify(cmsData)); } catch (e) {}
+    populateSlaCatalogSelect();
+    populateSlaMgrNodeLinkSelect();
+    if (typeof populateTransfersSlaDropdowns === 'function') {
+      try { populateTransfersSlaDropdowns(); } catch (e2) {}
+    }
+    pushLiveUpdateToServer(reasonLabel || 'SLA Manager Update');
+  }
+
+  function saveSlaManagerUpdate(passwordConfirmed) {
+    if (!isAgentHubUnlocked) {
+      alert('🔒 Unlock the AI Update Hub with your admin password first.');
+      return;
+    }
+    if (!passwordConfirmed) {
+      requestConfirmedSave('Enter your admin password to save this SLA live:', function() {
+        saveSlaManagerUpdate(true);
+      });
+      return;
+    }
+    var scope = getSlaManagerScope();
+    var team = (document.getElementById('sla-mgr-team') || {}).value || '';
+    var lob = (document.getElementById('sla-mgr-lob') || {}).value || 'Customer Care';
+    var category = ((document.getElementById('sla-mgr-category') || {}).value || '').trim();
+    var situation = ((document.getElementById('sla-mgr-situation') || {}).value || '').trim();
+    var sla = ((document.getElementById('sla-mgr-sla') || {}).value || '').trim();
+    var status = (document.getElementById('sla-mgr-status') || {}).value || 'Working';
+    var linkNode = (document.getElementById('sla-mgr-link-node') || {}).value || '';
+    if (!sla) {
+      alert('SLA timing text is required (e.g. 5 calendar days).');
+      return;
+    }
+    if (!team) {
+      alert('Team is required.');
+      return;
+    }
+
+    if (scope === 'node') {
+      var nodeId = (document.getElementById('sla-mgr-node-select') || {}).value || '';
+      if (!nodeId || !cmsData.nodes[nodeId]) {
+        alert('Select a valid outcome node.');
+        return;
+      }
+      cmsData.nodes[nodeId].team = team;
+      cmsData.nodes[nodeId].sla = sla;
+      cmsData.nodes[nodeId].sf_status = status;
+      cmsData.nodes[nodeId]._sla_authority = 'Update Hub SLA Manager';
+      cmsData.nodes[nodeId]._sla_updated_at = new Date().toISOString();
+      persistSlaManager('Node SLA Update: ' + nodeId);
+      updateSlaManagerPreview();
+      alert('✅ Node SLA saved live: ' + nodeId + ' → ' + sla);
+      return;
+    }
+
+    if (scope === 'catalog_new' && !situation && !category) {
+      alert('Enter at least a Category or Situation for the new SLA entry.');
+      return;
+    }
+
+    var catalog = ensureTransfersCatalog();
+    if (scope === 'catalog_new') {
+      var maxRow = 0;
+      catalog.forEach(function(c) { if ((c.sheetRow || 0) > maxRow) maxRow = c.sheetRow; });
+      var newId = 'TRF_HUB_' + Date.now();
+      var entry = {
+        id: newId,
+        sheetRow: maxRow + 1,
+        team: team,
+        lob: lob,
+        category: category || 'General',
+        situation: situation || category || 'Custom SLA',
+        issueFull: (category ? (category + ' > ') : '') + (situation || 'Custom SLA'),
+        sla: sla,
+        status: status,
+        macro: 'Ticket Escalated',
+        escalationTemplate: 'PENDING — Escalation template will be shared by admin and linked here.\nSource: Update Hub SLA Manager'
+      };
+      catalog.push(entry);
+      if (linkNode && cmsData.nodes[linkNode]) {
+        cmsData.nodes[linkNode].team = team;
+        cmsData.nodes[linkNode].sla = sla;
+        cmsData.nodes[linkNode].sf_status = status;
+        cmsData.nodes[linkNode]._sla_authority = 'Update Hub SLA Manager';
+        cmsData.nodes[linkNode]._sla_updated_at = new Date().toISOString();
+      }
+      persistSlaManager('Added Transfers Catalog SLA');
+      populateSlaCatalogSelect(newId);
+      document.getElementById('sla-scope-catalog-existing').checked = true;
+      toggleSlaManagerScope('catalog_edit');
+      alert('✅ New Transfers SLA catalog entry added and pushed live.');
+      return;
+    }
+
+    // catalog_edit
+    var sel = document.getElementById('sla-mgr-catalog-select');
+    var item = catalog.find(function(c) { return (c.id || '') === (sel ? sel.value : ''); });
+    if (!item && sel) item = catalog[sel.selectedIndex];
+    if (!item) {
+      alert('Select a catalog entry to edit.');
+      return;
+    }
+    item.team = team;
+    item.lob = lob;
+    item.category = category || item.category || 'General';
+    item.situation = situation || item.situation || '';
+    item.issueFull = (item.category ? (item.category + (item.situation ? (' > ' + item.situation) : '')) : item.situation) || item.issueFull;
+    item.sla = sla;
+    item.status = status;
+    item._updatedVia = 'Update Hub SLA Manager';
+    item._updatedAt = new Date().toISOString();
+    if (linkNode && cmsData.nodes[linkNode]) {
+      cmsData.nodes[linkNode].team = team;
+      cmsData.nodes[linkNode].sla = sla;
+      cmsData.nodes[linkNode].sf_status = status;
+      cmsData.nodes[linkNode]._sla_authority = 'Update Hub SLA Manager';
+      cmsData.nodes[linkNode]._sla_updated_at = new Date().toISOString();
+    }
+    persistSlaManager('Edited Transfers Catalog SLA: ' + (item.id || ''));
+    populateSlaCatalogSelect(item.id);
+    updateSlaManagerPreview();
+    alert('✅ Catalog SLA updated live: ' + sla);
+  }
+
+  function deleteSlaCatalogEntry(passwordConfirmed) {
+    if (!isAgentHubUnlocked) {
+      alert('🔒 Unlock the AI Update Hub with your admin password first.');
+      return;
+    }
+    if (getSlaManagerScope() !== 'catalog_edit') {
+      alert('Switch to Edit Catalog SLA to delete an entry.');
+      return;
+    }
+    if (!passwordConfirmed) {
+      requestConfirmedSave('Enter your admin password to delete this catalog SLA entry:', function() {
+        deleteSlaCatalogEntry(true);
+      });
+      return;
+    }
+    var catalog = ensureTransfersCatalog();
+    var sel = document.getElementById('sla-mgr-catalog-select');
+    if (!sel || !sel.value) return;
+    var idx = catalog.findIndex(function(c) { return (c.id || '') === sel.value; });
+    if (idx < 0) idx = sel.selectedIndex;
+    if (idx < 0 || idx >= catalog.length) {
+      alert('Select a catalog entry to delete.');
+      return;
+    }
+    if (!confirm('Delete this Transfers SLA catalog entry?\n\n' + (catalog[idx].situation || catalog[idx].id))) return;
+    catalog.splice(idx, 1);
+    persistSlaManager('Deleted Transfers Catalog SLA');
+    populateSlaCatalogSelect();
+    onSlaCatalogSelectChanged();
+    alert('🗑 Catalog SLA entry deleted and pushed live.');
+  }
+
   function setAgentMode(mode) {
     var formBox = document.getElementById('agent-workspace-form');
+    var slaBox = document.getElementById('agent-workspace-sla');
     var taxBox = document.getElementById('agent-workspace-taxonomy');
     var macBox = document.getElementById('agent-workspace-macros');
     var kbBox = document.getElementById('agent-workspace-kbashry');
     var chatBox = document.getElementById('agent-workspace-chat');
     var btnForm = document.getElementById('btn-agent-mode-form');
+    var btnSla = document.getElementById('btn-agent-mode-sla');
     var btnTax = document.getElementById('btn-agent-mode-taxonomy');
     var btnMac = document.getElementById('btn-agent-mode-macros');
     var btnKb = document.getElementById('btn-agent-mode-kbashry');
     var btnChat = document.getElementById('btn-agent-mode-chat');
 
     if (formBox) formBox.style.display = (mode === 'form') ? 'block' : 'none';
+    if (slaBox) slaBox.style.display = (mode === 'sla') ? 'block' : 'none';
     if (taxBox) taxBox.style.display = (mode === 'taxonomy') ? 'block' : 'none';
     if (macBox) macBox.style.display = (mode === 'macros') ? 'block' : 'none';
     if (kbBox) kbBox.style.display = (mode === 'kbashry') ? 'block' : 'none';
     if (chatBox) chatBox.style.display = (mode === 'chat') ? 'block' : 'none';
 
     if (btnForm) btnForm.classList.toggle('active', mode === 'form');
+    if (btnSla) btnSla.classList.toggle('active', mode === 'sla');
     if (btnTax) btnTax.classList.toggle('active', mode === 'taxonomy');
     if (btnMac) btnMac.classList.toggle('active', mode === 'macros');
     if (btnKb) btnKb.classList.toggle('active', mode === 'kbashry');
@@ -9464,6 +9987,8 @@ var officialIssueTypes = DEFAULT_OFFICIAL_ISSUE_TYPES.slice();
 
     if (mode === 'form') {
       updateFormStagingPreview();
+    } else if (mode === 'sla') {
+      initSlaManager();
     } else if (mode === 'taxonomy') {
       initOfficialIssueTypes();
       refreshOfficialIssueTypeDropdowns();
@@ -10965,6 +11490,8 @@ var officialIssueTypes = DEFAULT_OFFICIAL_ISSUE_TYPES.slice();
       showFieldBoxes(['system']);
     } else if (selectedField === 'escalation') {
       showFieldBoxes(['escalation']);
+    } else if (selectedField === 'sla') {
+      showFieldBoxes(['escalation']);
     } else if (selectedField === 'issue_type') {
       showFieldBoxes(['issuetype']);
     } else if (selectedField === 'policy') {
@@ -10994,6 +11521,7 @@ var officialIssueTypes = DEFAULT_OFFICIAL_ISSUE_TYPES.slice();
       'resolution': 'RESOLUTION & EXPLANATION ONLY',
       'system_action': 'SYSTEM ACTION & COMMENT ONLY',
       'escalation': 'ESCALATION & SLA ONLY',
+      'sla': 'SLA ONLY (TEAM + TIMING)',
       'issue_type': 'ISSUE TYPE ONLY',
       'policy': 'POLICY GUARDRAIL BANNER ONLY'
     };
@@ -11080,7 +11608,7 @@ var officialIssueTypes = DEFAULT_OFFICIAL_ISSUE_TYPES.slice();
       html += '<pre style="font-size:10px; background:#000; padding:6px; border-radius:4px; color:#cbd5e1; white-space:pre-wrap;">' + (commentTpl || '-') + '</pre></div>';
     }
 
-    if (isNewScope || nodeId === '__NEW_BRANCH__' || selectedField === 'all' || selectedField === 'escalation') {
+    if (isNewScope || nodeId === '__NEW_BRANCH__' || selectedField === 'all' || selectedField === 'escalation' || selectedField === 'sla') {
       html += '<div style="margin-bottom:8px; background:rgba(167,139,250,0.08); padding:8px 10px; border-radius:6px; border-left:3px solid #a78bfa;">';
       html += '<strong style="font-size:10.5px; color:#c4b5fd; display:block;">🚀 3. ESCALATION &amp; SLA</strong>';
       if (origNode && (origNode.team !== team || origNode.sla !== sla || origNode.sf_status !== sfStatus)) {
@@ -11365,10 +11893,14 @@ var officialIssueTypes = DEFAULT_OFFICIAL_ISSUE_TYPES.slice();
         if (actionText) targetNode.system_action = actionText;
         if (commentTpl) targetNode.comment_template = commentTpl;
       }
-      if (selectedField === 'all' || selectedField === 'escalation') {
+      if (selectedField === 'all' || selectedField === 'escalation' || selectedField === 'sla') {
         if (team) targetNode.team = team;
         if (sla) targetNode.sla = sla;
-        if (sfStatus) targetNode.sf_status = sfStatus;
+        if (selectedField !== 'sla' && sfStatus) targetNode.sf_status = sfStatus;
+        if (selectedField === 'sla' || selectedField === 'escalation') {
+          targetNode._sla_authority = 'Update Hub SLA Manager';
+          targetNode._sla_updated_at = new Date().toISOString();
+        }
       }
       if (selectedField === 'all' || selectedField === 'macro') {
         if (macro) {
@@ -12244,6 +12776,14 @@ var officialIssueTypes = DEFAULT_OFFICIAL_ISSUE_TYPES.slice();
   window.copyCaseComment = copyCaseComment;
   window.copyElem = copyElem;
   window.setAgentMode = setAgentMode;
+  window.toggleSlaManagerScope = toggleSlaManagerScope;
+  window.initSlaManager = initSlaManager;
+  window.onSlaCatalogSelectChanged = onSlaCatalogSelectChanged;
+  window.onSlaMgrTopicChanged = onSlaMgrTopicChanged;
+  window.onSlaMgrNodeChanged = onSlaMgrNodeChanged;
+  window.updateSlaManagerPreview = updateSlaManagerPreview;
+  window.saveSlaManagerUpdate = saveSlaManagerUpdate;
+  window.deleteSlaCatalogEntry = deleteSlaCatalogEntry;
   window.toggleUpdateScope = toggleUpdateScope;
   window.populateAgentMacroSelectOptions = populateAgentMacroSelectOptions;
   window.onAgentMacroDropdownChanged = onAgentMacroDropdownChanged;
