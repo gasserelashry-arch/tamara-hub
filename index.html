@@ -1855,13 +1855,13 @@
     "reactivate_account": "RISK CLEARANCE: Confirm all overdue balances are 100% settled. Review account suspension reason flags in CS Hub before lifting locks.",
     "contact_merchant": "OPERATIONAL BOUNDARY: Consumer front-line agents must NOT resolve portal, settlement, or store integration issues for merchants directly. Merchants calling Customer Care must be guided to contact Partner Care via email (Partner.care@tamara.co) or directly through their Tamara Partner Portal / Partner App in-app support chat.",
     "fraud_ads": "SECURITY PROTOCOL: Reassure customer that official promos only occur on verified channels. Collect ad URLs/phone numbers for Trust & Safety.",
-    "incorrect_refund": "For fee-policy questions, open Refunds and Cancellations and choose BNPL or BNPL+ first (policies are separated).\nFor amount mismatches after a refund posted, use Operational issue > Incorrect refund amount (Tech Support, 5 BD).\n",
+    "incorrect_refund": "NORMAL REFUND CASES — OPS ONLY\n• Do NOT answer BNPL/BNPL+ cool-off, CPF, or Murabaha fee retention here.\n• Fee policy → topic BNPL & BNPL+ Refunds (pick BNPL or BNPL+ first).\n• Ops escalations: Tech Support 5 BD (not triggered / incorrect / loan mismatch) or Trust & Safety 5 days (blocked by merchant).\n• Always collect: Customer ID, Order ID, BNPL/BNPL+, full/partial, cool-off flag, screenshots, timestamp.",
     "merchant_fraud": "IMMEDIATE ESCALATION: If merchant is unresponsive, phantom, or systematically capturing unfulfilled orders, immediately escalate to Trust & Safety.",
     "postpone_dues": "MANDATORY POLICY & COMPLIANCE GUARDRAIL:\n• Step 1 — No Manual Postponement: Tamara does NOT manually postpone or reschedule installment due dates for customers.\n• Step 2 — Reassure on Fees: Inform the customer clearly that there are NO extra or late fees applied on overdue installments.\n• Step 3 — Impact & Due Date Preference Feature: Explain that keeping an unpaid balance affects their account eligibility/limit until settled, and direct them to use the in-app Due Date Preference feature (once announced/available on their profile) if they wish to customize future billing schedules.",
     "shariah": "COMPLIANCE PRINCIPLE: Tamara operates via Shariah-certified Murabaha (commodity sales) with fixed, transparent fee margins and no compounding interest.",
     "nid_fraud": "ANTI-PHISHING EMBARGO: Never reveal account holder names, phone numbers, or order info until the customer uploads a clear National ID snippet.",
     "credit_bureau": "REPORTING CYCLE: SIMAH/bureau reporting updates on scheduled weekly batch cycles. Allow 5 business days after full settlement.",
-    "murabha_bnpl_plus": "STRICT NON-DISCLOSURE: Never disclose internal risk models or the minimum salary requirement of AED 2,500. Monthly installments are due on the 1st.",
+    "murabha_bnpl_plus": "Cancellation / cool-off refund fee questions → topic BNPL & BNPL+ Refunds → pick BNPL+.\nSTRICT NON-DISCLOSURE: Never disclose internal risk models or the minimum salary requirement of AED 2,500. Monthly installments are due on the 1st.",
     "cant_see_six": "TIER & STORE AUDIT: Check if merchant enabled extended plans (Si6, Si9, Si12) and whether basket value meets tenure thresholds.",
     "cant_see_split_pif": "DYNAMIC RISK EVALUATION: Real-time credit limits assess risk per transaction. Probe order status: if Active/Checkout, split limits are exhausted; if Overdue balances exist, settle them first to restore split availability.",
     "cant_see_tamara": "MERCHANT GATEWAY CHECK: Verify store integration status and whether cart total falls within permitted min/max thresholds.",
@@ -1881,7 +1881,7 @@
     "unrecorded_charges": "UNRECORDED CHARGES & PAYMENT TECHNICAL ISSUES: When a customer reports a deduction that is not showing, check CS Panel: If payment reflected -> Reassure customer and explain payment allocation. If payment NOT reflected -> Check attempt status in CS Panel/gateway: If 'Captured' -> Collect bank statement with RRN/Auth code and escalate directly to Tech Support (SLA: 5 Days, Macro: Ticket Escalated, Status: Working). If 'Declined' -> Tamara did not capture funds; explain temporary bank pre-authorization hold releasing in 5-14 business days.\n\nBEFORE ESCALATING — Unrecognized Charges\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep1: In the payment tab, confirm if the payment is reflected. Step2: In the payment tab, confirm if the payment is reflected. | → OutcomeStep 3: Did you find the payment on the CS panel? | → IF YES | IF NOStep 4: Copy the customer's ID and paste it in the CS hub payment dashboard. Step 5:- In the Attempt date field, click “Custom”, then add the specific Date/Time of the payment the customer is inquiring about, click Apply. - Use the Attempt paid amount field if needed, and add the payment amount.\nStep 6: | → | IF YES | IF NOUse either the customer’s ID/phone number from the Payment Dashboard, and search in the CS panel. After locating the customer’s account, payment and order details, if the transaction was made on the customer's account, reply back to the customer using:\n• If the reporter requested you to remove the card from the other customer’s account, reply back using:\n• Macro → Cannot Remove Card From Another AccountIssue type (CX) | Payment > Unrecognized charge > Suspected fraudSubmit as → ClosedStep 7 : → | IF YES | IF NOIf the reporter requested you to remove the card from the other customer’s account, reply back using:\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
     "voided_payment": "HOLD CLEARANCE: Uncaptured pre-authorization holds drop off within 5 to 14 business days depending on issuing bank.",
     "promo_cashback": "WALLET REWARDS: Pay In Full cashback rewards credit to Tamara Wallet within 14 business days post-delivery.",
-    "refunds_cancellations": "REFUNDS — BNPL AND BNPL+ ARE SEPARATED\n1) Always choose BNPL vs BNPL+ first — fee rules differ (Murabaha applies to BNPL+ only).\n2) Cool-off = 14 days from order approval.\n3) BNPL: Principal always; CPF only full+within cool-off; no Murabaha.\n4) BNPL+: Principal + CPF rules + Murabaha/Service Fee (due always; accrued only full+within cool-off).\n5) Partial: CPF never refunded; BNPL+ profit not refunded on partial.\n6) Ops escalations → Tech Support 5 BD (not triggered / incorrect / loan mismatch) or T&S 5 days (blocked by merchant).",
+    "refunds_cancellations": "REFUNDS ROUTER\n• Normal ops → Normal Refund Cases\n• BNPL/BNPL+ fee policy → BNPL & BNPL+ Refunds (forced product split)\nNever answer Murabaha/CPF cool-off from the ops desk.",
     "smart_membership": "BENEFIT RECAP: 19 AED/month (UAE), fee waivers on eligible plans, 1% cashback up to 250 AED/mo, unified statements.",
     "tamara_card": "CARD DISPUTES: Virtual/physical card declines require POS gateway log inspection by Tamara Card Ops.",
     "lavender_membership": "VIP TIER: Exclusive priority handling for top-tier loyalty members; tag cases with priority routing.",
@@ -1895,7 +1895,7 @@
     "manager_escalation": "MANAGER ESCALATION POLICY: Agents must apply de-escalation techniques twice before transferring. Supervisor callback request SLA is 2 hours. Regulatory complaints require immediate supervisor routing.",
     "profanity_process": "PROFANITY & ABUSIVE CONDUCT PROCESS: Enforce a 3-strike professional boundary policy. 1st offense: verbal warning. 2nd offense: final warning. 3rd offense: state call termination script and disconnect immediately.",
     "payment_link_feature": "PAYMENT LINK FEATURE: Generate secure payment links from CS Hub for customers with overdue dues or checkout failures. Links expire in 24 hours. Never read card details over the phone.",
-    "customer_processing_fees": "CUSTOMER PROCESSING FEES (CPF): In UAE, BNPL+ applies 1% CPF capped at 200 AED (+ 5% VAT). In KSA, standard installment processing fees apply transparently with zero compounding interest.",
+    "customer_processing_fees": "CPF refundability on cancellation → BNPL & BNPL+ Refunds (pick BNPL or BNPL+).\nCUSTOMER PROCESSING FEES (CPF): In UAE, BNPL+ applies 1% CPF capped at 200 AED (+ 5% VAT). In KSA, standard installment processing fees apply transparently with zero compounding interest.",
     "pay_next_month": "PAY NEXT MONTH (PNM): Allows shoppers to buy now and pay in a single lump sum at the end of the calendar month. Default due date is the last day of the month.",
     "compensation_policy": "CUSTOMER COMPENSATION POLICY: Compensation vouchers or wallet goodwill are issued exclusively for confirmed Tamara system errors or SLA breaches. Merchant stock issues are ineligible.",
     "aecb_support": "MANDATORY POLICY (UAE AECB - Al Etihad Credit Bureau): AECB records update on scheduled weekly batch cycles (allow up to 5–7 business days after full settlement). Never disclose internal credit scoring formulas. If a customer disputes an unrecognized AECB record under their Emirates ID, verify identity and collect ID + AECB report snippet before escalating to Trust & Safety / Credit Bureau Operations.",
@@ -1904,8 +1904,9 @@
     "about_tamara_general": "TRANSFERS SLA AUTHORITY\n• Team: Tech Support\n• SLA: 3 business days / 5 business days for app issues\n• Sheet row: 5\n• Source: https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
     "feedback_jailbroken": "TRANSFERS SLA AUTHORITY\n• Team: Tech Support\n• SLA: 5 business days\n• Sheet row: 6\n• Source: https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
     "account_passcode": "TRANSFERS SLA AUTHORITY\n• Team: Tech Support\n• SLA: 5 business days\n• Sheet row: 13\n• Source: https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
-    "murabha_early_settlement": "Early settlement fee refundability and partial-return-after-settlement also live under Refunds and Cancellations > BNPL+ path (separated from BNPL). Use this topic for settlement calculation / payment Murabaha early settlement escalations.\nTRANSFERS SLA AUTHORITY\n• Team: Tech Support\n• SLA: 7-10 days\n• Sheet row: 30\n• Source: https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
-    "pre_approved_amount": "PRE-APPROVED AMOUNT / PRE-CHECK (KB ASHRY)\n1) Always start by selecting the Pre-Approval / Pre-Check STATUS from CS Hub + app.\n2) Care cannot override Tamara risk engine eligibility.\n3) Do NOT say: rejected/declined (for false eligibility), system error, dispute decision, risk model details, merchant bug, or promise immediate availability.\n4) Issue Type (CX): Order > Placing an Order > Maximum/minimum purchase limit (or Can't see Tamara when display issue).\n5) Escalations → Tech Support, SLA 7 business days, Macro Ticket Escalated."
+    "murabha_early_settlement": "Early settlement refund / fee refundability → BNPL & BNPL+ Refunds (BNPL+ path). Ops amount failures → Normal Refund Cases.\nEarly settlement fee refundability and partial-return-after-settlement also live under Refunds and Cancellations > BNPL+ path (separated from BNPL). Use this topic for settlement calculation / payment Murabaha early settlement escalations.\nTRANSFERS SLA AUTHORITY\n• Team: Tech Support\n• SLA: 7-10 days\n• Sheet row: 30\n• Source: https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+    "pre_approved_amount": "PRE-APPROVED AMOUNT / PRE-CHECK (KB ASHRY)\n1) Always start by selecting the Pre-Approval / Pre-Check STATUS from CS Hub + app.\n2) Care cannot override Tamara risk engine eligibility.\n3) Do NOT say: rejected/declined (for false eligibility), system error, dispute decision, risk model details, merchant bug, or promise immediate availability.\n4) Issue Type (CX): Order > Placing an Order > Maximum/minimum purchase limit (or Can't see Tamara when display issue).\n5) Escalations → Tech Support, SLA 7 business days, Macro Ticket Escalated.",
+    "bnpl_bnpl_plus_refunds": "BNPL & BNPL+ REFUNDS — SEPARATED POLICIES\n1) ALWAYS pick BNPL or BNPL+ before answering fees.\n2) Cool-off = 14 days from order approval.\n3) BNPL: Principal always; CPF only full+within cool-off; NO Murabaha.\n4) BNPL+: Principal + CPF rules + Murabaha/Service Fee (due always; accrued only full+within cool-off).\n5) Partial: CPF never; BNPL+ Murabaha not refunded on partial.\n6) Ops failures → Normal Refund Cases (Tech 5 BD / T&S 5 days)."
   },
   "topics": [
     {
@@ -2003,8 +2004,8 @@
     {
       "id": "incorrect_refund",
       "tag": "Topic 09",
-      "name": "Incorrect Refund Amount",
-      "desc": "Merchant deduction disputes, non-refundable Murabaha/processing fee explanations, and audits."
+      "name": "Normal Refund Cases",
+      "desc": "Operational refunds only: incorrect amount, late/not triggered, wallet, blocked, merchant disputes. Fee/cool-off policy → use BNPL & BNPL+ Refunds (search also: Incorrect Refund Amount)."
     },
     {
       "id": "merchant_fraud",
@@ -2142,7 +2143,7 @@
       "id": "refunds_cancellations",
       "tag": "Topic 35",
       "name": "Refunds and Cancellations",
-      "desc": "Organized refund desk: BNPL and BNPL+ policies are SEPARATED. Start by product path, then cool-off/cancel status, then resolve or escalate."
+      "desc": "Router: Normal Refund Cases (ops) OR BNPL & BNPL+ Refunds (separated fee policies). Pick the desk first for 100% accuracy."
     },
     {
       "id": "smart_membership",
@@ -2263,6 +2264,13 @@
       "tag": "Topic NEW",
       "name": "Murabha — Early Settlement",
       "desc": "Payment > Murabha - Pay By Finance > Early Settlement. Transfers SLA: 7-10 days (Tech Support)."
+    },
+    {
+      "id": "bnpl_bnpl_plus_refunds",
+      "tag": "Topic 59",
+      "name": "BNPL & BNPL+ Refunds",
+      "desc": "Separated refund fee policies. MUST pick BNPL or BNPL+ first — Murabaha applies to BNPL+ only. Ops failures → Normal Refund Cases.",
+      "pinned": false
     }
   ],
   "tree": {
@@ -2671,15 +2679,47 @@
     },
     "incorrect_refund": {
       "step1": {
-        "prompt": "What is the nature of the refund amount dispute?",
+        "prompt": "Normal Refund Cases — operational issues only (fee/cool-off policy → redirect to BNPL & BNPL+ Refunds):",
         "options": [
           {
-            "text": "BNPL+ order refunded after 14-day cooling-off window (Fees retained)",
-            "next": "REF_POST_COOLING"
+            "text": "Incorrect refund amount (posted wrong) → Tech Support",
+            "next": "NR_INCORRECT_ESC"
           },
           {
-            "text": "Merchant processed an unauthorized partial deduction on return",
-            "next": "REF_MERCHANT_DISPUTE"
+            "text": "Refund not triggered / late / not processed → Tech Support",
+            "next": "NR_NOT_TRIGGERED"
+          },
+          {
+            "text": "Loan not matching order status → Tech Support",
+            "next": "NR_LOAN_MISMATCH"
+          },
+          {
+            "text": "Refund already processed — explain",
+            "next": "NR_ALREADY_PROCESSED"
+          },
+          {
+            "text": "Wallet refund / missing wallet credit",
+            "next": "NR_WALLET"
+          },
+          {
+            "text": "Refund blocked by merchant → Trust & Safety",
+            "next": "NR_BLOCKED"
+          },
+          {
+            "text": "Merchant unauthorized partial deduction / dispute",
+            "next": "NR_MERCHANT_DISPUTE"
+          },
+          {
+            "text": "Merchant cannot process refund on portal",
+            "next": "NR_MERCHANT_UNABLE"
+          },
+          {
+            "text": "When will I receive my refund? (timeline check)",
+            "next": "NR_TIMELINE"
+          },
+          {
+            "text": "This is a BNPL / BNPL+ fee or cool-off policy question → open BNPL & BNPL+ Refunds",
+            "next": "NR_REDIRECT_POLICY"
           }
         ]
       }
@@ -3087,134 +3127,15 @@
     },
     "refunds_cancellations": {
       "step1": {
-        "prompt": "Select the refund path (BNPL and BNPL+ policies are SEPARATED to avoid mixing fee rules):",
+        "prompt": "Refunds and Cancellations — choose the correct desk (do not mix):",
         "options": [
           {
-            "text": "A. BNPL (Pay Later / Pay by Finance BNPL) — refund policy",
-            "next": "step_bnpl"
+            "text": "A. Normal refund case (incorrect / late / wallet / blocked / merchant) → Normal Refund Cases",
+            "next": "RR_TO_NORMAL"
           },
           {
-            "text": "B. BNPL+ (Murabaha / Pay by Finance BNPL+) — refund policy",
-            "next": "step_bnpl_plus"
-          },
-          {
-            "text": "C. Operational issue (not triggered / incorrect / already processed / wallet / blocked)",
-            "next": "step_ops"
-          },
-          {
-            "text": "D. When will I receive my refund? / timeline check",
-            "next": "REF_TIMELINE"
-          },
-          {
-            "text": "E. Merchant says they cannot process refund on portal",
-            "next": "REF_MERCHANT_UNABLE"
-          }
-        ]
-      },
-      "step_bnpl": {
-        "prompt": "BNPL refund policy (NO Murabaha fee). Select cool-off / cancellation status:",
-        "options": [
-          {
-            "text": "Full cancellation WITHIN 14-day cool-off",
-            "next": "REF_BNPL_FULL_WITHIN"
-          },
-          {
-            "text": "Full cancellation AFTER cool-off",
-            "next": "REF_BNPL_FULL_AFTER"
-          },
-          {
-            "text": "Partial cancellation (any time)",
-            "next": "REF_BNPL_PARTIAL"
-          },
-          {
-            "text": "Explain cool-off period (BNPL)",
-            "next": "REF_BNPL_COOLOFF_EXPLAIN"
-          },
-          {
-            "text": "Is processing fee refundable? (BNPL)",
-            "next": "REF_BNPL_CPF_QUESTION"
-          },
-          {
-            "text": "BNPL policy overview (vs BNPL+)",
-            "next": "REF_BNPL_POLICY_OVERVIEW"
-          },
-          {
-            "text": "Operational failure on a BNPL refund",
-            "next": "step_ops"
-          }
-        ]
-      },
-      "step_bnpl_plus": {
-        "prompt": "BNPL+ refund policy (includes Murabaha/Service Fee). Select cool-off / cancellation status:",
-        "options": [
-          {
-            "text": "Full cancellation WITHIN 14-day cool-off",
-            "next": "REF_BNPLP_FULL_WITHIN"
-          },
-          {
-            "text": "Full cancellation AFTER cool-off",
-            "next": "REF_BNPLP_FULL_AFTER"
-          },
-          {
-            "text": "Partial cancellation (any time)",
-            "next": "REF_BNPLP_PARTIAL"
-          },
-          {
-            "text": "Explain cool-off period (BNPL+)",
-            "next": "REF_BNPLP_COOLOFF_EXPLAIN"
-          },
-          {
-            "text": "Is processing fee refundable? (BNPL+)",
-            "next": "REF_BNPLP_CPF_QUESTION"
-          },
-          {
-            "text": "Murabaha / Service Fee after cancellation",
-            "next": "REF_BNPLP_MURABAHA_EXPLAIN"
-          },
-          {
-            "text": "Partial return AND early settlement already used",
-            "next": "REF_BNPLP_EARLY_SETTLE_PARTIAL"
-          },
-          {
-            "text": "Early settlement fee refundability",
-            "next": "REF_BNPLP_EARLY_SETTLE_FEE"
-          },
-          {
-            "text": "BNPL+ policy overview (vs BNPL)",
-            "next": "REF_BNPLP_POLICY_OVERVIEW"
-          },
-          {
-            "text": "Operational failure on a BNPL+ refund",
-            "next": "step_ops"
-          }
-        ]
-      },
-      "step_ops": {
-        "prompt": "Operational refund issue — select the case:",
-        "options": [
-          {
-            "text": "Refund has not been triggered → Tech Support",
-            "next": "REF_ESC_NOT_TRIGGERED"
-          },
-          {
-            "text": "Incorrect refund amount → Tech Support",
-            "next": "REF_ESC_INCORRECT"
-          },
-          {
-            "text": "Loan not matching order status → Tech Support",
-            "next": "REF_ESC_LOAN_MISMATCH"
-          },
-          {
-            "text": "Refund already processed — explain",
-            "next": "REF_ALREADY_PROCESSED"
-          },
-          {
-            "text": "Wallet refund",
-            "next": "REF_WALLET_REFUND"
-          },
-          {
-            "text": "Refund blocked by merchant → Trust & Safety",
-            "next": "REF_BLOCKED_MERCHANT"
+            "text": "B. BNPL or BNPL+ fee / cool-off / what will be refunded → BNPL & BNPL+ Refunds",
+            "next": "RR_TO_POLICY"
           }
         ]
       }
@@ -3825,6 +3746,111 @@
           {
             "text": "Payment plan options mismatch vs pre-qual",
             "next": "PAA_ESC_PLAN_MISMATCH"
+          }
+        ]
+      }
+    },
+    "bnpl_bnpl_plus_refunds": {
+      "step1": {
+        "prompt": "BNPL & BNPL+ Refunds — you MUST pick the product first (policies are SEPARATED):",
+        "options": [
+          {
+            "text": "A. BNPL (Pay Later / Pay by Finance BNPL) — refund policy (NO Murabaha)",
+            "next": "step_bnpl"
+          },
+          {
+            "text": "B. BNPL+ (Murabaha / Pay by Finance BNPL+) — refund policy",
+            "next": "step_bnpl_plus"
+          },
+          {
+            "text": "C. Not sure which product — identify on CS Hub first",
+            "next": "BP_IDENTIFY"
+          },
+          {
+            "text": "D. Operational failure (not triggered / incorrect / blocked / wallet) → Normal Refund Cases",
+            "next": "BP_REDIRECT_OPS"
+          }
+        ]
+      },
+      "step_bnpl": {
+        "prompt": "BNPL refund policy (NO Murabaha fee). Select cool-off / cancellation status:",
+        "options": [
+          {
+            "text": "Full cancellation WITHIN 14-day cool-off",
+            "next": "BP_BNPL_FULL_WITHIN"
+          },
+          {
+            "text": "Full cancellation AFTER cool-off",
+            "next": "BP_BNPL_FULL_AFTER"
+          },
+          {
+            "text": "Partial cancellation (any time)",
+            "next": "BP_BNPL_PARTIAL"
+          },
+          {
+            "text": "Explain cool-off period (BNPL)",
+            "next": "BP_BNPL_COOLOFF"
+          },
+          {
+            "text": "Is processing fee refundable? (BNPL)",
+            "next": "BP_BNPL_CPF"
+          },
+          {
+            "text": "Early settlement fee refundability (BNPL)",
+            "next": "BP_BNPL_ES_FEE"
+          },
+          {
+            "text": "BNPL policy overview",
+            "next": "BP_BNPL_OVERVIEW"
+          },
+          {
+            "text": "Operational failure → Normal Refund Cases",
+            "next": "BP_REDIRECT_OPS"
+          }
+        ]
+      },
+      "step_bnpl_plus": {
+        "prompt": "BNPL+ refund policy (includes Murabaha/Service Fee). Select cool-off / cancellation status:",
+        "options": [
+          {
+            "text": "Full cancellation WITHIN 14-day cool-off",
+            "next": "BP_PLUS_FULL_WITHIN"
+          },
+          {
+            "text": "Full cancellation AFTER cool-off",
+            "next": "BP_PLUS_FULL_AFTER"
+          },
+          {
+            "text": "Partial cancellation (any time)",
+            "next": "BP_PLUS_PARTIAL"
+          },
+          {
+            "text": "Explain cool-off period (BNPL+)",
+            "next": "BP_PLUS_COOLOFF"
+          },
+          {
+            "text": "Is processing fee refundable? (BNPL+)",
+            "next": "BP_PLUS_CPF"
+          },
+          {
+            "text": "Murabaha / Service Fee after cancellation",
+            "next": "BP_PLUS_MURABAHA"
+          },
+          {
+            "text": "Partial return AND early settlement already used",
+            "next": "BP_PLUS_ES_PARTIAL"
+          },
+          {
+            "text": "Early settlement fee refundability (BNPL+)",
+            "next": "BP_PLUS_ES_FEE"
+          },
+          {
+            "text": "BNPL+ policy overview",
+            "next": "BP_PLUS_OVERVIEW"
+          },
+          {
+            "text": "Operational failure → Normal Refund Cases",
+            "next": "BP_REDIRECT_OPS"
           }
         ]
       }
@@ -7925,6 +7951,492 @@
       "sf_status": "Working",
       "_kb_source": "KB Ashry — Pay by Finance BNPL/BNPL+ Refund Policy (separated)",
       "escalation_template": "BEFORE ESCALATING — Refund Blocked by Merchant (Trust & Safety)\nSource: Transfers SLA\n\nRequired steps / info to collect:\n• Customer ID / Order ID\n• Merchant name\n• Evidence refund is blocked by merchant\n• Screenshots / portal notes\n• Macro: Ticket Escalated\n• Issue Type: Refunds and Cancellations > Refund Blocked by Merchant\n• Submit as: Working\n• SLA: 5 days (Trust & Safety)"
+    },
+    "NR_INCORRECT_ESC": {
+      "type": "outcome",
+      "headline": "Incorrect refund amount → Tech Support",
+      "agent_expl": "Operational dispute: amount posted is wrong vs expected. Collect checklist; escalate Tech Support. Do not invent cool-off fee answers — if customer asks fee rules, send to BNPL & BNPL+ Refunds.",
+      "cust_msg": "I will escalate the incorrect refund amount to Tech Support for investigation. Please keep your ticket number for follow-up.",
+      "system_action": "Escalate Tech Support. Issue: Refunds and Cancellations > Incorrect refund amount. Macro Ticket Escalated. Working. SLA 5 business days.",
+      "comment_template": "Escalation: Incorrect refund amount\nTeam Tech Support | SLA 5 BD",
+      "macro": "Ticket Escalated",
+      "issueType": "Refunds and Cancellations > Incorrect refund amount",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "Incorrect refund amount",
+      "team": "Tech Support",
+      "sla": "5 business days",
+      "sf_status": "Working",
+      "_kb_source": "KB Ashry + Transfers SLA",
+      "escalation_template": "BEFORE ESCALATING — Normal Refund Cases (Tech Support)\nSource: KB Ashry Edge Cases + Transfers SLA\n\nRequired in case comment:\n• Customer ID\n• Order ID and order type (BNPL / BNPL+)\n• Cancellation type (full or partial)\n• Description (not triggered / incorrect amount / loan-order mismatch)\n• Screenshot (customer and/or CS Hub)\n• Timestamp\n• Within or after 14-day cool-off\n• Macro: Ticket Escalated | Submit as: Working | SLA: 5 business days (Tech Support)\n\nEscalate when: refund not triggered | incorrect amount | loan ≠ order status (confirmed).\n\nFEE POLICY QUESTIONS: do NOT answer Murabaha/CPF cool-off rules here — open topic\n\"BNPL & BNPL+ Refunds\" and pick BNPL or BNPL+ first."
+    },
+    "NR_NOT_TRIGGERED": {
+      "type": "outcome",
+      "headline": "Refund not triggered / late → Tech Support",
+      "agent_expl": "KB Edge Case: refund has not been triggered. Verify CS Hub then escalate Tech Support with full checklist.",
+      "cust_msg": "The refund has not been triggered on our side yet, so I will escalate this to Tech Support.",
+      "system_action": "Issue: Refunds and Cancellations > Late Refund > Refund not processed. Escalate Tech Support. Working. SLA 5 BD.",
+      "comment_template": "Escalation: Refund not triggered\nTeam Tech Support | SLA 5 BD",
+      "macro": "Ticket Escalated",
+      "issueType": "Refunds and Cancellations > Late Refund > Refund not processed",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "Late Refund",
+      "team": "Tech Support",
+      "sla": "5 business days",
+      "sf_status": "Working",
+      "_kb_source": "KB Ashry + Transfers SLA",
+      "escalation_template": "BEFORE ESCALATING — Normal Refund Cases (Tech Support)\nSource: KB Ashry Edge Cases + Transfers SLA\n\nRequired in case comment:\n• Customer ID\n• Order ID and order type (BNPL / BNPL+)\n• Cancellation type (full or partial)\n• Description (not triggered / incorrect amount / loan-order mismatch)\n• Screenshot (customer and/or CS Hub)\n• Timestamp\n• Within or after 14-day cool-off\n• Macro: Ticket Escalated | Submit as: Working | SLA: 5 business days (Tech Support)\n\nEscalate when: refund not triggered | incorrect amount | loan ≠ order status (confirmed).\n\nFEE POLICY QUESTIONS: do NOT answer Murabaha/CPF cool-off rules here — open topic\n\"BNPL & BNPL+ Refunds\" and pick BNPL or BNPL+ first."
+    },
+    "NR_LOAN_MISMATCH": {
+      "type": "outcome",
+      "headline": "Loan not matching order status → Tech Support",
+      "agent_expl": "Confirm mismatch on CS Hub, then escalate Tech Support (KB Edge Case 3).",
+      "cust_msg": "There is a mismatch between the loan and order status. I will escalate this to Tech Support.",
+      "system_action": "Confirm on CS Hub. Escalate Tech Support with checklist. Working. SLA 5 BD.",
+      "comment_template": "Escalation: Loan/order mismatch\nTeam Tech Support | SLA 5 BD",
+      "macro": "Ticket Escalated",
+      "issueType": "Refunds and Cancellations > Late Refund > Refund not processed",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "Late Refund",
+      "team": "Tech Support",
+      "sla": "5 business days",
+      "sf_status": "Working",
+      "_kb_source": "KB Ashry + Transfers SLA",
+      "escalation_template": "BEFORE ESCALATING — Normal Refund Cases (Tech Support)\nSource: KB Ashry Edge Cases + Transfers SLA\n\nRequired in case comment:\n• Customer ID\n• Order ID and order type (BNPL / BNPL+)\n• Cancellation type (full or partial)\n• Description (not triggered / incorrect amount / loan-order mismatch)\n• Screenshot (customer and/or CS Hub)\n• Timestamp\n• Within or after 14-day cool-off\n• Macro: Ticket Escalated | Submit as: Working | SLA: 5 business days (Tech Support)\n\nEscalate when: refund not triggered | incorrect amount | loan ≠ order status (confirmed).\n\nFEE POLICY QUESTIONS: do NOT answer Murabaha/CPF cool-off rules here — open topic\n\"BNPL & BNPL+ Refunds\" and pick BNPL or BNPL+ first."
+    },
+    "NR_ALREADY_PROCESSED": {
+      "type": "outcome",
+      "headline": "Refund already processed — explain",
+      "agent_expl": "Refund already processed on Tamara. Explain adjustment. If customer disputes the fee policy behind the amount, redirect to BNPL & BNPL+ Refunds. If amount is system-wrong, use Incorrect amount escalate.",
+      "cust_msg": "The refund has already been processed. Installments may have been adjusted based on the cancellation. If you believe the amount itself is wrong, we can escalate; if you need fee-policy explanation, we use the BNPL / BNPL+ refunds topic.",
+      "system_action": "Issue: Refunds and Cancellations > Late Refund > Refund already processed. Close if explained; else escalate incorrect amount.",
+      "comment_template": "Resolution: Refund already processed explained",
+      "macro": "BNPL+ (Partial refund) - adjusted amount more than what’s paid",
+      "issueType": "Refunds and Cancellations > Late Refund > Refund already processed",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "Late Refund",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry + Transfers SLA"
+    },
+    "NR_WALLET": {
+      "type": "outcome",
+      "headline": "Wallet refund",
+      "agent_expl": "Wallet refund destination / missing wallet credit. Guide wallet check; escalate Tech if amount missing.",
+      "cust_msg": "Some refunds post to the Tamara wallet depending on payment method and timing. I will help verify the wallet balance and next steps.",
+      "system_action": "Issue: Refunds and Cancellations > Wallet refund. Escalate Tech if wallet credit missing. Working. SLA 5 BD when escalating.",
+      "comment_template": "Check/Escalation: Wallet refund",
+      "macro": "Ticket Escalated",
+      "issueType": "Refunds and Cancellations > Wallet refund",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "Wallet refund",
+      "team": "Tech Support",
+      "sla": "5 business days",
+      "sf_status": "Working",
+      "_kb_source": "KB Ashry + Transfers SLA",
+      "escalation_template": "BEFORE ESCALATING — Normal Refund Cases (Tech Support)\nSource: KB Ashry Edge Cases + Transfers SLA\n\nRequired in case comment:\n• Customer ID\n• Order ID and order type (BNPL / BNPL+)\n• Cancellation type (full or partial)\n• Description (not triggered / incorrect amount / loan-order mismatch)\n• Screenshot (customer and/or CS Hub)\n• Timestamp\n• Within or after 14-day cool-off\n• Macro: Ticket Escalated | Submit as: Working | SLA: 5 business days (Tech Support)\n\nEscalate when: refund not triggered | incorrect amount | loan ≠ order status (confirmed).\n\nFEE POLICY QUESTIONS: do NOT answer Murabaha/CPF cool-off rules here — open topic\n\"BNPL & BNPL+ Refunds\" and pick BNPL or BNPL+ first."
+    },
+    "NR_BLOCKED": {
+      "type": "outcome",
+      "headline": "Refund blocked by merchant → Trust & Safety",
+      "agent_expl": "Transfers: Refund Blocked by Merchant → Trust & Safety, 5 days.",
+      "cust_msg": "If the refund is blocked by the merchant, this needs Trust & Safety review. I will escalate with the required details.",
+      "system_action": "Escalate Trust & Safety. Issue: Refunds and Cancellations > Refund Blocked by Merchant. Working. SLA 5 days.",
+      "comment_template": "Escalation: Refund blocked by merchant\nTeam Trust & Safety | SLA 5 days",
+      "macro": "Ticket Escalated",
+      "issueType": "Refunds and Cancellations > Refund Blocked by Merchant",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "Refund Blocked by Merchant",
+      "team": "Trust & Safety",
+      "sla": "5 days",
+      "sf_status": "Working",
+      "_kb_source": "KB Ashry + Transfers SLA",
+      "escalation_template": "BEFORE ESCALATING — Refund Blocked by Merchant (Trust & Safety)\n• Customer ID / Order ID / Merchant name\n• Evidence refund blocked by merchant + screenshots\n• Macro: Ticket Escalated | Issue: Refund Blocked by Merchant\n• Submit as: Working | SLA: 5 days (Trust & Safety)"
+    },
+    "NR_MERCHANT_DISPUTE": {
+      "type": "outcome",
+      "headline": "Merchant unauthorized partial deduction / dispute",
+      "agent_expl": "Merchant processed an unauthorized or unexpected deduction on return. Collect evidence (order, return, amounts). May escalate Tech (incorrect amount) or T&S if merchant-blocked pattern.",
+      "cust_msg": "I will review the deduction against the return on our system. Please share order details and any merchant communication or screenshots.",
+      "system_action": "Collect evidence. If amount wrong → Tech (Refunds and Cancellations > Incorrect refund amount). If blocked → T&S.",
+      "comment_template": "Investigation: Merchant deduction dispute\nEvidence requested",
+      "macro": "Ticket Escalated",
+      "issueType": "Refunds and Cancellations > Incorrect refund amount",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "Incorrect refund amount",
+      "team": "Tech Support",
+      "sla": "5 business days",
+      "sf_status": "Working",
+      "_kb_source": "KB Ashry + Transfers SLA",
+      "escalation_template": "BEFORE ESCALATING — Normal Refund Cases (Tech Support)\nSource: KB Ashry Edge Cases + Transfers SLA\n\nRequired in case comment:\n• Customer ID\n• Order ID and order type (BNPL / BNPL+)\n• Cancellation type (full or partial)\n• Description (not triggered / incorrect amount / loan-order mismatch)\n• Screenshot (customer and/or CS Hub)\n• Timestamp\n• Within or after 14-day cool-off\n• Macro: Ticket Escalated | Submit as: Working | SLA: 5 business days (Tech Support)\n\nEscalate when: refund not triggered | incorrect amount | loan ≠ order status (confirmed).\n\nFEE POLICY QUESTIONS: do NOT answer Murabaha/CPF cool-off rules here — open topic\n\"BNPL & BNPL+ Refunds\" and pick BNPL or BNPL+ first."
+    },
+    "NR_MERCHANT_UNABLE": {
+      "type": "outcome",
+      "headline": "Merchant cannot process refund on portal",
+      "agent_expl": "Ask merchant to retry Partner Portal; collect error screenshot. System error → Tech; blocked → T&S.",
+      "cust_msg": "Please ask the merchant to retry via the Partner Portal and share a screenshot of any error so we can escalate correctly.",
+      "system_action": "Collect merchant error screenshot. Route Tech or T&S.",
+      "comment_template": "Resolution: Merchant unable — evidence requested",
+      "macro": "Ticket Escalated",
+      "issueType": "Refunds and Cancellations > How to return or cancel an order or item",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "How to return or cancel an order or item",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry + Transfers SLA"
+    },
+    "NR_TIMELINE": {
+      "type": "outcome",
+      "headline": "When will I receive my refund? (ops check)",
+      "agent_expl": "Verify order and loan on CS Hub. If not triggered or mismatch → escalate via ops paths. Fee composition questions → BNPL & BNPL+ Refunds.",
+      "cust_msg": "Refund timing depends on the merchant cancellation action and payment method. I will verify the order and loan status on our system.",
+      "system_action": "Verify CS Hub. Escalate if needed. Fee policy → BNPL & BNPL+ Refunds topic.",
+      "comment_template": "Check: Refund timeline / CS Hub verify",
+      "macro": "BNPL+ - Refunds (KSA)",
+      "issueType": "Refunds and Cancellations > How to return or cancel an order or item",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "How to return or cancel an order or item",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry + Transfers SLA"
+    },
+    "NR_REDIRECT_POLICY": {
+      "type": "outcome",
+      "headline": "Redirect — fee / cool-off / BNPL or BNPL+ policy question",
+      "agent_expl": "Open topic: BNPL & BNPL+ Refunds. Step 1 — pick BNPL or BNPL+ (policies are separated). Do not answer fee retention from Normal Refund Cases. Normal Refund Cases must not resolve Murabaha or processing-fee retention. Accuracy requires product-specific policy topic.",
+      "cust_msg": "Your question is about refund fee policy (cool-off / processing fee / Murabaha). I will follow the BNPL or BNPL+ refund policy path so the answer matches your product.",
+      "system_action": "STOP answering fee rules here. Open BNPL & BNPL+ Refunds → Step 1 pick BNPL or BNPL+.",
+      "comment_template": "Redirect: Normal Refund Cases → BNPL & BNPL+ Refunds\nReason: fee/cool-off policy",
+      "macro": "BNPL+ - Refunds (KSA)",
+      "issueType": "Refunds and Cancellations > How to return or cancel an order or item",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "How to return or cancel an order or item",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry + Transfers SLA"
+    },
+    "BP_IDENTIFY": {
+      "type": "outcome",
+      "headline": "Identify BNPL vs BNPL+ on CS Hub",
+      "agent_expl": "Check CS Hub / order type: Pay by Finance BNPL vs BNPL+ (Murabaha). Then return to Step 1 and pick the matching path. Never guess fee rules without product type.",
+      "cust_msg": "I need to confirm whether your order is BNPL or BNPL+ on our system so the refund fee rules are applied correctly — the two products have different policies.",
+      "system_action": "Identify product on CS Hub → restart Step 1 with A or B.",
+      "comment_template": "Action: Identify BNPL vs BNPL+ then continue policy path",
+      "macro": "BNPL+ - Refunds (KSA)",
+      "issueType": "Refunds and Cancellations > How to return or cancel an order or item",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "How to return or cancel an order or item",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry + Transfers SLA"
+    },
+    "BP_REDIRECT_OPS": {
+      "type": "outcome",
+      "headline": "Redirect — operational refund failure",
+      "agent_expl": "Open topic: Normal Refund Cases (Incorrect Refund Amount). Use operational paths (not triggered / incorrect / blocked / wallet).",
+      "cust_msg": "This looks like an operational refund issue (not triggered, incorrect amount, or blocked). I will follow the Normal Refund Cases path.",
+      "system_action": "Open Normal Refund Cases for ops escalate paths.",
+      "comment_template": "Redirect: BNPL & BNPL+ Refunds → Normal Refund Cases",
+      "macro": "Ticket Escalated",
+      "issueType": "Refunds and Cancellations > Incorrect refund amount",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "Incorrect refund amount",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry + Transfers SLA"
+    },
+    "BP_BNPL_OVERVIEW": {
+      "type": "outcome",
+      "headline": "BNPL refund policy overview (no Murabaha)",
+      "agent_expl": "BNPL only: Principal always refunded (full or proportional). Processing fee follows cool-off (full cancel within 14 days only). There is NO Murabaha/Service Fee on BNPL — do not use BNPL+ Murabaha language.",
+      "cust_msg": "For BNPL orders, the principal is refunded. The processing fee is refundable only on a full cancellation within the 14-day cool-off. BNPL does not include Murabaha fees.",
+      "system_action": "Issue: Refunds and Cancellations > How to return or cancel an order or item. Submit Closed. Product locked: BNPL.",
+      "comment_template": "Resolution: BNPL policy overview\nProduct: BNPL | No Murabaha",
+      "macro": "BNPL+ - Refunds (KSA)",
+      "issueType": "Refunds and Cancellations > How to return or cancel an order or item",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "How to return or cancel an order or item",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry BNPL refund flow (separated)"
+    },
+    "BP_BNPL_FULL_WITHIN": {
+      "type": "outcome",
+      "headline": "BNPL — Full cancellation WITHIN cool-off",
+      "agent_expl": "BNPL full within 14 days from approval: Principal full + Processing fee full. No Murabaha on BNPL.",
+      "cust_msg": "Because this BNPL full cancellation is within the 14-day cool-off, the principal and processing fee are refundable.",
+      "system_action": "Confirm Approve / cool-off end / cancel dates. Issue: Refunds and Cancellations > How to return or cancel an order or item. Closed.",
+      "comment_template": "Resolution: BNPL full within cool-off\nPrincipal+CPF | No Murabaha",
+      "macro": "BNPL+ - Refunds (KSA)",
+      "issueType": "Refunds and Cancellations > How to return or cancel an order or item",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "How to return or cancel an order or item",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry + Transfers SLA"
+    },
+    "BP_BNPL_FULL_AFTER": {
+      "type": "outcome",
+      "headline": "BNPL — Full cancellation AFTER cool-off",
+      "agent_expl": "BNPL full after cool-off: Principal refunded. Processing fee NOT refunded. No Murabaha on BNPL.",
+      "cust_msg": "Your BNPL principal will be refunded. The processing fee is not refundable after the 14-day cool-off.",
+      "system_action": "Confirm dates after cool-off. Issue: Refunds and Cancellations > How to return or cancel an order or item. Closed.",
+      "comment_template": "Resolution: BNPL full after cool-off\nPrincipal yes / CPF no | No Murabaha",
+      "macro": "BNPL+ - Refunds (KSA)",
+      "issueType": "Refunds and Cancellations > How to return or cancel an order or item",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "How to return or cancel an order or item",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry + Transfers SLA"
+    },
+    "BP_BNPL_PARTIAL": {
+      "type": "outcome",
+      "headline": "BNPL — Partial cancellation (any time)",
+      "agent_expl": "BNPL partial anytime: Principal of cancelled portion + reschedule. Processing fee NEVER refunded for partial. No Murabaha on BNPL.",
+      "cust_msg": "For a partial BNPL return, only the cancelled principal portion is refunded and installments are adjusted. The processing fee is not refunded on partial cancellations.",
+      "system_action": "Issue: Refunds and Cancellations > How to return or cancel an order or item or Refunds and Cancellations > Late Refund > Refund already processed. Closed.",
+      "comment_template": "Resolution: BNPL partial\nPrincipal portion / CPF never | No Murabaha",
+      "macro": "BNPL+ (Partial refund) - adjusted amount more than what’s paid",
+      "issueType": "Refunds and Cancellations > Late Refund > Refund already processed",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "Late Refund",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry + Transfers SLA"
+    },
+    "BP_BNPL_COOLOFF": {
+      "type": "outcome",
+      "headline": "BNPL — Cool-off period explanation",
+      "agent_expl": "Cool-off = 14 days from order approval. BNPL: CPF reversible only on full cancel within window. No Murabaha on BNPL.",
+      "cust_msg": "The cool-off period is 14 days from order approval. For BNPL, the processing fee is refundable only on a full cancellation within that window.",
+      "system_action": "Issue: Refunds and Cancellations > How to return or cancel an order or item. Closed.",
+      "comment_template": "Resolution: BNPL cool-off explained | No Murabaha",
+      "macro": "BNPL+ - Refunds (KSA)",
+      "issueType": "Refunds and Cancellations > How to return or cancel an order or item",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "How to return or cancel an order or item",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry + Transfers SLA"
+    },
+    "BP_BNPL_CPF": {
+      "type": "outcome",
+      "headline": "BNPL — Is processing fee refundable?",
+      "agent_expl": "CPF refundable only on full cancellation within 14-day cool-off. Never for partial or after cool-off. No Murabaha on BNPL.",
+      "cust_msg": "The processing fee is refundable only if the full BNPL order is cancelled within 14 days of approval. It is not refundable for partial cancellations or after cool-off.",
+      "system_action": "Issue: Refunds and Cancellations > How to return or cancel an order or item. Closed.",
+      "comment_template": "Resolution: BNPL CPF refundability | No Murabaha",
+      "macro": "BNPL+ - Refunds (KSA)",
+      "issueType": "Refunds and Cancellations > How to return or cancel an order or item",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "How to return or cancel an order or item",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry + Transfers SLA"
+    },
+    "BP_BNPL_ES_FEE": {
+      "type": "outcome",
+      "headline": "BNPL — Early settlement fee refundability",
+      "agent_expl": "Early settlement fee waived if ES before cool-off; not refunded after cool-off. Applies BNPL & BNPL+ per KB — explain without Murabaha for BNPL path.",
+      "cust_msg": "The early settlement fee is waived if early settlement is within cool-off. After cool-off, the early settlement fee is not refunded.",
+      "system_action": "Explain ES fee rule. Settlement calc issues may use Murabha Early Settlement topic / Tech SLA.",
+      "comment_template": "Resolution: BNPL early settlement fee rule | No Murabaha",
+      "macro": "Early settlement refunds (KSA)",
+      "issueType": "Payment > Murabha - Pay By Finance > Early Settlement",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "Murabha - Pay By Finance",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry + Transfers SLA"
+    },
+    "BP_PLUS_OVERVIEW": {
+      "type": "outcome",
+      "headline": "BNPL+ refund policy overview (includes Murabaha)",
+      "agent_expl": "BNPL+ only: Principal + Processing fee cool-off rules + Murabaha/Service Fee. Due/overdue Murabaha always charged. Accrued Murabaha reversed only during cool-off on FULL cancellations. Partial: Murabaha not refunded; reschedule. Do not use BNPL-only answers.",
+      "cust_msg": "For BNPL+ orders, refunds follow principal and processing-fee rules plus Murabaha/service fee handling based on cool-off timing. This differs from standard BNPL.",
+      "system_action": "Use BNPL+ macros. Issue: Refunds and Cancellations > How to return or cancel an order or item. Product locked: BNPL+.",
+      "comment_template": "Resolution: BNPL+ policy overview\nProduct: BNPL+ | Murabaha applies",
+      "macro": "BNPL+ - Refunds (KSA)",
+      "issueType": "Refunds and Cancellations > How to return or cancel an order or item",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "How to return or cancel an order or item",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry + Transfers SLA"
+    },
+    "BP_PLUS_FULL_WITHIN": {
+      "type": "outcome",
+      "headline": "BNPL+ — Full cancellation WITHIN cool-off",
+      "agent_expl": "BNPL+ full within cool-off: Principal full + CPF full + Accrued Murabaha/Service Fee reversed. Due/overdue Murabaha always charged when due exists.",
+      "cust_msg": "Because this full BNPL+ cancellation is within the 14-day cool-off, principal and processing fee are refundable, and accrued Murabaha/service fee is reversed per policy.",
+      "system_action": "Confirm key dates. Macro BNPL+ - Refunds (KSA/UAE). Issue: Refunds and Cancellations > How to return or cancel an order or item.",
+      "comment_template": "Resolution: BNPL+ full within cool-off\nPrincipal+CPF+accrued Murabaha",
+      "macro": "BNPL+ - Refunds (KSA)",
+      "issueType": "Refunds and Cancellations > How to return or cancel an order or item",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "How to return or cancel an order or item",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry + Transfers SLA"
+    },
+    "BP_PLUS_FULL_AFTER": {
+      "type": "outcome",
+      "headline": "BNPL+ — Full cancellation AFTER cool-off",
+      "agent_expl": "BNPL+ full after cool-off: Principal refunded. CPF not refunded. Accrued Murabaha charged / not refunded; due Murabaha payable; paid Murabaha not refunded.",
+      "cust_msg": "After cool-off on BNPL+, the principal is refunded but the processing fee and accrued Murabaha/service fee are not refundable. Due Murabaha remains payable as applicable.",
+      "system_action": "Macro BNPL+ - Refunds (KSA/UAE). Issue: Refunds and Cancellations > How to return or cancel an order or item. Explain days used for accrued Murabaha.",
+      "comment_template": "Resolution: BNPL+ full after cool-off\nPrincipal yes / CPF no / Murabaha charged",
+      "macro": "BNPL+ - Refunds (KSA)",
+      "issueType": "Refunds and Cancellations > How to return or cancel an order or item",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "How to return or cancel an order or item",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry + Transfers SLA"
+    },
+    "BP_PLUS_PARTIAL": {
+      "type": "outcome",
+      "headline": "BNPL+ — Partial cancellation (any time)",
+      "agent_expl": "BNPL+ partial anytime: Principal cancelled portion + reschedule. CPF never refunded. Murabaha: reschedule; accrued not refunded; customer may pay due+accrued.",
+      "cust_msg": "For a partial BNPL+ return, installments are adjusted for the cancelled portion. Processing fee is not refunded, and Murabaha/service fee is not refundable on partial cancellations.",
+      "system_action": "Macro BNPL+ (Partial refund) - adjusted amount more than what’s paid. Issue: Refunds and Cancellations > Late Refund > Refund already processed or Refunds and Cancellations > How to return or cancel an order or item.",
+      "comment_template": "Resolution: BNPL+ partial cancellation",
+      "macro": "BNPL+ (Partial refund) - adjusted amount more than what’s paid",
+      "issueType": "Refunds and Cancellations > Late Refund > Refund already processed",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "Late Refund",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry + Transfers SLA"
+    },
+    "BP_PLUS_MURABAHA": {
+      "type": "outcome",
+      "headline": "BNPL+ — Murabaha / Service Fee after cancellation",
+      "agent_expl": "Due Profit always charged. Accrued Profit refundable only within cool-off for FULL cancellations. Partial: Murabaha non-refundable.",
+      "cust_msg": "Due Murabaha profit is always charged. Accrued profit is reversible only on a full cancellation within cool-off. For partial cancellations, profit is not refundable.",
+      "system_action": "Issue: Refunds and Cancellations > How to return or cancel an order or item. Closed.",
+      "comment_template": "Resolution: BNPL+ Murabaha fee explanation",
+      "macro": "BNPL+ - Refunds (KSA)",
+      "issueType": "Refunds and Cancellations > How to return or cancel an order or item",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "How to return or cancel an order or item",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry + Transfers SLA"
+    },
+    "BP_PLUS_COOLOFF": {
+      "type": "outcome",
+      "headline": "BNPL+ — Cool-off period explanation",
+      "agent_expl": "14 days from order approval. After window: CPF + accrued Murabaha follow non-refundable rules for BNPL+.",
+      "cust_msg": "Cool-off is 14 days from order approval. After that window, processing fee and accrued Murabaha/service fee follow non-refundable rules for BNPL+.",
+      "system_action": "Issue: Refunds and Cancellations > How to return or cancel an order or item. Closed.",
+      "comment_template": "Resolution: BNPL+ cool-off explained",
+      "macro": "BNPL+ - Refunds (KSA)",
+      "issueType": "Refunds and Cancellations > How to return or cancel an order or item",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "How to return or cancel an order or item",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry + Transfers SLA"
+    },
+    "BP_PLUS_CPF": {
+      "type": "outcome",
+      "headline": "BNPL+ — Is processing fee refundable?",
+      "agent_expl": "CPF only on full cancel within 14-day cool-off. Never for partial / after cool-off. (BNPL+ path — Murabaha rules are separate nodes.)",
+      "cust_msg": "Processing fee is refundable only on a full BNPL+ cancellation within 14 days. It is not refundable for partial cancellations or after cool-off.",
+      "system_action": "Issue: Refunds and Cancellations > How to return or cancel an order or item. Closed.",
+      "comment_template": "Resolution: BNPL+ CPF refundability",
+      "macro": "BNPL+ - Refunds (KSA)",
+      "issueType": "Refunds and Cancellations > How to return or cancel an order or item",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "How to return or cancel an order or item",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry + Transfers SLA"
+    },
+    "BP_PLUS_ES_PARTIAL": {
+      "type": "outcome",
+      "headline": "BNPL+ — Partial return after Early Settlement used",
+      "agent_expl": "Customer returned part of order after using early settlement. Use Early settlement refunds macros (KSA/UAE).",
+      "cust_msg": "Because early settlement was already used, the refund adjustment follows the early settlement refund rules for your country.",
+      "system_action": "Macro Early settlement refunds (KSA/UAE). Issue: Refunds and Cancellations > How to return or cancel an order or item.",
+      "comment_template": "Resolution: BNPL+ partial + early settlement used",
+      "macro": "Early settlement refunds (KSA)",
+      "issueType": "Refunds and Cancellations > How to return or cancel an order or item",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "How to return or cancel an order or item",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry + Transfers SLA"
+    },
+    "BP_PLUS_ES_FEE": {
+      "type": "outcome",
+      "headline": "BNPL+ — Early settlement fee refundability",
+      "agent_expl": "ES fee waived if early settlement before cool-off; not refunded after cool-off. BNPL+ context may also involve Murabaha settlement calc topic.",
+      "cust_msg": "The early settlement fee is waived if early settlement happens within cool-off. After cool-off, it is not refunded.",
+      "system_action": "Issue Type Payment > Murabha - Pay By Finance > Early Settlement when escalating settlement issues.",
+      "comment_template": "Resolution: BNPL+ early settlement fee refundability",
+      "macro": "Early settlement refunds (KSA)",
+      "issueType": "Payment > Murabha - Pay By Finance > Early Settlement",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "Murabha - Pay By Finance",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry + Transfers SLA"
+    },
+    "RR_TO_NORMAL": {
+      "type": "outcome",
+      "headline": "Go to Normal Refund Cases",
+      "agent_expl": "Operational desk: incorrect amount, late/not triggered, wallet, blocked, merchant disputes. Open topic: Normal Refund Cases (Incorrect Refund Amount). Use operational paths (not triggered / incorrect / blocked / wallet).",
+      "cust_msg": "I will handle this as an operational refund case (amount, timing, wallet, or merchant block).",
+      "system_action": "Open topic Normal Refund Cases and select the matching ops option.",
+      "comment_template": "Router → Normal Refund Cases",
+      "macro": "Ticket Escalated",
+      "issueType": "Refunds and Cancellations > Incorrect refund amount",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "Incorrect refund amount",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry + Transfers SLA"
+    },
+    "RR_TO_POLICY": {
+      "type": "outcome",
+      "headline": "Go to BNPL & BNPL+ Refunds",
+      "agent_expl": "Open topic: BNPL & BNPL+ Refunds. Step 1 — pick BNPL or BNPL+ (policies are separated). Do not answer fee retention from Normal Refund Cases.",
+      "cust_msg": "I will follow the BNPL or BNPL+ refund policy path so fee rules match your product.",
+      "system_action": "Open topic BNPL & BNPL+ Refunds → Step 1 pick BNPL or BNPL+.",
+      "comment_template": "Router → BNPL & BNPL+ Refunds",
+      "macro": "BNPL+ - Refunds (KSA)",
+      "issueType": "Refunds and Cancellations > How to return or cancel an order or item",
+      "issue_category": "Refunds and Cancellations",
+      "issue_sub_category": "How to return or cancel an order or item",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry + Transfers SLA"
     }
   },
   "officialIssueTypes": [
@@ -9957,13 +10469,13 @@
       "verified_10_pass": true
     },
     "incorrect_refund": {
-      "label": "Incorrect Refund Amount",
-      "team": "Tech Support",
-      "template": "BEFORE ESCALATING — Refunds Operational (Tech Support)\nSource: KB Ashry Edge Cases (Escalation) + Transfers SLA\n\nRequired steps / info to collect (case comment):\n• Customer ID\n• Order ID and order type (BNPL / BNPL+)\n• Cancellation type (full or partial)\n• Description (refund not triggered / incorrect amount / loan-order mismatch)\n• Screenshot (customer and/or CS Hub)\n• Timestamp of the issue\n• Whether cancellation was within or after the 14-day cool-off\n• Macro: Ticket Escalated\n• Submit as: Working\n• SLA: 5 business days (Tech Support)\n\nEscalate when:\n1) Refund has not been triggered\n2) Incorrect refund amount\n3) Loan is not matching the order status (confirmed on CS Hub)",
-      "source": "KB Ashry Edge Cases",
+      "label": "Normal Refund Cases",
+      "team": "Tech Support / Trust & Safety",
+      "template": "BEFORE ESCALATING — Normal Refund Cases (Tech Support)\nSource: KB Ashry Edge Cases + Transfers SLA\n\nRequired in case comment:\n• Customer ID\n• Order ID and order type (BNPL / BNPL+)\n• Cancellation type (full or partial)\n• Description (not triggered / incorrect amount / loan-order mismatch)\n• Screenshot (customer and/or CS Hub)\n• Timestamp\n• Within or after 14-day cool-off\n• Macro: Ticket Escalated | Submit as: Working | SLA: 5 business days (Tech Support)\n\nEscalate when: refund not triggered | incorrect amount | loan ≠ order status (confirmed).\n\nFEE POLICY QUESTIONS: do NOT answer Murabaha/CPF cool-off rules here — open topic\n\"BNPL & BNPL+ Refunds\" and pick BNPL or BNPL+ first.\n\n---\n\nBEFORE ESCALATING — Refund Blocked by Merchant (Trust & Safety)\n• Customer ID / Order ID / Merchant name\n• Evidence refund blocked by merchant + screenshots\n• Macro: Ticket Escalated | Issue: Refund Blocked by Merchant\n• Submit as: Working | SLA: 5 days (Trust & Safety)",
+      "source": "KB Ashry + Transfers SLA",
       "origin": "kb_explicit",
       "verified_10_pass": true,
-      "updated_at": "2026-11-24T13:17:11.646429+00:00"
+      "updated_at": "2026-11-24T13:28:01.790709+00:00"
     },
     "instore_no_sms": {
       "label": "Tech Support (department template)",
@@ -10146,13 +10658,13 @@
       "verified_10_pass": true
     },
     "refunds_cancellations": {
-      "label": "Refunds and Cancellations",
-      "team": "Tech Support / Trust & Safety",
-      "template": "BEFORE ESCALATING — Refunds Operational (Tech Support)\nSource: KB Ashry Edge Cases (Escalation) + Transfers SLA\n\nRequired steps / info to collect (case comment):\n• Customer ID\n• Order ID and order type (BNPL / BNPL+)\n• Cancellation type (full or partial)\n• Description (refund not triggered / incorrect amount / loan-order mismatch)\n• Screenshot (customer and/or CS Hub)\n• Timestamp of the issue\n• Whether cancellation was within or after the 14-day cool-off\n• Macro: Ticket Escalated\n• Submit as: Working\n• SLA: 5 business days (Tech Support)\n\nEscalate when:\n1) Refund has not been triggered\n2) Incorrect refund amount\n3) Loan is not matching the order status (confirmed on CS Hub)\n\n---\n\nBEFORE ESCALATING — Refund Blocked by Merchant (Trust & Safety)\nSource: Transfers SLA\n\nRequired steps / info to collect:\n• Customer ID / Order ID\n• Merchant name\n• Evidence refund is blocked by merchant\n• Screenshots / portal notes\n• Macro: Ticket Escalated\n• Issue Type: Refunds and Cancellations > Refund Blocked by Merchant\n• Submit as: Working\n• SLA: 5 days (Trust & Safety)",
-      "source": "KB Ashry refund edge cases + Transfers SLA",
-      "origin": "kb_explicit",
+      "label": "Refunds and Cancellations (Router)",
+      "team": "Customer Care",
+      "template": "Router only. Ops → Normal Refund Cases. Fee policy → BNPL & BNPL+ Refunds.",
+      "source": "Atlas two-topic refund split",
+      "origin": "derived",
       "verified_10_pass": true,
-      "updated_at": "2026-11-24T13:17:11.646410+00:00"
+      "updated_at": "2026-11-24T13:28:01.790709+00:00"
     },
     "revoke_id": {
       "label": "Manual Phone Number Change",
@@ -10261,6 +10773,15 @@
       "origin": "kb_explicit",
       "updated_at": "2026-11-24T13:00:49.807848+00:00",
       "verified_10_pass": true
+    },
+    "bnpl_bnpl_plus_refunds": {
+      "label": "BNPL & BNPL+ Refunds",
+      "team": "Customer Care (policy) / Tech Support (ops redirect)",
+      "template": "Policy desk — escalate ops via Normal Refund Cases.\n\nBEFORE ESCALATING — Normal Refund Cases (Tech Support)\nSource: KB Ashry Edge Cases + Transfers SLA\n\nRequired in case comment:\n• Customer ID\n• Order ID and order type (BNPL / BNPL+)\n• Cancellation type (full or partial)\n• Description (not triggered / incorrect amount / loan-order mismatch)\n• Screenshot (customer and/or CS Hub)\n• Timestamp\n• Within or after 14-day cool-off\n• Macro: Ticket Escalated | Submit as: Working | SLA: 5 business days (Tech Support)\n\nEscalate when: refund not triggered | incorrect amount | loan ≠ order status (confirmed).\n\nFEE POLICY QUESTIONS: do NOT answer Murabaha/CPF cool-off rules here — open topic\n\"BNPL & BNPL+ Refunds\" and pick BNPL or BNPL+ first.",
+      "source": "KB Ashry BNPL/BNPL+ refund policy",
+      "origin": "kb_explicit",
+      "verified_10_pass": true,
+      "updated_at": "2026-11-24T13:28:01.790709+00:00"
     }
   },
   "departmentEscalationTemplates": {
