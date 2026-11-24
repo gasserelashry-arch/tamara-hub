@@ -1,17 +1,12 @@
-﻿PERMANENT AGENT LINK (FREE — no payment)
-========================================
+﻿PERMANENT AGENT LINK (FREE — no payment, laptop can be OFF)
+===========================================================
 
 https://gasserelashry-arch.github.io/tamara-hub/
 
-Verified live. Works with your laptop OFF. No tunnel. No card.
+How it works:
+- Agents always open the URL above (bookmark once).
+- You edit on localhost (http://127.0.0.1:8080), then run Publish_For_Agents.bat
+  to push updates to the permanent link.
+- No Render, no tunnel, no card.
 
-HOW TO USE
-----------
-Agents: bookmark the URL above (one time, forever).
-
-You (admin edits):
-1. Edit on localhost http://127.0.0.1:8080
-2. Double-click Publish_For_Agents.bat
-3. Agents see the update on the same permanent URL after refresh
-
-No Render. No payments. No Cloudflare tunnel required.
+Note: First Pages enable can take 1-3 minutes. If 404, wait and refresh.
