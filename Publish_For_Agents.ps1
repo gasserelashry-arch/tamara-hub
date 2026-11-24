@@ -7,8 +7,25 @@ Set-Location $Root
 $gh = "$env:TEMP\gh-cli\bin\gh.exe"
 if (-not (Test-Path $gh)) { $gh = 'gh' }
 
+Write-Host 'Publish checklist (recommended):' -ForegroundColor Cyan
+Write-Host '  1) Sync_Atlas_Recommended.bat (Transfers + KB mismatch + opsHealth)' -ForegroundColor Cyan
+Write-Host '  2) embed + push (this script)' -ForegroundColor Cyan
+Write-Host '  3) Open Pages URL with ?cb=<commit> and confirm Hub rev badge' -ForegroundColor Cyan
+Write-Host '  4) If agents see old content: Reload published hub (clear cache) or Ctrl+F5' -ForegroundColor Cyan
+Write-Host ''
+
 Write-Host 'Embedding latest hub_store into index.html...' -ForegroundColor Yellow
 python .\_embed_store.py
+if (Test-Path .\_patch_ops_ui.py) {
+  Write-Host 'Refreshing ops UI / revision badge...' -ForegroundColor Yellow
+  python .\_patch_ops_ui.py
+}
+# Prefer a descriptive publish message with store revision when available
+$hubRev = ''
+try {
+  $hubRev = (python -c "import json; print(json.load(open('hub_store.json',encoding='utf-8')).get('revision',''))").Trim()
+} catch {}
+$commitMsg = if ($hubRev) { "Publish agent hub snapshot (rev $hubRev)" } else { "Publish agent hub snapshot" }
 
 # Ensure Pages site exists (free, no card)
 try {
@@ -31,7 +48,7 @@ $staged = git diff --cached --name-only
 if ($staged) {
   Write-Host 'Staged for publish:' -ForegroundColor Yellow
   $staged | ForEach-Object { Write-Host "  $_" }
-  git -c user.name="$gitAuthorName" -c user.email="$gitAuthorEmail" commit -m "Publish agent hub snapshot"
+  git -c user.name="$gitAuthorName" -c user.email="$gitAuthorEmail" commit -m "$commitMsg"
   if ($LASTEXITCODE -ne 0) {
     Write-Host 'Commit failed. Updates were NOT pushed.' -ForegroundColor Red
     exit 1
