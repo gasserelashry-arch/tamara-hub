@@ -754,6 +754,9 @@
       background: rgba(0,0,0,0.35); border: 1.5px solid var(--border-soft); border-left: 4px solid var(--gold-metallic);
       padding: 11px 14px; border-radius: var(--radius-sm); font-size: 12.5px; color: var(--text-bright); margin-bottom: 16px; line-height: 1.5;
     }
+    .policy-panel.open .before-escalating-toggle .be-chevron { transform: rotate(180deg); }
+    .policy-panel.open .policy-body { display: block; }
+    .policy-body { display: none; }
     .step-question-text { font-size: 18px; font-weight: 800; color: var(--text-bright); margin-bottom: 14px; line-height: 1.35; }
 
     .scenario-options { display: flex; flex-direction: column; gap: 9px; margin-bottom: 16px; }
@@ -950,9 +953,14 @@
           </div>
           <button class="btn-copy" style="background:#000; color:#fff;" onclick="relockGate()">🔒 Reset Gate</button>
         </div>
-        <div class="policy-banner" id="topic-policy-banner">
-          <strong style="display:block; margin-bottom:2px; color:var(--gold-metallic);">Mandatory Policy &amp; Compliance Guardrail</strong>
-          <div id="topic-policy-text" style="white-space:pre-line; line-height:1.65; margin-top:4px;">Follow standard verification rules.</div>
+        <div class="policy-panel" id="topic-policy-banner" style="display:none; margin-bottom:16px;">
+          <button type="button" class="before-escalating-toggle policy-toggle" id="policy-toggle" onclick="window.togglePolicyPanel()" aria-expanded="false">
+            <span>🛡 Mandatory Policy — tap to show <span id="policy-summary-pill" style="font-weight:700; text-transform:none; letter-spacing:0; opacity:0.9;"></span></span>
+            <span class="be-chevron" aria-hidden="true">▼</span>
+          </button>
+          <div class="before-escalating-body policy-body" id="policy-body">
+            <div id="topic-policy-text" style="white-space:pre-line; line-height:1.65; margin:0; font-size:12.5px; color:var(--text-bright);">Follow standard verification rules.</div>
+          </div>
         </div>
         <div id="before-escalating-panel" class="before-escalating-panel" style="display:none; margin-bottom:16px;">
           <button type="button" class="before-escalating-toggle" id="before-escalating-toggle" onclick="window.toggleBeforeEscalatingPanel()" aria-expanded="false">
@@ -1855,7 +1863,7 @@
     "reactivate_account": "RISK CLEARANCE: Confirm all overdue balances are 100% settled. Review account suspension reason flags in CS Hub before lifting locks.",
     "contact_merchant": "OPERATIONAL BOUNDARY: Consumer front-line agents must NOT resolve portal, settlement, or store integration issues for merchants directly. Merchants calling Customer Care must be guided to contact Partner Care via email (Partner.care@tamara.co) or directly through their Tamara Partner Portal / Partner App in-app support chat.",
     "fraud_ads": "SECURITY PROTOCOL: Reassure customer that official promos only occur on verified channels. Collect ad URLs/phone numbers for Trust & Safety.",
-    "incorrect_refund": "SHARED REFUND POLICY (KB Ashry — identical on Normal Refund Cases AND BNPL & BNPL+ Refunds)\n\nCooling-off: 14 days from order approval. Full cancel within cool-off → principal + processing fee (+ accrued Murabaha/Service Fee on BNPL+). After cool-off / partial → processing fee not refunded. Due/overdue Murabaha/Service Fee always charged. Accrued Murabaha reversed only on FULL cancel within cool-off (BNPL+). Partial: principal portion + reschedule; CPF never; BNPL+ profit never refunded on partial.\n\nMACROS (use exactly):\n• Full cancel / how refund works → BNPL+ - Refunds | Issue: How to return or cancel an order or item | Closed\n  (KB aliases: BNPL+ - Refunds (KSA) / BNPL+ - Refunds (UAE) → same hub macro BNPL+ - Refunds)\n• Partial cancel → BNPL+ (Partial refund) - adjusted amount more than what’s paid | Issue: Late Refund > Refund already processed | Closed\n• Partial + early settlement used → Early settlement refunds (KSA/UAE) | Issue: How to return… | Closed\n• CPF explain → Refund - Customer Processing Fee (UAE) / Processing fee refund [pushback] (UAE)\n• Edge ops (not triggered / incorrect amount / loan≠order) → Ticket Escalated | Tech Support | Working | SLA 5 BD\n• Blocked by merchant → Ticket Escalated | Trust & Safety | Working | SLA 5 days\n• Already processed (tech path) → Ticket Escalated | Tech Support | SLA 3 BD (Transfers)\n\nALWAYS pick BNPL vs BNPL+ before fee answers (Murabaha/Service Fee = BNPL+ only).",
+    "incorrect_refund": "OPS ONLY — Normal Refund Cases\n• Incorrect / late / failed / wallet / blocked → Ticket Escalated + Transfers SLA.\n• Do NOT use BNPL+ - Refunds here.\n• Fee / cool-off / Murabaha → open topic BNPL & BNPL+ Refunds.",
     "merchant_fraud": "IMMEDIATE ESCALATION: If merchant is unresponsive, phantom, or systematically capturing unfulfilled orders, immediately escalate to Trust & Safety.",
     "postpone_dues": "MANDATORY POLICY & COMPLIANCE GUARDRAIL:\n• Step 1 — No Manual Postponement: Tamara does NOT manually postpone or reschedule installment due dates for customers.\n• Step 2 — Reassure on Fees: Inform the customer clearly that there are NO extra or late fees applied on overdue installments.\n• Step 3 — Impact & Due Date Preference Feature: Explain that keeping an unpaid balance affects their account eligibility/limit until settled, and direct them to use the in-app Due Date Preference feature (once announced/available on their profile) if they wish to customize future billing schedules.",
     "shariah": "COMPLIANCE PRINCIPLE: Tamara operates via Shariah-certified Murabaha (commodity sales) with fixed, transparent fee margins and no compounding interest.",
@@ -1881,7 +1889,7 @@
     "unrecorded_charges": "UNRECORDED CHARGES & PAYMENT TECHNICAL ISSUES: When a customer reports a deduction that is not showing, check CS Panel: If payment reflected -> Reassure customer and explain payment allocation. If payment NOT reflected -> Check attempt status in CS Panel/gateway: If 'Captured' -> Collect bank statement with RRN/Auth code and escalate directly to Tech Support (SLA: 5 Days, Macro: Ticket Escalated, Status: Working). If 'Declined' -> Tamara did not capture funds; explain temporary bank pre-authorization hold releasing in 5-14 business days.",
     "voided_payment": "HOLD CLEARANCE: Uncaptured pre-authorization holds drop off within 5 to 14 business days depending on issuing bank.",
     "promo_cashback": "WALLET REWARDS: Pay In Full cashback rewards credit to Tamara Wallet within 14 business days post-delivery.",
-    "refunds_cancellations": "SHARED REFUND POLICY (KB Ashry — identical on Normal Refund Cases AND BNPL & BNPL+ Refunds)\n\nCooling-off: 14 days from order approval. Full cancel within cool-off → principal + processing fee (+ accrued Murabaha/Service Fee on BNPL+). After cool-off / partial → processing fee not refunded. Due/overdue Murabaha/Service Fee always charged. Accrued Murabaha reversed only on FULL cancel within cool-off (BNPL+). Partial: principal portion + reschedule; CPF never; BNPL+ profit never refunded on partial.\n\nMACROS (use exactly):\n• Full cancel / how refund works → BNPL+ - Refunds | Issue: How to return or cancel an order or item | Closed\n  (KB aliases: BNPL+ - Refunds (KSA) / BNPL+ - Refunds (UAE) → same hub macro BNPL+ - Refunds)\n• Partial cancel → BNPL+ (Partial refund) - adjusted amount more than what’s paid | Issue: Late Refund > Refund already processed | Closed\n• Partial + early settlement used → Early settlement refunds (KSA/UAE) | Issue: How to return… | Closed\n• CPF explain → Refund - Customer Processing Fee (UAE) / Processing fee refund [pushback] (UAE)\n• Edge ops (not triggered / incorrect amount / loan≠order) → Ticket Escalated | Tech Support | Working | SLA 5 BD\n• Blocked by merchant → Ticket Escalated | Trust & Safety | Working | SLA 5 days\n• Already processed (tech path) → Ticket Escalated | Tech Support | SLA 3 BD (Transfers)\n\nALWAYS pick BNPL vs BNPL+ before fee answers (Murabaha/Service Fee = BNPL+ only).\n\nRouter only — open A or B.",
+    "refunds_cancellations": "Router\n• Ops → Normal Refund Cases — Incorrect Refund Amount\n• Fee policy → BNPL & BNPL+ Refunds",
     "smart_membership": "BENEFIT RECAP: 19 AED/month (UAE), fee waivers on eligible plans, 1% cashback up to 250 AED/mo, unified statements.",
     "tamara_card": "CARD DISPUTES: Virtual/physical card declines require POS gateway log inspection by Tamara Card Ops.",
     "lavender_membership": "VIP TIER: Exclusive priority handling for top-tier loyalty members; tag cases with priority routing.",
@@ -1906,7 +1914,7 @@
     "feedback_jailbroken": "TRANSFERS SLA AUTHORITY\n• Team: Tech Support\n• SLA: 5 business days\n• Sheet row: 6\n• Source: https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
     "account_passcode": "TRANSFERS SLA AUTHORITY\n• Team: Tech Support\n• SLA: 5 business days\n• Sheet row: 13\n• Source: https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
     "murabha_early_settlement": "Early settlement refund / fee refundability → BNPL & BNPL+ Refunds (BNPL+ path). Ops amount failures → Normal Refund Cases.\nEarly settlement fee refundability and partial-return-after-settlement also live under Refunds and Cancellations > BNPL+ path (separated from BNPL). Use this topic for settlement calculation / payment Murabaha early settlement escalations.\nTRANSFERS SLA AUTHORITY\n• Team: Tech Support\n• SLA: 7-10 days\n• Sheet row: 30\n• Source: https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
-    "bnpl_bnpl_plus_refunds": "SHARED REFUND POLICY (KB Ashry — identical on Normal Refund Cases AND BNPL & BNPL+ Refunds)\n\nCooling-off: 14 days from order approval. Full cancel within cool-off → principal + processing fee (+ accrued Murabaha/Service Fee on BNPL+). After cool-off / partial → processing fee not refunded. Due/overdue Murabaha/Service Fee always charged. Accrued Murabaha reversed only on FULL cancel within cool-off (BNPL+). Partial: principal portion + reschedule; CPF never; BNPL+ profit never refunded on partial.\n\nMACROS (use exactly):\n• Full cancel / how refund works → BNPL+ - Refunds | Issue: How to return or cancel an order or item | Closed\n  (KB aliases: BNPL+ - Refunds (KSA) / BNPL+ - Refunds (UAE) → same hub macro BNPL+ - Refunds)\n• Partial cancel → BNPL+ (Partial refund) - adjusted amount more than what’s paid | Issue: Late Refund > Refund already processed | Closed\n• Partial + early settlement used → Early settlement refunds (KSA/UAE) | Issue: How to return… | Closed\n• CPF explain → Refund - Customer Processing Fee (UAE) / Processing fee refund [pushback] (UAE)\n• Edge ops (not triggered / incorrect amount / loan≠order) → Ticket Escalated | Tech Support | Working | SLA 5 BD\n• Blocked by merchant → Ticket Escalated | Trust & Safety | Working | SLA 5 days\n• Already processed (tech path) → Ticket Escalated | Tech Support | SLA 3 BD (Transfers)\n\nALWAYS pick BNPL vs BNPL+ before fee answers (Murabaha/Service Fee = BNPL+ only)."
+    "bnpl_bnpl_plus_refunds": "BNPL & BNPL+ fee policy (product-first)\n• Pick BNPL or BNPL+ before answering fees.\n• BNPL+ full cancel → Macro BNPL+ - Refunds | Issue How to return… | Closed.\n• Partial → Macro BNPL+ (Partial refund)… | Issue Already processed | Closed.\n• Ops failures → Normal Refund Cases."
   },
   "topics": [
     {
@@ -1991,7 +1999,7 @@
       "id": "incorrect_refund",
       "tag": "Topic 09",
       "name": "Normal Refund Cases — Incorrect Refund Amount",
-      "desc": "All normal refund ops (incorrect / late / wallet / blocked) PLUS the same BNPL & BNPL+ fee policy. Search: Normal Refund Cases, Incorrect Refund Amount, refund.",
+      "desc": "Ops only: incorrect amount, late/failed, wallet, blocked. Macro Ticket Escalated. Fee/cool-off → BNPL & BNPL+ Refunds (search: Incorrect Refund Amount).",
       "pinned": true
     },
     {
@@ -2631,19 +2639,15 @@
     },
     "incorrect_refund": {
       "step1": {
-        "prompt": "Normal Refund Cases — pick the KB scenario (fee policy uses the SAME BNPL/BNPL+ rules as the other refund topic):",
+        "prompt": "Normal Refund Cases — operational scenarios only (BNPL+ - Refunds macro is NOT used here):",
         "options": [
           {
-            "text": "How to return or cancel an order or item (info)",
-            "next": "NR_HOW_RETURN"
-          },
-          {
-            "text": "BNPL / BNPL+ fee or cool-off policy (same shared policy)",
-            "next": "step_product"
-          },
-          {
-            "text": "Incorrect refund amount → Tech Support | Ticket Escalated | 5 BD",
+            "text": "Incorrect refund amount → Ticket Escalated | Tech Support | 5 BD",
             "next": "NR_INCORRECT"
+          },
+          {
+            "text": "Merchant unauthorized deduction / amount dispute → Ticket Escalated",
+            "next": "NR_MERCHANT_DISPUTE"
           },
           {
             "text": "Late Refund > Refund not processed / not triggered → Tech | 5 BD",
@@ -2672,77 +2676,14 @@
           {
             "text": "Loan not matching order status → Tech Support",
             "next": "NR_LOAN_MISMATCH"
-          }
-        ]
-      },
-      "step_product": {
-        "prompt": "Fee / cool-off policy — MUST pick BNPL or BNPL+ (same policy on both topics; rules differ by product):",
-        "options": [
-          {
-            "text": "A. BNPL (Pay Later) — NO Murabaha/Service Fee",
-            "next": "step_A_bnpl"
           },
           {
-            "text": "B. BNPL+ (Murabaha / Pay by Finance) — includes Service/Murabaha Fee",
-            "next": "step_A_plus"
+            "text": "How to return or cancel (info only — no fee macro)",
+            "next": "NR_HOW_RETURN"
           },
           {
-            "text": "C. Not sure — identify product on CS Hub first, then pick A or B",
-            "next": "A_IDENTIFY"
-          }
-        ]
-      },
-      "step_A_bnpl": {
-        "prompt": "BNPL refund policy (NO Murabaha). Select status:",
-        "options": [
-          {
-            "text": "Full cancellation WITHIN 14-day cool-off",
-            "next": "A_BNPL_FULL_WITHIN"
-          },
-          {
-            "text": "Full cancellation AFTER cool-off",
-            "next": "A_BNPL_FULL_AFTER"
-          },
-          {
-            "text": "Partial cancellation (any time)",
-            "next": "A_BNPL_PARTIAL"
-          },
-          {
-            "text": "Is processing fee refundable?",
-            "next": "A_BNPL_CPF"
-          },
-          {
-            "text": "Explain cool-off period",
-            "next": "A_BNPL_COOLOFF"
-          }
-        ]
-      },
-      "step_A_plus": {
-        "prompt": "BNPL+ refund policy (Macro: BNPL+ - Refunds). Select scenario:",
-        "options": [
-          {
-            "text": "Full cancellation / how will the refund work → Macro BNPL+ - Refunds",
-            "next": "A_PLUS_FULL"
-          },
-          {
-            "text": "Partial cancellation → Macro BNPL+ (Partial refund)…",
-            "next": "A_PLUS_PARTIAL"
-          },
-          {
-            "text": "Is processing fee refundable?",
-            "next": "A_PLUS_CPF"
-          },
-          {
-            "text": "Explain cool-off period",
-            "next": "A_PLUS_COOLOFF"
-          },
-          {
-            "text": "Murabaha / Service Fee after cancellation",
-            "next": "A_PLUS_MURABAHA"
-          },
-          {
-            "text": "Partial return AND early settlement already used",
-            "next": "A_PLUS_ES_PARTIAL"
+            "text": "This is a BNPL / BNPL+ fee or cool-off question → open BNPL & BNPL+ Refunds",
+            "next": "NR_REDIRECT_POLICY"
           }
         ]
       }
@@ -7607,8 +7548,8 @@
     "NR_LOAN_MISMATCH": {
       "type": "outcome",
       "headline": "Loan not matching order status → Tech Support",
-      "agent_expl": "KB Edge Case 3. Confirm on CS Hub. Macro: Ticket Escalated. Issue: Refunds and Cancellations > Late Refund > Refund not processed or matching ops type. SLA 5 BD.",
-      "cust_msg": "There is a mismatch between the loan and order status. I will escalate this to Tech Support after confirming on CS Hub.",
+      "agent_expl": "KB Edge Case 3. Macro: Ticket Escalated. Confirm on CS Hub first.",
+      "cust_msg": "There is a mismatch between the loan and order status. I will escalate to Tech Support after confirming on CS Hub.",
       "system_action": "Macro: Ticket Escalated. Working. SLA 5 BD.",
       "comment_template": "Escalation: Loan/order mismatch\nMacro: Ticket Escalated",
       "macro": "Ticket Escalated",
@@ -7618,8 +7559,8 @@
       "team": "Tech Support",
       "sla": "5 business days",
       "sf_status": "Working",
-      "_kb_source": "KB Ashry + Transfers SLA + hub macro BNPL+ - Refunds",
-      "escalation_template": "BEFORE ESCALATING — Refunds (Tech Support)\nKB Ashry Edge Cases + Transfers SLA\n\nEscalate when:\n1) Refund has not been triggered\n2) Incorrect refund amount\n3) Loan is not matching the order status (confirmed on CS Hub)\n\nCase comment MUST include:\n• Customer ID\n• Order ID and order type (BNPL / BNPL+)\n• Cancellation type (full or partial)\n• Description (not triggered / incorrect amount / mismatch)\n• Screenshot (customer and/or CS Hub)\n• Timestamp\n• Within or after cool-off\nMacro: Ticket Escalated | Submit as: Working | SLA: 5 business days (Tech Support)\nAlready-processed tech path SLA: 3 business days (Transfers)"
+      "_kb_source": "KB Ashry + Transfers SLA",
+      "escalation_template": "BEFORE ESCALATING — Normal Refund Cases (Tech Support)\nKB Edge Cases + Transfers SLA\n\nEscalate: not triggered | incorrect amount | loan≠order (confirmed)\n\nCase comment: Customer ID · Order ID · BNPL/BNPL+ · full/partial · description · screenshots · timestamp · cool-off flag\nMacro: Ticket Escalated | Working | SLA 5 BD (already processed tech path: 3 BD)\n\nDo NOT send BNPL+ - Refunds for incorrect amount."
     },
     "NR_ALREADY_PROCESSED": {
       "type": "outcome",
@@ -7640,10 +7581,10 @@
     "NR_WALLET": {
       "type": "outcome",
       "headline": "Wallet refund",
-      "agent_expl": "Issue: Refunds and Cancellations > Wallet refund. Transfers: Tech Support 5 BD. Macro: Ticket Escalated.",
-      "cust_msg": "Some refunds are credited to the Tamara wallet depending on payment method and timing. I will help verify the wallet balance or escalate if the amount is missing.",
-      "system_action": "Macro: Ticket Escalated. Issue: Refunds and Cancellations > Wallet refund. Working. SLA 5 BD when escalating.",
-      "comment_template": "Escalation/Check: Wallet refund\nIssue: Refunds and Cancellations > Wallet refund",
+      "agent_expl": "Issue: Refunds and Cancellations > Wallet refund. Macro: Ticket Escalated. Tech 5 BD.",
+      "cust_msg": "Some refunds credit the Tamara wallet. I will verify the wallet balance or escalate if the amount is missing.",
+      "system_action": "Macro: Ticket Escalated. Issue: Refunds and Cancellations > Wallet refund. Working. SLA 5 BD.",
+      "comment_template": "Escalation: Wallet refund\nMacro: Ticket Escalated\nIssue: Refunds and Cancellations > Wallet refund",
       "macro": "Ticket Escalated",
       "issueType": "Refunds and Cancellations > Wallet refund",
       "issue_category": "Refunds and Cancellations",
@@ -7651,16 +7592,16 @@
       "team": "Tech Support",
       "sla": "5 business days",
       "sf_status": "Working",
-      "_kb_source": "KB Ashry + Transfers SLA + hub macro BNPL+ - Refunds",
-      "escalation_template": "BEFORE ESCALATING — Refunds (Tech Support)\nKB Ashry Edge Cases + Transfers SLA\n\nEscalate when:\n1) Refund has not been triggered\n2) Incorrect refund amount\n3) Loan is not matching the order status (confirmed on CS Hub)\n\nCase comment MUST include:\n• Customer ID\n• Order ID and order type (BNPL / BNPL+)\n• Cancellation type (full or partial)\n• Description (not triggered / incorrect amount / mismatch)\n• Screenshot (customer and/or CS Hub)\n• Timestamp\n• Within or after cool-off\nMacro: Ticket Escalated | Submit as: Working | SLA: 5 business days (Tech Support)\nAlready-processed tech path SLA: 3 business days (Transfers)"
+      "_kb_source": "KB Ashry + Transfers SLA",
+      "escalation_template": "BEFORE ESCALATING — Normal Refund Cases (Tech Support)\nKB Edge Cases + Transfers SLA\n\nEscalate: not triggered | incorrect amount | loan≠order (confirmed)\n\nCase comment: Customer ID · Order ID · BNPL/BNPL+ · full/partial · description · screenshots · timestamp · cool-off flag\nMacro: Ticket Escalated | Working | SLA 5 BD (already processed tech path: 3 BD)\n\nDo NOT send BNPL+ - Refunds for incorrect amount."
     },
     "NR_BLOCKED": {
       "type": "outcome",
       "headline": "Refund Blocked by Merchant → Trust & Safety",
-      "agent_expl": "Issue: Refunds and Cancellations > Refund Blocked by Merchant. Macro: Ticket Escalated. Team Trust & Safety. SLA 5 days. Optional reassure: [Refund block] - Reassurance Message.",
-      "cust_msg": "If the merchant is blocked from issuing the refund, this needs Trust & Safety review. I will escalate with the required evidence.",
+      "agent_expl": "Issue: Refunds and Cancellations > Refund Blocked by Merchant. Macro: Ticket Escalated. T&S 5 days. Optional: [Refund block] - Reassurance Message.",
+      "cust_msg": "If the merchant is blocked from issuing the refund, Trust & Safety must review. I will escalate with the required evidence.",
       "system_action": "Macro: Ticket Escalated. Issue: Refunds and Cancellations > Refund Blocked by Merchant. Working. SLA 5 days.",
-      "comment_template": "Escalation: Blocked by merchant\nMacro: Ticket Escalated\nIssue: Refunds and Cancellations > Refund Blocked by Merchant\nTeam T&S | SLA 5 days",
+      "comment_template": "Escalation: Blocked by merchant\nMacro: Ticket Escalated\nIssue: Refunds and Cancellations > Refund Blocked by Merchant",
       "macro": "Ticket Escalated",
       "issueType": "Refunds and Cancellations > Refund Blocked by Merchant",
       "issue_category": "Refunds and Cancellations",
@@ -7668,16 +7609,16 @@
       "team": "Trust & Safety",
       "sla": "5 days",
       "sf_status": "Working",
-      "_kb_source": "KB Ashry + Transfers SLA + hub macro BNPL+ - Refunds",
-      "escalation_template": "BEFORE ESCALATING — Refund Blocked by Merchant (Trust & Safety)\nMacro: Ticket Escalated\nIssue: Refunds and Cancellations > Refund Blocked by Merchant\nSubmit as: Working | SLA: 5 days\nCollect: Customer ID, Order ID, merchant name, evidence/screenshots"
+      "_kb_source": "KB Ashry + Transfers SLA",
+      "escalation_template": "BEFORE ESCALATING — Blocked by Merchant (Trust & Safety)\nMacro: Ticket Escalated | Issue: Refund Blocked by Merchant | Working | SLA 5 days"
     },
     "NR_MERCHANT_DISPUTE": {
       "type": "outcome",
-      "headline": "Merchant unauthorized partial deduction / dispute",
-      "agent_expl": "Merchant processed an unauthorized or unexpected deduction on return. Collect evidence (order, return, amounts). May escalate Tech (incorrect amount) or T&S if merchant-blocked pattern.",
-      "cust_msg": "I will review the deduction against the return on our system. Please share order details and any merchant communication or screenshots.",
-      "system_action": "Collect evidence. If amount wrong → Tech (Refunds and Cancellations > Incorrect refund amount). If blocked → T&S.",
-      "comment_template": "Investigation: Merchant deduction dispute\nEvidence requested",
+      "headline": "Merchant unauthorized deduction / amount dispute",
+      "agent_expl": "Operational dispute. Macro: Ticket Escalated. Issue: Refunds and Cancellations > Incorrect refund amount. Not BNPL+ - Refunds.",
+      "cust_msg": "I will review the deduction against the return on our system and escalate if the amount is incorrect.",
+      "system_action": "Macro: Ticket Escalated. Issue: Refunds and Cancellations > Incorrect refund amount. Working. SLA 5 BD.",
+      "comment_template": "Escalation: Merchant deduction dispute\nMacro: Ticket Escalated\nIssue: Refunds and Cancellations > Incorrect refund amount",
       "macro": "Ticket Escalated",
       "issueType": "Refunds and Cancellations > Incorrect refund amount",
       "issue_category": "Refunds and Cancellations",
@@ -7686,7 +7627,7 @@
       "sla": "5 business days",
       "sf_status": "Working",
       "_kb_source": "KB Ashry + Transfers SLA",
-      "escalation_template": "BEFORE ESCALATING — Normal Refund Cases (Tech Support)\nSource: KB Ashry Edge Cases + Transfers SLA\n\nRequired in case comment:\n• Customer ID\n• Order ID and order type (BNPL / BNPL+)\n• Cancellation type (full or partial)\n• Description (not triggered / incorrect amount / loan-order mismatch)\n• Screenshot (customer and/or CS Hub)\n• Timestamp\n• Within or after 14-day cool-off\n• Macro: Ticket Escalated | Submit as: Working | SLA: 5 business days (Tech Support)\n\nEscalate when: refund not triggered | incorrect amount | loan ≠ order status (confirmed).\n\nFEE POLICY QUESTIONS: do NOT answer Murabaha/CPF cool-off rules here — open topic\n\"BNPL & BNPL+ Refunds\" and pick BNPL or BNPL+ first."
+      "escalation_template": "BEFORE ESCALATING — Normal Refund Cases (Tech Support)\nKB Edge Cases + Transfers SLA\n\nEscalate: not triggered | incorrect amount | loan≠order (confirmed)\n\nCase comment: Customer ID · Order ID · BNPL/BNPL+ · full/partial · description · screenshots · timestamp · cool-off flag\nMacro: Ticket Escalated | Working | SLA 5 BD (already processed tech path: 3 BD)\n\nDo NOT send BNPL+ - Refunds for incorrect amount."
     },
     "NR_MERCHANT_UNABLE": {
       "type": "outcome",
@@ -7722,12 +7663,12 @@
     },
     "NR_REDIRECT_POLICY": {
       "type": "outcome",
-      "headline": "Redirect — fee / cool-off / BNPL or BNPL+ policy question",
-      "agent_expl": "Open topic: BNPL & BNPL+ Refunds. Step 1 — pick BNPL or BNPL+ (policies are separated). Do not answer fee retention from Normal Refund Cases. Normal Refund Cases must not resolve Murabaha or processing-fee retention. Accuracy requires product-specific policy topic.",
-      "cust_msg": "Your question is about refund fee policy (cool-off / processing fee / Murabaha). I will follow the BNPL or BNPL+ refund policy path so the answer matches your product.",
-      "system_action": "STOP answering fee rules here. Open BNPL & BNPL+ Refunds → Step 1 pick BNPL or BNPL+.",
-      "comment_template": "Redirect: Normal Refund Cases → BNPL & BNPL+ Refunds\nReason: fee/cool-off policy",
-      "macro": "BNPL+ - Refunds (KSA)",
+      "headline": "Redirect — BNPL / BNPL+ fee or cool-off policy",
+      "agent_expl": "Fee/cool-off/Murabaha answers belong ONLY in BNPL & BNPL+ Refunds. Do not use BNPL+ - Refunds from Normal Refund Cases ops.",
+      "cust_msg": "Your question is about refund fee policy. I will follow the BNPL or BNPL+ refunds topic so the correct product rules and macros are used.",
+      "system_action": "Open topic: BNPL & BNPL+ Refunds → pick BNPL or BNPL+ first.",
+      "comment_template": "Redirect → BNPL & BNPL+ Refunds",
+      "macro": "BNPL+ - Refunds",
       "issueType": "Refunds and Cancellations > How to return or cancel an order or item",
       "issue_category": "Refunds and Cancellations",
       "issue_sub_category": "How to return or cancel an order or item",
@@ -8059,26 +8000,26 @@
     "NR_HOW_RETURN": {
       "type": "outcome",
       "headline": "How to return or cancel (info only)",
-      "agent_expl": "KB issue type: Refunds and Cancellations > How to return or cancel an order or item. Customer seeking guidance only — then continue into BNPL/BNPL+ policy for fee outcome. Macro for BNPL+ full explain: BNPL+ - Refunds.",
-      "cust_msg": "To return your order, kindly contact the store where you placed the order. Once they update the status based on their return policy, Tamara will refund the relevant amount and/or adjust your payment plan.",
-      "system_action": "Issue: Refunds and Cancellations > How to return or cancel an order or item. Then open product policy path for fee details. Macro: BNPL+ - Refunds when BNPL+.",
-      "comment_template": "Resolution: How to return guidance\nIssue: Refunds and Cancellations > How to return or cancel an order or item",
-      "macro": "BNPL+ - Refunds",
+      "agent_expl": "Issue: Refunds and Cancellations > How to return or cancel an order or item. Info only — no BNPL+ - Refunds macro. For fee rules open BNPL & BNPL+ Refunds.",
+      "cust_msg": "To return or cancel, contact the merchant/store where you placed the order. Once they update the order on Tamara, the refund or plan adjustment will follow.",
+      "system_action": "Issue: Refunds and Cancellations > How to return or cancel an order or item. Closed. Fee questions → BNPL & BNPL+ Refunds.",
+      "comment_template": "Resolution: How to return (info)\nIssue: Refunds and Cancellations > How to return or cancel an order or item\nNo BNPL+ refund macro",
+      "macro": "— (info only / no fee macro)",
       "issueType": "Refunds and Cancellations > How to return or cancel an order or item",
       "issue_category": "Refunds and Cancellations",
       "issue_sub_category": "How to return or cancel an order or item",
       "team": "Customer Care",
       "sla": "Immediate",
       "sf_status": "Closed",
-      "_kb_source": "KB Ashry + Transfers SLA + hub macro BNPL+ - Refunds"
+      "_kb_source": "KB Ashry + Transfers SLA"
     },
     "NR_INCORRECT": {
       "type": "outcome",
       "headline": "Incorrect refund amount → Tech Support",
-      "agent_expl": "KB Edge Case + Transfers: Refunds and Cancellations > Incorrect refund amount. Macro: Ticket Escalated. Team Tech Support. SLA 5 business days. Working.",
-      "cust_msg": "I will escalate the incorrect refund amount to Tech Support for investigation.",
-      "system_action": "Macro: Ticket Escalated. Issue: Refunds and Cancellations > Incorrect refund amount. Submit Working. SLA 5 BD.",
-      "comment_template": "Escalation: Incorrect refund amount\nMacro: Ticket Escalated\nIssue: Refunds and Cancellations > Incorrect refund amount\nTeam Tech Support | SLA 5 BD",
+      "agent_expl": "Issue: Refunds and Cancellations > Incorrect refund amount. Macro: Ticket Escalated ONLY — never BNPL+ - Refunds. Tech Support SLA 5 BD. Working.",
+      "cust_msg": "I will escalate the incorrect refund amount to Tech Support for investigation. Please keep your ticket number for follow-up.",
+      "system_action": "Macro: Ticket Escalated. Issue: Refunds and Cancellations > Incorrect refund amount. Submit Working. SLA 5 business days.",
+      "comment_template": "Escalation: Incorrect refund amount\nMacro: Ticket Escalated\nIssue: Refunds and Cancellations > Incorrect refund amount\nTeam Tech Support | SLA 5 BD\nNOT BNPL+ - Refunds",
       "macro": "Ticket Escalated",
       "issueType": "Refunds and Cancellations > Incorrect refund amount",
       "issue_category": "Refunds and Cancellations",
@@ -8086,16 +8027,16 @@
       "team": "Tech Support",
       "sla": "5 business days",
       "sf_status": "Working",
-      "_kb_source": "KB Ashry + Transfers SLA + hub macro BNPL+ - Refunds",
-      "escalation_template": "BEFORE ESCALATING — Refunds (Tech Support)\nKB Ashry Edge Cases + Transfers SLA\n\nEscalate when:\n1) Refund has not been triggered\n2) Incorrect refund amount\n3) Loan is not matching the order status (confirmed on CS Hub)\n\nCase comment MUST include:\n• Customer ID\n• Order ID and order type (BNPL / BNPL+)\n• Cancellation type (full or partial)\n• Description (not triggered / incorrect amount / mismatch)\n• Screenshot (customer and/or CS Hub)\n• Timestamp\n• Within or after cool-off\nMacro: Ticket Escalated | Submit as: Working | SLA: 5 business days (Tech Support)\nAlready-processed tech path SLA: 3 business days (Transfers)"
+      "_kb_source": "KB Ashry + Transfers SLA",
+      "escalation_template": "BEFORE ESCALATING — Normal Refund Cases (Tech Support)\nKB Edge Cases + Transfers SLA\n\nEscalate: not triggered | incorrect amount | loan≠order (confirmed)\n\nCase comment: Customer ID · Order ID · BNPL/BNPL+ · full/partial · description · screenshots · timestamp · cool-off flag\nMacro: Ticket Escalated | Working | SLA 5 BD (already processed tech path: 3 BD)\n\nDo NOT send BNPL+ - Refunds for incorrect amount."
     },
     "NR_NOT_PROCESSED": {
       "type": "outcome",
       "headline": "Late Refund — Refund not processed / not triggered",
-      "agent_expl": "KB Edge Case 1 + Transfers: Refunds and Cancellations > Late Refund > Refund not processed. Macro: Ticket Escalated. Tech Support. SLA 5 BD.",
-      "cust_msg": "Your refund has not been processed yet on our side. I will escalate this to Tech Support.",
+      "agent_expl": "Issue: Refunds and Cancellations > Late Refund > Refund not processed. Macro: Ticket Escalated. Tech 5 BD.",
+      "cust_msg": "Your refund has not been processed yet. I will escalate this to Tech Support.",
       "system_action": "Macro: Ticket Escalated. Issue: Refunds and Cancellations > Late Refund > Refund not processed. Working. SLA 5 BD.",
-      "comment_template": "Escalation: Refund not processed\nMacro: Ticket Escalated\nIssue: Refunds and Cancellations > Late Refund > Refund not processed",
+      "comment_template": "Escalation: Not processed\nMacro: Ticket Escalated\nIssue: Refunds and Cancellations > Late Refund > Refund not processed",
       "macro": "Ticket Escalated",
       "issueType": "Refunds and Cancellations > Late Refund > Refund not processed",
       "issue_category": "Refunds and Cancellations",
@@ -8103,14 +8044,14 @@
       "team": "Tech Support",
       "sla": "5 business days",
       "sf_status": "Working",
-      "_kb_source": "KB Ashry + Transfers SLA + hub macro BNPL+ - Refunds",
-      "escalation_template": "BEFORE ESCALATING — Refunds (Tech Support)\nKB Ashry Edge Cases + Transfers SLA\n\nEscalate when:\n1) Refund has not been triggered\n2) Incorrect refund amount\n3) Loan is not matching the order status (confirmed on CS Hub)\n\nCase comment MUST include:\n• Customer ID\n• Order ID and order type (BNPL / BNPL+)\n• Cancellation type (full or partial)\n• Description (not triggered / incorrect amount / mismatch)\n• Screenshot (customer and/or CS Hub)\n• Timestamp\n• Within or after cool-off\nMacro: Ticket Escalated | Submit as: Working | SLA: 5 business days (Tech Support)\nAlready-processed tech path SLA: 3 business days (Transfers)"
+      "_kb_source": "KB Ashry + Transfers SLA",
+      "escalation_template": "BEFORE ESCALATING — Normal Refund Cases (Tech Support)\nKB Edge Cases + Transfers SLA\n\nEscalate: not triggered | incorrect amount | loan≠order (confirmed)\n\nCase comment: Customer ID · Order ID · BNPL/BNPL+ · full/partial · description · screenshots · timestamp · cool-off flag\nMacro: Ticket Escalated | Working | SLA 5 BD (already processed tech path: 3 BD)\n\nDo NOT send BNPL+ - Refunds for incorrect amount."
     },
     "NR_FAILED": {
       "type": "outcome",
       "headline": "Late Refund — Refund failed",
-      "agent_expl": "Issue: Refunds and Cancellations > Late Refund > Refund failed. Refund initiated but failed to reach account. Escalate Tech Support with bank confirmation. Macro: Ticket Escalated.",
-      "cust_msg": "I can see the refund may have failed to reach your account. I will escalate this to Tech Support with the required details.",
+      "agent_expl": "Issue: Refunds and Cancellations > Late Refund > Refund failed. Macro: Ticket Escalated. Tech Support.",
+      "cust_msg": "The refund appears to have failed to reach your account. I will escalate this to Tech Support.",
       "system_action": "Macro: Ticket Escalated. Issue: Refunds and Cancellations > Late Refund > Refund failed. Working.",
       "comment_template": "Escalation: Refund failed\nMacro: Ticket Escalated\nIssue: Refunds and Cancellations > Late Refund > Refund failed",
       "macro": "Ticket Escalated",
@@ -8120,16 +8061,16 @@
       "team": "Tech Support",
       "sla": "5 business days",
       "sf_status": "Working",
-      "_kb_source": "KB Ashry + Transfers SLA + hub macro BNPL+ - Refunds",
-      "escalation_template": "BEFORE ESCALATING — Refunds (Tech Support)\nKB Ashry Edge Cases + Transfers SLA\n\nEscalate when:\n1) Refund has not been triggered\n2) Incorrect refund amount\n3) Loan is not matching the order status (confirmed on CS Hub)\n\nCase comment MUST include:\n• Customer ID\n• Order ID and order type (BNPL / BNPL+)\n• Cancellation type (full or partial)\n• Description (not triggered / incorrect amount / mismatch)\n• Screenshot (customer and/or CS Hub)\n• Timestamp\n• Within or after cool-off\nMacro: Ticket Escalated | Submit as: Working | SLA: 5 business days (Tech Support)\nAlready-processed tech path SLA: 3 business days (Transfers)"
+      "_kb_source": "KB Ashry + Transfers SLA",
+      "escalation_template": "BEFORE ESCALATING — Normal Refund Cases (Tech Support)\nKB Edge Cases + Transfers SLA\n\nEscalate: not triggered | incorrect amount | loan≠order (confirmed)\n\nCase comment: Customer ID · Order ID · BNPL/BNPL+ · full/partial · description · screenshots · timestamp · cool-off flag\nMacro: Ticket Escalated | Working | SLA 5 BD (already processed tech path: 3 BD)\n\nDo NOT send BNPL+ - Refunds for incorrect amount."
     },
     "NR_ALREADY": {
       "type": "outcome",
       "headline": "Late Refund — Refund already processed",
-      "agent_expl": "Issue: Refunds and Cancellations > Late Refund > Refund already processed. Transfers SLA 3 BD if tech path. Explain location of refund; if fee dispute continue to BNPL/BNPL+ policy; if system wrong → incorrect amount.",
-      "cust_msg": "The refund has already been processed on Tamara’s side. It may have been sent to your bank, card, or wallet — I can help you locate it or escalate if the amount is wrong.",
-      "system_action": "Issue: Refunds and Cancellations > Late Refund > Refund already processed. Macro: Ticket Escalated if escalating (SLA 3 BD). Else Closed with explain.",
-      "comment_template": "Resolution/Escalation: Already processed\nIssue: Refunds and Cancellations > Late Refund > Refund already processed",
+      "agent_expl": "Issue: Refunds and Cancellations > Late Refund > Refund already processed. Explain first. Tech path Macro Ticket Escalated SLA 3 BD. Fee composition → BNPL & BNPL+ Refunds (not this outcome).",
+      "cust_msg": "The refund has already been processed on Tamara’s side. It may be on your bank, card, or wallet. If the amount itself is wrong, we escalate to Tech Support.",
+      "system_action": "Issue: Refunds and Cancellations > Late Refund > Refund already processed. Escalate with Ticket Escalated if needed (3 BD).",
+      "comment_template": "Check/Escalation: Already processed\nIssue: Refunds and Cancellations > Late Refund > Refund already processed\nMacro if escalate: Ticket Escalated",
       "macro": "Ticket Escalated",
       "issueType": "Refunds and Cancellations > Late Refund > Refund already processed",
       "issue_category": "Refunds and Cancellations",
@@ -8137,15 +8078,15 @@
       "team": "Tech Support",
       "sla": "3 business days",
       "sf_status": "Working",
-      "_kb_source": "KB Ashry + Transfers SLA + hub macro BNPL+ - Refunds",
-      "escalation_template": "BEFORE ESCALATING — Refunds (Tech Support)\nKB Ashry Edge Cases + Transfers SLA\n\nEscalate when:\n1) Refund has not been triggered\n2) Incorrect refund amount\n3) Loan is not matching the order status (confirmed on CS Hub)\n\nCase comment MUST include:\n• Customer ID\n• Order ID and order type (BNPL / BNPL+)\n• Cancellation type (full or partial)\n• Description (not triggered / incorrect amount / mismatch)\n• Screenshot (customer and/or CS Hub)\n• Timestamp\n• Within or after cool-off\nMacro: Ticket Escalated | Submit as: Working | SLA: 5 business days (Tech Support)\nAlready-processed tech path SLA: 3 business days (Transfers)"
+      "_kb_source": "KB Ashry + Transfers SLA",
+      "escalation_template": "BEFORE ESCALATING — Normal Refund Cases (Tech Support)\nKB Edge Cases + Transfers SLA\n\nEscalate: not triggered | incorrect amount | loan≠order (confirmed)\n\nCase comment: Customer ID · Order ID · BNPL/BNPL+ · full/partial · description · screenshots · timestamp · cool-off flag\nMacro: Ticket Escalated | Working | SLA 5 BD (already processed tech path: 3 BD)\n\nDo NOT send BNPL+ - Refunds for incorrect amount."
     },
     "NR_MERCHANT_CANCEL": {
       "type": "outcome",
       "headline": "Merchant incorrectly canceled the order/item",
-      "agent_expl": "Issue: Refunds and Cancellations > Merchant incorrectly canceled the order/item. Guide customer; escalate if refund/ops failure.",
-      "cust_msg": "I understand the merchant canceled without your request. I will check the order status and the correct next step for refund or reinstatement.",
-      "system_action": "Issue: Refunds and Cancellations > Merchant incorrectly canceled the order/item. Use ops escalate if refund broken.",
+      "agent_expl": "Issue: Refunds and Cancellations > Merchant incorrectly canceled the order/item. Ops path — not BNPL+ fee macro.",
+      "cust_msg": "I understand the merchant canceled without your request. I will check the order status and next steps.",
+      "system_action": "Issue: Refunds and Cancellations > Merchant incorrectly canceled the order/item. Escalate with Ticket Escalated if refund broken.",
       "comment_template": "Investigation: Merchant incorrectly canceled\nIssue: Refunds and Cancellations > Merchant incorrectly canceled the order/item",
       "macro": "Ticket Escalated",
       "issueType": "Refunds and Cancellations > Merchant incorrectly canceled the order/item",
@@ -8154,8 +8095,8 @@
       "team": "Tech Support",
       "sla": "5 business days",
       "sf_status": "Working",
-      "_kb_source": "KB Ashry + Transfers SLA + hub macro BNPL+ - Refunds",
-      "escalation_template": "BEFORE ESCALATING — Refunds (Tech Support)\nKB Ashry Edge Cases + Transfers SLA\n\nEscalate when:\n1) Refund has not been triggered\n2) Incorrect refund amount\n3) Loan is not matching the order status (confirmed on CS Hub)\n\nCase comment MUST include:\n• Customer ID\n• Order ID and order type (BNPL / BNPL+)\n• Cancellation type (full or partial)\n• Description (not triggered / incorrect amount / mismatch)\n• Screenshot (customer and/or CS Hub)\n• Timestamp\n• Within or after cool-off\nMacro: Ticket Escalated | Submit as: Working | SLA: 5 business days (Tech Support)\nAlready-processed tech path SLA: 3 business days (Transfers)"
+      "_kb_source": "KB Ashry + Transfers SLA",
+      "escalation_template": "BEFORE ESCALATING — Normal Refund Cases (Tech Support)\nKB Edge Cases + Transfers SLA\n\nEscalate: not triggered | incorrect amount | loan≠order (confirmed)\n\nCase comment: Customer ID · Order ID · BNPL/BNPL+ · full/partial · description · screenshots · timestamp · cool-off flag\nMacro: Ticket Escalated | Working | SLA 5 BD (already processed tech path: 3 BD)\n\nDo NOT send BNPL+ - Refunds for incorrect amount."
     },
     "NR_IDENTIFY": {
       "type": "outcome",
@@ -8560,7 +8501,7 @@
     "B_TO_OPS": {
       "type": "outcome",
       "headline": "Operational failure — use Normal Refund Cases",
-      "agent_expl": "Not triggered / incorrect / failed / wallet / blocked → Normal Refund Cases (Incorrect Refund Amount) with Ticket Escalated paths.",
+      "agent_expl": "Operational failure → Normal Refund Cases. Use Ticket Escalated — never answer fee policy as incorrect amount.",
       "cust_msg": "This is an operational refund issue. I will follow the Normal Refund Cases path.",
       "system_action": "Open Normal Refund Cases — Incorrect Refund Amount.",
       "comment_template": "Redirect → Normal Refund Cases",
@@ -10177,10 +10118,10 @@
     "incorrect_refund": {
       "label": "Normal Refund Cases",
       "team": "Tech Support / Trust & Safety",
-      "template": "BEFORE ESCALATING — Refunds (Tech Support)\nKB Ashry Edge Cases + Transfers SLA\n\nEscalate when:\n1) Refund has not been triggered\n2) Incorrect refund amount\n3) Loan is not matching the order status (confirmed on CS Hub)\n\nCase comment MUST include:\n• Customer ID\n• Order ID and order type (BNPL / BNPL+)\n• Cancellation type (full or partial)\n• Description (not triggered / incorrect amount / mismatch)\n• Screenshot (customer and/or CS Hub)\n• Timestamp\n• Within or after cool-off\nMacro: Ticket Escalated | Submit as: Working | SLA: 5 business days (Tech Support)\nAlready-processed tech path SLA: 3 business days (Transfers)\n\n---\n\nBEFORE ESCALATING — Refund Blocked by Merchant (Trust & Safety)\nMacro: Ticket Escalated\nIssue: Refunds and Cancellations > Refund Blocked by Merchant\nSubmit as: Working | SLA: 5 days\nCollect: Customer ID, Order ID, merchant name, evidence/screenshots",
+      "template": "BEFORE ESCALATING — Normal Refund Cases (Tech Support)\nKB Edge Cases + Transfers SLA\n\nEscalate: not triggered | incorrect amount | loan≠order (confirmed)\n\nCase comment: Customer ID · Order ID · BNPL/BNPL+ · full/partial · description · screenshots · timestamp · cool-off flag\nMacro: Ticket Escalated | Working | SLA 5 BD (already processed tech path: 3 BD)\n\nDo NOT send BNPL+ - Refunds for incorrect amount.\n\n---\n\nBEFORE ESCALATING — Blocked by Merchant (Trust & Safety)\nMacro: Ticket Escalated | Issue: Refund Blocked by Merchant | Working | SLA 5 days",
       "source": "KB Ashry + Transfers",
       "verified_10_pass": true,
-      "updated_at": "2026-11-24T13:38:23.101524+00:00"
+      "updated_at": "2026-11-24T15:09:00.233333+00:00"
     },
     "instore_no_sms": {
       "label": "Tech Support (department template)",
@@ -11788,24 +11729,7 @@ function initData() {
     if (nameEl) nameEl.innerText = meta.name;
     if (descEl) descEl.innerText = meta.desc;
 
-    var banner = document.getElementById('topic-policy-banner');
-    var policyText = document.getElementById('topic-policy-text');
-    if (banner && policyText) {
-      if (cmsData.policies && cmsData.policies[topicId]) {
-        banner.style.display = 'block';
-        // Prefer original policy without duplicated Before Escalating dump when dedicated panel exists
-        var pol = cmsData.policies[topicId];
-        var be = cmsData.beforeEscalatingTemplates && cmsData.beforeEscalatingTemplates[topicId];
-        if (be && be.template && pol.indexOf('BEFORE ESCALATING —') !== -1) {
-          policyText.innerText = pol.split('BEFORE ESCALATING —')[0].trim() || pol;
-        } else {
-          policyText.innerText = pol;
-        }
-      } else {
-        banner.style.display = 'none';
-      }
-    }
-
+    renderPolicyPanel(topicId);
     renderBeforeEscalatingPanel(topicId);
 
     if (meta.uniqueType === 'transfers_sla_browser' || topicId === 'transfers_sla') {
@@ -11814,6 +11738,42 @@ function initData() {
     }
     showTransfersSlaPanel(false);
     resetWorkflowTopic();
+  }
+
+  function renderPolicyPanel(topicId) {
+    var panel = document.getElementById('topic-policy-banner');
+    var policyText = document.getElementById('topic-policy-text');
+    var toggle = document.getElementById('policy-toggle');
+    var pill = document.getElementById('policy-summary-pill');
+    if (!panel || !policyText) return;
+    panel.classList.remove('open');
+    if (toggle) toggle.setAttribute('aria-expanded', 'false');
+    if (cmsData.policies && cmsData.policies[topicId]) {
+      panel.style.display = 'block';
+      var pol = cmsData.policies[topicId];
+      var be = cmsData.beforeEscalatingTemplates && cmsData.beforeEscalatingTemplates[topicId];
+      if (be && be.template && pol.indexOf('BEFORE ESCALATING —') !== -1) {
+        pol = pol.split('BEFORE ESCALATING —')[0].trim() || pol;
+      }
+      policyText.innerText = pol;
+      if (pill) {
+        var firstLine = (pol.split('\n').find(function(l) { return l.trim(); }) || '').trim();
+        if (firstLine.length > 72) firstLine = firstLine.slice(0, 69) + '…';
+        pill.textContent = firstLine ? ('· ' + firstLine) : '';
+      }
+    } else {
+      panel.style.display = 'none';
+      policyText.innerText = '';
+      if (pill) pill.textContent = '';
+    }
+  }
+
+  function togglePolicyPanel() {
+    var panel = document.getElementById('topic-policy-banner');
+    var toggle = document.getElementById('policy-toggle');
+    if (!panel || panel.style.display === 'none') return;
+    var open = panel.classList.toggle('open');
+    if (toggle) toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
   }
 
   function renderBeforeEscalatingPanel(topicId) {
@@ -15846,6 +15806,8 @@ var officialIssueTypes = DEFAULT_OFFICIAL_ISSUE_TYPES.slice();
   window.onTransfersSituationChange = onTransfersSituationChange;
   window.copyTransfersEscalationTemplate = copyTransfersEscalationTemplate;
   window.copyBeforeEscalatingTemplate = copyBeforeEscalatingTemplate;
+  window.renderPolicyPanel = renderPolicyPanel;
+  window.togglePolicyPanel = togglePolicyPanel;
   window.renderBeforeEscalatingPanel = renderBeforeEscalatingPanel;
   window.toggleBeforeEscalatingPanel = toggleBeforeEscalatingPanel;
   window.downloadSelfContainedHtml = downloadSelfContainedHtml;
