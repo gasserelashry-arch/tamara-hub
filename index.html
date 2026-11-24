@@ -1863,7 +1863,6 @@
     "reactivate_account": "RISK CLEARANCE: Confirm all overdue balances are 100% settled. Review account suspension reason flags in CS Hub before lifting locks.",
     "contact_merchant": "OPERATIONAL BOUNDARY: Consumer front-line agents must NOT resolve portal, settlement, or store integration issues for merchants directly. Merchants calling Customer Care must be guided to contact Partner Care via email (Partner.care@tamara.co) or directly through their Tamara Partner Portal / Partner App in-app support chat.",
     "fraud_ads": "SECURITY PROTOCOL: Reassure customer that official promos only occur on verified channels. Collect ad URLs/phone numbers for Trust & Safety.",
-    "incorrect_refund": "REDIRECT: Use Refunds and Cancellations. Do not handle cases here.",
     "merchant_fraud": "IMMEDIATE ESCALATION: If merchant is unresponsive, phantom, or systematically capturing unfulfilled orders, immediately escalate to Trust & Safety.",
     "postpone_dues": "MANDATORY POLICY & COMPLIANCE GUARDRAIL:\n• Step 1 — No Manual Postponement: Tamara does NOT manually postpone or reschedule installment due dates for customers.\n• Step 2 — Reassure on Fees: Inform the customer clearly that there are NO extra or late fees applied on overdue installments.\n• Step 3 — Impact & Due Date Preference Feature: Explain that keeping an unpaid balance affects their account eligibility/limit until settled, and direct them to use the in-app Due Date Preference feature (once announced/available on their profile) if they wish to customize future billing schedules.",
     "shariah": "COMPLIANCE PRINCIPLE: Tamara operates via Shariah-certified Murabaha (commodity sales) with fixed, transparent fee margins and no compounding interest.",
@@ -1914,7 +1913,6 @@
     "feedback_jailbroken": "TRANSFERS SLA AUTHORITY\n• Team: Tech Support\n• SLA: 5 business days\n• Sheet row: 6\n• Source: https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
     "account_passcode": "TRANSFERS SLA AUTHORITY\n• Team: Tech Support\n• SLA: 5 business days\n• Sheet row: 13\n• Source: https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
     "murabha_early_settlement": "Early settlement refund / fee refundability → BNPL & BNPL+ Refunds (BNPL+ path). Ops amount failures → Normal Refund Cases.\nEarly settlement fee refundability and partial-return-after-settlement also live under Refunds and Cancellations > BNPL+ path (separated from BNPL). Use this topic for settlement calculation / payment Murabaha early settlement escalations.\nTRANSFERS SLA AUTHORITY\n• Team: Tech Support\n• SLA: 7-10 days\n• Sheet row: 30\n• Source: https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
-    "bnpl_bnpl_plus_refunds": "REDIRECT: Use Refunds and Cancellations. Do not handle cases here.",
     "bnpl_pay_later": "BNPL (Pay Later / Pay by Finance BNPL) — PRODUCT POLICY (not refunds)\nIdentify BNPL orders; CPF rules; why standard plans vs extended.\nCancellation/refund fees → open Refunds and Cancellations."
   },
   "topics": [
@@ -1995,13 +1993,6 @@
       "tag": "Topic 08",
       "name": "Fraudulent / Misleading Ads",
       "desc": "Phishing links, deceptive social campaigns, fake WhatsApp promotions, and customer reassurance."
-    },
-    {
-      "id": "incorrect_refund",
-      "tag": "Topic 09",
-      "name": "Normal Refund Cases — Incorrect Refund Amount (Redirect)",
-      "desc": "Redirected to Refunds and Cancellations to avoid confusion.",
-      "pinned": false
     },
     {
       "id": "merchant_fraud",
@@ -2276,13 +2267,6 @@
       "tag": "Topic NEW",
       "name": "Murabha — Early Settlement",
       "desc": "Payment > Murabha - Pay By Finance > Early Settlement. Transfers SLA: 7-10 days (Tech Support)."
-    },
-    {
-      "id": "bnpl_bnpl_plus_refunds",
-      "tag": "Topic 59",
-      "name": "BNPL & BNPL+ Refunds (Redirect)",
-      "desc": "Redirected to Refunds and Cancellations to avoid confusion.",
-      "pinned": false
     },
     {
       "id": "bnpl_pay_later",
@@ -2643,17 +2627,6 @@
           {
             "text": "Suspicious WhatsApp / Social Media ad claiming fake discounts/prizes",
             "next": "FAD_SCAM"
-          }
-        ]
-      }
-    },
-    "incorrect_refund": {
-      "step1": {
-        "prompt": "This desk moved — open Refunds and Cancellations:",
-        "options": [
-          {
-            "text": "Open Refunds and Cancellations",
-            "next": "RED_incorrect_refund"
           }
         ]
       }
@@ -3861,17 +3834,6 @@
           {
             "text": "Escalate to Tech Support — SLA 7-10 days",
             "next": "MURABHA_EARLY_SETTLE_ESC"
-          }
-        ]
-      }
-    },
-    "bnpl_bnpl_plus_refunds": {
-      "step1": {
-        "prompt": "This desk moved — open Refunds and Cancellations:",
-        "options": [
-          {
-            "text": "Open Refunds and Cancellations",
-            "next": "RED_bnpl_bnpl_plus_refunds"
           }
         ]
       }
@@ -10917,14 +10879,6 @@
       "updated_at": "2026-11-24T08:18:55.384691+00:00",
       "verified_10_pass": true
     },
-    "incorrect_refund": {
-      "label": "Normal Refund Cases",
-      "team": "Tech Support / Trust & Safety",
-      "template": "BEFORE ESCALATING — Normal Refund Cases (Tech Support)\nKB Edge Cases + Transfers SLA\n\nEscalate: not triggered | incorrect amount | loan≠order (confirmed)\n\nCase comment: Customer ID · Order ID · BNPL/BNPL+ · full/partial · description · screenshots · timestamp · cool-off flag\nMacro: Ticket Escalated | Working | SLA 5 BD (already processed tech path: 3 BD)\n\nDo NOT send BNPL+ - Refunds for incorrect amount.\n\n---\n\nBEFORE ESCALATING — Blocked by Merchant (Trust & Safety)\nMacro: Ticket Escalated | Issue: Refund Blocked by Merchant | Working | SLA 5 days",
-      "source": "KB Ashry + Transfers",
-      "verified_10_pass": true,
-      "updated_at": "2026-11-24T15:09:00.233333+00:00"
-    },
     "instore_no_sms": {
       "label": "Tech Support (department template)",
       "team": "Tech Support",
@@ -11219,14 +11173,6 @@
       "origin": "kb_explicit",
       "updated_at": "2026-11-24T13:00:49.807848+00:00",
       "verified_10_pass": true
-    },
-    "bnpl_bnpl_plus_refunds": {
-      "label": "BNPL & BNPL+ Refunds",
-      "team": "Customer Care / Tech Support",
-      "template": "BNPL+ full-cancel macro: BNPL+ - Refunds\n\nBEFORE ESCALATING — Refunds (Tech Support)\nKB Ashry Edge Cases + Transfers SLA\n\nEscalate when:\n1) Refund has not been triggered\n2) Incorrect refund amount\n3) Loan is not matching the order status (confirmed on CS Hub)\n\nCase comment MUST include:\n• Customer ID\n• Order ID and order type (BNPL / BNPL+)\n• Cancellation type (full or partial)\n• Description (not triggered / incorrect amount / mismatch)\n• Screenshot (customer and/or CS Hub)\n• Timestamp\n• Within or after cool-off\nMacro: Ticket Escalated | Submit as: Working | SLA: 5 business days (Tech Support)\nAlready-processed tech path SLA: 3 business days (Transfers)",
-      "source": "KB Ashry + hub macro BNPL+ - Refunds",
-      "verified_10_pass": true,
-      "updated_at": "2026-11-24T13:38:23.101524+00:00"
     }
   },
   "slaSources": {

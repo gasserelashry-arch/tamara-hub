@@ -21,9 +21,37 @@ try {
 
 git add index.html PUBLIC_LINK.txt Publish_For_Agents.ps1 Publish_For_Agents.bat 2>$null
 git status --porcelain
-git commit -m "Publish agent hub snapshot" 2>$null
+
+# One-off author for this commit only (does NOT change global git config).
+# Fixes: "Author identity unknown" when user.name / user.email are unset.
+$gitAuthorName = 'gasser.elashry'
+$gitAuthorEmail = 'gasser.elashry@tamara.co'
+$status = git status --porcelain
+if ($status) {
+  git -c user.name="$gitAuthorName" -c user.email="$gitAuthorEmail" commit -m "Publish agent hub snapshot"
+  if ($LASTEXITCODE -ne 0) {
+    Write-Host 'Commit failed. Updates were NOT pushed.' -ForegroundColor Red
+    exit 1
+  }
+} else {
+  Write-Host 'No changes to commit (index already up to date).' -ForegroundColor Yellow
+}
+
+Write-Host 'Pushing to origin and public...' -ForegroundColor Yellow
 git push origin main
-git push public main 2>$null
+if ($LASTEXITCODE -ne 0) {
+  Write-Host 'Push to origin FAILED.' -ForegroundColor Red
+  exit 1
+}
+git push public main
+if ($LASTEXITCODE -ne 0) {
+  Write-Host 'Push to public FAILED (Pages may be on origin only).' -ForegroundColor Yellow
+}
+
+Write-Host 'Push OK. Confirm remote tip matches local:' -ForegroundColor Green
+git log -1 --oneline
+git log origin/main -1 --oneline
+git log public/main -1 --oneline
 
 $url = 'https://gasserelashry-arch.github.io/tamara-hub/'
 @"
