@@ -1904,7 +1904,8 @@
     "about_tamara_general": "TRANSFERS SLA AUTHORITY\n• Team: Tech Support\n• SLA: 3 business days / 5 business days for app issues\n• Sheet row: 5\n• Source: https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
     "feedback_jailbroken": "TRANSFERS SLA AUTHORITY\n• Team: Tech Support\n• SLA: 5 business days\n• Sheet row: 6\n• Source: https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
     "account_passcode": "TRANSFERS SLA AUTHORITY\n• Team: Tech Support\n• SLA: 5 business days\n• Sheet row: 13\n• Source: https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
-    "murabha_early_settlement": "TRANSFERS SLA AUTHORITY\n• Team: Tech Support\n• SLA: 7-10 days\n• Sheet row: 30\n• Source: https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0"
+    "murabha_early_settlement": "TRANSFERS SLA AUTHORITY\n• Team: Tech Support\n• SLA: 7-10 days\n• Sheet row: 30\n• Source: https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+    "pre_approved_amount": "PRE-APPROVED AMOUNT / PRE-CHECK (KB ASHRY)\n1) Always start by selecting the Pre-Approval / Pre-Check STATUS from CS Hub + app.\n2) Care cannot override Tamara risk engine eligibility.\n3) Do NOT say: rejected/declined (for false eligibility), system error, dispute decision, risk model details, merchant bug, or promise immediate availability.\n4) Issue Type (CX): Order > Placing an Order > Maximum/minimum purchase limit (or Can't see Tamara when display issue).\n5) Escalations → Tech Support, SLA 7 business days, Macro Ticket Escalated."
   },
   "topics": [
     {
@@ -1943,7 +1944,13 @@
       "id": "purchase_limits",
       "tag": "Topic 26",
       "name": "Maximum / Minimum Purchase Limit",
-      "desc": "Directing customer to check Pre-Approved Amount via Pre-Check in app; explaining dynamic purchase power."
+      "desc": "Legacy quick link: use topic Pre-Approved Amount for full Pre-Check / Pre-Qual scenarios. Directing customer to check Pre-Approved Amount via Pre-Check in app; explaining dynamic purchase power."
+    },
+    {
+      "id": "pre_approved_amount",
+      "tag": "Topic 58",
+      "name": "Pre-Approved Amount",
+      "desc": "Pre-Check eligibility + Pre-Approved Amount / Pre-Qual support. Start by selecting pre-approval status, then resolve or escalate per KB Ashry."
     },
     {
       "id": "change_phone",
@@ -3535,6 +3542,170 @@
           {
             "text": "Escalate to Tech Support — SLA 7-10 days",
             "next": "MURABHA_EARLY_SETTLE_ESC"
+          }
+        ]
+      }
+    },
+    "pre_approved_amount": {
+      "step1": {
+        "prompt": "Select the Pre-Approval / Pre-Check status (confirm on CS Hub + customer app):",
+        "options": [
+          {
+            "text": "A. Eligible (true) — Tamara should be available at checkout",
+            "next": "step_eligible"
+          },
+          {
+            "text": "B. Not Eligible (false) — Hidden / Greyed out / unavailable",
+            "next": "step_not_eligible"
+          },
+          {
+            "text": "C. Active Pre-Approved Amount / Pre-Qual showing (within validity)",
+            "next": "step_active_prequal"
+          },
+          {
+            "text": "D. Expired / no longer showing / missed validity window",
+            "next": "PAA_EXPIRED"
+          },
+          {
+            "text": "E. Partial approval / Declined / Less than requested",
+            "next": "PAA_PARTIAL_DECLINE"
+          },
+          {
+            "text": "F. Too Many Attempts",
+            "next": "PAA_TOO_MANY"
+          },
+          {
+            "text": "G. CS Hub status mismatch / unexpected system issue (escalate paths)",
+            "next": "step_escalate"
+          },
+          {
+            "text": "H. General questions (what it is / how to get / increase / introduce)",
+            "next": "step_general"
+          }
+        ]
+      },
+      "step_eligible": {
+        "prompt": "Eligible (true) — what is the customer reporting?",
+        "options": [
+          {
+            "text": "Confirm eligibility & guide retry checkout",
+            "next": "PAA_ELIGIBLE_OK"
+          },
+          {
+            "text": "Tamara still not visible though eligibility is ON / toggled on",
+            "next": "PAA_NOTELIG_ON_TOGGLE"
+          },
+          {
+            "text": "Active pre-qual questions while eligible",
+            "next": "step_active_prequal"
+          }
+        ]
+      },
+      "step_not_eligible": {
+        "prompt": "Not Eligible (false) — how is Tamara displayed at merchant checkout?",
+        "options": [
+          {
+            "text": "Tamara is Hidden (not shown at all)",
+            "next": "PAA_NOTELIG_HIDDEN"
+          },
+          {
+            "text": "Tamara is Greyed Out / unclickable",
+            "next": "PAA_NOTELIG_GREY"
+          },
+          {
+            "text": "Customer is not registered with Tamara",
+            "next": "PAA_NOT_REGISTERED"
+          },
+          {
+            "text": "Eligibility shows ON but customer still can't see Tamara",
+            "next": "PAA_NOTELIG_ON_TOGGLE"
+          }
+        ]
+      },
+      "step_active_prequal": {
+        "prompt": "Active Pre-Approved Amount / Pre-Qual — select the scenario:",
+        "options": [
+          {
+            "text": "What is the pre-approved limit / how does it work?",
+            "next": "PAA_GENERAL_INFO"
+          },
+          {
+            "text": "Shopped within limit but rejected / not applied (expected reasons)",
+            "next": "PAA_NOT_HONORED_EXPECTED"
+          },
+          {
+            "text": "Financial profile/situation changed / missed payment after pre-approval",
+            "next": "PAA_FINANCIAL_CHANGE"
+          },
+          {
+            "text": "Pre-qual disappeared after placing another order",
+            "next": "PAA_INVALIDATED"
+          },
+          {
+            "text": "Different limit at another store",
+            "next": "PAA_MERCHANT_DIFF"
+          },
+          {
+            "text": "Can't find merchant in pre-qual list",
+            "next": "PAA_MERCHANT_MISSING"
+          },
+          {
+            "text": "No expected reason / needs escalation",
+            "next": "step_escalate"
+          }
+        ]
+      },
+      "step_general": {
+        "prompt": "General Pre-Approved Amount inquiry:",
+        "options": [
+          {
+            "text": "What is it / how does it work?",
+            "next": "PAA_GENERAL_INFO"
+          },
+          {
+            "text": "How to get the Pre-Approved Amount (app steps)",
+            "next": "PAA_HOW_TO_GET"
+          },
+          {
+            "text": "Can we increase the limit?",
+            "next": "PAA_CANNOT_INCREASE"
+          },
+          {
+            "text": "Declined order recommends Pre-Qual — introduce feature",
+            "next": "PAA_INTRODUCE"
+          },
+          {
+            "text": "Max/min purchase limit general inquiry",
+            "next": "PAA_GENERAL_INFO"
+          }
+        ]
+      },
+      "step_escalate": {
+        "prompt": "Escalation scenario (KB) — select the matching Tech Support path:",
+        "options": [
+          {
+            "text": "Pre-qual not honored at checkout with NO expected reason",
+            "next": "PAA_ESC_NOT_HONORED"
+          },
+          {
+            "text": "In-app journey broken / cannot access Check Your Limit",
+            "next": "PAA_ESC_APP_JOURNEY"
+          },
+          {
+            "text": "Wrong / inconsistent pre-approval amount",
+            "next": "PAA_ESC_WRONG_AMOUNT"
+          },
+          {
+            "text": "Credit decline AFTER pre-qual was honored",
+            "next": "PAA_ESC_CREDIT_AFTER_HONOR"
+          },
+          {
+            "text": "CS Hub Request Status vs Pre-qual Result mismatch",
+            "next": "PAA_ESC_STATUS_MISMATCH"
+          },
+          {
+            "text": "Payment plan options mismatch vs pre-qual",
+            "next": "PAA_ESC_PLAN_MISMATCH"
           }
         ]
       }
@@ -6909,6 +7080,380 @@
       "_sla_updated_at": "2026-11-21T10:25:40.073408+00:00",
       "escalation_template": "BEFORE ESCALATING — Early settlement option not showing (no pending refunds)\nEscalate to: Tech Support\nSource: KB Murabha / Early Settlement escalation\n\nRequired steps / info to collect:\n• Escalate to Technical Support by following the steps at the end of the article.\n• Macro Ticket escalated\n• Issue type (CX) Payment > Murabha - Pay By Finance > Early Settlement\n• Submit as Working\n• Order Fully refunded | IMPORTANT NOTE: Expired Reason1- ID was Declined:(ID is used on another account)👉 This means that the customer is trying to verify this account using a National ID that is already used in verifying another account.Action 👉 The customer should use the old number account.If the customer doesn't h\n• Action 👉 Ask the customer to update their ID and try again.\n• Action 👉 Ask the customer to create a Tamara account using the phone number that is verified with their ID in the telecom company then verify it with the same ID.\n• 👉 Action: Advise the customer to make sure that the phone number they are using is the one associated with their National ID in the telecom company. Customers can use this link 7-Payment method error(prepaid-card)\n• 👉 This payment error occur only with down payment, Tamara don’t accept using prepaid card with the first payment.\n• Action 👉 Ask the customer to retry creating the order using another card that is not prepaid card.\n• Macro →Payment declined - Prepaid card for downpayment\n8- Payment method error (card-used-up)\n• This payment error occurs only with the down payment because Tamara doesn’t accept payments using a card that is already used on another account in UAE only.In KSA, a payment card can be linked to or used by up to 2 accounts, but no more than 2.In UAE, a payment card can only be linked to 1 account.\n• Action 👉 Ask the customer to retry creating the order using another card that is not used.9-Payment method error (checkout error)\n• This payment error could happen with any payment, it’s coming from Checkout it’s a normal payment failed reason like: it’s an expired card, there is no sufficient amount, the card info entered is incorrect, … etc.\n11- (Card bin [489022] is blacklisted)👉 This means that the payment was done by a non-allowed card which is typically a prepaid card.\n• Action 👉 Ask the customer to use a different card that is not prepaid.\n• Macro → Payment declined - Prepaid card for downpayment\n\nAdd all answers in the case comment, then escalate with correct Issue Type / Macro / Status.",
       "_escalation_source": "KB Murabha / Early Settlement escalation"
+    },
+    "PAA_ELIGIBLE_OK": {
+      "type": "outcome",
+      "headline": "Eligible (true) — Tamara available at checkout",
+      "agent_expl": "CS Hub Pre-checkout Eligibility = Eligible (true). Customer has available credit and meets risk requirements. Tamara payment option should display and be selectable.",
+      "cust_msg": "Your account is currently eligible for Tamara at checkout for the checked amount. Please try again at the merchant checkout and select Tamara.",
+      "system_action": "Confirm Pre-checkout Eligibility = Eligible on CS Hub. Educate customer. Issue Type: Maximum/minimum purchase limit (or Can't see Tamara only if display issue).",
+      "comment_template": "Resolution: Pre-Check Eligible (true)\nConfirmed eligibility on CS Hub. Guided customer to retry checkout.",
+      "macro": "PreQual - General Info",
+      "issueType": "Order > Placing an Order > Maximum/minimum purchase limit",
+      "issue_category": "Order",
+      "issue_sub_category": "Placing an Order",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry — Pre-Check Feature / Pre-Approved Amount"
+    },
+    "PAA_NOTELIG_HIDDEN": {
+      "type": "outcome",
+      "headline": "Not Eligible — Tamara Hidden at checkout",
+      "agent_expl": "Eligibility = Not Eligible (false). Merchant may hide Tamara completely. Typical reasons: Zero Credit Limit or High-Risk Profile. Agents cannot override risk engine.",
+      "cust_msg": "Tamara may not appear for this order based on current eligibility. This is not a merchant website error.",
+      "system_action": "Check Pre-checkout Eligibility on CS Hub (toggled off/false). Use Macro Precheck - Tamara Option Unavailable. Do NOT say rejected/declined/system error/risk model. Issue Type: Can't see Tamara as a payment option.",
+      "comment_template": "Resolution: Pre-Check Not Eligible — Hidden\nEligibility false on CS Hub. Macro: Precheck - Tamara Option Unavailable.",
+      "macro": "Precheck - Tamara Option Unavailable",
+      "issueType": "Order > Placing an Order > Maximum/minimum purchase limit",
+      "issue_category": "Order",
+      "issue_sub_category": "Placing an Order",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry — Pre-Check Feature / Pre-Approved Amount"
+    },
+    "PAA_NOTELIG_GREY": {
+      "type": "outcome",
+      "headline": "Not Eligible — Tamara Greyed Out / Unclickable",
+      "agent_expl": "Eligibility = Not Eligible (false). Merchant may show Tamara greyed out/unclickable with generic unavailable message. Same root cause family as hidden (zero limit / high risk).",
+      "cust_msg": "Tamara may appear unavailable for this order based on current eligibility. Please try again later after checking your Pre-Approved Amount in the app.",
+      "system_action": "Confirm eligibility false on CS Hub. Macro Precheck - Tamara Option Unavailable. Avoid forbidden phrases (rejected, dispute system, clear cache as primary fix).",
+      "comment_template": "Resolution: Pre-Check Not Eligible — Greyed Out\nEligibility false. Macro: Precheck - Tamara Option Unavailable.",
+      "macro": "Precheck - Tamara Option Unavailable",
+      "issueType": "Order > Placing an Order > Maximum/minimum purchase limit",
+      "issue_category": "Order",
+      "issue_sub_category": "Placing an Order",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry — Pre-Check Feature / Pre-Approved Amount"
+    },
+    "PAA_NOTELIG_ON_TOGGLE": {
+      "type": "outcome",
+      "headline": "Tamara not visible but eligibility toggled ON",
+      "agent_expl": "Customer cannot see Tamara, but Pre-checkout Eligibility feature/status indicates eligible/toggled on. Use 'I can't find Tamara option' macro path.",
+      "cust_msg": "Please try refreshing the checkout page. If Tamara still does not appear, share a screenshot of the checkout payment methods.",
+      "system_action": "CS Hub eligibility toggled on / Eligible. Macro → I can't find Tamara option. Issue Type: Can't see Tamara as a payment option. Submit Closed.",
+      "comment_template": "Resolution: Can't see Tamara — eligibility ON\nMacro: I can't find Tamara option.",
+      "macro": "I can't find Tamara option",
+      "issueType": "Order > Placing an Order > Maximum/minimum purchase limit",
+      "issue_category": "Order",
+      "issue_sub_category": "Placing an Order",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry — Pre-Check Feature / Pre-Approved Amount"
+    },
+    "PAA_NOT_REGISTERED": {
+      "type": "outcome",
+      "headline": "Customer not registered with Tamara",
+      "agent_expl": "Customer is not registered. Cannot use Tamara / Pre-Approved Amount until registration is completed.",
+      "cust_msg": "To use Tamara and check a Pre-Approved Amount, please register in the Tamara app first, then try again.",
+      "system_action": "Macro → Can't use Tamara [Not-Registered]. Issue Type: Can't see Tamara as a payment option. Submit Closed.",
+      "comment_template": "Resolution: Not registered\nMacro: Can't use Tamara [Not-Registered].",
+      "macro": "Can't use Tamara [Not-Registered]",
+      "issueType": "Order > Placing an Order > Maximum/minimum purchase limit",
+      "issue_category": "Order",
+      "issue_sub_category": "Placing an Order",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry — Pre-Check Feature / Pre-Approved Amount"
+    },
+    "PAA_GENERAL_INFO": {
+      "type": "outcome",
+      "headline": "General question — What is Pre-Approved Amount / how it works",
+      "agent_expl": "Customer asks what the pre-approved limit is or how it works. Explain Pre-Qual / Pre-Check concept; limit is merchant/time bound and based on financial profile at check time.",
+      "cust_msg": "Your Pre-Approved Amount shows what you can spend with Tamara for a selected store for a limited time. It is calculated from your financial details at the time of the check.",
+      "system_action": "Macro → PreQual - General Info. Issue Type: Maximum/minimum purchase limit. Submit Closed.",
+      "comment_template": "Resolution: PreQual general info\nMacro: PreQual - General Info.",
+      "macro": "PreQual - General Info",
+      "issueType": "Order > Placing an Order > Maximum/minimum purchase limit",
+      "issue_category": "Order",
+      "issue_sub_category": "Placing an Order",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry — Pre-Check Feature / Pre-Approved Amount"
+    },
+    "PAA_HOW_TO_GET": {
+      "type": "outcome",
+      "headline": "How to get the Pre-Approved Amount (App steps)",
+      "agent_expl": "Customer asks how to obtain/view Pre-Approved Amount. Guide in-app Pre-approval / See pre-approved amount flow (KSA/UAE macros).",
+      "cust_msg": "In the Tamara app, open Pre-approval / See pre-approved amount, choose the store and amount, complete any ID/card steps, then your limit and timer will appear on Home.",
+      "system_action": "Use country macro: KSA – PreQual - App Steps KSA OR UAE – PreQual - App Steps UAE. Issue Type: Maximum/minimum purchase limit.",
+      "comment_template": "Resolution: PreQual app steps\nShared KSA/UAE PreQual App Steps macro.",
+      "macro": "KSA – PreQual - App Steps KSA",
+      "issueType": "Order > Placing an Order > Maximum/minimum purchase limit",
+      "issue_category": "Order",
+      "issue_sub_category": "Placing an Order",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry — Pre-Check Feature / Pre-Approved Amount"
+    },
+    "PAA_CANNOT_INCREASE": {
+      "type": "outcome",
+      "headline": "Cannot increase Pre-Approved limit",
+      "agent_expl": "Customer asks to increase pre-approved limit. Agents cannot manually increase. Limit is risk-engine based.",
+      "cust_msg": "We are unable to manually increase your Pre-Approved Amount. You can run a new pre-approval check in the app; the amount is based on your financial profile at that time.",
+      "system_action": "Macro → PreQual - Cannot increase pre-approved limit. Issue Type: Maximum/minimum purchase limit. Submit Closed.",
+      "comment_template": "Resolution: Cannot increase pre-approved limit\nMacro: PreQual - Cannot increase pre-approved limit.",
+      "macro": "PreQual - Cannot increase pre-approved limit",
+      "issueType": "Order > Placing an Order > Maximum/minimum purchase limit",
+      "issue_category": "Order",
+      "issue_sub_category": "Placing an Order",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry — Pre-Check Feature / Pre-Approved Amount"
+    },
+    "PAA_EXPIRED": {
+      "type": "outcome",
+      "headline": "Pre-Qual expired / no longer showing / missed validity window",
+      "agent_expl": "24 hours / validity interval passed, or customer could not use limit in time. Pre-qualified limit no longer showing.",
+      "cust_msg": "Pre-qualifications are time-limited. If the validity window passed, please request a new pre-approval check in the Tamara app when you are ready to shop.",
+      "system_action": "Macro → KSA/UAE – PreQual - Limit Expired. Issue Type: Maximum/minimum purchase limit. Submit Closed.",
+      "comment_template": "Resolution: PreQual expired\nMacro: PreQual - Limit Expired (KSA/UAE).",
+      "macro": "KSA – PreQual - Limit Expired KSA",
+      "issueType": "Order > Placing an Order > Maximum/minimum purchase limit",
+      "issue_category": "Order",
+      "issue_sub_category": "Placing an Order",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry — Pre-Check Feature / Pre-Approved Amount"
+    },
+    "PAA_NOT_HONORED_EXPECTED": {
+      "type": "outcome",
+      "headline": "Limit not honored at checkout — expected reasons",
+      "agent_expl": "Customer shopped within pre-approved limit but order rejected / pre-qual not applied for expected reasons. Use Limit Not Honored education. If no expected reason applies → escalation branch.",
+      "cust_msg": "Sometimes a pre-approved limit may not apply at checkout if your financial situation changed or other expected conditions apply. Please review the details in the Tamara app and try a fresh pre-approval if needed.",
+      "system_action": "Macro → PreQual - Limit Not Honored. Issue Type: Maximum/minimum purchase limit. If NO expected reason → escalate (see escalation scenarios).",
+      "comment_template": "Resolution: PreQual limit not honored (expected)\nMacro: PreQual - Limit Not Honored.",
+      "macro": "PreQual - Limit Not Honored",
+      "issueType": "Order > Placing an Order > Maximum/minimum purchase limit",
+      "issue_category": "Order",
+      "issue_sub_category": "Placing an Order",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry — Pre-Check Feature / Pre-Approved Amount"
+    },
+    "PAA_FINANCIAL_CHANGE": {
+      "type": "outcome",
+      "headline": "Financial profile / situation changed after pre-approval",
+      "agent_expl": "Customer missed a payment between pre-approval and checkout, or asks what financial profile changes mean.",
+      "cust_msg": "Your pre-approved limit is based on your financial details at the time of the check. If those details change before checkout, the limit can adjust automatically.",
+      "system_action": "Macro → PreQual - Financial Profile Changes. Issue Type: Maximum/minimum purchase limit.",
+      "comment_template": "Resolution: Financial profile changes\nMacro: PreQual - Financial Profile Changes.",
+      "macro": "PreQual - Financial Profile Changes",
+      "issueType": "Order > Placing an Order > Maximum/minimum purchase limit",
+      "issue_category": "Order",
+      "issue_sub_category": "Placing an Order",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry — Pre-Check Feature / Pre-Approved Amount"
+    },
+    "PAA_INVALIDATED": {
+      "type": "outcome",
+      "headline": "Pre-Qual disappeared after another order",
+      "agent_expl": "Pre-qual invalidated after placing another order.",
+      "cust_msg": "Placing another order can invalidate a previous pre-qualification. Please run a new Pre-Approved Amount check in the app for the store you want.",
+      "system_action": "Macro → PreQual - Invalidated. Issue Type: Maximum/minimum purchase limit.",
+      "comment_template": "Resolution: PreQual invalidated after another order\nMacro: PreQual - Invalidated.",
+      "macro": "PreQual - Invalidated",
+      "issueType": "Order > Placing an Order > Maximum/minimum purchase limit",
+      "issue_category": "Order",
+      "issue_sub_category": "Placing an Order",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry — Pre-Check Feature / Pre-Approved Amount"
+    },
+    "PAA_TOO_MANY": {
+      "type": "outcome",
+      "headline": "Too Many Attempts error",
+      "agent_expl": "Customer sees Too Many Attempts when trying Pre-Qual / Check Your Limit.",
+      "cust_msg": "If you see Too Many Attempts, please wait and try again later. This protects the pre-approval checks from repeated requests.",
+      "system_action": "Macro → KSA/UAE – PreQual - Too many attempts. Issue Type: Maximum/minimum purchase limit. (Broken flow that is NOT this screen → escalate.)",
+      "comment_template": "Resolution: Too Many Attempts\nMacro: PreQual - Too many attempts (KSA/UAE).",
+      "macro": "KSA – PreQual - Too many attempts KSA",
+      "issueType": "Order > Placing an Order > Maximum/minimum purchase limit",
+      "issue_category": "Order",
+      "issue_sub_category": "Placing an Order",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry — Pre-Check Feature / Pre-Approved Amount"
+    },
+    "PAA_PARTIAL_DECLINE": {
+      "type": "outcome",
+      "headline": "Partial approval / declined / less than requested",
+      "agent_expl": "Customer approved for less than asked, or got declined on pre-qual request.",
+      "cust_msg": "The pre-approved amount depends on your financial profile and the store. You may receive a lower amount than requested, or no approval, based on eligibility at that time.",
+      "system_action": "Macro → PreQual - Partial/No Approval. Issue Type: Maximum/minimum purchase limit.",
+      "comment_template": "Resolution: Partial/No Approval\nMacro: PreQual - Partial/No Approval.",
+      "macro": "PreQual - Partial/No Approval",
+      "issueType": "Order > Placing an Order > Maximum/minimum purchase limit",
+      "issue_category": "Order",
+      "issue_sub_category": "Placing an Order",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry — Pre-Check Feature / Pre-Approved Amount"
+    },
+    "PAA_MERCHANT_DIFF": {
+      "type": "outcome",
+      "headline": "Different limit at another store / merchant-limit related",
+      "agent_expl": "Customer got a different limit at another store, or merchant-specific limit behavior.",
+      "cust_msg": "Pre-approved limits can differ by merchant. Please run Pre-approval for the specific store you want to shop at.",
+      "system_action": "Macro → PreQual - Merchant-Limit Related. Issue Type: Maximum/minimum purchase limit.",
+      "comment_template": "Resolution: Merchant-limit related\nMacro: PreQual - Merchant-Limit Related.",
+      "macro": "PreQual - Merchant-Limit Related",
+      "issueType": "Order > Placing an Order > Maximum/minimum purchase limit",
+      "issue_category": "Order",
+      "issue_sub_category": "Placing an Order",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry — Pre-Check Feature / Pre-Approved Amount"
+    },
+    "PAA_MERCHANT_MISSING": {
+      "type": "outcome",
+      "headline": "Can't find merchant in pre-qual list",
+      "agent_expl": "Customer cannot find merchant X in the pre-qual merchant list.",
+      "cust_msg": "If a merchant is not listed for pre-approval, it may not support this check yet. You can still try Tamara at that merchant checkout if available.",
+      "system_action": "Macro → PreQual - Can't Find Merchant. Issue Type: Maximum/minimum purchase limit.",
+      "comment_template": "Resolution: Merchant not in pre-qual list\nMacro: PreQual - Can't Find Merchant.",
+      "macro": "PreQual - Can't Find Merchant",
+      "issueType": "Order > Placing an Order > Maximum/minimum purchase limit",
+      "issue_category": "Order",
+      "issue_sub_category": "Placing an Order",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry — Pre-Check Feature / Pre-Approved Amount"
+    },
+    "PAA_INTRODUCE": {
+      "type": "outcome",
+      "headline": "Introduce PreQual after declined order recommendation",
+      "agent_expl": "Declined order and Customer Action tab recommends Pre-Qual. Introduce PreQual feature.",
+      "cust_msg": "You can check a Pre-Approved Amount in the Tamara app before ordering so you know your available limit for that store.",
+      "system_action": "Macro → Introduce PreQual. Issue Type: Maximum/minimum purchase limit.",
+      "comment_template": "Resolution: Introduced PreQual after decline recommendation\nMacro: Introduce PreQual.",
+      "macro": "Introduce PreQual",
+      "issueType": "Order > Placing an Order > Maximum/minimum purchase limit",
+      "issue_category": "Order",
+      "issue_sub_category": "Placing an Order",
+      "team": "Customer Care",
+      "sla": "Immediate",
+      "sf_status": "Closed",
+      "_kb_source": "KB Ashry — Pre-Check Feature / Pre-Approved Amount"
+    },
+    "PAA_ESC_NOT_HONORED": {
+      "type": "outcome",
+      "headline": "Escalate — Pre-qual not honored (no expected reason)",
+      "agent_expl": "Active pre-qual at merchant within validity and limit, but offer not honored at checkout with no expected reason.",
+      "cust_msg": "I will escalate this to our technical team to investigate your Pre-Approved Amount case. You will receive an update on the ticket.",
+      "system_action": "Escalate to Tech Support. Macro Ticket Escalated. Issue Type: Maximum/minimum purchase limit. Submit Working. SLA 7 business days. Collect Customer ID, merchant, amounts, CS Hub Request Status/Pre-qual Result, screenshots.",
+      "comment_template": "Escalation: Pre-Approved Amount\nTeam: Tech Support\nSLA: 7 business days\nIssue Type: Order > Placing an Order > Maximum/minimum purchase limit\nMacro: Ticket Escalated\nDetails: [merchant/amount/status/screenshots]\nScenario: Escalate — Pre-qual not honored (no expected reason)",
+      "macro": "Ticket Escalated",
+      "issueType": "Order > Placing an Order > Maximum/minimum purchase limit",
+      "issue_category": "Order",
+      "issue_sub_category": "Placing an Order",
+      "team": "Tech Support",
+      "sla": "7 business days",
+      "sf_status": "Working",
+      "_kb_source": "KB Ashry — Pre-Check Feature / Pre-Approved Amount",
+      "escalation_template": "BEFORE ESCALATING — Pre-Approved Amount / Pre-Qual\nEscalate to: Tech Support\nSource: KB Ashry Pre-Approved Amount → Escalation scenarios\n\nRequired steps / info to collect (case comment):\n• Customer ID\n• Merchant name\n• Pre-approved / requested amount + currency\n• Pre-qual validity / timer status (active or expired)\n• CS Hub: Request Status + Pre-qual Result\n• Checkout behavior (honored / not honored / declined / plan mismatch)\n• Screenshots (app + CS Hub)\n• Macro: Ticket Escalated\n• Issue Type: Order > Placing an Order > Maximum/minimum purchase limit\n• Submit as: Working\n• SLA: 7 business days\n\nEscalate only for:\n1) Pre-qual not honored at checkout with NO expected reason\n2) In-app journey broken (not Too Many Attempts)\n3) Wrong / inconsistent pre-approval amount vs expectation after rechecks\n4) Credit decline AFTER pre-qual was honored (same merchant / within limit)\n5) CS Hub status mismatch (e.g. HONORED vs Not Honored)\n6) Payment plan options mismatch vs pre-qual plans"
+    },
+    "PAA_ESC_APP_JOURNEY": {
+      "type": "outcome",
+      "headline": "Escalate — In-app journey / access broken",
+      "agent_expl": "Cannot access Check Your Limit, unexpected eligibility error, or broken screen/flow (NOT Too Many Attempts).",
+      "cust_msg": "I will escalate this to our technical team to investigate your Pre-Approved Amount case. You will receive an update on the ticket.",
+      "system_action": "Escalate to Tech Support. Macro Ticket Escalated. Issue Type: Maximum/minimum purchase limit. Submit Working. SLA 7 business days. Collect Customer ID, merchant, amounts, CS Hub Request Status/Pre-qual Result, screenshots.",
+      "comment_template": "Escalation: Pre-Approved Amount\nTeam: Tech Support\nSLA: 7 business days\nIssue Type: Order > Placing an Order > Maximum/minimum purchase limit\nMacro: Ticket Escalated\nDetails: [merchant/amount/status/screenshots]\nScenario: Escalate — In-app journey / access broken",
+      "macro": "Ticket Escalated",
+      "issueType": "Order > Placing an Order > Maximum/minimum purchase limit",
+      "issue_category": "Order",
+      "issue_sub_category": "Placing an Order",
+      "team": "Tech Support",
+      "sla": "7 business days",
+      "sf_status": "Working",
+      "_kb_source": "KB Ashry — Pre-Check Feature / Pre-Approved Amount",
+      "escalation_template": "BEFORE ESCALATING — Pre-Approved Amount / Pre-Qual\nEscalate to: Tech Support\nSource: KB Ashry Pre-Approved Amount → Escalation scenarios\n\nRequired steps / info to collect (case comment):\n• Customer ID\n• Merchant name\n• Pre-approved / requested amount + currency\n• Pre-qual validity / timer status (active or expired)\n• CS Hub: Request Status + Pre-qual Result\n• Checkout behavior (honored / not honored / declined / plan mismatch)\n• Screenshots (app + CS Hub)\n• Macro: Ticket Escalated\n• Issue Type: Order > Placing an Order > Maximum/minimum purchase limit\n• Submit as: Working\n• SLA: 7 business days\n\nEscalate only for:\n1) Pre-qual not honored at checkout with NO expected reason\n2) In-app journey broken (not Too Many Attempts)\n3) Wrong / inconsistent pre-approval amount vs expectation after rechecks\n4) Credit decline AFTER pre-qual was honored (same merchant / within limit)\n5) CS Hub status mismatch (e.g. HONORED vs Not Honored)\n6) Payment plan options mismatch vs pre-qual plans"
+    },
+    "PAA_ESC_WRONG_AMOUNT": {
+      "type": "outcome",
+      "headline": "Escalate — Wrong / inconsistent pre-approval amount",
+      "agent_expl": "Pre-qualified amount significantly inconsistent with expectation after valid checks (credit-related amount issue).",
+      "cust_msg": "I will escalate this to our technical team to investigate your Pre-Approved Amount case. You will receive an update on the ticket.",
+      "system_action": "Escalate to Tech Support. Macro Ticket Escalated. Issue Type: Maximum/minimum purchase limit. Submit Working. SLA 7 business days. Collect Customer ID, merchant, amounts, CS Hub Request Status/Pre-qual Result, screenshots.",
+      "comment_template": "Escalation: Pre-Approved Amount\nTeam: Tech Support\nSLA: 7 business days\nIssue Type: Order > Placing an Order > Maximum/minimum purchase limit\nMacro: Ticket Escalated\nDetails: [merchant/amount/status/screenshots]\nScenario: Escalate — Wrong / inconsistent pre-approval amount",
+      "macro": "Ticket Escalated",
+      "issueType": "Order > Placing an Order > Maximum/minimum purchase limit",
+      "issue_category": "Order",
+      "issue_sub_category": "Placing an Order",
+      "team": "Tech Support",
+      "sla": "7 business days",
+      "sf_status": "Working",
+      "_kb_source": "KB Ashry — Pre-Check Feature / Pre-Approved Amount",
+      "escalation_template": "BEFORE ESCALATING — Pre-Approved Amount / Pre-Qual\nEscalate to: Tech Support\nSource: KB Ashry Pre-Approved Amount → Escalation scenarios\n\nRequired steps / info to collect (case comment):\n• Customer ID\n• Merchant name\n• Pre-approved / requested amount + currency\n• Pre-qual validity / timer status (active or expired)\n• CS Hub: Request Status + Pre-qual Result\n• Checkout behavior (honored / not honored / declined / plan mismatch)\n• Screenshots (app + CS Hub)\n• Macro: Ticket Escalated\n• Issue Type: Order > Placing an Order > Maximum/minimum purchase limit\n• Submit as: Working\n• SLA: 7 business days\n\nEscalate only for:\n1) Pre-qual not honored at checkout with NO expected reason\n2) In-app journey broken (not Too Many Attempts)\n3) Wrong / inconsistent pre-approval amount vs expectation after rechecks\n4) Credit decline AFTER pre-qual was honored (same merchant / within limit)\n5) CS Hub status mismatch (e.g. HONORED vs Not Honored)\n6) Payment plan options mismatch vs pre-qual plans"
+    },
+    "PAA_ESC_CREDIT_AFTER_HONOR": {
+      "type": "outcome",
+      "headline": "Escalate — Credit decline after pre-qual honored",
+      "agent_expl": "Pre-qual approved and honored, then declined at checkout for credit reason on same merchant within approved limit.",
+      "cust_msg": "I will escalate this to our technical team to investigate your Pre-Approved Amount case. You will receive an update on the ticket.",
+      "system_action": "Escalate to Tech Support. Macro Ticket Escalated. Issue Type: Maximum/minimum purchase limit. Submit Working. SLA 7 business days. Collect Customer ID, merchant, amounts, CS Hub Request Status/Pre-qual Result, screenshots.",
+      "comment_template": "Escalation: Pre-Approved Amount\nTeam: Tech Support\nSLA: 7 business days\nIssue Type: Order > Placing an Order > Maximum/minimum purchase limit\nMacro: Ticket Escalated\nDetails: [merchant/amount/status/screenshots]\nScenario: Escalate — Credit decline after pre-qual honored",
+      "macro": "Ticket Escalated",
+      "issueType": "Order > Placing an Order > Maximum/minimum purchase limit",
+      "issue_category": "Order",
+      "issue_sub_category": "Placing an Order",
+      "team": "Tech Support",
+      "sla": "7 business days",
+      "sf_status": "Working",
+      "_kb_source": "KB Ashry — Pre-Check Feature / Pre-Approved Amount",
+      "escalation_template": "BEFORE ESCALATING — Pre-Approved Amount / Pre-Qual\nEscalate to: Tech Support\nSource: KB Ashry Pre-Approved Amount → Escalation scenarios\n\nRequired steps / info to collect (case comment):\n• Customer ID\n• Merchant name\n• Pre-approved / requested amount + currency\n• Pre-qual validity / timer status (active or expired)\n• CS Hub: Request Status + Pre-qual Result\n• Checkout behavior (honored / not honored / declined / plan mismatch)\n• Screenshots (app + CS Hub)\n• Macro: Ticket Escalated\n• Issue Type: Order > Placing an Order > Maximum/minimum purchase limit\n• Submit as: Working\n• SLA: 7 business days\n\nEscalate only for:\n1) Pre-qual not honored at checkout with NO expected reason\n2) In-app journey broken (not Too Many Attempts)\n3) Wrong / inconsistent pre-approval amount vs expectation after rechecks\n4) Credit decline AFTER pre-qual was honored (same merchant / within limit)\n5) CS Hub status mismatch (e.g. HONORED vs Not Honored)\n6) Payment plan options mismatch vs pre-qual plans"
+    },
+    "PAA_ESC_STATUS_MISMATCH": {
+      "type": "outcome",
+      "headline": "Escalate — CS Hub status mismatch",
+      "agent_expl": "Request Status and Pre-qual Result contradictory (e.g. HONORED vs Not Honored).",
+      "cust_msg": "I will escalate this to our technical team to investigate your Pre-Approved Amount case. You will receive an update on the ticket.",
+      "system_action": "Escalate to Tech Support. Macro Ticket Escalated. Issue Type: Maximum/minimum purchase limit. Submit Working. SLA 7 business days. Collect Customer ID, merchant, amounts, CS Hub Request Status/Pre-qual Result, screenshots.",
+      "comment_template": "Escalation: Pre-Approved Amount\nTeam: Tech Support\nSLA: 7 business days\nIssue Type: Order > Placing an Order > Maximum/minimum purchase limit\nMacro: Ticket Escalated\nDetails: [merchant/amount/status/screenshots]\nScenario: Escalate — CS Hub status mismatch",
+      "macro": "Ticket Escalated",
+      "issueType": "Order > Placing an Order > Maximum/minimum purchase limit",
+      "issue_category": "Order",
+      "issue_sub_category": "Placing an Order",
+      "team": "Tech Support",
+      "sla": "7 business days",
+      "sf_status": "Working",
+      "_kb_source": "KB Ashry — Pre-Check Feature / Pre-Approved Amount",
+      "escalation_template": "BEFORE ESCALATING — Pre-Approved Amount / Pre-Qual\nEscalate to: Tech Support\nSource: KB Ashry Pre-Approved Amount → Escalation scenarios\n\nRequired steps / info to collect (case comment):\n• Customer ID\n• Merchant name\n• Pre-approved / requested amount + currency\n• Pre-qual validity / timer status (active or expired)\n• CS Hub: Request Status + Pre-qual Result\n• Checkout behavior (honored / not honored / declined / plan mismatch)\n• Screenshots (app + CS Hub)\n• Macro: Ticket Escalated\n• Issue Type: Order > Placing an Order > Maximum/minimum purchase limit\n• Submit as: Working\n• SLA: 7 business days\n\nEscalate only for:\n1) Pre-qual not honored at checkout with NO expected reason\n2) In-app journey broken (not Too Many Attempts)\n3) Wrong / inconsistent pre-approval amount vs expectation after rechecks\n4) Credit decline AFTER pre-qual was honored (same merchant / within limit)\n5) CS Hub status mismatch (e.g. HONORED vs Not Honored)\n6) Payment plan options mismatch vs pre-qual plans"
+    },
+    "PAA_ESC_PLAN_MISMATCH": {
+      "type": "outcome",
+      "headline": "Escalate — Payment plan mismatch at checkout",
+      "agent_expl": "Installment plans at checkout do not match pre-qual plans / expected plan missing despite active pre-qual.",
+      "cust_msg": "I will escalate this to our technical team to investigate your Pre-Approved Amount case. You will receive an update on the ticket.",
+      "system_action": "Escalate to Tech Support. Macro Ticket Escalated. Issue Type: Maximum/minimum purchase limit. Submit Working. SLA 7 business days. Collect Customer ID, merchant, amounts, CS Hub Request Status/Pre-qual Result, screenshots.",
+      "comment_template": "Escalation: Pre-Approved Amount\nTeam: Tech Support\nSLA: 7 business days\nIssue Type: Order > Placing an Order > Maximum/minimum purchase limit\nMacro: Ticket Escalated\nDetails: [merchant/amount/status/screenshots]\nScenario: Escalate — Payment plan mismatch at checkout",
+      "macro": "Ticket Escalated",
+      "issueType": "Order > Placing an Order > Maximum/minimum purchase limit",
+      "issue_category": "Order",
+      "issue_sub_category": "Placing an Order",
+      "team": "Tech Support",
+      "sla": "7 business days",
+      "sf_status": "Working",
+      "_kb_source": "KB Ashry — Pre-Check Feature / Pre-Approved Amount",
+      "escalation_template": "BEFORE ESCALATING — Pre-Approved Amount / Pre-Qual\nEscalate to: Tech Support\nSource: KB Ashry Pre-Approved Amount → Escalation scenarios\n\nRequired steps / info to collect (case comment):\n• Customer ID\n• Merchant name\n• Pre-approved / requested amount + currency\n• Pre-qual validity / timer status (active or expired)\n• CS Hub: Request Status + Pre-qual Result\n• Checkout behavior (honored / not honored / declined / plan mismatch)\n• Screenshots (app + CS Hub)\n• Macro: Ticket Escalated\n• Issue Type: Order > Placing an Order > Maximum/minimum purchase limit\n• Submit as: Working\n• SLA: 7 business days\n\nEscalate only for:\n1) Pre-qual not honored at checkout with NO expected reason\n2) In-app journey broken (not Too Many Attempts)\n3) Wrong / inconsistent pre-approval amount vs expectation after rechecks\n4) Credit decline AFTER pre-qual was honored (same merchant / within limit)\n5) CS Hub status mismatch (e.g. HONORED vs Not Honored)\n6) Payment plan options mismatch vs pre-qual plans"
     }
   },
   "officialIssueTypes": [
@@ -9235,6 +9780,15 @@
       "source": "Department template — Tech Support",
       "origin": "department_default",
       "updated_at": "2026-11-24T08:18:55.427308+00:00",
+      "verified_10_pass": true
+    },
+    "pre_approved_amount": {
+      "label": "Pre-Approved Amount",
+      "team": "Tech Support",
+      "template": "BEFORE ESCALATING — Pre-Approved Amount / Pre-Qual\nEscalate to: Tech Support\nSource: KB Ashry Pre-Approved Amount → Escalation scenarios\n\nRequired steps / info to collect (case comment):\n• Customer ID\n• Merchant name\n• Pre-approved / requested amount + currency\n• Pre-qual validity / timer status (active or expired)\n• CS Hub: Request Status + Pre-qual Result\n• Checkout behavior (honored / not honored / declined / plan mismatch)\n• Screenshots (app + CS Hub)\n• Macro: Ticket Escalated\n• Issue Type: Order > Placing an Order > Maximum/minimum purchase limit\n• Submit as: Working\n• SLA: 7 business days\n\nEscalate only for:\n1) Pre-qual not honored at checkout with NO expected reason\n2) In-app journey broken (not Too Many Attempts)\n3) Wrong / inconsistent pre-approval amount vs expectation after rechecks\n4) Credit decline AFTER pre-qual was honored (same merchant / within limit)\n5) CS Hub status mismatch (e.g. HONORED vs Not Honored)\n6) Payment plan options mismatch vs pre-qual plans",
+      "source": "KB Ashry Pre-Approved Amount escalation scenarios",
+      "origin": "kb_explicit",
+      "updated_at": "2026-11-24T13:00:49.807848+00:00",
       "verified_10_pass": true
     }
   },

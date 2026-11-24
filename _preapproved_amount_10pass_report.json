@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-11-24T13:00:49.807808+00:00",
+  "topic_id": "pre_approved_amount",
+  "verification": {
+    "passes_ok": 10,
+    "all_passed": true,
+    "failed": [],
+    "passes": [
+      {
+        "id": 1,
+        "name": "topic_id_is_pre_approved_amount",
+        "ok": true
+      },
+      {
+        "id": 2,
+        "name": "step1_selects_preapproval_status",
+        "ok": true
+      },
+      {
+        "id": 3,
+        "name": "step1_has_8_plus_status_options",
+        "ok": true
+      },
+      {
+        "id": 4,
+        "name": "all_next_targets_resolve",
+        "ok": true,
+        "missing": []
+      },
+      {
+        "id": 5,
+        "name": "all_kb_scenarios_covered",
+        "ok": true,
+        "missing": []
+      },
+      {
+        "id": 6,
+        "name": "escalations_tech_support_7bd",
+        "ok": true
+      },
+      {
+        "id": 7,
+        "name": "issue_types_aligned_to_kb",
+        "ok": true
+      },
+      {
+        "id": 8,
+        "name": "every_outcome_has_macro",
+        "ok": true
+      },
+      {
+        "id": 9,
+        "name": "no_claims_section_bleed",
+        "ok": true
+      },
+      {
+        "id": 10,
+        "name": "escalation_template_defined",
+        "ok": true
+      }
+    ],
+    "node_count": 23,
+    "step_count": 6,
+    "step1_options": 8
+  },
+  "apply_status": "applied",
+  "topic_tag": "Topic 58"
+}
