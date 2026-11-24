@@ -8276,13 +8276,6 @@
       "updated_at": "2026-11-24T07:56:07.157796+00:00",
       "verified_10_pass": true
     },
-    "declined_order": {
-      "label": "Order Fraud",
-      "template": "BEFORE ESCALATING — Order Fraud\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep 1 : Check the customer account’s recent order status.\n• Go to CS Hub from the Customer Detail >click on Histories > and check the Status. Step 2 : Depending on the order status you have two different resolutions: IF The order status is Not Active: Order (expired) = Go to step 3 IF The order is Active: Order (approved), Order (authorised), or Order (fully_captured) = Go to step 4 | Step 3 (Order is Expired): 1- Click the order and check the order information (order number, store name, customer's first name, | and phone number last 4 digits). | 2- Provide the customer with the below info.:\n• Last 4 digits of the user phone number\n• If the first name in the shipping info. is different, you can provide the customer with that as well.\n• Advise the customer that the order is not active which means there are no dues.\n• Educate them on the importance of not sharing any information with others, like the account’s phone number, OTP, passcodes, and all information.\n• Add a case comment with case details\n• Issue type Payment > Unrecognized charge > Explained to customer (no issue)\nStep 4 : The order is “ Active” --> Order (approved), Order (authorised), or Order (fully_captured) | 1- Check the order information (order number, store name, customer's first name, and phone number's last 4 digits). 2- Provide all information to your customer, as they may recognize the person and they can contact them personally.\n3- If they don’t recognize the person, this is a potential fraud case, escalate it to the Trust & Safety team by following the steps in [Customer/Merchant] Transferring Sales Force Cases for further investigation.\n4- Ask the customer the below questions\nQ1- When did this happen?\nQ2- How did someone get your national ID/iqama number?\nQ3- An OTP is sent to your phone number from Absher to activate your account. Why did you give it away?\nQ4- Who is the person that you give your information to?\nQ5- There is an OTP sent to complete the order and it says for purchase why did you give it away?\nQ6- Maybe it's one of your friends or family that has been using your account?\nQ7- If not who do you suspect?\nQ8- Ask if he did file a report to the police.\nQ9- What is the phone number of the caller?\n• If the customer’s phone number was stolen, they can provide a police report/proof | as evidence.\n5- Once you receive answers from the customer, add all case details in a case comments and escalate to the Trust & Safety team.Issue type Payment > Unrecognized charge > Suspected fraud\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
-      "source": "KB Ashry.docx Before Escalating",
-      "updated_at": "2026-11-24T07:55:45.535333+00:00",
-      "verified_10_pass": true
-    },
     "unrecognized_charge": {
       "label": "Unrecognized Charges",
       "template": "BEFORE ESCALATING — Unrecognized Charges\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep1: In the payment tab, confirm if the payment is reflected. Step2: In the payment tab, confirm if the payment is reflected. | → OutcomeStep 3: Did you find the payment on the CS panel? | → IF YES | IF NOStep 4: Copy the customer's ID and paste it in the CS hub payment dashboard. Step 5:- In the Attempt date field, click “Custom”, then add the specific Date/Time of the payment the customer is inquiring about, click Apply. - Use the Attempt paid amount field if needed, and add the payment amount.\nStep 6: | → | IF YES | IF NOUse either the customer’s ID/phone number from the Payment Dashboard, and search in the CS panel. After locating the customer’s account, payment and order details, if the transaction was made on the customer's account, reply back to the customer using:\n• If the reporter requested you to remove the card from the other customer’s account, reply back using:\n• Macro → Cannot Remove Card From Another AccountIssue type (CX) | Payment > Unrecognized charge > Suspected fraudSubmit as → ClosedStep 7 : → | IF YES | IF NOIf the reporter requested you to remove the card from the other customer’s account, reply back using:\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
@@ -8359,9 +8352,26 @@ function initData() {
                 if (cmsData.policies && cmsData.policies[bt.id]) parsedPatch.policies[bt.id] = cmsData.policies[bt.id];
               }
             });
-            Object.keys(cmsData.nodes).forEach(function(nk) {
+            Object.keys(cmsData.nodes || {}).forEach(function(nk) {
+              if (!parsedPatch.nodes) parsedPatch.nodes = {};
               if (!parsedPatch.nodes[nk]) parsedPatch.nodes[nk] = cmsData.nodes[nk];
             });
+            // Critical: never let stale local cache wipe Transfers SLA catalog / Before Escalating maps
+            var baseCatalog = cmsData.transfersSlaCatalog || [];
+            var patchCatalog = parsedPatch.transfersSlaCatalog || [];
+            if (!Array.isArray(patchCatalog) || patchCatalog.length < baseCatalog.length) {
+              parsedPatch.transfersSlaCatalog = baseCatalog;
+            }
+            if (!parsedPatch.beforeEscalatingTemplates && cmsData.beforeEscalatingTemplates) {
+              parsedPatch.beforeEscalatingTemplates = cmsData.beforeEscalatingTemplates;
+            } else if (cmsData.beforeEscalatingTemplates) {
+              parsedPatch.beforeEscalatingTemplates = Object.assign({}, cmsData.beforeEscalatingTemplates, parsedPatch.beforeEscalatingTemplates || {});
+            }
+            if (!parsedPatch.slaSources && cmsData.slaSources) {
+              parsedPatch.slaSources = cmsData.slaSources;
+            } else if (cmsData.slaSources) {
+              parsedPatch.slaSources = Object.assign({}, cmsData.slaSources, parsedPatch.slaSources || {});
+            }
             cmsData = parsedPatch;
           }
         }
@@ -8930,17 +8940,32 @@ function initData() {
   }
 
   function getTransfersCatalog() {
-    return (cmsData && cmsData.transfersSlaCatalog) ? cmsData.transfersSlaCatalog : [];
+    var list = (cmsData && Array.isArray(cmsData.transfersSlaCatalog)) ? cmsData.transfersSlaCatalog : [];
+    if (list.length) return list;
+    // Recover from embedded DB if live cache lost the catalog
+    try {
+      var dbElem = document.getElementById('tamara-db-data');
+      if (dbElem && dbElem.textContent) {
+        var embedded = JSON.parse(dbElem.textContent);
+        if (embedded && Array.isArray(embedded.transfersSlaCatalog) && embedded.transfersSlaCatalog.length) {
+          if (cmsData) cmsData.transfersSlaCatalog = embedded.transfersSlaCatalog;
+          return embedded.transfersSlaCatalog;
+        }
+      }
+    } catch (e) {}
+    return [];
   }
 
   function showTransfersSlaPanel(show) {
     var panel = document.getElementById('transfers-sla-panel');
     var stepBox = document.getElementById('step-container');
     var outcomeBox = document.getElementById('outcome-container');
+    var bePanel = document.getElementById('before-escalating-panel');
     if (panel) panel.style.display = show ? 'block' : 'none';
     if (show) {
       if (stepBox) stepBox.style.display = 'none';
       if (outcomeBox) outcomeBox.style.display = 'none';
+      if (bePanel) bePanel.style.display = 'none';
       populateTransfersSlaDropdowns();
     } else if (stepBox) {
       stepBox.style.display = 'block';
@@ -8955,14 +8980,30 @@ function initData() {
     var cats = [];
     var seen = {};
     catalog.forEach(function(item) {
-      if (!seen[item.category]) {
-        seen[item.category] = true;
-        cats.push(item.category);
+      var c = (item && item.category) ? String(item.category).trim() : '';
+      if (!c) c = 'General';
+      item.category = c;
+      if (!seen[c]) {
+        seen[c] = true;
+        cats.push(c);
       }
     });
     cats.sort();
     var prevCat = catSel.value;
     catSel.innerHTML = '';
+    if (!cats.length) {
+      var emptyOpt = document.createElement('option');
+      emptyOpt.value = '';
+      emptyOpt.textContent = 'No catalog loaded — hard refresh (Ctrl+F5) or Revert All';
+      catSel.appendChild(emptyOpt);
+      sitSel.innerHTML = '';
+      var emptySit = document.createElement('option');
+      emptySit.value = '';
+      emptySit.textContent = 'Catalog missing in browser cache';
+      sitSel.appendChild(emptySit);
+      onTransfersSituationChange();
+      return;
+    }
     cats.forEach(function(c) {
       var opt = document.createElement('option');
       opt.value = c;
@@ -8970,7 +9011,7 @@ function initData() {
       catSel.appendChild(opt);
     });
     if (prevCat && seen[prevCat]) catSel.value = prevCat;
-    else if (cats.length) catSel.value = cats[0];
+    else catSel.value = cats[0];
     onTransfersCategoryChange();
   }
 
@@ -9014,8 +9055,27 @@ function initData() {
     if (statusEl) statusEl.innerText = item.status || 'Working';
     if (lobEl) lobEl.innerText = item.lob || 'Customer Care';
     if (tplEl) {
+      var tpl = item.escalationTemplate || '';
+      var isPending = !tpl || tpl.indexOf('PENDING — Escalation template') === 0;
+      // If catalog template still pending, try topic-level Before Escalating map by keyword
+      if (isPending && cmsData && cmsData.beforeEscalatingTemplates) {
+        var blob = ((item.situation || '') + ' ' + (item.issueFull || '') + ' ' + (item.category || '')).toLowerCase();
+        var beKeys = Object.keys(cmsData.beforeEscalatingTemplates);
+        for (var bi = 0; bi < beKeys.length; bi++) {
+          var key = beKeys[bi];
+          var label = (cmsData.beforeEscalatingTemplates[key].label || key || '').toLowerCase();
+          var tokens = label.split(/[^a-z0-9]+/).filter(function(t) { return t.length > 3; });
+          var hit = tokens.length && tokens.filter(function(t) { return blob.indexOf(t) !== -1; }).length >= Math.max(1, Math.floor(tokens.length / 2));
+          if (hit || blob.indexOf(key.replace(/_/g, ' ')) !== -1) {
+            tpl = cmsData.beforeEscalatingTemplates[key].template;
+            isPending = false;
+            break;
+          }
+        }
+      }
+      if (!tpl) tpl = 'PENDING — Add Before Escalating checklist in KB Ashry.docx for this situation, then re-run sync.';
       tplEl.innerText =
-        (item.escalationTemplate || 'PENDING — Escalation template will be shared.') +
+        tpl +
         '\n\nMacro: ' + (item.macro || 'Ticket Escalated') +
         '\nTeam: ' + (item.team || '-') +
         '\nSLA: ' + (item.sla || '-') +
