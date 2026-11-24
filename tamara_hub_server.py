@@ -16,6 +16,10 @@ INDEX_FILE = os.path.join(BASE_DIR, "index.html")
 STORE_FILE = os.path.join(DATA_DIR, "hub_store.json")
 ADMIN_PASS = os.environ.get("ADMIN_PASS", "").strip()
 REVISION = str(int(time.time() * 1000))
+KB_ASHRY_PATH = os.environ.get(
+    "KB_ASHRY_PATH",
+    r"C:\Users\gasser.elashry\Downloads\KB Ashry.docx",
+).strip()
 
 # Optional GitHub persistence so free-tier hosts keep data across restarts
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "").strip()
@@ -232,6 +236,61 @@ class TamaraHubHandler(http.server.SimpleHTTPRequestHandler):
                     "masterMacros": macros_data,
                 },
             )
+            return
+        if path == "/api/kb-ashry":
+            try:
+                from _kb_ashry_backend import read_kb_ashry
+                from pathlib import Path
+
+                data = read_kb_ashry(Path(KB_ASHRY_PATH))
+                # Query: ?section=sec_1 or ?mode=index (lighter payload)
+                qs = ""
+                if "?" in self.path:
+                    qs = self.path.split("?", 1)[1]
+                params = dict(p.split("=", 1) for p in qs.split("&") if "=" in p)
+                mode = params.get("mode", "full")
+                section_id = params.get("section", "")
+                if not data.get("ok"):
+                    json_response(self, 404, data)
+                    return
+                if mode == "index":
+                    json_response(
+                        self,
+                        200,
+                        {
+                            "ok": True,
+                            "path": data["path"],
+                            "backend": data["backend"],
+                            "modified_at": data["modified_at"],
+                            "paras_count": data["paras_count"],
+                            "sections_count": data["sections_count"],
+                            "section_index": data["section_index"],
+                            "loaded_at": data["loaded_at"],
+                        },
+                    )
+                    return
+                if section_id:
+                    match = next((s for s in data["sections"] if s["id"] == section_id), None)
+                    if not match:
+                        json_response(self, 404, {"ok": False, "error": "Section not found", "section": section_id})
+                        return
+                    json_response(
+                        self,
+                        200,
+                        {
+                            "ok": True,
+                            "path": data["path"],
+                            "backend": data["backend"],
+                            "modified_at": data["modified_at"],
+                            "section": match,
+                            "section_index": data["section_index"],
+                            "loaded_at": data["loaded_at"],
+                        },
+                    )
+                    return
+                json_response(self, 200, data)
+            except Exception as e:
+                json_response(self, 500, {"ok": False, "error": str(e)})
             return
         return super().do_GET()
 

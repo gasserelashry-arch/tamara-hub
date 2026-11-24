@@ -1137,10 +1137,12 @@
         <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:6px;">
           <a id="sla-link-transfers" href="https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0" target="_blank" class="btn-copy" style="text-decoration:none; padding:4px 9px; font-size:10px;">📊 Transfers SLA Sheet</a>
           <a id="sla-link-duedate" href="https://docs.google.com/document/d/1bjsyr6dclJIIwSoJx8TVYOA3y5_lVVkKcwee7QJKOTA/edit?tab=t.0" target="_blank" class="btn-copy" style="text-decoration:none; padding:4px 9px; font-size:10px;">📄 Due Date Preference SLAs</a>
-          <span class="btn-copy" style="padding:4px 9px; font-size:10px; cursor:default;" title="C:\Users\gasser.elashry\Downloads\KB Ashry.docx">📘 KB Ashry (local linked)</span>
+          <span class="btn-copy" style="padding:4px 9px; font-size:10px; cursor:default;" title="C:\Users\gasser.elashry\Downloads\KB Ashry.docx">📘 KB Ashry backend doc</span>
         </div>
         <div id="sla-sources-status" style="font-size:11.5px; color:var(--text-muted); line-height:1.45;">
-          Linked. Update <strong>Transfers SLA.xlsx</strong> / <strong>KB Ashry.docx</strong> in Downloads, then run <strong>Sync_SLA_From_Downloads.bat</strong> and refresh. KB mismatches are reported only — confirm before applying.
+          Backend SOP doc: <strong>C:\Users\gasser.elashry\Downloads\KB Ashry.docx</strong>.
+          Edit that file, then use Update Hub → <strong>KB Ashry Auto-Sync → Load from Backend Doc</strong>
+          (local server required) or run <strong>Sync_KB_Ashry_Backend.bat</strong>. Transfers SLA.xlsx remains SLA authority.
         </div>
       </div>
 
@@ -1584,10 +1586,26 @@
         <!-- MODE 1.5: KB ASHRY AUTO-SYNC ARCHITECT -->
         <div id="agent-workspace-kbashry" style="display:none;">
           <div style="background:rgba(83,0,186,0.22); border:1.5px solid var(--tamara-lavender); border-radius:8px; padding:10px 12px; margin-bottom:10px;">
-            <div style="font-size:11px; font-weight:800; color:var(--gold-metallic); text-transform:uppercase; margin-bottom:3px;">📚 KB Ashry One-Click Flow Generator</div>
+            <div style="font-size:11px; font-weight:800; color:var(--gold-metallic); text-transform:uppercase; margin-bottom:3px;">📚 KB Ashry Backend → Work Flow Sync</div>
             <div style="font-size:11.5px; color:var(--text-muted); line-height:1.45;">
-              Paste <strong>any</strong> KB Ashry SOP format directly—headings, numbered steps, bullets (<code>•</code>/<code>-</code>), <code>If / When</code> conditions, <code>YES / NO</code> branches, or raw paragraphs. The semantic extractor automatically detects Tamara Macros, Official Issue Types, Escalation Teams, SLAs, Quoted Customer Scripts, and CS Hub Actions.
+              Backend document: <code style="color:var(--gold-metallic);">C:\Users\gasser.elashry\Downloads\KB Ashry.docx</code>.
+              Load a section from that file (local Atlas server), review, then parse/publish. You can still paste text manually.
             </div>
+          </div>
+
+          <div style="background:rgba(212,175,55,0.1); border:1.5px solid var(--gold-border); border-radius:8px; padding:10px; margin-bottom:10px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:6px;">
+              <label style="font-size:10px; font-weight:800; color:var(--gold-metallic); margin:0;">LOAD FROM BACKEND DOC</label>
+              <button type="button" class="btn-copy" style="padding:4px 10px; font-size:10.5px; background:linear-gradient(135deg,#4a0082,#7c3aed); color:#ffd54f; border-color:#e8a017;" onclick="window.refreshKbAshryBackendIndex()">↻ Refresh sections from KB Ashry.docx</button>
+            </div>
+            <select id="kb-ashry-section-select" class="sidebar-search" style="margin:0 0 8px 0; width:100%; font-size:12px; font-weight:700;" onchange="window.onKbAshrySectionPicked()">
+              <option value="">— Click Refresh to list sections from KB Ashry.docx —</option>
+            </select>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <button type="button" class="btn-copy" style="flex:1; min-width:160px; padding:9px; font-size:11.5px; background:linear-gradient(135deg,#5300BA,#9600F1); color:#fff;" onclick="window.loadKbAshrySectionFromBackend()">📥 Load selected section into editor</button>
+              <button type="button" class="btn-copy" style="padding:9px 12px; font-size:11px;" onclick="window.loadKbAshryFullFromBackend()">📄 Load full document</button>
+            </div>
+            <div id="kb-ashry-backend-status" style="margin-top:6px; font-size:11px; color:var(--text-muted);">Start local Atlas server to read the backend .docx automatically.</div>
           </div>
 
           <div style="display:flex; gap:14px; margin-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:8px;">
@@ -10000,6 +10018,7 @@ var officialIssueTypes = DEFAULT_OFFICIAL_ISSUE_TYPES.slice();
       updateMacroStagingPreview();
     } else if (mode === 'kbashry') {
       populateKbTopicDropdown();
+      refreshKbAshryBackendIndex();
     }
   }
 
@@ -10017,6 +10036,121 @@ var officialIssueTypes = DEFAULT_OFFICIAL_ISSUE_TYPES.slice();
     if (prev && cmsData.topics.some(function(t) { return t.id === prev; })) {
       kbSel.value = prev;
     }
+  }
+
+  var kbAshryBackendCache = null;
+
+  function setKbAshryBackendStatus(msg, isError) {
+    var el = document.getElementById('kb-ashry-backend-status');
+    if (!el) return;
+    el.style.color = isError ? '#f87171' : 'var(--text-muted)';
+    el.innerHTML = msg;
+  }
+
+  function refreshKbAshryBackendIndex() {
+    setKbAshryBackendStatus('Loading section index from KB Ashry.docx…');
+    fetch('/api/kb-ashry?mode=index')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (!data || !data.ok) {
+          setKbAshryBackendStatus('❌ ' + ((data && data.error) || 'Could not read KB Ashry.docx. Is the local server running?'), true);
+          return;
+        }
+        kbAshryBackendCache = data;
+        var sel = document.getElementById('kb-ashry-section-select');
+        if (sel) {
+          sel.innerHTML = '<option value="">— Select a section (' + (data.sections_count || 0) + ') —</option>';
+          (data.section_index || []).forEach(function(s) {
+            var opt = document.createElement('option');
+            opt.value = s.id;
+            opt.textContent = s.title + ' (' + s.chars + ' chars)';
+            sel.appendChild(opt);
+          });
+        }
+        if (cmsData) {
+          cmsData.slaSources = cmsData.slaSources || {};
+          cmsData.slaSources.kbAshryLocalPath = data.path || 'C:\\Users\\gasser.elashry\\Downloads\\KB Ashry.docx';
+          cmsData.slaSources.kbAshryLinked = true;
+          cmsData.slaSources.kbAshryBackendLoadedAt = data.loaded_at;
+          cmsData.slaSources.kbAshrySectionsCount = data.sections_count;
+        }
+        setKbAshryBackendStatus('✅ Backend linked: ' + (data.path || 'KB Ashry.docx') + ' · ' + data.paras_count + ' paras · ' + data.sections_count + ' sections · modified ' + (data.modified_at || ''));
+      })
+      .catch(function() {
+        setKbAshryBackendStatus('❌ Local server required. Start Atlas server, or run Sync_KB_Ashry_Backend.bat then paste from the doc.', true);
+      });
+  }
+
+  function onKbAshrySectionPicked() {
+    var sel = document.getElementById('kb-ashry-section-select');
+    if (!sel || !sel.value || !kbAshryBackendCache) return;
+    var item = (kbAshryBackendCache.section_index || []).find(function(s) { return s.id === sel.value; });
+    if (item) {
+      var titleEl = document.getElementById('kb-ashry-title');
+      if (titleEl && !titleEl.value.trim()) titleEl.value = item.title;
+      setKbAshryBackendStatus('Selected: ' + item.title + ' — click Load selected section.');
+    }
+  }
+
+  function loadKbAshrySectionFromBackend() {
+    var sel = document.getElementById('kb-ashry-section-select');
+    if (!sel || !sel.value) {
+      alert('Select a section first (or click Refresh sections).');
+      return;
+    }
+    setKbAshryBackendStatus('Loading section ' + sel.value + '…');
+    fetch('/api/kb-ashry?section=' + encodeURIComponent(sel.value))
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (!data || !data.ok || !data.section) {
+          setKbAshryBackendStatus('❌ ' + ((data && data.error) || 'Section load failed'), true);
+          return;
+        }
+        var txtEl = document.getElementById('kb-ashry-raw-text');
+        var titleEl = document.getElementById('kb-ashry-title');
+        var catEl = document.getElementById('kb-ashry-category');
+        if (txtEl) txtEl.value = data.section.text || '';
+        if (titleEl) titleEl.value = data.section.title || titleEl.value;
+        if (catEl && (!catEl.value || catEl.value === 'Tamara SOP')) catEl.value = 'KB Ashry Backend';
+        setKbAshryBackendStatus('✅ Loaded section into editor: ' + data.section.title + ' (' + (data.section.text || '').length + ' chars). Review → Parse & Publish.');
+      })
+      .catch(function() {
+        setKbAshryBackendStatus('❌ Could not load section. Start local Atlas server.', true);
+      });
+  }
+
+  function loadKbAshryFullFromBackend() {
+    if (!confirm('Load the FULL KB Ashry.docx into the editor? Large docs may be slow to parse — prefer loading one section.')) return;
+    setKbAshryBackendStatus('Loading full KB Ashry.docx…');
+    fetch('/api/kb-ashry')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (!data || !data.ok) {
+          setKbAshryBackendStatus('❌ ' + ((data && data.error) || 'Full load failed'), true);
+          return;
+        }
+        var txtEl = document.getElementById('kb-ashry-raw-text');
+        var titleEl = document.getElementById('kb-ashry-title');
+        var catEl = document.getElementById('kb-ashry-category');
+        if (txtEl) txtEl.value = data.full_text || '';
+        if (titleEl && !titleEl.value.trim()) titleEl.value = 'KB Ashry Full Document';
+        if (catEl) catEl.value = 'KB Ashry Backend';
+        kbAshryBackendCache = data;
+        var sel = document.getElementById('kb-ashry-section-select');
+        if (sel) {
+          sel.innerHTML = '<option value="">— Select a section (' + (data.sections_count || 0) + ') —</option>';
+          (data.section_index || []).forEach(function(s) {
+            var opt = document.createElement('option');
+            opt.value = s.id;
+            opt.textContent = s.title + ' (' + s.chars + ' chars)';
+            sel.appendChild(opt);
+          });
+        }
+        setKbAshryBackendStatus('✅ Full document loaded (' + data.paras_count + ' paras). Prefer section parse for accuracy.');
+      })
+      .catch(function() {
+        setKbAshryBackendStatus('❌ Could not load document. Start local Atlas server.', true);
+      });
   }
 
   function onKbSyncActionChange() {
@@ -12805,6 +12939,10 @@ var officialIssueTypes = DEFAULT_OFFICIAL_ISSUE_TYPES.slice();
   window.loadKbAshrySampleTemplate = loadKbAshrySampleTemplate;
   window.clearKbAshryInputs = clearKbAshryInputs;
   window.parseKbAshryToFlow = parseKbAshryToFlow;
+  window.refreshKbAshryBackendIndex = refreshKbAshryBackendIndex;
+  window.onKbAshrySectionPicked = onKbAshrySectionPicked;
+  window.loadKbAshrySectionFromBackend = loadKbAshrySectionFromBackend;
+  window.loadKbAshryFullFromBackend = loadKbAshryFullFromBackend;
   window.toggleQuickPatchDrawer = toggleQuickPatchDrawer;
   window.applyPastedChatPatch = applyPastedChatPatch;
   window.pullRemoteCloudUpdates = pullRemoteCloudUpdates;
