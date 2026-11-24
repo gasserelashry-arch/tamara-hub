@@ -945,7 +945,7 @@
           <span>Transfers quick browser</span>
         </button>
         <label id="sidebar-filter-label" style="font-size:10px; font-weight:800; color:var(--gold-metallic); text-transform:uppercase; display:block; margin-bottom:4px;">Search topics</label>
-        <input type="text" class="sidebar-search" id="sidebar-filter" placeholder="Search topics by name..." oninput="renderSidebarTopics()">
+        <input type="text" class="sidebar-search" id="sidebar-filter" placeholder="Type topic name to filter the list..." oninput="renderSidebarTopics()">
         <div class="topic-list-scroll" id="sidebar-topics-render"></div>
       </aside>
       <section class="decision-display">
@@ -956,19 +956,6 @@
             <div style="font-size:12px; color:var(--text-muted); margin-top:2px;" id="disp-topic-desc">Topic description</div>
             <div id="related-topics-bar" style="display:none; margin-top:10px;"></div>
             <div id="hub-revision-badge" style="margin-top:8px; font-size:10px; font-weight:700; color:var(--gold-metallic); letter-spacing:0.02em;"></div>
-            <div id="ops-health-bar" style="margin-top:10px; padding:10px 12px; border:1px solid var(--border-soft); border-radius:8px; background:rgba(0,0,0,0.22);">
-              <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:space-between;">
-                <div style="font-size:11px; line-height:1.45;">
-                  <div><strong style="color:var(--gold-metallic);">Ops health</strong> · <span id="ops-mismatch-pill">Mismatch —</span> · <span id="ops-catalog-pill">Transfers catalog —</span></div>
-                  <div id="ops-sync-note" style="color:var(--text-muted); font-size:10.5px; margin-top:3px;">SLA authority: Transfers sheet · KB = SOP only</div>
-                </div>
-                <div style="display:flex; flex-wrap:wrap; gap:6px;">
-                  <button type="button" class="btn-copy" style="padding:6px 10px; font-size:10.5px; width:auto;" onclick="window.clearStaleHubCacheAndReload()">Reload published hub (clear cache)</button>
-                  <button type="button" class="btn-copy" style="padding:6px 10px; font-size:10.5px; width:auto;" onclick="window.togglePublishChecklist()">Publish checklist</button>
-                </div>
-              </div>
-              <pre id="ops-publish-checklist" style="display:none; margin:10px 0 0; white-space:pre-wrap; font-family:'JetBrains Mono',monospace; font-size:11px; line-height:1.5; color:var(--text-bright);"></pre>
-            </div>
           </div>
           <button class="btn-copy" style="background:#000; color:#fff;" onclick="relockGate()">🔒 Reset Gate</button>
         </div>
@@ -1229,6 +1216,22 @@
           <button type="button" class="btn-copy" style="background:linear-gradient(135deg, #0284c7, #0369a1); color:#fff; border-color:#38bdf8; padding:4px 10px; font-size:10.5px;" onclick="window.downloadSelfContainedHtml()">📦 Export index.html</button>
           <button type="button" class="btn-copy" style="background:#ef4444; color:#fff; border-color:#b91c1c; padding:4px 10px; font-size:10.5px;" onclick="window.lockAgentHub()">🔒 Lock</button>
         </div>
+      </div>
+
+
+      <!-- ADMIN ONLY: Ops health lives in AI Update Hub (not shown to agents) -->
+      <div id="ops-health-bar" style="margin-bottom:10px; padding:10px 12px; border:1px solid var(--border-soft); border-radius:8px; background:rgba(0,0,0,0.22);">
+        <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:space-between;">
+          <div style="font-size:11px; line-height:1.45;">
+            <div><strong style="color:var(--gold-metallic);">Ops health (admin)</strong> · <span id="ops-mismatch-pill">Mismatch —</span> · <span id="ops-catalog-pill">Transfers catalog —</span></div>
+            <div id="ops-sync-note" style="color:var(--text-muted); font-size:10.5px; margin-top:3px;">SLA authority: Transfers sheet · KB = SOP only</div>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;">
+            <button type="button" class="btn-copy" style="padding:6px 10px; font-size:10.5px; width:auto;" onclick="window.clearStaleHubCacheAndReload()">Reload published hub (clear cache)</button>
+            <button type="button" class="btn-copy" style="padding:6px 10px; font-size:10.5px; width:auto;" onclick="window.togglePublishChecklist()">Publish checklist</button>
+          </div>
+        </div>
+        <pre id="ops-publish-checklist" style="display:none; margin:10px 0 0; white-space:pre-wrap; font-family:'JetBrains Mono',monospace; font-size:11px; line-height:1.5; color:var(--text-bright);"></pre>
       </div>
 
       <!-- SLA SOURCE LINKS (Transfers sheet + Due Date Preference doc) -->
@@ -15271,7 +15274,7 @@ function initData() {
   /* ==========================================================
      LIVE SERVER AUTO-PUSH & SAME-LINK AGENT SYNC ENGINE
      ========================================================== */
-  var CURRENT_HUB_REVISION = "20261124180822";
+  var CURRENT_HUB_REVISION = "20261124183057";
 
 
   /* ==========================================================
@@ -15586,6 +15589,7 @@ function initData() {
           syncAgentHubLockUI();
           populateAgentDropdowns();
           populateMacroUpdaterDropdowns();
+          if (typeof updateHubRevisionBadge === 'function') updateHubRevisionBadge();
         } else {
           sessionAdminPass = '';
           isAgentHubUnlocked = false;
@@ -15820,51 +15824,6 @@ function initData() {
     }
   }
 
-  function populateTopicNameRouter(){ return; }
-  function _populateTopicNameRouter_removed() {
-    var list = document.getElementById('topic-name-router-list');
-    var chips = document.getElementById('topic-quick-chips');
-    if (!cmsData || !cmsData.topics) return;
-    if (list) {
-      list.innerHTML = '';
-      cmsData.topics.forEach(function(t) {
-        var opt = document.createElement('option');
-        opt.value = t.name;
-        list.appendChild(opt);
-      });
-    }
-    if (chips) {
-      chips.innerHTML = '';
-      var quick = ['Transfers SLA', 'Refunds and Cancellations', 'Dispute & Claims Handling', 'BNPL+ (Pay by Finance)', 'BNPL (Pay Later)', 'Pre-Approved Amount', 'Change Phone Number (SOP & CS Panel)', 'Due Date Preference'];
-      quick.forEach(function(name) {
-        var t = cmsData.topics.find(function(x) { return x.name === name; });
-        if (!t) return;
-        var b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'btn-copy';
-        b.style.cssText = 'padding:4px 8px; font-size:10px; width:auto;';
-        b.textContent = name.length > 28 ? (name.slice(0, 26) + '…') : name;
-        b.onclick = function() { selectTopic(t.id); };
-        chips.appendChild(b);
-      });
-    }
-  }
-
-  function jumpTopicByOfficialName(){ return; }
-  function _jumpTopicByOfficialName_removed() {
-    var input = document.getElementById('topic-name-router-input');
-    if (!input || !cmsData) return;
-    var q = (input.value || '').trim().toLowerCase();
-    if (!q) return;
-    var exact = cmsData.topics.find(function(t) { return (t.name || '').toLowerCase() === q; });
-    var starts = cmsData.topics.find(function(t) { return (t.name || '').toLowerCase().indexOf(q) === 0; });
-    var hit = exact || starts || cmsData.topics.find(function(t) { return (t.name || '').toLowerCase().indexOf(q) !== -1; });
-    if (!hit) {
-      alert('No official topic name matches. Use the exact topic name from the list (customer words can misroute).');
-      return;
-    }
-    selectTopic(hit.id);
-  }
 
   function renderRelatedTopics(topicId) {
     var bar = document.getElementById('related-topics-bar');
@@ -15914,7 +15873,7 @@ function initData() {
       return t.id !== 'transfers_sla';
     });
     topics.filter(function(t) {
-      var blob = ((t.name || '') + ' ' + (t.tag || '') + ' ' + (t.desc || '') + ' ' + (t.id || '')).toLowerCase();
+      var blob = ((t.name || '')).toLowerCase();
       return !q || blob.indexOf(q) !== -1;
     }).forEach(function(t) {
       var btn = document.createElement('button');
