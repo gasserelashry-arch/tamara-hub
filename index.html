@@ -944,15 +944,8 @@
         <button type="button" class="topic-menu-btn" style="font-size:11px; opacity:0.9;" onclick="window.showTransfersQuickBrowser()" title="Optional dropdown browser">
           <span>Transfers quick browser</span>
         </button>
-        <input type="text" class="sidebar-search" id="sidebar-filter" placeholder="Filter topics (Deceased, Unrecognized, AECB, Dispute)..." oninput="renderSidebarTopics()">
-        <div id="topic-name-router" style="margin-top:8px;">
-          <label style="font-size:10px; font-weight:800; color:var(--gold-metallic); text-transform:uppercase; display:block; margin-bottom:4px;">Jump by official topic name</label>
-          <input type="text" id="topic-name-router-input" list="topic-name-router-list" class="sidebar-search" style="margin:0; width:100%; font-size:12px;" placeholder="Type exact topic name (e.g. Refunds and Cancellations)…" onkeydown="if(event.key==='Enter'){window.jumpTopicByOfficialName();}" />
-          <datalist id="topic-name-router-list"></datalist>
-          <button type="button" class="btn-copy" style="width:100%; margin-top:6px; padding:8px;" onclick="window.jumpTopicByOfficialName()">Go to topic</button>
-          <div id="topic-quick-chips" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:8px;"></div>
-          <div style="font-size:10px; color:var(--text-muted); margin-top:6px; line-height:1.4;">Uses official topic names only — customer wording can misroute.</div>
-        </div>
+        <label id="sidebar-filter-label" style="font-size:10px; font-weight:800; color:var(--gold-metallic); text-transform:uppercase; display:block; margin-bottom:4px;">Search topics</label>
+        <input type="text" class="sidebar-search" id="sidebar-filter" placeholder="Search topics by name..." oninput="renderSidebarTopics()">
         <div class="topic-list-scroll" id="sidebar-topics-render"></div>
       </aside>
       <section class="decision-display">
@@ -15358,7 +15351,6 @@ function initData() {
         populateMacroUpdaterDropdowns();
         initMacrosLibrary();
         renderSidebarTopics();
-    populateTopicNameRouter();
     updateHubRevisionBadge();
         renderCmsTable();
         if (activeTopic) selectTopic(activeTopic);
@@ -15778,8 +15770,7 @@ function initData() {
     if (typeof initMacrosData === 'function') initMacrosData();
     if (typeof initMacrosLibrary === 'function') initMacrosLibrary();
     if (typeof renderSidebarTopics === 'function') renderSidebarTopics();
-    if (typeof populateTopicNameRouter === 'function') populateTopicNameRouter();
-    if (typeof updateHubRevisionBadge === 'function') updateHubRevisionBadge();
+        if (typeof updateHubRevisionBadge === 'function') updateHubRevisionBadge();
     if (activeTopic) selectTopic(activeTopic);
     alert('Cleared stale browser cache and reloaded the published hub snapshot. Hub rev: ' + (CURRENT_HUB_REVISION || '?'));
   }
@@ -15829,7 +15820,8 @@ function initData() {
     }
   }
 
-  function populateTopicNameRouter() {
+  function populateTopicNameRouter(){ return; }
+  function _populateTopicNameRouter_removed() {
     var list = document.getElementById('topic-name-router-list');
     var chips = document.getElementById('topic-quick-chips');
     if (!cmsData || !cmsData.topics) return;
@@ -15858,7 +15850,8 @@ function initData() {
     }
   }
 
-  function jumpTopicByOfficialName() {
+  function jumpTopicByOfficialName(){ return; }
+  function _jumpTopicByOfficialName_removed() {
     var input = document.getElementById('topic-name-router-input');
     if (!input || !cmsData) return;
     var q = (input.value || '').trim().toLowerCase();
