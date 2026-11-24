@@ -19,39 +19,44 @@ try {
   }
 } catch {}
 
-git add index.html PUBLIC_LINK.txt Publish_For_Agents.ps1 Publish_For_Agents.bat 2>$null
-git status --porcelain
+# Only publish hub files — ignore local helper scripts / reports (they are not the agent site).
+git add -- index.html PUBLIC_LINK.txt Publish_For_Agents.ps1 Publish_For_Agents.bat 2>$null
 
 # One-off author for this commit only (does NOT change global git config).
-# Fixes: "Author identity unknown" when user.name / user.email are unset.
 $gitAuthorName = 'gasser.elashry'
 $gitAuthorEmail = 'gasser.elashry@tamara.co'
-$status = git status --porcelain
-if ($status) {
+
+# Staged changes only (ignore untracked _*.py / report JSON noise)
+$staged = git diff --cached --name-only
+if ($staged) {
+  Write-Host 'Staged for publish:' -ForegroundColor Yellow
+  $staged | ForEach-Object { Write-Host "  $_" }
   git -c user.name="$gitAuthorName" -c user.email="$gitAuthorEmail" commit -m "Publish agent hub snapshot"
   if ($LASTEXITCODE -ne 0) {
     Write-Host 'Commit failed. Updates were NOT pushed.' -ForegroundColor Red
     exit 1
   }
+  Write-Host 'Pushing to origin and public...' -ForegroundColor Yellow
+  git push origin main
+  if ($LASTEXITCODE -ne 0) {
+    Write-Host 'Push to origin FAILED.' -ForegroundColor Red
+    exit 1
+  }
+  git push public main
+  if ($LASTEXITCODE -ne 0) {
+    Write-Host 'Push to public FAILED (Pages may be on origin only).' -ForegroundColor Yellow
+  } else {
+    Write-Host 'PUBLISH OK — agent link updated.' -ForegroundColor Green
+  }
 } else {
-  Write-Host 'No changes to commit (index already up to date).' -ForegroundColor Yellow
+  Write-Host 'ALREADY UP TO DATE — nothing new in index.html to publish (not a failure).' -ForegroundColor Green
+  Write-Host 'Agent link already has the latest snapshot. Untracked helper files are ignored.' -ForegroundColor Yellow
 }
 
-Write-Host 'Pushing to origin and public...' -ForegroundColor Yellow
-git push origin main
-if ($LASTEXITCODE -ne 0) {
-  Write-Host 'Push to origin FAILED.' -ForegroundColor Red
-  exit 1
-}
-git push public main
-if ($LASTEXITCODE -ne 0) {
-  Write-Host 'Push to public FAILED (Pages may be on origin only).' -ForegroundColor Yellow
-}
-
-Write-Host 'Push OK. Confirm remote tip matches local:' -ForegroundColor Green
+Write-Host 'Confirm tips (local / origin / public):' -ForegroundColor Cyan
 git log -1 --oneline
-git log origin/main -1 --oneline
-git log public/main -1 --oneline
+git log origin/main -1 --oneline 2>$null
+git log public/main -1 --oneline 2>$null
 
 $url = 'https://gasserelashry-arch.github.io/tamara-hub/'
 @"
