@@ -467,6 +467,301 @@
 
 
 
+
+    /* === LIGHT THEME GLOBAL CONTRAST (auto) === */
+    html[data-theme="light"] {
+      --tamara-dreamy: #5300BA;
+      --tamara-lavender: #6415C2;
+      --tamara-zingy: #3b0764;
+      --accent-blue: #4c1d95;
+      --accent-amber: #92400e;
+      --accent-green: #047857;
+      --text-bright: #1a120b;
+      --text-muted: #3d2e22;
+      --gold-metallic: #92400e;
+    }
+
+    /* Base surfaces: always dark ink on sand */
+    html[data-theme="light"] body,
+    html[data-theme="light"] .decision-display,
+    html[data-theme="light"] .topics-sidebar,
+    html[data-theme="light"] .gate-card,
+    html[data-theme="light"] .agent-card,
+    html[data-theme="light"] .section-card,
+    html[data-theme="light"] .outcome-panel,
+    html[data-theme="light"] .workflow-main-panel,
+    html[data-theme="light"] #agent-unlocked-workspace,
+    html[data-theme="light"] #tab-macros,
+    html[data-theme="light"] #tab-articles,
+    html[data-theme="light"] #tab-cms {
+      color: #1a120b !important;
+    }
+
+    html[data-theme="light"] p,
+    html[data-theme="light"] li,
+    html[data-theme="light"] label,
+    html[data-theme="light"] td,
+    html[data-theme="light"] th,
+    html[data-theme="light"] pre,
+    html[data-theme="light"] code,
+    html[data-theme="light"] small,
+    html[data-theme="light"] span,
+    html[data-theme="light"] strong,
+    html[data-theme="light"] em,
+    html[data-theme="light"] div,
+    html[data-theme="light"] h1,
+    html[data-theme="light"] h2,
+    html[data-theme="light"] h3,
+    html[data-theme="light"] h4 {
+      color: inherit;
+    }
+
+    /* Descriptions / muted copy */
+    html[data-theme="light"] #disp-topic-desc,
+    html[data-theme="light"] #step-path-crumb,
+    html[data-theme="light"] #ops-sync-note,
+    html[data-theme="light"] [style*="color:var(--text-muted)"],
+    html[data-theme="light"] [style*="color: var(--text-muted)"] {
+      color: #3d2e22 !important;
+      opacity: 1 !important;
+    }
+
+    html[data-theme="light"] #hub-revision-badge,
+    html[data-theme="light"] #sidebar-filter-label,
+    html[data-theme="light"] [style*="color:var(--gold-metallic)"],
+    html[data-theme="light"] [style*="color: var(--gold-metallic)"] {
+      color: #92400e !important;
+    }
+
+    /* Pale greys / whites used as body text on sand → dark ink */
+    html[data-theme="light"] [style*="color:#e2e8f0"],
+    html[data-theme="light"] [style*="color: #e2e8f0"],
+    html[data-theme="light"] [style*="color:#cbd5e1"],
+    html[data-theme="light"] [style*="color: #cbd5e1"],
+    html[data-theme="light"] [style*="color:#f8fafc"],
+    html[data-theme="light"] [style*="color: #f8fafc"],
+    html[data-theme="light"] [style*="color:#f1f5f9"],
+    html[data-theme="light"] [style*="color:#94a3b8"],
+    html[data-theme="light"] [style*="color: #94a3b8"],
+    html[data-theme="light"] [style*="color:#64748b"],
+    html[data-theme="light"] [style*="color: #64748b"],
+    html[data-theme="light"] [style*="color:#a78bfa"],
+    html[data-theme="light"] [style*="color:#c4b5fd"],
+    html[data-theme="light"] [style*="color:#CEA4FF"],
+    html[data-theme="light"] [style*="color:var(--tamara-dreamy)"],
+    html[data-theme="light"] [style*="color: var(--tamara-dreamy)"] {
+      color: #1a120b !important;
+    }
+
+    /* White text labels on light panels (not buttons) */
+    html[data-theme="light"] label[style*="color:#fff"],
+    html[data-theme="light"] label[style*="color: #fff"],
+    html[data-theme="light"] label[style*="color:#ffffff"],
+    html[data-theme="light"] h3[style*="color:#fff"],
+    html[data-theme="light"] h3[style*="color: #fff"],
+    html[data-theme="light"] div[style*="color:#fff"]:not(.section-header):not(.btn-copy):not(.tab-btn):not(.sub-btn),
+    html[data-theme="light"] span[style*="color:#fff"]:not(.btn-copy):not(.tab-btn):not(.updated-badge),
+    html[data-theme="light"] strong[style*="color:#fff"] {
+      color: #1a120b !important;
+    }
+
+    /* Keep intentional white text on solid/dark controls */
+    html[data-theme="light"] .section-header,
+    html[data-theme="light"] .section-header *,
+    html[data-theme="light"] .tab-btn.active,
+    html[data-theme="light"] .tab-btn.active *,
+    html[data-theme="light"] .btn-copy[style*="color:#fff"],
+    html[data-theme="light"] .btn-copy[style*="color: #fff"],
+    html[data-theme="light"] .btn-copy[style*="background:var(--accent-green)"],
+    html[data-theme="light"] .btn-copy[style*="background:#ef4444"],
+    html[data-theme="light"] .btn-copy[style*="background:#EF4444"],
+    html[data-theme="light"] .btn-copy[style*="background:#64748b"],
+    html[data-theme="light"] .btn-copy[style*="background:#000"],
+    html[data-theme="light"] .btn-copy[style*="linear-gradient"],
+    html[data-theme="light"] .btn-gate-enter.ready,
+    html[data-theme="light"] a.btn-copy[style*="color:#fff"] {
+      color: #ffffff !important;
+    }
+    html[data-theme="light"] .btn-copy:not([style*="color:#fff"]):not([style*="linear-gradient"]):not([style*="background:var(--accent-green)"]):not([style*="background:#ef4444"]):not([style*="background:#EF4444"]):not([style*="background:#64748b"]):not([style*="background:#000"]) {
+      color: #1a120b !important;
+    }
+    html[data-theme="light"] .btn-copy {
+      border-color: #6415C2;
+    }
+
+    /* Gate idle button readable */
+    html[data-theme="light"] .btn-gate-enter {
+      color: #3d2e22 !important;
+      background: #efe6d7 !important;
+      border-color: #b8a48a !important;
+    }
+    html[data-theme="light"] .btn-gate-enter.ready,
+    html[data-theme="light"] .btn-gate-enter:hover {
+      color: #1a120b !important;
+      background: linear-gradient(135deg, #d4af37, #aa8214) !important;
+    }
+
+    /* Placeholders */
+    html[data-theme="light"] ::placeholder {
+      color: #6b5644 !important;
+      opacity: 1 !important;
+    }
+    html[data-theme="light"] input,
+    html[data-theme="light"] select,
+    html[data-theme="light"] textarea {
+      color: #1a120b !important;
+      background: #fffbf5 !important;
+      border-color: #b8a48a !important;
+    }
+    html[data-theme="light"] option {
+      color: #1a120b;
+      background: #fffbf5;
+    }
+
+    /* Soft dark overlays become sand panels with dark text */
+    html[data-theme="light"] [style*="background:rgba(0,0,0,0.22)"],
+    html[data-theme="light"] [style*="background:rgba(0,0,0,0.25)"],
+    html[data-theme="light"] [style*="background:rgba(0,0,0,0.28)"],
+    html[data-theme="light"] [style*="background:rgba(0,0,0,0.3)"],
+    html[data-theme="light"] [style*="background:rgba(0,0,0,0.35)"],
+    html[data-theme="light"] [style*="background:rgba(0,0,0,0.4)"],
+    html[data-theme="light"] [style*="background:rgba(0,0,0,0.45)"] {
+      background: #efe6d7 !important;
+      color: #1a120b !important;
+      border-color: #b8a48a !important;
+    }
+
+    /* Keep true black comment boxes readable with light text */
+    html[data-theme="light"] [style*="background:#000"],
+    html[data-theme="light"] [style*="background: #000"],
+    html[data-theme="light"] #out-case-comment-content,
+    html[data-theme="light"] #out-case-comment-content * {
+      color: #f8fafc !important;
+    }
+    html[data-theme="light"] [style*="background:#000"] [style*="color:var(--gold-metallic)"],
+    html[data-theme="light"] [style*="background:#000"] .btn-copy {
+      color: #f5d061 !important;
+    }
+
+    /* Accent labels on sand */
+    html[data-theme="light"] [style*="color:var(--accent-blue)"],
+    html[data-theme="light"] [style*="color: var(--accent-blue)"] {
+      color: #4c1d95 !important;
+    }
+    html[data-theme="light"] [style*="color:var(--accent-amber)"],
+    html[data-theme="light"] [style*="color: var(--accent-amber)"] {
+      color: #92400e !important;
+    }
+    html[data-theme="light"] [style*="color:var(--accent-green)"],
+    html[data-theme="light"] [style*="color: var(--accent-green)"] {
+      color: #047857 !important;
+    }
+
+    /* Badges that used white-on-faint purple */
+    html[data-theme="light"] #out-macro-lob-badge {
+      background: #4c1d95 !important;
+      color: #ffffff !important;
+      border-color: #3b0764 !important;
+    }
+    html[data-theme="light"] #out-macro-channel-badge {
+      background: #f3e8ff !important;
+      color: #4c1d95 !important;
+      border-color: #6415C2 !important;
+    }
+
+    /* Related topic chips stay readable */
+    html[data-theme="light"] #related-topics-bar,
+    html[data-theme="light"] #related-topics-bar * {
+      color: #1a120b !important;
+    }
+    html[data-theme="light"] #related-topics-bar .btn-copy {
+      background: linear-gradient(135deg, #f5d061, #d4af37) !important;
+      color: #1a120b !important;
+      border-color: #6415C2 !important;
+    }
+
+    /* Before Escalating / Policy toggles */
+    html[data-theme="light"] .before-escalating-toggle,
+    html[data-theme="light"] .before-escalating-toggle span,
+    html[data-theme="light"] .before-escalating-toggle .be-chevron {
+      color: #78350f !important;
+    }
+    html[data-theme="light"] .before-escalating-body,
+    html[data-theme="light"] .before-escalating-body *,
+    html[data-theme="light"] #before-escalating-text,
+    html[data-theme="light"] #topic-policy-text {
+      color: #1a120b !important;
+    }
+
+    /* Ops health admin panel */
+    html[data-theme="light"] #ops-health-bar,
+    html[data-theme="light"] #ops-health-bar * {
+      color: #1a120b !important;
+    }
+    html[data-theme="light"] #ops-health-bar strong,
+    html[data-theme="light"] #ops-mismatch-pill,
+    html[data-theme="light"] #ops-catalog-pill {
+      color: #92400e !important;
+    }
+    html[data-theme="light"] #ops-health-bar .btn-copy {
+      color: #1a120b !important;
+    }
+
+    /* Tables / articles */
+    html[data-theme="light"] .article-item,
+    html[data-theme="light"] .article-item * {
+      color: #1a120b !important;
+    }
+    html[data-theme="light"] table,
+    html[data-theme="light"] table td,
+    html[data-theme="light"] table th {
+      color: #1a120b !important;
+    }
+
+    /* Macro library preview */
+    html[data-theme="light"] #macro-view-body,
+    html[data-theme="light"] #macro-view-lang-label,
+    html[data-theme="light"] #macro-view-char-count,
+    html[data-theme="light"] #out-macro-full-preview {
+      color: #1a120b !important;
+    }
+
+    /* Admin unlock status text */
+    html[data-theme="light"] #live-server-sync-badge {
+      color: #047857 !important;
+      font-weight: 800;
+    }
+
+    /* Top nav sits on purple — keep light text there */
+    html[data-theme="light"] .top-nav .tab-btn,
+    html[data-theme="light"] .top-nav .sub-btn {
+      color: #f3e8ff !important;
+    }
+    html[data-theme="light"] .top-nav .tab-btn.active,
+    html[data-theme="light"] .top-nav .sub-btn.active {
+      color: #1a120b !important;
+    }
+    html[data-theme="light"] .top-nav .tab-btn.active {
+      color: #ffffff !important;
+    }
+    html[data-theme="light"] .brand-pill {
+      color: #ffffff !important;
+    }
+
+    /* Section headers stay white on purple */
+    html[data-theme="light"] .section-header,
+    html[data-theme="light"] .section-header * {
+      color: #ffffff !important;
+    }
+
+    /* Transfers pin stays gold on purple */
+    html[data-theme="light"] .transfers-sla-pin,
+    html[data-theme="light"] .transfers-sla-pin span,
+    html[data-theme="light"] .transfers-sla-pin .transfers-sla-top {
+      color: #f0b429 !important;
+    }
+    /* === END LIGHT THEME GLOBAL CONTRAST === */
+
     :root {
       --tamara-lavender: #9600F1;
       --tamara-zingy: #5300BA;
@@ -478,6 +773,17 @@
       --radius-md: 12px;
       --radius-lg: 18px;
     }
+
+    /* Light accents must beat :root pale cyan/lavender */
+    html[data-theme="light"] {
+      --tamara-dreamy: #5300BA;
+      --tamara-lavender: #6415C2;
+      --tamara-zingy: #3b0764;
+      --accent-blue: #4c1d95;
+      --accent-amber: #92400e;
+      --accent-green: #047857;
+    }
+
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Source Sans 3', sans-serif; }
     body { background-color: var(--bg-canvas); color: var(--text-bright); padding: 16px; min-height: 100vh; }
@@ -15274,7 +15580,7 @@ function initData() {
   /* ==========================================================
      LIVE SERVER AUTO-PUSH & SAME-LINK AGENT SYNC ENGINE
      ========================================================== */
-  var CURRENT_HUB_REVISION = "20261124183057";
+  var CURRENT_HUB_REVISION = "20261124183536";
 
 
   /* ==========================================================
