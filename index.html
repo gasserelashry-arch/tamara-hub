@@ -890,6 +890,17 @@
           <strong style="display:block; margin-bottom:2px; color:var(--gold-metallic);">Mandatory Policy &amp; Compliance Guardrail</strong>
           <div id="topic-policy-text" style="white-space:pre-line; line-height:1.65; margin-top:4px;">Follow standard verification rules.</div>
         </div>
+        <div id="before-escalating-panel" style="display:none; margin-bottom:16px;">
+          <div class="section-card" style="overflow:visible; border-color:#e8a017;">
+            <div class="section-header" style="background:rgba(248,202,198,0.35); color:#9a3412;">⚠ Before Escalating — Required Steps &amp; Info (KB Ashry)</div>
+            <div class="section-body">
+              <div style="display:flex; justify-content:flex-end; margin-bottom:6px;">
+                <button type="button" class="btn-copy" style="padding:3px 8px; font-size:9.5px;" onclick="window.copyBeforeEscalatingTemplate()">Copy Checklist</button>
+              </div>
+              <pre id="before-escalating-text" style="white-space:pre-wrap; font-family:'JetBrains Mono',monospace; font-size:11.5px; line-height:1.55; margin:0; color:var(--text-bright);"></pre>
+            </div>
+          </div>
+        </div>
         <!-- Unique Transfers SLA browser (pinned Topic 00) -->
         <div id="transfers-sla-panel" style="display:none; margin-bottom:16px;">
           <div class="section-card" style="overflow:visible;">
@@ -1774,7 +1785,7 @@
     "due_date": "MANDATORY POLICY & COMPLIANCE GUARDRAIL:\n• Step 1 — No Manual Due Date Change / Postponement: Tamara does NOT manually postpone or modify installment due dates.\n• Step 2 — Zero Extra or Late Fees: Inform the customer that there are NO extra or late fees applied; the effect on their account eligibility/limit simply remains until the balance is settled or until Due Date Preference is announced.",
     "tamara_health": "STRICT NON-DISCLOSURE: Never disclose internal approval scoring, risk algorithms, or qualification formulas. Coach only on the 3 pillars.",
     "change_email": "VERIFICATION REQUIREMENT: Update only after validating mandatory security questions. Ensure no active account collisions exist with the new email.",
-    "change_phone": "MANDATORY POLICY & COMPLIANCE GUARDRAIL:\n• Step 1 — Check 6-Month Order History in CS Panel: Check whether the customer has placed any order within the last 6 months.\n• Step 2A — Order Placed in Last 6 Months: Ask the 3 Order Verification Questions: (1) Merchant Name, (2) Total Order Amount OR Amount of 1 Installment, and (3) Date of Purchase.\n   – If the customer is UNABLE to answer -> We are unable to proceed with the manual phone number change.\n   – If the customer answers ALL 3 correctly -> Proceed via the customer's registered Email to manually change the phone number.\n• Step 2B — No Orders in Last 6 Months: Validate ownership proof (Telecom contract + National ID copy) or route recycled numbers to Phone Number Archiving (Topic 40).",
+    "change_phone": "MANDATORY POLICY & COMPLIANCE GUARDRAIL:\n• Step 1 — Check 6-Month Order History in CS Panel: Check whether the customer has placed any order within the last 6 months.\n• Step 2A — Order Placed in Last 6 Months: Ask the 3 Order Verification Questions: (1) Merchant Name, (2) Total Order Amount OR Amount of 1 Installment, and (3) Date of Purchase.\n   – If the customer is UNABLE to answer -> We are unable to proceed with the manual phone number change.\n   – If the customer answers ALL 3 correctly -> Proceed via the customer's registered Email to manually change the phone number.\n• Step 2B — No Orders in Last 6 Months: Validate ownership proof (Telecom contract + National ID copy) or route recycled numbers to Phone Number Archiving (Topic 40).\n\nBEFORE ESCALATING — Manual Phone Number Change\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nSteps\nStep 1 → | IF Active | IF Inactive\nStep 2 → | Account is deleted (by customer) | Account is inactive\nStep 3 → | IF YES | IF NO\nStep 4 | → | IF YES | IF NO\nStep 5 → | IF YES | IF NOStep 6 → | IF YES | IF NO\nStep 7How to change customer’s phone number: (CS Panel)After verifying the account and the customer asked to change the phone number do the following : - What is the type of the line? | → | Postpaid line | Prepaid line\nStep 1 : → | IF YES | IF NORare Cases | Escalation Steps\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
     "delete_account": "PREREQUISITE AUDIT: Zero pending dues, zero active orders, zero open claim disputes, and wallet balance cleared before deletion can proceed.",
     "reactivate_account": "RISK CLEARANCE: Confirm all overdue balances are 100% settled. Review account suspension reason flags in CS Hub before lifting locks.",
     "contact_merchant": "OPERATIONAL BOUNDARY: Consumer front-line agents must NOT resolve portal, settlement, or store integration issues for merchants directly. Merchants calling Customer Care must be guided to contact Partner Care via email (Partner.care@tamara.co) or directly through their Tamara Partner Portal / Partner App in-app support chat.",
@@ -1792,7 +1803,7 @@
     "expired_order": "NO FINANCIAL OBLIGATION: Expired orders carry zero customer liability. Confirm status in CS Hub histories to reassure caller.",
     "stuck_order": "GATEWAY RECONCILIATION: Check if bank held authorization while order remained uncaptured. Route to Tech Support if payment captured.",
     "wrong_plan": "POST-CHECKOUT LOCK: Installment tenures cannot be changed post-approval. Order must be cancelled with merchant and re-placed.",
-    "declined_order": "CKO RESPONSE CODES & RISK FLAGS: Inspect CS Hub to identify exact decline reason. Soft declines (bank limits, 3DS error, card balance) require card/bank unblocking. Hard declines (risk engine, overdue block, youth limit) require dynamic account enhancement without disclosing internal risk formulas.",
+    "declined_order": "CKO RESPONSE CODES & RISK FLAGS: Inspect CS Hub to identify exact decline reason. Soft declines (bank limits, 3DS error, card balance) require card/bank unblocking. Hard declines (risk engine, overdue block, youth limit) require dynamic account enhancement without disclosing internal risk formulas.\n\nBEFORE ESCALATING — Order Fraud\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep 1 : Check the customer account’s recent order status.\n• Go to CS Hub from the Customer Detail >click on Histories > and check the Status. Step 2 : Depending on the order status you have two different resolutions: IF The order status is Not Active: Order (expired) = Go to step 3 IF The order is Active: Order (approved), Order (authorised), or Order (fully_captured) = Go to step 4 | Step 3 (Order is Expired): 1- Click the order and check the order information (order number, store name, customer's first name, | and phone number last 4 digits). | 2- Provide the customer with the below info.:\n• Last 4 digits of the user phone number\n• If the first name in the shipping info. is different, you can provide the customer with that as well.\n• Advise the customer that the order is not active which means there are no dues.\n• Educate them on the importance of not sharing any information with others, like the account’s phone number, OTP, passcodes, and all information.\n• Add a case comment with case details\n• Issue type Payment > Unrecognized charge > Explained to customer (no issue)\nStep 4 : The order is “ Active” --> Order (approved), Order (authorised), or Order (fully_captured) | 1- Check the order information (order number, store name, customer's first name, and phone number's last 4 digits). 2- Provide all information to your customer, as they may recognize the person and they can contact them personally.\n3- If they don’t recognize the person, this is a potential fraud case, escalate it to the Trust & Safety team by following the steps in [Customer/Merchant] Transferring Sales Force Cases for further investigation.\n4- Ask the customer the below questions\nQ1- When did this happen?\nQ2- How did someone get your national ID/iqama number?\nQ3- An OTP is sent to your phone number from Absher to activate your account. Why did you give it away?\nQ4- Who is the person that you give your information to?\nQ5- There is an OTP sent to complete the order and it says for purchase why did you give it away?\nQ6- Maybe it's one of your friends or family that has been using your account?\nQ7- If not who do you suspect?\nQ8- Ask if he did file a report to the police.\nQ9- What is the phone number of the caller?\n• If the customer’s phone number was stolen, they can provide a police report/proof | as evidence.\n5- Once you receive answers from the customer, add all case details in a case comments and escalate to the Trust & Safety team.Issue type Payment > Unrecognized charge > Suspected fraud\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
     "no_order_otp": "TELECOM FILTERING: Investigate cellular carrier SMS short-code blocks and Absher verification delivery delays.",
     "instore_no_sms": "TERMINAL ALTERNATIVE: Direct physical store customer to scan dynamic QR code on the cashier terminal screen.",
     "link_bank": "OPEN BANKING UAE: Guide customer through Central Bank-regulated Open Banking portal inside the app.",
@@ -1801,8 +1812,8 @@
     "vulnerable_customer": "COMPASSIONATE PROTOCOL: Treat customers reporting total physical or financial disability with empathy. Immediately pause automated collection reminder calls in CS Hub, collect official medical/disability documentation, and escalate to Special Operations (SLA: 3 Business Days). (Note: For Deceased Customer cases, use dedicated Topic 53: Deceased Customer).",
     "autocharge": "CYCLE EDUCATION: Autocharge executes on the 1st of the month. Failure prompts card update alerts.",
     "payment_methods": "ACCEPTED CHANNELS: Mada, Visa, Mastercard, Apple Pay accepted. Prepaid cards are strictly blocked for installments.",
-    "unrecognized_charge": "MANDATORY POLICY & COMPLIANCE GUARDRAIL:\n• Step 1 — Payment Dashboard Lookup: Search CS Hub > Payment Dashboard by exact transaction timestamp, amount, and card last 4 digits.\n• Step 2A — On Customer's Own Account: Explain the matching order/installment and reply with Macro: 'Transaction made on the customer account'.\n• Step 2B — On Another Customer's Account (Strict Privacy Law): NEVER reveal third-party account holder details (name, phone, email, or order) and NEVER remove the card manually. Allow the caller up to 3 attempts to guess the user's name:\n   – If caller identifies the person -> Advise caller to contact them directly (Macro: 'Unrecognized charge - Known person').\n   – If NOT identified after 3 tries -> Advise caller to contact their issuing bank immediately to block the card & dispute (Macro: 'Unrecognized charge - Unknown person (Contact Bank)').\n• Step 2C — Absent from Tamara Payment Dashboard: Push back to the issuing bank (Macro: 'Unrecognized charge pushback - KSA / UAE').",
-    "unrecorded_charges": "UNRECORDED CHARGES & PAYMENT TECHNICAL ISSUES: When a customer reports a deduction that is not showing, check CS Panel: If payment reflected -> Reassure customer and explain payment allocation. If payment NOT reflected -> Check attempt status in CS Panel/gateway: If 'Captured' -> Collect bank statement with RRN/Auth code and escalate directly to Tech Support (SLA: 5 Days, Macro: Ticket Escalated, Status: Working). If 'Declined' -> Tamara did not capture funds; explain temporary bank pre-authorization hold releasing in 5-14 business days.",
+    "unrecognized_charge": "MANDATORY POLICY & COMPLIANCE GUARDRAIL:\n• Step 1 — Payment Dashboard Lookup: Search CS Hub > Payment Dashboard by exact transaction timestamp, amount, and card last 4 digits.\n• Step 2A — On Customer's Own Account: Explain the matching order/installment and reply with Macro: 'Transaction made on the customer account'.\n• Step 2B — On Another Customer's Account (Strict Privacy Law): NEVER reveal third-party account holder details (name, phone, email, or order) and NEVER remove the card manually. Allow the caller up to 3 attempts to guess the user's name:\n   – If caller identifies the person -> Advise caller to contact them directly (Macro: 'Unrecognized charge - Known person').\n   – If NOT identified after 3 tries -> Advise caller to contact their issuing bank immediately to block the card & dispute (Macro: 'Unrecognized charge - Unknown person (Contact Bank)').\n• Step 2C — Absent from Tamara Payment Dashboard: Push back to the issuing bank (Macro: 'Unrecognized charge pushback - KSA / UAE').\n\nBEFORE ESCALATING — Order Fraud\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep 1 : Check the customer account’s recent order status.\n• Go to CS Hub from the Customer Detail >click on Histories > and check the Status. Step 2 : Depending on the order status you have two different resolutions: IF The order status is Not Active: Order (expired) = Go to step 3 IF The order is Active: Order (approved), Order (authorised), or Order (fully_captured) = Go to step 4 | Step 3 (Order is Expired): 1- Click the order and check the order information (order number, store name, customer's first name, | and phone number last 4 digits). | 2- Provide the customer with the below info.:\n• Last 4 digits of the user phone number\n• If the first name in the shipping info. is different, you can provide the customer with that as well.\n• Advise the customer that the order is not active which means there are no dues.\n• Educate them on the importance of not sharing any information with others, like the account’s phone number, OTP, passcodes, and all information.\n• Add a case comment with case details\n• Issue type Payment > Unrecognized charge > Explained to customer (no issue)\nStep 4 : The order is “ Active” --> Order (approved), Order (authorised), or Order (fully_captured) | 1- Check the order information (order number, store name, customer's first name, and phone number's last 4 digits). 2- Provide all information to your customer, as they may recognize the person and they can contact them personally.\n3- If they don’t recognize the person, this is a potential fraud case, escalate it to the Trust & Safety team by following the steps in [Customer/Merchant] Transferring Sales Force Cases for further investigation.\n4- Ask the customer the below questions\nQ1- When did this happen?\nQ2- How did someone get your national ID/iqama number?\nQ3- An OTP is sent to your phone number from Absher to activate your account. Why did you give it away?\nQ4- Who is the person that you give your information to?\nQ5- There is an OTP sent to complete the order and it says for purchase why did you give it away?\nQ6- Maybe it's one of your friends or family that has been using your account?\nQ7- If not who do you suspect?\nQ8- Ask if he did file a report to the police.\nQ9- What is the phone number of the caller?\n• If the customer’s phone number was stolen, they can provide a police report/proof | as evidence.\n5- Once you receive answers from the customer, add all case details in a case comments and escalate to the Trust & Safety team.Issue type Payment > Unrecognized charge > Suspected fraud\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+    "unrecorded_charges": "UNRECORDED CHARGES & PAYMENT TECHNICAL ISSUES: When a customer reports a deduction that is not showing, check CS Panel: If payment reflected -> Reassure customer and explain payment allocation. If payment NOT reflected -> Check attempt status in CS Panel/gateway: If 'Captured' -> Collect bank statement with RRN/Auth code and escalate directly to Tech Support (SLA: 5 Days, Macro: Ticket Escalated, Status: Working). If 'Declined' -> Tamara did not capture funds; explain temporary bank pre-authorization hold releasing in 5-14 business days.\n\nBEFORE ESCALATING — Unrecognized Charges\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep1: In the payment tab, confirm if the payment is reflected. Step2: In the payment tab, confirm if the payment is reflected. | → OutcomeStep 3: Did you find the payment on the CS panel? | → IF YES | IF NOStep 4: Copy the customer's ID and paste it in the CS hub payment dashboard. Step 5:- In the Attempt date field, click “Custom”, then add the specific Date/Time of the payment the customer is inquiring about, click Apply. - Use the Attempt paid amount field if needed, and add the payment amount.\nStep 6: | → | IF YES | IF NOUse either the customer’s ID/phone number from the Payment Dashboard, and search in the CS panel. After locating the customer’s account, payment and order details, if the transaction was made on the customer's account, reply back to the customer using:\n• If the reporter requested you to remove the card from the other customer’s account, reply back using:\n• Macro → Cannot Remove Card From Another AccountIssue type (CX) | Payment > Unrecognized charge > Suspected fraudSubmit as → ClosedStep 7 : → | IF YES | IF NOIf the reporter requested you to remove the card from the other customer’s account, reply back using:\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
     "voided_payment": "HOLD CLEARANCE: Uncaptured pre-authorization holds drop off within 5 to 14 business days depending on issuing bank.",
     "promo_cashback": "WALLET REWARDS: Pay In Full cashback rewards credit to Tamara Wallet within 14 business days post-delivery.",
     "refunds_cancellations": "PAYOUT CYCLES: Bank card refunds process within 5-14 business days; wallet refunds are instantaneous.",
@@ -3642,7 +3653,9 @@
       "issue_type_leaf": "Declined order",
       "macro_id": "MAC_127",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "escalation_template": "BEFORE ESCALATING — Order Fraud\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep 1 : Check the customer account’s recent order status.\n• Go to CS Hub from the Customer Detail >click on Histories > and check the Status. Step 2 : Depending on the order status you have two different resolutions: IF The order status is Not Active: Order (expired) = Go to step 3 IF The order is Active: Order (approved), Order (authorised), or Order (fully_captured) = Go to step 4 | Step 3 (Order is Expired): 1- Click the order and check the order information (order number, store name, customer's first name, | and phone number last 4 digits). | 2- Provide the customer with the below info.:\n• Last 4 digits of the user phone number\n• If the first name in the shipping info. is different, you can provide the customer with that as well.\n• Advise the customer that the order is not active which means there are no dues.\n• Educate them on the importance of not sharing any information with others, like the account’s phone number, OTP, passcodes, and all information.\n• Add a case comment with case details\n• Issue type Payment > Unrecognized charge > Explained to customer (no issue)\nStep 4 : The order is “ Active” --> Order (approved), Order (authorised), or Order (fully_captured) | 1- Check the order information (order number, store name, customer's first name, and phone number's last 4 digits). 2- Provide all information to your customer, as they may recognize the person and they can contact them personally.\n3- If they don’t recognize the person, this is a potential fraud case, escalate it to the Trust & Safety team by following the steps in [Customer/Merchant] Transferring Sales Force Cases for further investigation.\n4- Ask the customer the below questions\nQ1- When did this happen?\nQ2- How did someone get your national ID/iqama number?\nQ3- An OTP is sent to your phone number from Absher to activate your account. Why did you give it away?\nQ4- Who is the person that you give your information to?\nQ5- There is an OTP sent to complete the order and it says for purchase why did you give it away?\nQ6- Maybe it's one of your friends or family that has been using your account?\nQ7- If not who do you suspect?\nQ8- Ask if he did file a report to the police.\nQ9- What is the phone number of the caller?\n• If the customer’s phone number was stolen, they can provide a police report/proof | as evidence.\n5- Once you receive answers from the customer, add all case details in a case comments and escalate to the Trust & Safety team.Issue type Payment > Unrecognized charge > Suspected fraud\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating"
     },
     "DEC_SOFT_3DS": {
       "headline": "Soft Decline: 3DS Authentication Failure / OTP Timeout",
@@ -3661,7 +3674,9 @@
       "issue_type_leaf": "Declined order",
       "macro_id": "MAC_127",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "escalation_template": "BEFORE ESCALATING — Order Fraud\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep 1 : Check the customer account’s recent order status.\n• Go to CS Hub from the Customer Detail >click on Histories > and check the Status. Step 2 : Depending on the order status you have two different resolutions: IF The order status is Not Active: Order (expired) = Go to step 3 IF The order is Active: Order (approved), Order (authorised), or Order (fully_captured) = Go to step 4 | Step 3 (Order is Expired): 1- Click the order and check the order information (order number, store name, customer's first name, | and phone number last 4 digits). | 2- Provide the customer with the below info.:\n• Last 4 digits of the user phone number\n• If the first name in the shipping info. is different, you can provide the customer with that as well.\n• Advise the customer that the order is not active which means there are no dues.\n• Educate them on the importance of not sharing any information with others, like the account’s phone number, OTP, passcodes, and all information.\n• Add a case comment with case details\n• Issue type Payment > Unrecognized charge > Explained to customer (no issue)\nStep 4 : The order is “ Active” --> Order (approved), Order (authorised), or Order (fully_captured) | 1- Check the order information (order number, store name, customer's first name, and phone number's last 4 digits). 2- Provide all information to your customer, as they may recognize the person and they can contact them personally.\n3- If they don’t recognize the person, this is a potential fraud case, escalate it to the Trust & Safety team by following the steps in [Customer/Merchant] Transferring Sales Force Cases for further investigation.\n4- Ask the customer the below questions\nQ1- When did this happen?\nQ2- How did someone get your national ID/iqama number?\nQ3- An OTP is sent to your phone number from Absher to activate your account. Why did you give it away?\nQ4- Who is the person that you give your information to?\nQ5- There is an OTP sent to complete the order and it says for purchase why did you give it away?\nQ6- Maybe it's one of your friends or family that has been using your account?\nQ7- If not who do you suspect?\nQ8- Ask if he did file a report to the police.\nQ9- What is the phone number of the caller?\n• If the customer’s phone number was stolen, they can provide a police report/proof | as evidence.\n5- Once you receive answers from the customer, add all case details in a case comments and escalate to the Trust & Safety team.Issue type Payment > Unrecognized charge > Suspected fraud\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating"
     },
     "DEC_SOFT_CARDTYPE": {
       "headline": "Soft Decline: Unsupported Card Type (Prepaid Card Blocked)",
@@ -3680,7 +3695,9 @@
       "issue_type_leaf": "Declined order",
       "macro_id": "MAC_026",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "escalation_template": "BEFORE ESCALATING — Order Fraud\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep 1 : Check the customer account’s recent order status.\n• Go to CS Hub from the Customer Detail >click on Histories > and check the Status. Step 2 : Depending on the order status you have two different resolutions: IF The order status is Not Active: Order (expired) = Go to step 3 IF The order is Active: Order (approved), Order (authorised), or Order (fully_captured) = Go to step 4 | Step 3 (Order is Expired): 1- Click the order and check the order information (order number, store name, customer's first name, | and phone number last 4 digits). | 2- Provide the customer with the below info.:\n• Last 4 digits of the user phone number\n• If the first name in the shipping info. is different, you can provide the customer with that as well.\n• Advise the customer that the order is not active which means there are no dues.\n• Educate them on the importance of not sharing any information with others, like the account’s phone number, OTP, passcodes, and all information.\n• Add a case comment with case details\n• Issue type Payment > Unrecognized charge > Explained to customer (no issue)\nStep 4 : The order is “ Active” --> Order (approved), Order (authorised), or Order (fully_captured) | 1- Check the order information (order number, store name, customer's first name, and phone number's last 4 digits). 2- Provide all information to your customer, as they may recognize the person and they can contact them personally.\n3- If they don’t recognize the person, this is a potential fraud case, escalate it to the Trust & Safety team by following the steps in [Customer/Merchant] Transferring Sales Force Cases for further investigation.\n4- Ask the customer the below questions\nQ1- When did this happen?\nQ2- How did someone get your national ID/iqama number?\nQ3- An OTP is sent to your phone number from Absher to activate your account. Why did you give it away?\nQ4- Who is the person that you give your information to?\nQ5- There is an OTP sent to complete the order and it says for purchase why did you give it away?\nQ6- Maybe it's one of your friends or family that has been using your account?\nQ7- If not who do you suspect?\nQ8- Ask if he did file a report to the police.\nQ9- What is the phone number of the caller?\n• If the customer’s phone number was stolen, they can provide a police report/proof | as evidence.\n5- Once you receive answers from the customer, add all case details in a case comments and escalate to the Trust & Safety team.Issue type Payment > Unrecognized charge > Suspected fraud\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating"
     },
     "DEC_SOFT_BANKBLOCK": {
       "headline": "Soft Decline: Bank Security Block on Merchant Category",
@@ -3699,7 +3716,9 @@
       "issue_type_leaf": "Declined order",
       "macro_id": "MAC_127",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "escalation_template": "BEFORE ESCALATING — Order Fraud\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep 1 : Check the customer account’s recent order status.\n• Go to CS Hub from the Customer Detail >click on Histories > and check the Status. Step 2 : Depending on the order status you have two different resolutions: IF The order status is Not Active: Order (expired) = Go to step 3 IF The order is Active: Order (approved), Order (authorised), or Order (fully_captured) = Go to step 4 | Step 3 (Order is Expired): 1- Click the order and check the order information (order number, store name, customer's first name, | and phone number last 4 digits). | 2- Provide the customer with the below info.:\n• Last 4 digits of the user phone number\n• If the first name in the shipping info. is different, you can provide the customer with that as well.\n• Advise the customer that the order is not active which means there are no dues.\n• Educate them on the importance of not sharing any information with others, like the account’s phone number, OTP, passcodes, and all information.\n• Add a case comment with case details\n• Issue type Payment > Unrecognized charge > Explained to customer (no issue)\nStep 4 : The order is “ Active” --> Order (approved), Order (authorised), or Order (fully_captured) | 1- Check the order information (order number, store name, customer's first name, and phone number's last 4 digits). 2- Provide all information to your customer, as they may recognize the person and they can contact them personally.\n3- If they don’t recognize the person, this is a potential fraud case, escalate it to the Trust & Safety team by following the steps in [Customer/Merchant] Transferring Sales Force Cases for further investigation.\n4- Ask the customer the below questions\nQ1- When did this happen?\nQ2- How did someone get your national ID/iqama number?\nQ3- An OTP is sent to your phone number from Absher to activate your account. Why did you give it away?\nQ4- Who is the person that you give your information to?\nQ5- There is an OTP sent to complete the order and it says for purchase why did you give it away?\nQ6- Maybe it's one of your friends or family that has been using your account?\nQ7- If not who do you suspect?\nQ8- Ask if he did file a report to the police.\nQ9- What is the phone number of the caller?\n• If the customer’s phone number was stolen, they can provide a police report/proof | as evidence.\n5- Once you receive answers from the customer, add all case details in a case comments and escalate to the Trust & Safety team.Issue type Payment > Unrecognized charge > Suspected fraud\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating"
     },
     "DEC_HARD_RISK": {
       "headline": "Hard Decline: Credit Risk Score Threshold Not Met",
@@ -3718,7 +3737,9 @@
       "issue_type_leaf": "Declined order",
       "macro_id": "MAC_043",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "escalation_template": "BEFORE ESCALATING — Order Fraud\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep 1 : Check the customer account’s recent order status.\n• Go to CS Hub from the Customer Detail >click on Histories > and check the Status. Step 2 : Depending on the order status you have two different resolutions: IF The order status is Not Active: Order (expired) = Go to step 3 IF The order is Active: Order (approved), Order (authorised), or Order (fully_captured) = Go to step 4 | Step 3 (Order is Expired): 1- Click the order and check the order information (order number, store name, customer's first name, | and phone number last 4 digits). | 2- Provide the customer with the below info.:\n• Last 4 digits of the user phone number\n• If the first name in the shipping info. is different, you can provide the customer with that as well.\n• Advise the customer that the order is not active which means there are no dues.\n• Educate them on the importance of not sharing any information with others, like the account’s phone number, OTP, passcodes, and all information.\n• Add a case comment with case details\n• Issue type Payment > Unrecognized charge > Explained to customer (no issue)\nStep 4 : The order is “ Active” --> Order (approved), Order (authorised), or Order (fully_captured) | 1- Check the order information (order number, store name, customer's first name, and phone number's last 4 digits). 2- Provide all information to your customer, as they may recognize the person and they can contact them personally.\n3- If they don’t recognize the person, this is a potential fraud case, escalate it to the Trust & Safety team by following the steps in [Customer/Merchant] Transferring Sales Force Cases for further investigation.\n4- Ask the customer the below questions\nQ1- When did this happen?\nQ2- How did someone get your national ID/iqama number?\nQ3- An OTP is sent to your phone number from Absher to activate your account. Why did you give it away?\nQ4- Who is the person that you give your information to?\nQ5- There is an OTP sent to complete the order and it says for purchase why did you give it away?\nQ6- Maybe it's one of your friends or family that has been using your account?\nQ7- If not who do you suspect?\nQ8- Ask if he did file a report to the police.\nQ9- What is the phone number of the caller?\n• If the customer’s phone number was stolen, they can provide a police report/proof | as evidence.\n5- Once you receive answers from the customer, add all case details in a case comments and escalate to the Trust & Safety team.Issue type Payment > Unrecognized charge > Suspected fraud\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating"
     },
     "DEC_HARD_OVERDUE": {
       "headline": "Hard Decline: Active Overdue Installment Lock",
@@ -3737,7 +3758,9 @@
       "issue_type_leaf": "Declined order",
       "macro_id": "MAC_043",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "escalation_template": "BEFORE ESCALATING — Order Fraud\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep 1 : Check the customer account’s recent order status.\n• Go to CS Hub from the Customer Detail >click on Histories > and check the Status. Step 2 : Depending on the order status you have two different resolutions: IF The order status is Not Active: Order (expired) = Go to step 3 IF The order is Active: Order (approved), Order (authorised), or Order (fully_captured) = Go to step 4 | Step 3 (Order is Expired): 1- Click the order and check the order information (order number, store name, customer's first name, | and phone number last 4 digits). | 2- Provide the customer with the below info.:\n• Last 4 digits of the user phone number\n• If the first name in the shipping info. is different, you can provide the customer with that as well.\n• Advise the customer that the order is not active which means there are no dues.\n• Educate them on the importance of not sharing any information with others, like the account’s phone number, OTP, passcodes, and all information.\n• Add a case comment with case details\n• Issue type Payment > Unrecognized charge > Explained to customer (no issue)\nStep 4 : The order is “ Active” --> Order (approved), Order (authorised), or Order (fully_captured) | 1- Check the order information (order number, store name, customer's first name, and phone number's last 4 digits). 2- Provide all information to your customer, as they may recognize the person and they can contact them personally.\n3- If they don’t recognize the person, this is a potential fraud case, escalate it to the Trust & Safety team by following the steps in [Customer/Merchant] Transferring Sales Force Cases for further investigation.\n4- Ask the customer the below questions\nQ1- When did this happen?\nQ2- How did someone get your national ID/iqama number?\nQ3- An OTP is sent to your phone number from Absher to activate your account. Why did you give it away?\nQ4- Who is the person that you give your information to?\nQ5- There is an OTP sent to complete the order and it says for purchase why did you give it away?\nQ6- Maybe it's one of your friends or family that has been using your account?\nQ7- If not who do you suspect?\nQ8- Ask if he did file a report to the police.\nQ9- What is the phone number of the caller?\n• If the customer’s phone number was stolen, they can provide a police report/proof | as evidence.\n5- Once you receive answers from the customer, add all case details in a case comments and escalate to the Trust & Safety team.Issue type Payment > Unrecognized charge > Suspected fraud\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating"
     },
     "DEC_HARD_AGE": {
       "headline": "Hard Decline: Age Boundary Policy Restriction",
@@ -3756,7 +3779,9 @@
       "issue_type_leaf": "Declined order",
       "macro_id": "MAC_252",
       "macro_lob": "General",
-      "macro_channel": "Email"
+      "macro_channel": "Email",
+      "escalation_template": "BEFORE ESCALATING — Order Fraud\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep 1 : Check the customer account’s recent order status.\n• Go to CS Hub from the Customer Detail >click on Histories > and check the Status. Step 2 : Depending on the order status you have two different resolutions: IF The order status is Not Active: Order (expired) = Go to step 3 IF The order is Active: Order (approved), Order (authorised), or Order (fully_captured) = Go to step 4 | Step 3 (Order is Expired): 1- Click the order and check the order information (order number, store name, customer's first name, | and phone number last 4 digits). | 2- Provide the customer with the below info.:\n• Last 4 digits of the user phone number\n• If the first name in the shipping info. is different, you can provide the customer with that as well.\n• Advise the customer that the order is not active which means there are no dues.\n• Educate them on the importance of not sharing any information with others, like the account’s phone number, OTP, passcodes, and all information.\n• Add a case comment with case details\n• Issue type Payment > Unrecognized charge > Explained to customer (no issue)\nStep 4 : The order is “ Active” --> Order (approved), Order (authorised), or Order (fully_captured) | 1- Check the order information (order number, store name, customer's first name, and phone number's last 4 digits). 2- Provide all information to your customer, as they may recognize the person and they can contact them personally.\n3- If they don’t recognize the person, this is a potential fraud case, escalate it to the Trust & Safety team by following the steps in [Customer/Merchant] Transferring Sales Force Cases for further investigation.\n4- Ask the customer the below questions\nQ1- When did this happen?\nQ2- How did someone get your national ID/iqama number?\nQ3- An OTP is sent to your phone number from Absher to activate your account. Why did you give it away?\nQ4- Who is the person that you give your information to?\nQ5- There is an OTP sent to complete the order and it says for purchase why did you give it away?\nQ6- Maybe it's one of your friends or family that has been using your account?\nQ7- If not who do you suspect?\nQ8- Ask if he did file a report to the police.\nQ9- What is the phone number of the caller?\n• If the customer’s phone number was stolen, they can provide a police report/proof | as evidence.\n5- Once you receive answers from the customer, add all case details in a case comments and escalate to the Trust & Safety team.Issue type Payment > Unrecognized charge > Suspected fraud\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating"
     },
     "PIF_STATUS_OVERDUE": {
       "headline": "Only PIF Shown: Blocked by Past-Due Installments",
@@ -3870,7 +3895,9 @@
       "issue_type_leaf": "Phone number already in use",
       "macro_id": "MAC_050",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone"
+      "macro_channel": "Email;Phone",
+      "escalation_template": "BEFORE ESCALATING — Manual Phone Number Change\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nSteps\nStep 1 → | IF Active | IF Inactive\nStep 2 → | Account is deleted (by customer) | Account is inactive\nStep 3 → | IF YES | IF NO\nStep 4 | → | IF YES | IF NO\nStep 5 → | IF YES | IF NOStep 6 → | IF YES | IF NO\nStep 7How to change customer’s phone number: (CS Panel)After verifying the account and the customer asked to change the phone number do the following : - What is the type of the line? | → | Postpaid line | Prepaid line\nStep 1 : → | IF YES | IF NORare Cases | Escalation Steps\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating"
     },
     "PHN_CSPANEL_ACTIVE_EXEC": {
       "headline": "How to change customer’s phone number: (CS Panel Execution)",
@@ -3889,7 +3916,9 @@
       "issue_type_leaf": "Change phone number",
       "macro_id": "MAC_268",
       "macro_lob": "Customer",
-      "macro_channel": "Messaging"
+      "macro_channel": "Messaging",
+      "escalation_template": "BEFORE ESCALATING — Manual Phone Number Change\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nSteps\nStep 1 → | IF Active | IF Inactive\nStep 2 → | Account is deleted (by customer) | Account is inactive\nStep 3 → | IF YES | IF NO\nStep 4 | → | IF YES | IF NO\nStep 5 → | IF YES | IF NOStep 6 → | IF YES | IF NO\nStep 7How to change customer’s phone number: (CS Panel)After verifying the account and the customer asked to change the phone number do the following : - What is the type of the line? | → | Postpaid line | Prepaid line\nStep 1 : → | IF YES | IF NORare Cases | Escalation Steps\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating"
     },
     "PHN_CSPANEL_INACTIVE_BLOCK": {
       "headline": "CS Panel Phone Change Blocked - Account Inactive / Deleted",
@@ -3908,7 +3937,9 @@
       "issue_type_leaf": "Change phone number",
       "macro_id": "MAC_084",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "escalation_template": "BEFORE ESCALATING — Manual Phone Number Change\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nSteps\nStep 1 → | IF Active | IF Inactive\nStep 2 → | Account is deleted (by customer) | Account is inactive\nStep 3 → | IF YES | IF NO\nStep 4 | → | IF YES | IF NO\nStep 5 → | IF YES | IF NOStep 6 → | IF YES | IF NO\nStep 7How to change customer’s phone number: (CS Panel)After verifying the account and the customer asked to change the phone number do the following : - What is the type of the line? | → | Postpaid line | Prepaid line\nStep 1 : → | IF YES | IF NORare Cases | Escalation Steps\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating"
     },
     "PHN_AUTH_FAILED": {
       "headline": "Phone Number Change — Unable to Proceed (Order Verification Failed)",
@@ -3927,7 +3958,9 @@
       "issue_type_leaf": "Change phone number",
       "macro_id": "MAC_235",
       "macro_lob": "General",
-      "macro_channel": "Internal"
+      "macro_channel": "Internal",
+      "escalation_template": "BEFORE ESCALATING — Manual Phone Number Change\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nSteps\nStep 1 → | IF Active | IF Inactive\nStep 2 → | Account is deleted (by customer) | Account is inactive\nStep 3 → | IF YES | IF NO\nStep 4 | → | IF YES | IF NO\nStep 5 → | IF YES | IF NOStep 6 → | IF YES | IF NO\nStep 7How to change customer’s phone number: (CS Panel)After verifying the account and the customer asked to change the phone number do the following : - What is the type of the line? | → | Postpaid line | Prepaid line\nStep 1 : → | IF YES | IF NORare Cases | Escalation Steps\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating"
     },
     "PHN_DOCS_REQUIRED": {
       "headline": "Phone Number Change - Proof of Ownership Required",
@@ -3946,7 +3979,9 @@
       "issue_type_leaf": "Change phone number",
       "macro_id": "MAC_050",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone"
+      "macro_channel": "Email;Phone",
+      "escalation_template": "BEFORE ESCALATING — Manual Phone Number Change\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nSteps\nStep 1 → | IF Active | IF Inactive\nStep 2 → | Account is deleted (by customer) | Account is inactive\nStep 3 → | IF YES | IF NO\nStep 4 | → | IF YES | IF NO\nStep 5 → | IF YES | IF NOStep 6 → | IF YES | IF NO\nStep 7How to change customer’s phone number: (CS Panel)After verifying the account and the customer asked to change the phone number do the following : - What is the type of the line? | → | Postpaid line | Prepaid line\nStep 1 : → | IF YES | IF NORare Cases | Escalation Steps\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating"
     },
     "PHN_KSA_ABSHER": {
       "headline": "Phone Number Change - KSA (Absher Self-Service)",
@@ -3965,7 +4000,9 @@
       "issue_type_leaf": "Change phone number",
       "macro_id": "MAC_265",
       "macro_lob": "Customer",
-      "macro_channel": "Messaging"
+      "macro_channel": "Messaging",
+      "escalation_template": "BEFORE ESCALATING — Manual Phone Number Change\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nSteps\nStep 1 → | IF Active | IF Inactive\nStep 2 → | Account is deleted (by customer) | Account is inactive\nStep 3 → | IF YES | IF NO\nStep 4 | → | IF YES | IF NO\nStep 5 → | IF YES | IF NOStep 6 → | IF YES | IF NO\nStep 7How to change customer’s phone number: (CS Panel)After verifying the account and the customer asked to change the phone number do the following : - What is the type of the line? | → | Postpaid line | Prepaid line\nStep 1 : → | IF YES | IF NORare Cases | Escalation Steps\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating"
     },
     "PHN_UAE_MANUAL": {
       "headline": "Manual Phone Number Change — Verified via 6-Month Order Questions (Proceed with Email)",
@@ -3984,7 +4021,9 @@
       "issue_type_leaf": "Change phone number",
       "macro_id": "MAC_268",
       "macro_lob": "Customer",
-      "macro_channel": "Messaging"
+      "macro_channel": "Messaging",
+      "escalation_template": "BEFORE ESCALATING — Manual Phone Number Change\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nSteps\nStep 1 → | IF Active | IF Inactive\nStep 2 → | Account is deleted (by customer) | Account is inactive\nStep 3 → | IF YES | IF NO\nStep 4 | → | IF YES | IF NO\nStep 5 → | IF YES | IF NOStep 6 → | IF YES | IF NO\nStep 7How to change customer’s phone number: (CS Panel)After verifying the account and the customer asked to change the phone number do the following : - What is the type of the line? | → | Postpaid line | Prepaid line\nStep 1 : → | IF YES | IF NORare Cases | Escalation Steps\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating"
     },
     "PHN_ARCH_EVIDENCE": {
       "headline": "Phone Archiving - Awaiting Mandatory Evidence",
@@ -4913,7 +4952,9 @@
       "issue_type_leaf": "Explained to customer (no issue)",
       "macro_id": "MAC_006",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "escalation_template": "BEFORE ESCALATING — Unrecognized Charges\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep1: In the payment tab, confirm if the payment is reflected. Step2: In the payment tab, confirm if the payment is reflected. | → OutcomeStep 3: Did you find the payment on the CS panel? | → IF YES | IF NOStep 4: Copy the customer's ID and paste it in the CS hub payment dashboard. Step 5:- In the Attempt date field, click “Custom”, then add the specific Date/Time of the payment the customer is inquiring about, click Apply. - Use the Attempt paid amount field if needed, and add the payment amount.\nStep 6: | → | IF YES | IF NOUse either the customer’s ID/phone number from the Payment Dashboard, and search in the CS panel. After locating the customer’s account, payment and order details, if the transaction was made on the customer's account, reply back to the customer using:\n• If the reporter requested you to remove the card from the other customer’s account, reply back using:\n• Macro → Cannot Remove Card From Another AccountIssue type (CX) | Payment > Unrecognized charge > Suspected fraudSubmit as → ClosedStep 7 : → | IF YES | IF NOIf the reporter requested you to remove the card from the other customer’s account, reply back using:\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating"
     },
     "CHG_OTHER_ACCOUNT": {
       "headline": "Unrecognized Charge: Another Account — Person Unknown After 3 Tries (Contact Bank)",
@@ -4932,7 +4973,9 @@
       "issue_type_leaf": "Suspected fraud",
       "macro_id": "MAC_083",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "escalation_template": "BEFORE ESCALATING — Unrecognized Charges\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep1: In the payment tab, confirm if the payment is reflected. Step2: In the payment tab, confirm if the payment is reflected. | → OutcomeStep 3: Did you find the payment on the CS panel? | → IF YES | IF NOStep 4: Copy the customer's ID and paste it in the CS hub payment dashboard. Step 5:- In the Attempt date field, click “Custom”, then add the specific Date/Time of the payment the customer is inquiring about, click Apply. - Use the Attempt paid amount field if needed, and add the payment amount.\nStep 6: | → | IF YES | IF NOUse either the customer’s ID/phone number from the Payment Dashboard, and search in the CS panel. After locating the customer’s account, payment and order details, if the transaction was made on the customer's account, reply back to the customer using:\n• If the reporter requested you to remove the card from the other customer’s account, reply back using:\n• Macro → Cannot Remove Card From Another AccountIssue type (CX) | Payment > Unrecognized charge > Suspected fraudSubmit as → ClosedStep 7 : → | IF YES | IF NOIf the reporter requested you to remove the card from the other customer’s account, reply back using:\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating"
     },
     "CHG_NOT_IN_DASH": {
       "headline": "Unrecognized Charge: Absent from Tamara Payment Dashboard (Bank Pushback)",
@@ -4951,7 +4994,9 @@
       "issue_type_leaf": "Explained to customer (no issue)",
       "macro_id": "MAC_083",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "escalation_template": "BEFORE ESCALATING — Unrecognized Charges\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep1: In the payment tab, confirm if the payment is reflected. Step2: In the payment tab, confirm if the payment is reflected. | → OutcomeStep 3: Did you find the payment on the CS panel? | → IF YES | IF NOStep 4: Copy the customer's ID and paste it in the CS hub payment dashboard. Step 5:- In the Attempt date field, click “Custom”, then add the specific Date/Time of the payment the customer is inquiring about, click Apply. - Use the Attempt paid amount field if needed, and add the payment amount.\nStep 6: | → | IF YES | IF NOUse either the customer’s ID/phone number from the Payment Dashboard, and search in the CS panel. After locating the customer’s account, payment and order details, if the transaction was made on the customer's account, reply back to the customer using:\n• If the reporter requested you to remove the card from the other customer’s account, reply back using:\n• Macro → Cannot Remove Card From Another AccountIssue type (CX) | Payment > Unrecognized charge > Suspected fraudSubmit as → ClosedStep 7 : → | IF YES | IF NOIf the reporter requested you to remove the card from the other customer’s account, reply back using:\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating"
     },
     "UNREC_SYSTEM_ERROR": {
       "headline": "Unrecorded Charge: Payment Captured but Not Reflected (Escalate to Tech Support)",
@@ -5396,7 +5441,9 @@
       "issue_type_leaf": "Explained to customer (no issue)",
       "macro_id": "MAC_006",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "escalation_template": "BEFORE ESCALATING — Unrecognized Charges\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep1: In the payment tab, confirm if the payment is reflected. Step2: In the payment tab, confirm if the payment is reflected. | → OutcomeStep 3: Did you find the payment on the CS panel? | → IF YES | IF NOStep 4: Copy the customer's ID and paste it in the CS hub payment dashboard. Step 5:- In the Attempt date field, click “Custom”, then add the specific Date/Time of the payment the customer is inquiring about, click Apply. - Use the Attempt paid amount field if needed, and add the payment amount.\nStep 6: | → | IF YES | IF NOUse either the customer’s ID/phone number from the Payment Dashboard, and search in the CS panel. After locating the customer’s account, payment and order details, if the transaction was made on the customer's account, reply back to the customer using:\n• If the reporter requested you to remove the card from the other customer’s account, reply back using:\n• Macro → Cannot Remove Card From Another AccountIssue type (CX) | Payment > Unrecognized charge > Suspected fraudSubmit as → ClosedStep 7 : → | IF YES | IF NOIf the reporter requested you to remove the card from the other customer’s account, reply back using:\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating"
     },
     "UNREC_STATUS_CAPTURED_ESC": {
       "headline": "Unrecorded Charge: Payment Captured but Not Reflected (Escalate to Tech Support)",
@@ -5419,7 +5466,9 @@
       "_sla_source": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
       "_sla_updated_at": "2026-11-21T10:25:40.073432+00:00",
       "_sla_authority": "Transfers SLA.xlsx",
-      "_sla_sheet_row": 10
+      "_sla_sheet_row": 10,
+      "escalation_template": "BEFORE ESCALATING — Unrecognized Charges\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep1: In the payment tab, confirm if the payment is reflected. Step2: In the payment tab, confirm if the payment is reflected. | → OutcomeStep 3: Did you find the payment on the CS panel? | → IF YES | IF NOStep 4: Copy the customer's ID and paste it in the CS hub payment dashboard. Step 5:- In the Attempt date field, click “Custom”, then add the specific Date/Time of the payment the customer is inquiring about, click Apply. - Use the Attempt paid amount field if needed, and add the payment amount.\nStep 6: | → | IF YES | IF NOUse either the customer’s ID/phone number from the Payment Dashboard, and search in the CS panel. After locating the customer’s account, payment and order details, if the transaction was made on the customer's account, reply back to the customer using:\n• If the reporter requested you to remove the card from the other customer’s account, reply back using:\n• Macro → Cannot Remove Card From Another AccountIssue type (CX) | Payment > Unrecognized charge > Suspected fraudSubmit as → ClosedStep 7 : → | IF YES | IF NOIf the reporter requested you to remove the card from the other customer’s account, reply back using:\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating"
     },
     "UNREC_STATUS_DECLINED_HOLD": {
       "headline": "Payment Attempt Declined: Temporary Bank Pre-Authorization Hold",
@@ -5438,7 +5487,9 @@
       "issue_type_leaf": "Voided payment",
       "macro_id": "MAC_127",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "escalation_template": "BEFORE ESCALATING — Unrecognized Charges\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep1: In the payment tab, confirm if the payment is reflected. Step2: In the payment tab, confirm if the payment is reflected. | → OutcomeStep 3: Did you find the payment on the CS panel? | → IF YES | IF NOStep 4: Copy the customer's ID and paste it in the CS hub payment dashboard. Step 5:- In the Attempt date field, click “Custom”, then add the specific Date/Time of the payment the customer is inquiring about, click Apply. - Use the Attempt paid amount field if needed, and add the payment amount.\nStep 6: | → | IF YES | IF NOUse either the customer’s ID/phone number from the Payment Dashboard, and search in the CS panel. After locating the customer’s account, payment and order details, if the transaction was made on the customer's account, reply back to the customer using:\n• If the reporter requested you to remove the card from the other customer’s account, reply back using:\n• Macro → Cannot Remove Card From Another AccountIssue type (CX) | Payment > Unrecognized charge > Suspected fraudSubmit as → ClosedStep 7 : → | IF YES | IF NOIf the reporter requested you to remove the card from the other customer’s account, reply back using:\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating"
     },
     "OB_GUIDANCE": {
       "headline": "Open Banking UAE: Direct Debit Linking Guidance",
@@ -6028,7 +6079,9 @@
       "issue_type_leaf": "Explained to customer (no issue)",
       "macro_id": "MAC_006",
       "macro_lob": "Customer Care",
-      "macro_channel": "Email;Phone;Messaging"
+      "macro_channel": "Email;Phone;Messaging",
+      "escalation_template": "BEFORE ESCALATING — Unrecognized Charges\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep1: In the payment tab, confirm if the payment is reflected. Step2: In the payment tab, confirm if the payment is reflected. | → OutcomeStep 3: Did you find the payment on the CS panel? | → IF YES | IF NOStep 4: Copy the customer's ID and paste it in the CS hub payment dashboard. Step 5:- In the Attempt date field, click “Custom”, then add the specific Date/Time of the payment the customer is inquiring about, click Apply. - Use the Attempt paid amount field if needed, and add the payment amount.\nStep 6: | → | IF YES | IF NOUse either the customer’s ID/phone number from the Payment Dashboard, and search in the CS panel. After locating the customer’s account, payment and order details, if the transaction was made on the customer's account, reply back to the customer using:\n• If the reporter requested you to remove the card from the other customer’s account, reply back using:\n• Macro → Cannot Remove Card From Another AccountIssue type (CX) | Payment > Unrecognized charge > Suspected fraudSubmit as → ClosedStep 7 : → | IF YES | IF NOIf the reporter requested you to remove the card from the other customer’s account, reply back using:\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating"
     },
     "DEC_CUST_DUES_ESCALATE": {
       "headline": "Deceased Customer (Active Dues + All 3 Proofs Verified) -> Escalate to Legal & Compliance",
@@ -7240,7 +7293,9 @@
     "kbAshryMismatchCount": 3,
     "authority": "Transfers SLA.xlsx",
     "kbAshrySyncedFromTransfersAt": "2026-11-21T10:25:40.074732+00:00",
-    "accuracyMode": "sheet_exact_sla_text + curated_node_map + missing_topics_created"
+    "accuracyMode": "sheet_exact_sla_text + curated_node_map + missing_topics_created",
+    "beforeEscalatingAppliedAt": "2026-11-24T07:56:07.160630+00:00",
+    "beforeEscalatingSource": "C:\\Users\\gasser.elashry\\Downloads\\KB Ashry.docx"
   },
   "transfersSlaCatalog": [
     {
@@ -7475,7 +7530,9 @@
       "sla": "5 business days",
       "status": "Working",
       "macro": "Ticket Escalated",
-      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card.\nSource: Transfers SLA sheet row 10"
+      "escalationTemplate": "BEFORE ESCALATING — Unrecognized Charges\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep1: In the payment tab, confirm if the payment is reflected. Step2: In the payment tab, confirm if the payment is reflected. | → OutcomeStep 3: Did you find the payment on the CS panel? | → IF YES | IF NOStep 4: Copy the customer's ID and paste it in the CS hub payment dashboard. Step 5:- In the Attempt date field, click “Custom”, then add the specific Date/Time of the payment the customer is inquiring about, click Apply. - Use the Attempt paid amount field if needed, and add the payment amount.\nStep 6: | → | IF YES | IF NOUse either the customer’s ID/phone number from the Payment Dashboard, and search in the CS panel. After locating the customer’s account, payment and order details, if the transaction was made on the customer's account, reply back to the customer using:\n• If the reporter requested you to remove the card from the other customer’s account, reply back using:\n• Macro → Cannot Remove Card From Another AccountIssue type (CX) | Payment > Unrecognized charge > Suspected fraudSubmit as → ClosedStep 7 : → | IF YES | IF NOIf the reporter requested you to remove the card from the other customer’s account, reply back using:\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating",
+      "_escalation_verified_10pass": true
     },
     {
       "id": "TRF_10_2",
@@ -7488,7 +7545,9 @@
       "sla": "5 business days",
       "status": "Working",
       "macro": "Ticket Escalated",
-      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card.\nSource: Transfers SLA sheet row 10"
+      "escalationTemplate": "BEFORE ESCALATING — Unrecognized Charges\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep1: In the payment tab, confirm if the payment is reflected. Step2: In the payment tab, confirm if the payment is reflected. | → OutcomeStep 3: Did you find the payment on the CS panel? | → IF YES | IF NOStep 4: Copy the customer's ID and paste it in the CS hub payment dashboard. Step 5:- In the Attempt date field, click “Custom”, then add the specific Date/Time of the payment the customer is inquiring about, click Apply. - Use the Attempt paid amount field if needed, and add the payment amount.\nStep 6: | → | IF YES | IF NOUse either the customer’s ID/phone number from the Payment Dashboard, and search in the CS panel. After locating the customer’s account, payment and order details, if the transaction was made on the customer's account, reply back to the customer using:\n• If the reporter requested you to remove the card from the other customer’s account, reply back using:\n• Macro → Cannot Remove Card From Another AccountIssue type (CX) | Payment > Unrecognized charge > Suspected fraudSubmit as → ClosedStep 7 : → | IF YES | IF NOIf the reporter requested you to remove the card from the other customer’s account, reply back using:\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating",
+      "_escalation_verified_10pass": true
     },
     {
       "id": "TRF_11_1",
@@ -7735,7 +7794,9 @@
       "sla": "5 business days",
       "status": "Working",
       "macro": "Ticket Escalated",
-      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card.\nSource: Transfers SLA sheet row 17"
+      "escalationTemplate": "BEFORE ESCALATING — Unrecognized Charges\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep1: In the payment tab, confirm if the payment is reflected. Step2: In the payment tab, confirm if the payment is reflected. | → OutcomeStep 3: Did you find the payment on the CS panel? | → IF YES | IF NOStep 4: Copy the customer's ID and paste it in the CS hub payment dashboard. Step 5:- In the Attempt date field, click “Custom”, then add the specific Date/Time of the payment the customer is inquiring about, click Apply. - Use the Attempt paid amount field if needed, and add the payment amount.\nStep 6: | → | IF YES | IF NOUse either the customer’s ID/phone number from the Payment Dashboard, and search in the CS panel. After locating the customer’s account, payment and order details, if the transaction was made on the customer's account, reply back to the customer using:\n• If the reporter requested you to remove the card from the other customer’s account, reply back using:\n• Macro → Cannot Remove Card From Another AccountIssue type (CX) | Payment > Unrecognized charge > Suspected fraudSubmit as → ClosedStep 7 : → | IF YES | IF NOIf the reporter requested you to remove the card from the other customer’s account, reply back using:\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating",
+      "_escalation_verified_10pass": true
     },
     {
       "id": "TRF_18_1",
@@ -7995,7 +8056,9 @@
       "sla": "5 calendar days",
       "status": "Working",
       "macro": "Ticket Escalated",
-      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card.\nSource: Transfers SLA sheet row 37"
+      "escalationTemplate": "BEFORE ESCALATING — Manual Phone Number Change\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nSteps\nStep 1 → | IF Active | IF Inactive\nStep 2 → | Account is deleted (by customer) | Account is inactive\nStep 3 → | IF YES | IF NO\nStep 4 | → | IF YES | IF NO\nStep 5 → | IF YES | IF NOStep 6 → | IF YES | IF NO\nStep 7How to change customer’s phone number: (CS Panel)After verifying the account and the customer asked to change the phone number do the following : - What is the type of the line? | → | Postpaid line | Prepaid line\nStep 1 : → | IF YES | IF NORare Cases | Escalation Steps\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating",
+      "_escalation_verified_10pass": true
     },
     {
       "id": "TRF_38_1",
@@ -8008,7 +8071,9 @@
       "sla": "5 calendar days",
       "status": "Working",
       "macro": "Ticket Escalated",
-      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card.\nSource: Transfers SLA sheet row 38"
+      "escalationTemplate": "BEFORE ESCALATING — Unrecognized Charges\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep1: In the payment tab, confirm if the payment is reflected. Step2: In the payment tab, confirm if the payment is reflected. | → OutcomeStep 3: Did you find the payment on the CS panel? | → IF YES | IF NOStep 4: Copy the customer's ID and paste it in the CS hub payment dashboard. Step 5:- In the Attempt date field, click “Custom”, then add the specific Date/Time of the payment the customer is inquiring about, click Apply. - Use the Attempt paid amount field if needed, and add the payment amount.\nStep 6: | → | IF YES | IF NOUse either the customer’s ID/phone number from the Payment Dashboard, and search in the CS panel. After locating the customer’s account, payment and order details, if the transaction was made on the customer's account, reply back to the customer using:\n• If the reporter requested you to remove the card from the other customer’s account, reply back using:\n• Macro → Cannot Remove Card From Another AccountIssue type (CX) | Payment > Unrecognized charge > Suspected fraudSubmit as → ClosedStep 7 : → | IF YES | IF NOIf the reporter requested you to remove the card from the other customer’s account, reply back using:\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating",
+      "_escalation_verified_10pass": true
     },
     {
       "id": "TRF_39_1",
@@ -8021,7 +8086,9 @@
       "sla": "5 days",
       "status": "Working",
       "macro": "Ticket Escalated",
-      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card.\nSource: Transfers SLA sheet row 39"
+      "escalationTemplate": "BEFORE ESCALATING — Unrecognized Charges\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep1: In the payment tab, confirm if the payment is reflected. Step2: In the payment tab, confirm if the payment is reflected. | → OutcomeStep 3: Did you find the payment on the CS panel? | → IF YES | IF NOStep 4: Copy the customer's ID and paste it in the CS hub payment dashboard. Step 5:- In the Attempt date field, click “Custom”, then add the specific Date/Time of the payment the customer is inquiring about, click Apply. - Use the Attempt paid amount field if needed, and add the payment amount.\nStep 6: | → | IF YES | IF NOUse either the customer’s ID/phone number from the Payment Dashboard, and search in the CS panel. After locating the customer’s account, payment and order details, if the transaction was made on the customer's account, reply back to the customer using:\n• If the reporter requested you to remove the card from the other customer’s account, reply back using:\n• Macro → Cannot Remove Card From Another AccountIssue type (CX) | Payment > Unrecognized charge > Suspected fraudSubmit as → ClosedStep 7 : → | IF YES | IF NOIf the reporter requested you to remove the card from the other customer’s account, reply back using:\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating",
+      "_escalation_verified_10pass": true
     },
     {
       "id": "TRF_40_1",
@@ -8047,7 +8114,9 @@
       "sla": "5 calendar days",
       "status": "Working",
       "macro": "Ticket Escalated",
-      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card.\nSource: Transfers SLA sheet row 41"
+      "escalationTemplate": "BEFORE ESCALATING — Order Fraud\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep 1 : Check the customer account’s recent order status.\n• Go to CS Hub from the Customer Detail >click on Histories > and check the Status. Step 2 : Depending on the order status you have two different resolutions: IF The order status is Not Active: Order (expired) = Go to step 3 IF The order is Active: Order (approved), Order (authorised), or Order (fully_captured) = Go to step 4 | Step 3 (Order is Expired): 1- Click the order and check the order information (order number, store name, customer's first name, | and phone number last 4 digits). | 2- Provide the customer with the below info.:\n• Last 4 digits of the user phone number\n• If the first name in the shipping info. is different, you can provide the customer with that as well.\n• Advise the customer that the order is not active which means there are no dues.\n• Educate them on the importance of not sharing any information with others, like the account’s phone number, OTP, passcodes, and all information.\n• Add a case comment with case details\n• Issue type Payment > Unrecognized charge > Explained to customer (no issue)\nStep 4 : The order is “ Active” --> Order (approved), Order (authorised), or Order (fully_captured) | 1- Check the order information (order number, store name, customer's first name, and phone number's last 4 digits). 2- Provide all information to your customer, as they may recognize the person and they can contact them personally.\n3- If they don’t recognize the person, this is a potential fraud case, escalate it to the Trust & Safety team by following the steps in [Customer/Merchant] Transferring Sales Force Cases for further investigation.\n4- Ask the customer the below questions\nQ1- When did this happen?\nQ2- How did someone get your national ID/iqama number?\nQ3- An OTP is sent to your phone number from Absher to activate your account. Why did you give it away?\nQ4- Who is the person that you give your information to?\nQ5- There is an OTP sent to complete the order and it says for purchase why did you give it away?\nQ6- Maybe it's one of your friends or family that has been using your account?\nQ7- If not who do you suspect?\nQ8- Ask if he did file a report to the police.\nQ9- What is the phone number of the caller?\n• If the customer’s phone number was stolen, they can provide a police report/proof | as evidence.\n5- Once you receive answers from the customer, add all case details in a case comments and escalate to the Trust & Safety team.Issue type Payment > Unrecognized charge > Suspected fraud\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating",
+      "_escalation_verified_10pass": true
     },
     {
       "id": "TRF_41_2",
@@ -8060,7 +8129,9 @@
       "sla": "5 calendar days",
       "status": "Working",
       "macro": "Ticket Escalated",
-      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card.\nSource: Transfers SLA sheet row 41"
+      "escalationTemplate": "BEFORE ESCALATING — Order Fraud\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep 1 : Check the customer account’s recent order status.\n• Go to CS Hub from the Customer Detail >click on Histories > and check the Status. Step 2 : Depending on the order status you have two different resolutions: IF The order status is Not Active: Order (expired) = Go to step 3 IF The order is Active: Order (approved), Order (authorised), or Order (fully_captured) = Go to step 4 | Step 3 (Order is Expired): 1- Click the order and check the order information (order number, store name, customer's first name, | and phone number last 4 digits). | 2- Provide the customer with the below info.:\n• Last 4 digits of the user phone number\n• If the first name in the shipping info. is different, you can provide the customer with that as well.\n• Advise the customer that the order is not active which means there are no dues.\n• Educate them on the importance of not sharing any information with others, like the account’s phone number, OTP, passcodes, and all information.\n• Add a case comment with case details\n• Issue type Payment > Unrecognized charge > Explained to customer (no issue)\nStep 4 : The order is “ Active” --> Order (approved), Order (authorised), or Order (fully_captured) | 1- Check the order information (order number, store name, customer's first name, and phone number's last 4 digits). 2- Provide all information to your customer, as they may recognize the person and they can contact them personally.\n3- If they don’t recognize the person, this is a potential fraud case, escalate it to the Trust & Safety team by following the steps in [Customer/Merchant] Transferring Sales Force Cases for further investigation.\n4- Ask the customer the below questions\nQ1- When did this happen?\nQ2- How did someone get your national ID/iqama number?\nQ3- An OTP is sent to your phone number from Absher to activate your account. Why did you give it away?\nQ4- Who is the person that you give your information to?\nQ5- There is an OTP sent to complete the order and it says for purchase why did you give it away?\nQ6- Maybe it's one of your friends or family that has been using your account?\nQ7- If not who do you suspect?\nQ8- Ask if he did file a report to the police.\nQ9- What is the phone number of the caller?\n• If the customer’s phone number was stolen, they can provide a police report/proof | as evidence.\n5- Once you receive answers from the customer, add all case details in a case comments and escalate to the Trust & Safety team.Issue type Payment > Unrecognized charge > Suspected fraud\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating",
+      "_escalation_verified_10pass": true
     },
     {
       "id": "TRF_42_1",
@@ -8073,7 +8144,9 @@
       "sla": "5 calendar days",
       "status": "Working",
       "macro": "Ticket Escalated",
-      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card.\nSource: Transfers SLA sheet row 42"
+      "escalationTemplate": "BEFORE ESCALATING — Manual Phone Number Change\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nSteps\nStep 1 → | IF Active | IF Inactive\nStep 2 → | Account is deleted (by customer) | Account is inactive\nStep 3 → | IF YES | IF NO\nStep 4 | → | IF YES | IF NO\nStep 5 → | IF YES | IF NOStep 6 → | IF YES | IF NO\nStep 7How to change customer’s phone number: (CS Panel)After verifying the account and the customer asked to change the phone number do the following : - What is the type of the line? | → | Postpaid line | Prepaid line\nStep 1 : → | IF YES | IF NORare Cases | Escalation Steps\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating",
+      "_escalation_verified_10pass": true
     },
     {
       "id": "TRF_42_2",
@@ -8086,7 +8159,9 @@
       "sla": "5 calendar days",
       "status": "Working",
       "macro": "Ticket Escalated",
-      "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card.\nSource: Transfers SLA sheet row 42"
+      "escalationTemplate": "BEFORE ESCALATING — Manual Phone Number Change\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nSteps\nStep 1 → | IF Active | IF Inactive\nStep 2 → | Account is deleted (by customer) | Account is inactive\nStep 3 → | IF YES | IF NO\nStep 4 | → | IF YES | IF NO\nStep 5 → | IF YES | IF NOStep 6 → | IF YES | IF NO\nStep 7How to change customer’s phone number: (CS Panel)After verifying the account and the customer asked to change the phone number do the following : - What is the type of the line? | → | Postpaid line | Prepaid line\nStep 1 : → | IF YES | IF NORare Cases | Escalation Steps\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "_escalation_source": "KB Ashry Before Escalating",
+      "_escalation_verified_10pass": true
     },
     {
       "id": "TRF_43_1",
@@ -8192,7 +8267,37 @@
       "macro": "Ticket Escalated",
       "escalationTemplate": "PENDING — Escalation template will be shared by admin and linked here.\nUntil then use: Macro Ticket Escalated + set Team / SLA / Status from this card.\nSource: Transfers SLA sheet row 48"
     }
-  ]
+  ],
+  "beforeEscalatingTemplates": {
+    "change_phone": {
+      "label": "Manual Phone Number Change",
+      "template": "BEFORE ESCALATING — Manual Phone Number Change\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nSteps\nStep 1 → | IF Active | IF Inactive\nStep 2 → | Account is deleted (by customer) | Account is inactive\nStep 3 → | IF YES | IF NO\nStep 4 | → | IF YES | IF NO\nStep 5 → | IF YES | IF NOStep 6 → | IF YES | IF NO\nStep 7How to change customer’s phone number: (CS Panel)After verifying the account and the customer asked to change the phone number do the following : - What is the type of the line? | → | Postpaid line | Prepaid line\nStep 1 : → | IF YES | IF NORare Cases | Escalation Steps\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "source": "KB Ashry.docx Before Escalating",
+      "updated_at": "2026-11-24T07:56:07.157796+00:00",
+      "verified_10_pass": true
+    },
+    "declined_order": {
+      "label": "Order Fraud",
+      "template": "BEFORE ESCALATING — Order Fraud\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep 1 : Check the customer account’s recent order status.\n• Go to CS Hub from the Customer Detail >click on Histories > and check the Status. Step 2 : Depending on the order status you have two different resolutions: IF The order status is Not Active: Order (expired) = Go to step 3 IF The order is Active: Order (approved), Order (authorised), or Order (fully_captured) = Go to step 4 | Step 3 (Order is Expired): 1- Click the order and check the order information (order number, store name, customer's first name, | and phone number last 4 digits). | 2- Provide the customer with the below info.:\n• Last 4 digits of the user phone number\n• If the first name in the shipping info. is different, you can provide the customer with that as well.\n• Advise the customer that the order is not active which means there are no dues.\n• Educate them on the importance of not sharing any information with others, like the account’s phone number, OTP, passcodes, and all information.\n• Add a case comment with case details\n• Issue type Payment > Unrecognized charge > Explained to customer (no issue)\nStep 4 : The order is “ Active” --> Order (approved), Order (authorised), or Order (fully_captured) | 1- Check the order information (order number, store name, customer's first name, and phone number's last 4 digits). 2- Provide all information to your customer, as they may recognize the person and they can contact them personally.\n3- If they don’t recognize the person, this is a potential fraud case, escalate it to the Trust & Safety team by following the steps in [Customer/Merchant] Transferring Sales Force Cases for further investigation.\n4- Ask the customer the below questions\nQ1- When did this happen?\nQ2- How did someone get your national ID/iqama number?\nQ3- An OTP is sent to your phone number from Absher to activate your account. Why did you give it away?\nQ4- Who is the person that you give your information to?\nQ5- There is an OTP sent to complete the order and it says for purchase why did you give it away?\nQ6- Maybe it's one of your friends or family that has been using your account?\nQ7- If not who do you suspect?\nQ8- Ask if he did file a report to the police.\nQ9- What is the phone number of the caller?\n• If the customer’s phone number was stolen, they can provide a police report/proof | as evidence.\n5- Once you receive answers from the customer, add all case details in a case comments and escalate to the Trust & Safety team.Issue type Payment > Unrecognized charge > Suspected fraud\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "source": "KB Ashry.docx Before Escalating",
+      "updated_at": "2026-11-24T07:55:45.535333+00:00",
+      "verified_10_pass": true
+    },
+    "unrecognized_charge": {
+      "label": "Unrecognized Charges",
+      "template": "BEFORE ESCALATING — Unrecognized Charges\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep1: In the payment tab, confirm if the payment is reflected. Step2: In the payment tab, confirm if the payment is reflected. | → OutcomeStep 3: Did you find the payment on the CS panel? | → IF YES | IF NOStep 4: Copy the customer's ID and paste it in the CS hub payment dashboard. Step 5:- In the Attempt date field, click “Custom”, then add the specific Date/Time of the payment the customer is inquiring about, click Apply. - Use the Attempt paid amount field if needed, and add the payment amount.\nStep 6: | → | IF YES | IF NOUse either the customer’s ID/phone number from the Payment Dashboard, and search in the CS panel. After locating the customer’s account, payment and order details, if the transaction was made on the customer's account, reply back to the customer using:\n• If the reporter requested you to remove the card from the other customer’s account, reply back using:\n• Macro → Cannot Remove Card From Another AccountIssue type (CX) | Payment > Unrecognized charge > Suspected fraudSubmit as → ClosedStep 7 : → | IF YES | IF NOIf the reporter requested you to remove the card from the other customer’s account, reply back using:\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "source": "KB Ashry.docx Before Escalating",
+      "updated_at": "2026-11-24T07:56:07.159231+00:00",
+      "verified_10_pass": true
+    },
+    "unrecorded_charges": {
+      "label": "Unrecognized Charges",
+      "template": "BEFORE ESCALATING — Unrecognized Charges\nSource: KB Ashry.docx (Before Escalating)\n\nRequired steps / info to collect:\nStep1: In the payment tab, confirm if the payment is reflected. Step2: In the payment tab, confirm if the payment is reflected. | → OutcomeStep 3: Did you find the payment on the CS panel? | → IF YES | IF NOStep 4: Copy the customer's ID and paste it in the CS hub payment dashboard. Step 5:- In the Attempt date field, click “Custom”, then add the specific Date/Time of the payment the customer is inquiring about, click Apply. - Use the Attempt paid amount field if needed, and add the payment amount.\nStep 6: | → | IF YES | IF NOUse either the customer’s ID/phone number from the Payment Dashboard, and search in the CS panel. After locating the customer’s account, payment and order details, if the transaction was made on the customer's account, reply back to the customer using:\n• If the reporter requested you to remove the card from the other customer’s account, reply back using:\n• Macro → Cannot Remove Card From Another AccountIssue type (CX) | Payment > Unrecognized charge > Suspected fraudSubmit as → ClosedStep 7 : → | IF YES | IF NOIf the reporter requested you to remove the card from the other customer’s account, reply back using:\n\nAdd all answers in the case comment, then escalate with the correct Issue Type / Team / SLA.",
+      "source": "KB Ashry.docx Before Escalating",
+      "updated_at": "2026-11-24T07:56:07.159927+00:00",
+      "verified_10_pass": true
+    }
+  }
 }
   </script>
   <script id="tamara-articles-data" type="application/json">
@@ -8946,11 +9051,20 @@ function initData() {
     if (banner && policyText) {
       if (cmsData.policies && cmsData.policies[topicId]) {
         banner.style.display = 'block';
-        policyText.innerText = cmsData.policies[topicId];
+        // Prefer original policy without duplicated Before Escalating dump when dedicated panel exists
+        var pol = cmsData.policies[topicId];
+        var be = cmsData.beforeEscalatingTemplates && cmsData.beforeEscalatingTemplates[topicId];
+        if (be && be.template && pol.indexOf('BEFORE ESCALATING —') !== -1) {
+          policyText.innerText = pol.split('BEFORE ESCALATING —')[0].trim() || pol;
+        } else {
+          policyText.innerText = pol;
+        }
       } else {
         banner.style.display = 'none';
       }
     }
+
+    renderBeforeEscalatingPanel(topicId);
 
     if (meta.uniqueType === 'transfers_sla_browser' || topicId === 'transfers_sla') {
       showTransfersSlaPanel(true);
@@ -8958,6 +9072,27 @@ function initData() {
     }
     showTransfersSlaPanel(false);
     resetWorkflowTopic();
+  }
+
+  function renderBeforeEscalatingPanel(topicId) {
+    var panel = document.getElementById('before-escalating-panel');
+    var textEl = document.getElementById('before-escalating-text');
+    if (!panel || !textEl) return;
+    var be = cmsData && cmsData.beforeEscalatingTemplates ? cmsData.beforeEscalatingTemplates[topicId] : null;
+    if (be && be.template) {
+      panel.style.display = 'block';
+      textEl.innerText = be.template;
+    } else {
+      panel.style.display = 'none';
+      textEl.innerText = '';
+    }
+  }
+
+  function copyBeforeEscalatingTemplate() {
+    var textEl = document.getElementById('before-escalating-text');
+    if (!textEl || !textEl.innerText) return;
+    navigator.clipboard.writeText(textEl.innerText);
+    alert('Before Escalating checklist copied.');
   }
 
   function resetWorkflowTopic() {
@@ -12950,6 +13085,8 @@ var officialIssueTypes = DEFAULT_OFFICIAL_ISSUE_TYPES.slice();
   window.onTransfersCategoryChange = onTransfersCategoryChange;
   window.onTransfersSituationChange = onTransfersSituationChange;
   window.copyTransfersEscalationTemplate = copyTransfersEscalationTemplate;
+  window.copyBeforeEscalatingTemplate = copyBeforeEscalatingTemplate;
+  window.renderBeforeEscalatingPanel = renderBeforeEscalatingPanel;
   window.downloadSelfContainedHtml = downloadSelfContainedHtml;
   window.pushLiveUpdateToServer = pushLiveUpdateToServer;
   window.unlockAgentHub = unlockAgentHub;
