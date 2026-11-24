@@ -682,6 +682,58 @@
     .transfers-sla-pin.active .transfers-sla-top { color: #ffd54f !important; }
     .updated-badge { background: var(--accent-green); color: #000; font-size: 9px; font-weight: 800; padding: 2px 5px; border-radius: 4px; margin-left: 6px; }
 
+    /* Before Escalating — collapsed tab (tap to expand) */
+    .before-escalating-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      text-align: left;
+      cursor: pointer;
+      border: 1.5px solid #e8a017;
+      border-radius: var(--radius-md);
+      padding: 10px 14px;
+      background: rgba(248, 202, 198, 0.28);
+      color: #9a3412;
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .before-escalating-toggle:hover {
+      background: rgba(248, 202, 198, 0.45);
+      border-color: #f59e0b;
+    }
+    .before-escalating-toggle .be-chevron {
+      font-size: 12px;
+      color: #b45309;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+    .before-escalating-panel.open .before-escalating-toggle .be-chevron {
+      transform: rotate(180deg);
+    }
+    .before-escalating-body {
+      display: none;
+      margin-top: 8px;
+      border: 1.5px solid #e8a017;
+      border-radius: var(--radius-md);
+      background: var(--card-subtle);
+      padding: 12px 14px;
+    }
+    .before-escalating-panel.open .before-escalating-body {
+      display: block;
+    }
+    html[data-theme="light"] .before-escalating-toggle {
+      background: #fde8e4 !important;
+      color: #9a3412 !important;
+      border-color: #e8a017 !important;
+    }
+    html[data-theme="light"] .before-escalating-body {
+      background: #faf6f0 !important;
+    }
+
     .decision-display {
       background: var(--card-bg); border: 1.5px solid var(--border-purple); border-radius: var(--radius-lg);
       padding: 22px; min-height: calc(100vh - 120px); box-shadow: var(--shadow-card);
@@ -890,15 +942,16 @@
           <strong style="display:block; margin-bottom:2px; color:var(--gold-metallic);">Mandatory Policy &amp; Compliance Guardrail</strong>
           <div id="topic-policy-text" style="white-space:pre-line; line-height:1.65; margin-top:4px;">Follow standard verification rules.</div>
         </div>
-        <div id="before-escalating-panel" style="display:none; margin-bottom:16px;">
-          <div class="section-card" style="overflow:visible; border-color:#e8a017;">
-            <div class="section-header" style="background:rgba(248,202,198,0.35); color:#9a3412;">⚠ Before Escalating — Required Steps &amp; Info (KB Ashry)</div>
-            <div class="section-body">
-              <div style="display:flex; justify-content:flex-end; margin-bottom:6px;">
-                <button type="button" class="btn-copy" style="padding:3px 8px; font-size:9.5px;" onclick="window.copyBeforeEscalatingTemplate()">Copy Checklist</button>
-              </div>
-              <pre id="before-escalating-text" style="white-space:pre-wrap; font-family:'JetBrains Mono',monospace; font-size:11.5px; line-height:1.55; margin:0; color:var(--text-bright);"></pre>
+        <div id="before-escalating-panel" class="before-escalating-panel" style="display:none; margin-bottom:16px;">
+          <button type="button" class="before-escalating-toggle" id="before-escalating-toggle" onclick="window.toggleBeforeEscalatingPanel()" aria-expanded="false">
+            <span>⚠ Before Escalating — tap to show path <span id="before-escalating-team-pill" style="font-weight:700; text-transform:none; letter-spacing:0; opacity:0.9;"></span></span>
+            <span class="be-chevron" aria-hidden="true">▼</span>
+          </button>
+          <div class="before-escalating-body" id="before-escalating-body">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:6px;">
+              <button type="button" class="btn-copy" style="padding:3px 8px; font-size:9.5px;" onclick="event.stopPropagation(); window.copyBeforeEscalatingTemplate()">Copy Checklist</button>
             </div>
+            <pre id="before-escalating-text" style="white-space:pre-wrap; font-family:'JetBrains Mono',monospace; font-size:11.5px; line-height:1.55; margin:0; color:var(--text-bright);"></pre>
           </div>
         </div>
         <!-- Unique Transfers SLA browser (pinned Topic 00) -->
@@ -10027,15 +10080,32 @@ function initData() {
   function renderBeforeEscalatingPanel(topicId) {
     var panel = document.getElementById('before-escalating-panel');
     var textEl = document.getElementById('before-escalating-text');
+    var teamPill = document.getElementById('before-escalating-team-pill');
+    var toggle = document.getElementById('before-escalating-toggle');
     if (!panel || !textEl) return;
     var be = cmsData && cmsData.beforeEscalatingTemplates ? cmsData.beforeEscalatingTemplates[topicId] : null;
+    // Always start collapsed so the page stays clear
+    panel.classList.remove('open');
+    if (toggle) toggle.setAttribute('aria-expanded', 'false');
     if (be && be.template) {
       panel.style.display = 'block';
       textEl.innerText = be.template;
+      if (teamPill) {
+        teamPill.textContent = be.team ? ('· ' + be.team) : '';
+      }
     } else {
       panel.style.display = 'none';
       textEl.innerText = '';
+      if (teamPill) teamPill.textContent = '';
     }
+  }
+
+  function toggleBeforeEscalatingPanel() {
+    var panel = document.getElementById('before-escalating-panel');
+    var toggle = document.getElementById('before-escalating-toggle');
+    if (!panel || panel.style.display === 'none') return;
+    var open = panel.classList.toggle('open');
+    if (toggle) toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
   }
 
   function copyBeforeEscalatingTemplate() {
@@ -14037,6 +14107,7 @@ var officialIssueTypes = DEFAULT_OFFICIAL_ISSUE_TYPES.slice();
   window.copyTransfersEscalationTemplate = copyTransfersEscalationTemplate;
   window.copyBeforeEscalatingTemplate = copyBeforeEscalatingTemplate;
   window.renderBeforeEscalatingPanel = renderBeforeEscalatingPanel;
+  window.toggleBeforeEscalatingPanel = toggleBeforeEscalatingPanel;
   window.downloadSelfContainedHtml = downloadSelfContainedHtml;
   window.pushLiveUpdateToServer = pushLiveUpdateToServer;
   window.unlockAgentHub = unlockAgentHub;
