@@ -1,0 +1,588 @@
+{
+  "generated_at": "2026-11-24T08:18:55.356665+00:00",
+  "kb_path": "C:\\Users\\gasser.elashry\\Downloads\\KB Ashry.docx",
+  "topics_built": 57,
+  "ready": 57,
+  "blocked": 0,
+  "kb_explicit": 19,
+  "department_default": 38,
+  "results": [
+    {
+      "topic_id": "about_tamara_general",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "account_passcode",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "aecb_support",
+      "origin": "kb_explicit",
+      "team": "Government Escalation",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "KB AECB Escalation Steps"
+    },
+    {
+      "topic_id": "autocharge",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "cant_see_six",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "cant_see_split_pif",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "cant_see_tamara",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "change_email",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "change_phone",
+      "origin": "kb_explicit",
+      "team": "Trust & Safety",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Before Escalating: Manual Phone Number Change"
+    },
+    {
+      "topic_id": "collection_process",
+      "origin": "kb_explicit",
+      "team": "Collections",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "KB Collection Process escalation scenarios"
+    },
+    {
+      "topic_id": "compensation_policy",
+      "origin": "department_default",
+      "team": "Manager Escalation",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Manager Escalation"
+    },
+    {
+      "topic_id": "contact_merchant",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "credit_bureau",
+      "origin": "kb_explicit",
+      "team": "Credit - Risk",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "KB SIMAH Escalation Steps"
+    },
+    {
+      "topic_id": "customer_processing_fees",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "deceased_customer",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "declined_order",
+      "origin": "department_default",
+      "team": "Trust & Safety",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Trust & Safety"
+    },
+    {
+      "topic_id": "delete_account",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "dispute",
+      "origin": "kb_explicit",
+      "team": "Trust & Safety",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "KB Claims / Dispute escalation steps"
+    },
+    {
+      "topic_id": "due_date",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "expired_order",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "feedback_jailbroken",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "fraud_ads",
+      "origin": "kb_explicit",
+      "team": "Trust & Safety",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "KB Fraud Ads path"
+    },
+    {
+      "topic_id": "incorrect_refund",
+      "origin": "kb_explicit",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "KB Refund Edge Cases (Escalation)"
+    },
+    {
+      "topic_id": "instore_no_sms",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "lavender_membership",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "link_bank",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "manager_escalation",
+      "origin": "department_default",
+      "team": "Manager Escalation",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Manager Escalation"
+    },
+    {
+      "topic_id": "merchant_fraud",
+      "origin": "department_default",
+      "team": "Trust & Safety",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Trust & Safety"
+    },
+    {
+      "topic_id": "murabha_bnpl_plus",
+      "origin": "kb_explicit",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "KB Murabha / Early Settlement escalation"
+    },
+    {
+      "topic_id": "murabha_early_settlement",
+      "origin": "kb_explicit",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "KB Murabha / Early Settlement escalation"
+    },
+    {
+      "topic_id": "nid_fraud",
+      "origin": "kb_explicit",
+      "team": "Trust & Safety",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "KB National ID Fraud escalate to T&S"
+    },
+    {
+      "topic_id": "no_order_otp",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "open_banking",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "order_ivr",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "pay_next_month",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "payment_link_feature",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "payment_methods",
+      "origin": "kb_explicit",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "KB Card decline / payment technical escalation"
+    },
+    {
+      "topic_id": "phone_archiving",
+      "origin": "kb_explicit",
+      "team": "Trust & Safety",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "KB Phone Number Archiving required documents"
+    },
+    {
+      "topic_id": "postpone_dues",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "profanity_process",
+      "origin": "department_default",
+      "team": "Manager Escalation",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Manager Escalation"
+    },
+    {
+      "topic_id": "promo_cashback",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "purchase_limits",
+      "origin": "kb_explicit",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "KB Pre-qual / purchase limit escalation scenarios"
+    },
+    {
+      "topic_id": "reactivate_account",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "refunds_cancellations",
+      "origin": "kb_explicit",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "KB Refund Edge Cases (Escalation)"
+    },
+    {
+      "topic_id": "revoke_id",
+      "origin": "kb_explicit",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "KB Revoke ID Verification escalation scenarios"
+    },
+    {
+      "topic_id": "shariah",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "smart_membership",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "stuck_order",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "tamara_card",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "tamara_health",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "tamaras_wallet",
+      "origin": "kb_explicit",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "KB Payment/Refund wallet path"
+    },
+    {
+      "topic_id": "unrecognized_charge",
+      "origin": "kb_explicit",
+      "team": "Trust & Safety",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Before Escalating: Unrecognized Charges"
+    },
+    {
+      "topic_id": "unrecorded_charges",
+      "origin": "kb_explicit",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "KB Unrecorded Charges escalation steps"
+    },
+    {
+      "topic_id": "unregistered_dues",
+      "origin": "kb_explicit",
+      "team": "Trust & Safety",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "KB National ID Fraud escalate to T&S"
+    },
+    {
+      "topic_id": "voided_payment",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "vulnerable_customer",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    },
+    {
+      "topic_id": "wrong_plan",
+      "origin": "department_default",
+      "team": "Tech Support",
+      "passes_ok": 10,
+      "all_passed": true,
+      "failed": [],
+      "source": "Department template — Tech Support"
+    }
+  ],
+  "apply_status": "applied",
+  "applied": {
+    "topics": [
+      "about_tamara_general",
+      "account_passcode",
+      "aecb_support",
+      "autocharge",
+      "cant_see_six",
+      "cant_see_split_pif",
+      "cant_see_tamara",
+      "change_email",
+      "change_phone",
+      "collection_process",
+      "compensation_policy",
+      "contact_merchant",
+      "credit_bureau",
+      "customer_processing_fees",
+      "deceased_customer",
+      "declined_order",
+      "delete_account",
+      "dispute",
+      "due_date",
+      "expired_order",
+      "feedback_jailbroken",
+      "fraud_ads",
+      "incorrect_refund",
+      "instore_no_sms",
+      "lavender_membership",
+      "link_bank",
+      "manager_escalation",
+      "merchant_fraud",
+      "murabha_bnpl_plus",
+      "murabha_early_settlement",
+      "nid_fraud",
+      "no_order_otp",
+      "open_banking",
+      "order_ivr",
+      "pay_next_month",
+      "payment_link_feature",
+      "payment_methods",
+      "phone_archiving",
+      "postpone_dues",
+      "profanity_process",
+      "promo_cashback",
+      "purchase_limits",
+      "reactivate_account",
+      "refunds_cancellations",
+      "revoke_id",
+      "shariah",
+      "smart_membership",
+      "stuck_order",
+      "tamara_card",
+      "tamara_health",
+      "tamaras_wallet",
+      "unrecognized_charge",
+      "unrecorded_charges",
+      "unregistered_dues",
+      "voided_payment",
+      "vulnerable_customer",
+      "wrong_plan"
+    ],
+    "catalog_count": 40,
+    "nodes": 153
+  }
+}
