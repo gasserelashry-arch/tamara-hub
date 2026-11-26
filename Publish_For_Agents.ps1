@@ -20,6 +20,12 @@ if (Test-Path .\_patch_ops_ui.py) {
   Write-Host 'Refreshing ops UI / revision badge...' -ForegroundColor Yellow
   python .\_patch_ops_ui.py
 }
+Write-Host 'Checking index.html JavaScript syntax (blocks frozen UI)...' -ForegroundColor Yellow
+python .\_check_index_js.py
+if ($LASTEXITCODE -ne 0) {
+  Write-Host 'PUBLISH ABORTED — fix the JS syntax error first (tabs/clicks would not work).' -ForegroundColor Red
+  exit 1
+}
 # Prefer a descriptive publish message with store revision when available
 $hubRev = ''
 try {

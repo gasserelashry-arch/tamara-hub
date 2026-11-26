@@ -1317,7 +1317,7 @@
           </div>
         </div>
         <!-- Unique Transfers SLA browser (pinned Topic 00) -->
-        <div id="transfers-sla-panel" style="display:none; margin-bottom:16px;">
+                <div id="transfers-sla-panel" style="display:none; margin-bottom:16px;">
           <div class="section-card" style="overflow:visible;">
             <div class="section-header purple">📊 Transfers SLA Browser</div>
             <div class="section-body">
@@ -1331,11 +1331,37 @@
                   <select id="trf-situation-select" class="sidebar-search" style="margin:0; width:100%; font-weight:700;" onchange="window.onTransfersSituationChange()"></select>
                 </div>
               </div>
+              <div id="trf-tier-bp-nav" style="display:none; margin-bottom:12px;">
+                <div style="font-size:10.5px; font-weight:800; color:var(--gold-metallic); text-transform:uppercase; margin-bottom:8px;">Claims SLA navigation — Tier → Buyer Protection → SLA</div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                  <div>
+                    <label style="font-size:10.5px; font-weight:800; color:var(--gold-metallic); text-transform:uppercase; display:block; margin-bottom:4px;">3. Merchant Tier</label>
+                    <select id="trf-tier-select" class="sidebar-search" style="margin:0; width:100%; font-weight:700;" onchange="window.onTransfersTierBpChange()">
+                      <option value="">— Select merchant tier —</option>
+                      <option value="T0">T0</option>
+                      <option value="T1">T1</option>
+                      <option value="T2">T2</option>
+                      <option value="T3">T3</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label style="font-size:10.5px; font-weight:800; color:var(--gold-metallic); text-transform:uppercase; display:block; margin-bottom:4px;">4. Buyer Protected?</label>
+                    <select id="trf-bp-select" class="sidebar-search" style="margin:0; width:100%; font-weight:700;" onchange="window.onTransfersTierBpChange()">
+                      <option value="">— Select BP eligibility —</option>
+                      <option value="yes">Yes — Buyer Protection Eligible (✅)</option>
+                      <option value="no">No — Buyer Protection Ineligible (❌)</option>
+                    </select>
+                  </div>
+                </div>
+                <div style="font-size:11px; color:var(--text-muted); margin-top:8px;">Pick Tier, then Buyer Protection. SLA appears below. Never tell the customer the Action SLA.</div>
+              </div>
               <div class="salesforce-meta-grid" style="margin-bottom:12px;">
                 <div class="meta-box"><span>Team (Escalate To)</span><strong id="trf-out-team">-</strong></div>
-                <div class="meta-box"><span>SLA</span><strong id="trf-out-sla">-</strong></div>
+                <div class="meta-box"><span>SLA / Comms SLA</span><strong id="trf-out-sla">-</strong></div>
+                <div class="meta-box"><span>Action SLA (internal)</span><strong id="trf-out-action-sla">-</strong></div>
                 <div class="meta-box"><span>Case Status</span><strong id="trf-out-status">-</strong></div>
                 <div class="meta-box"><span>LOB</span><strong id="trf-out-lob">-</strong></div>
+                <div class="meta-box"><span>Tier + BP</span><strong id="trf-out-tier-bp">-</strong></div>
               </div>
               <div style="background:rgba(0,0,0,0.28); border:1px solid var(--border-soft); border-left:4px solid var(--gold-metallic); border-radius:8px; padding:12px 14px; margin-bottom:10px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; gap:8px; flex-wrap:wrap;">
@@ -6989,7 +7015,7 @@
       "system_action": "Verify Claim status in CS Hub. Communicate Comms SLA (Within 10 days). Internal Action SLA is 7 days (do not communicate to customer). If merchant unresponsive after 7 days, proceed to Tamara Claim Acceptance.",
       "comment_template": "Inquiry: Claim Status & SLA Follow-up\nMerchant Tier: T0-T2 | BP Eligible: YES (✅)\nCustomer Comms SLA: Within 10 days\nInternal Action SLA: 7 days",
       "team": "Tech Support",
-      "sla": "5 business days",
+      "sla": "Within 10 days (Comms) · Action 7 days internal",
       "sf_status": "Working",
       "macro": "External Dispute - First Interaction (Item not as described)",
       "interaction_type": "Inquiry",
@@ -7002,7 +7028,8 @@
       "macro_channel": "Email;Phone;Messaging",
       "_sla_authority": "Transfers SLA.xlsx",
       "_sla_catalog_id": "TRF_16_1",
-      "_sla_match_score": 0.531
+      "_sla_match_score": 0.531,
+      "_claims_tier_bucket": "T0–T2"
     },
     "CLAIM_SLA_T0_T2_NO_BP": {
       "headline": "Claim SLA: Merchant Tier T0 to T2 | Buyer Protection Ineligible (❌)",
@@ -7011,7 +7038,7 @@
       "system_action": "Check CS Hub. Comms SLA: 21 days. Action SLA: 21 days. If exceeded 21 days with no response and customer not BP-eligible, advise customer to follow up directly with merchant and close claim.",
       "comment_template": "Inquiry: Claim Status & SLA Follow-up\nMerchant Tier: T0-T2 | BP Eligible: NO (❌)\nComms SLA: 21 days | Action SLA: 21 days",
       "team": "Tech Support",
-      "sla": "5 business days",
+      "sla": "21 days (Comms) · Action 21 days internal",
       "sf_status": "Working",
       "macro": "External Dispute - First Interaction (Item not as described)",
       "interaction_type": "Inquiry",
@@ -7024,7 +7051,8 @@
       "macro_channel": "Email;Phone;Messaging",
       "_sla_authority": "Transfers SLA.xlsx",
       "_sla_catalog_id": "TRF_16_1",
-      "_sla_match_score": 0.531
+      "_sla_match_score": 0.531,
+      "_claims_tier_bucket": "T0–T2"
     },
     "CLAIM_SLA_T3_BP": {
       "headline": "Claim SLA: Merchant Tier T3 | Buyer Protection Eligible (✅)",
@@ -7033,7 +7061,7 @@
       "system_action": "CS Hub > Claims. Comms SLA: Within 10 days. Action SLA: 7 days. If merchant unresponsive past 7 days, validate evidence and process Tamara BPP refund.",
       "comment_template": "Inquiry: Claim Status & SLA Follow-up\nMerchant Tier: T3 | BP Eligible: YES (✅)\nCustomer Comms SLA: Within 10 days\nInternal Action SLA: 7 days",
       "team": "Tech Support",
-      "sla": "5 business days",
+      "sla": "Within 10 days (Comms) · Action 7 days internal",
       "sf_status": "Working",
       "macro": "External Dispute - First Interaction (Item not as described)",
       "interaction_type": "Inquiry",
@@ -7046,7 +7074,8 @@
       "macro_channel": "Email;Phone;Messaging",
       "_sla_authority": "Transfers SLA.xlsx",
       "_sla_catalog_id": "TRF_16_1",
-      "_sla_match_score": 0.531
+      "_sla_match_score": 0.531,
+      "_claims_tier_bucket": "T3"
     },
     "CLAIM_SLA_T3_NO_BP": {
       "headline": "Claim SLA: Merchant Tier T3 | Buyer Protection Ineligible (❌)",
@@ -7055,7 +7084,7 @@
       "system_action": "CS Hub > Claims. Comms SLA: 10 days. Action SLA (Internal): 11 days. After 11 days, review evidence and action claim.",
       "comment_template": "Inquiry: Claim Status & SLA Follow-up\nMerchant Tier: T3 | BP Eligible: NO (❌)\nCustomer Comms SLA: 10 days\nInternal Action SLA: 11 days",
       "team": "Tech Support",
-      "sla": "5 business days",
+      "sla": "10 days (Comms) · Action 11 days internal",
       "sf_status": "Working",
       "macro": "External Dispute - First Interaction (Item not as described)",
       "interaction_type": "Inquiry",
@@ -7068,7 +7097,8 @@
       "macro_channel": "Email;Phone;Messaging",
       "_sla_authority": "Transfers SLA.xlsx",
       "_sla_catalog_id": "TRF_16_1",
-      "_sla_match_score": 0.531
+      "_sla_match_score": 0.531,
+      "_claims_tier_bucket": "T3"
     },
     "CLAIM_RES_ACCEPT_MERCHANT": {
       "headline": "Claim Resolution: Accepted by Merchant (Refund Completed)",
@@ -13221,6 +13251,21 @@
   ],
   "transfersSlaCatalog": [
     {
+      "id": "TRF_CLAIMS_TIER_BP",
+      "sheetRow": 0,
+      "team": "Trust & Safety",
+      "lob": "Customer Care",
+      "category": "Claims",
+      "situation": "Claim SLA by Merchant Tier + Buyer Protection",
+      "issueFull": "Order > Dispute > Claim SLA Matrix (Tier + BP)",
+      "sla": "Depends on Tier + Buyer Protection — complete steps 3–4",
+      "status": "Working",
+      "macro": "External Dispute - First Interaction",
+      "requiresTierBp": true,
+      "escalationTemplate": "CLAIMS SLA FLOW\n1) Confirm claim situation\n2) Select Merchant Tier (T0 / T1 / T2 / T3)\n3) Select Buyer Protection Yes/No\n4) Use Comms SLA with customer; keep Action SLA internal only",
+      "_escalation_source": "Claims Guidelines — Merchant Tier + BP Eligibility"
+    },
+    {
       "id": "TRF_2_1",
       "sheetRow": 2,
       "team": "Tech Support",
@@ -15439,6 +15484,133 @@
     "localTransfersPath": "C:\\Users\\gasser.elashry\\Downloads\\Transfers SLA.xlsx",
     "localKbPath": "C:\\Users\\gasser.elashry\\Downloads\\KB Ashry.docx",
     "transfersSheetUrl": "https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0"
+  },
+  "workflow": {
+    "dispute": {
+      "step_dispute_sla": {
+        "prompt": "Step 2 (Claim SLA): What is the Merchant Tier?",
+        "options": [
+          {
+            "text": "T0",
+            "next": "step_dispute_bp_T0"
+          },
+          {
+            "text": "T1",
+            "next": "step_dispute_bp_T1"
+          },
+          {
+            "text": "T2",
+            "next": "step_dispute_bp_T2"
+          },
+          {
+            "text": "T3",
+            "next": "step_dispute_bp_T3"
+          }
+        ]
+      },
+      "step_dispute_bp_T0": {
+        "prompt": "Step 3 (Tier T0): Is the customer Buyer Protection eligible?",
+        "options": [
+          {
+            "text": "Yes — Buyer Protection Eligible (✅) → show Comms + Action SLA",
+            "next": "CLAIM_SLA_T0_T2_BP"
+          },
+          {
+            "text": "No — Buyer Protection Ineligible (❌) → show Comms + Action SLA",
+            "next": "CLAIM_SLA_T0_T2_NO_BP"
+          }
+        ]
+      },
+      "step_dispute_bp_T1": {
+        "prompt": "Step 3 (Tier T1): Is the customer Buyer Protection eligible?",
+        "options": [
+          {
+            "text": "Yes — Buyer Protection Eligible (✅) → show Comms + Action SLA",
+            "next": "CLAIM_SLA_T0_T2_BP"
+          },
+          {
+            "text": "No — Buyer Protection Ineligible (❌) → show Comms + Action SLA",
+            "next": "CLAIM_SLA_T0_T2_NO_BP"
+          }
+        ]
+      },
+      "step_dispute_bp_T2": {
+        "prompt": "Step 3 (Tier T2): Is the customer Buyer Protection eligible?",
+        "options": [
+          {
+            "text": "Yes — Buyer Protection Eligible (✅) → show Comms + Action SLA",
+            "next": "CLAIM_SLA_T0_T2_BP"
+          },
+          {
+            "text": "No — Buyer Protection Ineligible (❌) → show Comms + Action SLA",
+            "next": "CLAIM_SLA_T0_T2_NO_BP"
+          }
+        ]
+      },
+      "step_dispute_bp_T3": {
+        "prompt": "Step 3 (Tier T3): Is the customer Buyer Protection eligible?",
+        "options": [
+          {
+            "text": "Yes — Buyer Protection Eligible (✅) → show Comms + Action SLA",
+            "next": "CLAIM_SLA_T3_BP"
+          },
+          {
+            "text": "No — Buyer Protection Ineligible (❌) → show Comms + Action SLA",
+            "next": "CLAIM_SLA_T3_NO_BP"
+          }
+        ]
+      }
+    }
+  },
+  "claimsSlaByTierBp": {
+    "T0": {
+      "yes": {
+        "comms": "Within 10 days",
+        "action": "7 days",
+        "bucket": "T0–T2"
+      },
+      "no": {
+        "comms": "21 days",
+        "action": "21 days",
+        "bucket": "T0–T2"
+      }
+    },
+    "T1": {
+      "yes": {
+        "comms": "Within 10 days",
+        "action": "7 days",
+        "bucket": "T0–T2"
+      },
+      "no": {
+        "comms": "21 days",
+        "action": "21 days",
+        "bucket": "T0–T2"
+      }
+    },
+    "T2": {
+      "yes": {
+        "comms": "Within 10 days",
+        "action": "7 days",
+        "bucket": "T0–T2"
+      },
+      "no": {
+        "comms": "21 days",
+        "action": "21 days",
+        "bucket": "T0–T2"
+      }
+    },
+    "T3": {
+      "yes": {
+        "comms": "Within 10 days",
+        "action": "7 days",
+        "bucket": "T3"
+      },
+      "no": {
+        "comms": "10 days",
+        "action": "11 days",
+        "bucket": "T3"
+      }
+    }
   }
 }
   </script>
@@ -16233,6 +16405,28 @@ function initData() {
     });
   }
 
+
+  var CLAIMS_SLA_BY_TIER_BP = {
+    T0: { yes: { comms: 'Within 10 days', action: '7 days', bucket: 'T0–T2' }, no: { comms: '21 days', action: '21 days', bucket: 'T0–T2' } },
+    T1: { yes: { comms: 'Within 10 days', action: '7 days', bucket: 'T0–T2' }, no: { comms: '21 days', action: '21 days', bucket: 'T0–T2' } },
+    T2: { yes: { comms: 'Within 10 days', action: '7 days', bucket: 'T0–T2' }, no: { comms: '21 days', action: '21 days', bucket: 'T0–T2' } },
+    T3: { yes: { comms: 'Within 10 days', action: '7 days', bucket: 'T3' }, no: { comms: '10 days', action: '11 days', bucket: 'T3' } }
+  };
+
+  function isClaimsSlaMatrixItem(item) {
+    if (!item) return false;
+    if (item.requiresTierBp) return true;
+    var blob = ((item.category || '') + ' ' + (item.situation || '') + ' ' + (item.issueFull || '') + ' ' + (item.team || '')).toLowerCase();
+    return /claim|dispute|buyer protect|fraud flags|refund blocked by merchant/.test(blob);
+  }
+
+  function lookupClaimsTierBpSla(tier, bp) {
+    if (!tier || !bp) return null;
+    var row = CLAIMS_SLA_BY_TIER_BP[tier];
+    if (!row) return null;
+    return row[bp] || null;
+  }
+
   function getTransfersCatalog() {
     var list = (cmsData && Array.isArray(cmsData.transfersSlaCatalog)) ? cmsData.transfersSlaCatalog : [];
     if (list.length) return list;
@@ -16327,32 +16521,108 @@ function initData() {
 
   function onTransfersSituationChange() {
     var sitSel = document.getElementById('trf-situation-select');
+    var tierNav = document.getElementById('trf-tier-bp-nav');
+    var tierSel = document.getElementById('trf-tier-select');
+    var bpSel = document.getElementById('trf-bp-select');
     if (!sitSel) return;
     var item = getTransfersCatalog().find(function(x) { return x.id === sitSel.value; });
+    var needsMatrix = isClaimsSlaMatrixItem(item);
+    if (tierNav) tierNav.style.display = needsMatrix ? 'block' : 'none';
+    if (!needsMatrix) {
+      if (tierSel) tierSel.value = '';
+      if (bpSel) bpSel.value = '';
+    }
+    renderTransfersSlaResult(item);
+  }
+
+  function onTransfersTierBpChange() {
+    var sitSel = document.getElementById('trf-situation-select');
+    var item = sitSel ? getTransfersCatalog().find(function(x) { return x.id === sitSel.value; }) : null;
+    renderTransfersSlaResult(item);
+  }
+
+  function renderTransfersSlaResult(item) {
     var teamEl = document.getElementById('trf-out-team');
     var slaEl = document.getElementById('trf-out-sla');
+    var actionEl = document.getElementById('trf-out-action-sla');
     var statusEl = document.getElementById('trf-out-status');
     var lobEl = document.getElementById('trf-out-lob');
+    var tierBpEl = document.getElementById('trf-out-tier-bp');
     var tplEl = document.getElementById('trf-out-template');
     var issueEl = document.getElementById('trf-out-issue');
+    var tierSel = document.getElementById('trf-tier-select');
+    var bpSel = document.getElementById('trf-bp-select');
     if (!item) {
       if (teamEl) teamEl.innerText = '-';
       if (slaEl) slaEl.innerText = '-';
+      if (actionEl) actionEl.innerText = '-';
       if (statusEl) statusEl.innerText = '-';
       if (lobEl) lobEl.innerText = '-';
+      if (tierBpEl) tierBpEl.innerText = '-';
       if (tplEl) tplEl.innerText = 'Select a situation…';
       if (issueEl) issueEl.innerText = '-';
       return;
     }
+    var tier = tierSel ? tierSel.value : '';
+    var bp = bpSel ? bpSel.value : '';
+    var needsMatrix = isClaimsSlaMatrixItem(item);
+    var matrix = needsMatrix ? lookupClaimsTierBpSla(tier, bp) : null;
+
     if (teamEl) teamEl.innerText = item.team || '-';
-    if (slaEl) slaEl.innerText = item.sla || '-';
     if (statusEl) statusEl.innerText = item.status || 'Working';
     if (lobEl) lobEl.innerText = item.lob || 'Customer Care';
-    if (tplEl) {
+    if (issueEl) issueEl.innerText = item.issueFull || item.situation || '-';
+
+    if (needsMatrix && !matrix) {
+      if (slaEl) slaEl.innerText = 'Select Tier + Buyer Protection…';
+      if (actionEl) actionEl.innerText = 'Select Tier + Buyer Protection…';
+      if (tierBpEl) tierBpEl.innerText = (tier || 'Tier?') + ' / ' + (bp === 'yes' ? 'BP ✅' : (bp === 'no' ? 'BP ❌' : 'BP?'));
+      if (tplEl) {
+        tplEl.innerText = stripEscalationSourceLine(
+          ['CLAIMS SLA FLOW',
+           '1) Situation: ' + (item.situation || '-'),
+           '2) Select Merchant Tier (T0 / T1 / T2 / T3)',
+           '3) Select Buyer Protection eligibility (Yes / No)',
+           '4) Atlas will show Comms SLA (customer-facing) + Action SLA (internal only).',
+           '',
+           'Sheet team for escalation path: ' + (item.team || '-'),
+           'Base Transfers row SLA (if no matrix yet): ' + (item.sla || '-')
+          ].join(String.fromCharCode(10))
+        );
+      }
+      return;
+    }
+
+    if (matrix) {
+      var bpLabel = bp === 'yes' ? 'Eligible ✅' : 'Ineligible ❌';
+      if (slaEl) slaEl.innerText = matrix.comms + ' (Comms)';
+      if (actionEl) actionEl.innerText = matrix.action + ' (do NOT tell customer)';
+      if (tierBpEl) tierBpEl.innerText = tier + ' (' + matrix.bucket + ') · BP ' + bpLabel;
       var tpl = stripEscalationSourceLine(item.escalationTemplate || '');
       var isPending = !tpl || tpl.indexOf('PENDING — Escalation template') === 0;
-      // If catalog template still pending, try topic-level Before Escalating map by keyword
-      if (isPending && cmsData && cmsData.beforeEscalatingTemplates) {
+      if (isPending) tpl = '';
+      var matrixBlock = [
+        'CLAIMS SLA RESULT',
+        'Merchant Tier: ' + tier + ' (matrix bucket ' + matrix.bucket + ')',
+        'Buyer Protection: ' + bpLabel,
+        'Comms SLA (customer-facing): ' + matrix.comms,
+        'Action SLA (internal ONLY — never communicate): ' + matrix.action,
+        'Team: ' + (item.team || '-') ,
+        'Status: ' + (item.status || 'Working'),
+        'Situation: ' + (item.situation || '-')
+      ].join(String.fromCharCode(10));
+      if (tplEl) tplEl.innerText = (tpl ? (tpl + String.fromCharCode(10)+String.fromCharCode(10)) : '') + matrixBlock;
+      return;
+    }
+
+    // Non-claims: original sheet SLA
+    if (slaEl) slaEl.innerText = item.sla || '-';
+    if (actionEl) actionEl.innerText = 'n/a (sheet SLA)';
+    if (tierBpEl) tierBpEl.innerText = 'n/a';
+    if (tplEl) {
+      var tpl2 = stripEscalationSourceLine(item.escalationTemplate || '');
+      var isPending2 = !tpl2 || tpl2.indexOf('PENDING — Escalation template') === 0;
+      if (isPending2 && cmsData && cmsData.beforeEscalatingTemplates) {
         var blob = ((item.situation || '') + ' ' + (item.issueFull || '') + ' ' + (item.category || '')).toLowerCase();
         var beKeys = Object.keys(cmsData.beforeEscalatingTemplates);
         for (var bi = 0; bi < beKeys.length; bi++) {
@@ -16361,24 +16631,24 @@ function initData() {
           var tokens = label.split(/[^a-z0-9]+/).filter(function(t) { return t.length > 3; });
           var hit = tokens.length && tokens.filter(function(t) { return blob.indexOf(t) !== -1; }).length >= Math.max(1, Math.floor(tokens.length / 2));
           if (hit || blob.indexOf(key.replace(/_/g, ' ')) !== -1) {
-            tpl = stripEscalationSourceLine(cmsData.beforeEscalatingTemplates[key].template);
-            isPending = false;
+            tpl2 = stripEscalationSourceLine(cmsData.beforeEscalatingTemplates[key].template);
+            isPending2 = false;
             break;
           }
         }
       }
-      if (!tpl) tpl = 'PENDING — Add Before Escalating checklist for this situation, then re-run sync.';
-      tpl = stripEscalationSourceLine(tpl);
-      tplEl.innerText =
-        tpl +
-        '\n\nMacro: ' + (item.macro || 'Ticket Escalated') +
-        '\nTeam: ' + (item.team || '-') +
-        '\nSLA: ' + (item.sla || '-') +
-        '\nStatus: ' + (item.status || 'Working') +
-        '\nSituation: ' + (item.situation || '-');
+      if (!tpl2) tpl2 = 'PENDING — Add Before Escalating checklist for this situation, then re-run sync.';
+      tpl2 = stripEscalationSourceLine(tpl2);
+      tplEl.innerText = [tpl2, '',
+        'Macro: ' + (item.macro || 'Ticket Escalated'),
+        'Team: ' + (item.team || '-'),
+        'SLA: ' + (item.sla || '-'),
+        'Status: ' + (item.status || 'Working'),
+        'Situation: ' + (item.situation || '-')
+      ].join(String.fromCharCode(10));
     }
-    if (issueEl) issueEl.innerText = item.issueFull || item.situation || '-';
   }
+
 
   function copyTransfersEscalationTemplate() {
     var tplEl = document.getElementById('trf-out-template');
