@@ -2291,7 +2291,7 @@
     "compensation_policy": "CUSTOMER COMPENSATION POLICY: Compensation vouchers or wallet goodwill are issued exclusively for confirmed Tamara system errors or SLA breaches. Merchant stock issues are ineligible.",
     "aecb_support": "MANDATORY POLICY (UAE AECB - Al Etihad Credit Bureau): AECB records update on scheduled weekly batch cycles (allow up to 5–7 business days after full settlement). Never disclose internal credit scoring formulas. If a customer disputes an unrecognized AECB record under their Emirates ID, verify identity and collect ID + AECB report snippet before escalating to Trust & Safety / Credit Bureau Operations.",
     "deceased_customer": "MANDATORY COMPASSIONATE POLICY (DECEASED CUSTOMER):\n• Step 1 — Immediate Collections Freeze: Express sincere condolences and immediately freeze all outbound collection calls and SMS reminders in CS Hub.\n• Step 2 — Mandatory Documents Required: Request (1) Official Death Certificate, (2) Deceased Customer's National ID / Iqama / Emirates ID copy, and (3) Reporter / Next-of-Kin ID & Family Relationship / Inheritance Proof.\n• Step 3 — Routing & SLA: Never demand immediate repayment from grieving family members. Escalate complete documentation to Legal & Compliance (SLA: 2 Business Days | Issue Type: Other > Vulnerable Customer > Deceased Customer Case).",
-    "transfers_sla": "TRANSFERS SLA — ONLY AUTHORITY FOR ESCALATION SLA\n1) Pick Category → Situation (mirrors Transfers SLA.xlsx).\n2) Use Team / SLA / Status / Macro shown on the outcome.\n3) KB Ashry = SOP & Before Escalating checklists only — never override sheet SLA.\n4) Ticket Escalated = correct for pure escalation with no extra explanation macro.\nSheet: https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
+    "transfers_sla": "TRANSFERS SLA — ONLY AUTHORITY FOR ESCALATION SLA\n1) Pick Category → Situation (mirrors Transfers SLA.xlsx).\n2) For claim timing: choose Claims SLA → Merchant Tier → Buyer Protection → Comms/Action SLA.\n3) Never communicate Action SLA to the customer.\n4) KB Ashry = SOP & Before Escalating only — never override sheet SLA.\n",
     "pre_approved_amount": "PRE-APPROVED AMOUNT / PRE-CHECK (KB ASHRY)\n1) Always start by selecting the Pre-Approval / Pre-Check STATUS from CS Hub + app.\n2) Care cannot override Tamara risk engine eligibility.\n3) Do NOT say: rejected/declined (for false eligibility), system error, dispute decision, risk model details, merchant bug, or promise immediate availability.\n4) Issue Type (CX): Order > Placing an Order > Maximum/minimum purchase limit (or Can't see Tamara when display issue).\n5) Escalations → Tech Support, SLA 7 business days, Macro Ticket Escalated.",
     "about_tamara_general": "TRANSFERS SLA AUTHORITY\n• Team: Tech Support\n• SLA: 3 business days / 5 business days for app issues\n• Sheet row: 5\n• Source: https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
     "feedback_jailbroken": "TRANSFERS SLA AUTHORITY\n• Team: Tech Support\n• SLA: 5 business days\n• Sheet row: 6\n• Source: https://docs.google.com/spreadsheets/d/1uChI9CY4xi_vMw0P8mDYXeLkHNY2-R4OZ9gpNnbm87c/edit?gid=0#gid=0",
@@ -4530,8 +4530,12 @@
     },
     "transfers_sla": {
       "step1": {
-        "prompt": "Transfers SLA — SOURCE OF TRUTH. Pick category first, then situation:",
+        "prompt": "Transfers SLA — SOURCE OF TRUTH. Pick category first, then situation (use Claims SLA for Tier + Buyer Protection matrix):",
         "options": [
+          {
+            "text": "Claims SLA",
+            "next": "step_trf_CLAIMS_SLA_TIER"
+          },
           {
             "text": "Account (13)",
             "next": "step_trf_ACCOUNT"
@@ -4931,6 +4935,79 @@
           {
             "text": "Smart Membership > Free Tier > Lavender",
             "next": "TRF_FLOW_TRF_12_1"
+          }
+        ]
+      },
+      "step_trf_CLAIMS_SLA_TIER": {
+        "prompt": "Claims SLA — Step 1: What is the Merchant Tier?",
+        "options": [
+          {
+            "text": "T0",
+            "next": "step_trf_CLAIMS_SLA_BP_T0"
+          },
+          {
+            "text": "T1",
+            "next": "step_trf_CLAIMS_SLA_BP_T1"
+          },
+          {
+            "text": "T2",
+            "next": "step_trf_CLAIMS_SLA_BP_T2"
+          },
+          {
+            "text": "T3",
+            "next": "step_trf_CLAIMS_SLA_BP_T3"
+          }
+        ]
+      },
+      "step_trf_CLAIMS_SLA_BP_T0": {
+        "prompt": "Claims SLA — Step 2 (Tier T0): Is the customer Buyer Protection eligible?",
+        "options": [
+          {
+            "text": "Yes — Buyer Protection Eligible (✅)",
+            "next": "CLAIM_SLA_T0_T2_BP"
+          },
+          {
+            "text": "No — Buyer Protection Ineligible (❌)",
+            "next": "CLAIM_SLA_T0_T2_NO_BP"
+          }
+        ]
+      },
+      "step_trf_CLAIMS_SLA_BP_T1": {
+        "prompt": "Claims SLA — Step 2 (Tier T1): Is the customer Buyer Protection eligible?",
+        "options": [
+          {
+            "text": "Yes — Buyer Protection Eligible (✅)",
+            "next": "CLAIM_SLA_T0_T2_BP"
+          },
+          {
+            "text": "No — Buyer Protection Ineligible (❌)",
+            "next": "CLAIM_SLA_T0_T2_NO_BP"
+          }
+        ]
+      },
+      "step_trf_CLAIMS_SLA_BP_T2": {
+        "prompt": "Claims SLA — Step 2 (Tier T2): Is the customer Buyer Protection eligible?",
+        "options": [
+          {
+            "text": "Yes — Buyer Protection Eligible (✅)",
+            "next": "CLAIM_SLA_T0_T2_BP"
+          },
+          {
+            "text": "No — Buyer Protection Ineligible (❌)",
+            "next": "CLAIM_SLA_T0_T2_NO_BP"
+          }
+        ]
+      },
+      "step_trf_CLAIMS_SLA_BP_T3": {
+        "prompt": "Claims SLA — Step 2 (Tier T3): Is the customer Buyer Protection eligible?",
+        "options": [
+          {
+            "text": "Yes — Buyer Protection Eligible (✅)",
+            "next": "CLAIM_SLA_T3_BP"
+          },
+          {
+            "text": "No — Buyer Protection Ineligible (❌)",
+            "next": "CLAIM_SLA_T3_NO_BP"
           }
         ]
       }
@@ -15556,6 +15633,490 @@
           },
           {
             "text": "No — Buyer Protection Ineligible (❌) → show Comms + Action SLA",
+            "next": "CLAIM_SLA_T3_NO_BP"
+          }
+        ]
+      }
+    },
+    "transfers_sla": {
+      "step1": {
+        "prompt": "Transfers SLA — SOURCE OF TRUTH. Pick category first, then situation (use Claims SLA for Tier + Buyer Protection matrix):",
+        "options": [
+          {
+            "text": "Claims SLA",
+            "next": "step_trf_CLAIMS_SLA_TIER"
+          },
+          {
+            "text": "Account (13)",
+            "next": "step_trf_ACCOUNT"
+          },
+          {
+            "text": "Claims / Trust & Safety (1)",
+            "next": "step_trf_CLAIMS_TRUST_SAFETY"
+          },
+          {
+            "text": "Due Date Preference (5)",
+            "next": "step_trf_DUE_DATE_PREFERENCE"
+          },
+          {
+            "text": "Legal and Government (4)",
+            "next": "step_trf_LEGAL_AND_GOVERNMENT"
+          },
+          {
+            "text": "Manager Escalation (2)",
+            "next": "step_trf_MANAGER_ESCALATION"
+          },
+          {
+            "text": "Order (6)",
+            "next": "step_trf_ORDER"
+          },
+          {
+            "text": "Other (6)",
+            "next": "step_trf_OTHER"
+          },
+          {
+            "text": "Payment (20)",
+            "next": "step_trf_PAYMENT"
+          },
+          {
+            "text": "Promotions & Cashback (3)",
+            "next": "step_trf_PROMOTIONS_CASHBACK"
+          },
+          {
+            "text": "Refunds and Cancellations (8)",
+            "next": "step_trf_REFUNDS_AND_CANCELLATIONS"
+          },
+          {
+            "text": "Smart (4)",
+            "next": "step_trf_SMART"
+          },
+          {
+            "text": "Smart Membership (1)",
+            "next": "step_trf_SMART_MEMBERSHIP"
+          }
+        ]
+      },
+      "step_trf_ACCOUNT": {
+        "prompt": "Transfers SLA → Account — pick the exact situation (sheet source of truth):",
+        "options": [
+          {
+            "text": "For Tahaqaq ID failure",
+            "next": "TRF_FLOW_TRF_2_1"
+          },
+          {
+            "text": "For any sign up/registration issues",
+            "next": "TRF_FLOW_TRF_3_1"
+          },
+          {
+            "text": "For any other login issues",
+            "next": "TRF_FLOW_TRF_4_1"
+          },
+          {
+            "text": "Account > Passcode",
+            "next": "TRF_FLOW_TRF_13_1"
+          },
+          {
+            "text": "(Accessing the account)",
+            "next": "TRF_FLOW_TRF_22_1"
+          },
+          {
+            "text": "( Revoke ID Verification)",
+            "next": "TRF_FLOW_TRF_23_1"
+          },
+          {
+            "text": "(Creating an account)",
+            "next": "TRF_FLOW_TRF_24_1"
+          },
+          {
+            "text": "Account > Tamara Health > Technical Issue",
+            "next": "TRF_FLOW_TRF_31_1"
+          },
+          {
+            "text": "(Revoke ID)",
+            "next": "TRF_FLOW_TRF_36_1"
+          },
+          {
+            "text": "(Phone Number Archiving)",
+            "next": "TRF_FLOW_TRF_37_1"
+          },
+          {
+            "text": "(Potential fraud, customer didn't recognize the account owner )",
+            "next": "TRF_FLOW_TRF_40_1"
+          },
+          {
+            "text": "Customer new phone number is blacklisted.",
+            "next": "TRF_FLOW_TRF_42_1"
+          },
+          {
+            "text": "Customer exceeded their quarterly phone number change limit.",
+            "next": "TRF_FLOW_TRF_42_2"
+          }
+        ]
+      },
+      "step_trf_CLAIMS_TRUST_SAFETY": {
+        "prompt": "Transfers SLA → Claims / Trust & Safety — pick the exact situation (sheet source of truth):",
+        "options": [
+          {
+            "text": "Claims Fraud Flags",
+            "next": "TRF_FLOW_TRF_34_1"
+          }
+        ]
+      },
+      "step_trf_DUE_DATE_PREFERENCE": {
+        "prompt": "Transfers SLA → Due Date Preference — pick the exact situation (sheet source of truth):",
+        "options": [
+          {
+            "text": "Account > Due Date Preference> General inquiries",
+            "next": "TRF_FLOW_TRF_9_1"
+          },
+          {
+            "text": "Account > Due Date Preference> Preference not saved",
+            "next": "TRF_FLOW_TRF_9_2"
+          },
+          {
+            "text": "Account >Due Date Preference > Opt-out or lock issue",
+            "next": "TRF_FLOW_TRF_9_3"
+          },
+          {
+            "text": "Account > Due Date Preference> Missing email or SMS",
+            "next": "TRF_FLOW_TRF_9_4"
+          },
+          {
+            "text": "Account > Due Date Preference> Wrong due date on new order",
+            "next": "TRF_FLOW_TRF_9_5"
+          }
+        ]
+      },
+      "step_trf_LEGAL_AND_GOVERNMENT": {
+        "prompt": "Transfers SLA → Legal and Government — pick the exact situation (sheet source of truth):",
+        "options": [
+          {
+            "text": "Legal and Government > Credit Bureau > Incorrect Reporting",
+            "next": "TRF_FLOW_TRF_45_1"
+          },
+          {
+            "text": "Legal and Government > Credit Bureau > Disputed-Order Related Reporting",
+            "next": "TRF_FLOW_TRF_45_2"
+          },
+          {
+            "text": "Legal and Government > Credit Bureau > Fraudulent Bureau Entry",
+            "next": "TRF_FLOW_TRF_45_3"
+          },
+          {
+            "text": "Legal and Government > Credit Bureau > Inquiry Update (UAE)",
+            "next": "TRF_FLOW_TRF_46_1"
+          }
+        ]
+      },
+      "step_trf_MANAGER_ESCALATION": {
+        "prompt": "Transfers SLA → Manager Escalation — pick the exact situation (sheet source of truth):",
+        "options": [
+          {
+            "text": "According to the customer's issue",
+            "next": "TRF_FLOW_TRF_43_1"
+          },
+          {
+            "text": "Compensation Exception",
+            "next": "TRF_FLOW_TRF_44_1"
+          }
+        ]
+      },
+      "step_trf_ORDER": {
+        "prompt": "Transfers SLA → Order — pick the exact situation (sheet source of truth):",
+        "options": [
+          {
+            "text": "Order > Placing an Order > Cannot see order (stuck order)",
+            "next": "TRF_FLOW_TRF_14_1"
+          },
+          {
+            "text": "Order > Placing an Order > Order verification IVR call",
+            "next": "TRF_FLOW_TRF_19_1"
+          },
+          {
+            "text": "Order > Placing an Order > Didn't receive the order OTP",
+            "next": "TRF_FLOW_TRF_25_1"
+          },
+          {
+            "text": "Order > Placing an Order > Cannot see order (expired order)",
+            "next": "TRF_FLOW_TRF_26_1"
+          },
+          {
+            "text": "(Blacklisted Customers) RCF-91 / RCF-243 / RCF-121 / RCF-221",
+            "next": "TRF_FLOW_TRF_41_1"
+          },
+          {
+            "text": "(Blacklisted Customers) Shared devices",
+            "next": "TRF_FLOW_TRF_41_2"
+          }
+        ]
+      },
+      "step_trf_OTHER": {
+        "prompt": "Transfers SLA → Other — pick the exact situation (sheet source of truth):",
+        "options": [
+          {
+            "text": "For app issues",
+            "next": "TRF_FLOW_TRF_5_1"
+          },
+          {
+            "text": "Jailbroken / Rooted Device",
+            "next": "TRF_FLOW_TRF_6_1"
+          },
+          {
+            "text": "Other > Vulnerable Customer > Deceased Customer Case",
+            "next": "TRF_FLOW_TRF_28_1"
+          },
+          {
+            "text": "Other > Vulnerable Customer > Customer with total physical disability",
+            "next": "TRF_FLOW_TRF_29_1"
+          },
+          {
+            "text": "Other > Related to Collection agency",
+            "next": "TRF_FLOW_TRF_47_1"
+          },
+          {
+            "text": "Other > Contact from Customer",
+            "next": "TRF_FLOW_TRF_48_1"
+          }
+        ]
+      },
+      "step_trf_PAYMENT": {
+        "prompt": "Transfers SLA → Payment — pick the exact situation (sheet source of truth):",
+        "options": [
+          {
+            "text": "Payment > Unrecorded charges > Payment authorization failed",
+            "next": "TRF_FLOW_TRF_10_1"
+          },
+          {
+            "text": "Payment > Unrecorded charges > Other unrecorded charge issues",
+            "next": "TRF_FLOW_TRF_10_2"
+          },
+          {
+            "text": "Pending dues on the Customer Detail page do not match with Payments tab",
+            "next": "TRF_FLOW_TRF_11_1"
+          },
+          {
+            "text": "Order > Placing an Order > In Store - did not receive the payment link SMS",
+            "next": "TRF_FLOW_TRF_11_2"
+          },
+          {
+            "text": "Fully paid orders (aptured amount NOT equal to paid amount)",
+            "next": "TRF_FLOW_TRF_11_3"
+          },
+          {
+            "text": "Issues while placing an order in store (that are not listed)",
+            "next": "TRF_FLOW_TRF_11_4"
+          },
+          {
+            "text": "Issues while placing an order online (that are not listed)",
+            "next": "TRF_FLOW_TRF_11_5"
+          },
+          {
+            "text": "Complaints related to paying using wallet credit",
+            "next": "TRF_FLOW_TRF_11_6"
+          },
+          {
+            "text": "The third installment is paid before the second",
+            "next": "TRF_FLOW_TRF_11_7"
+          },
+          {
+            "text": "For false pending dues/payment reminders",
+            "next": "TRF_FLOW_TRF_11_8"
+          },
+          {
+            "text": "Payment > Autocharge > Other",
+            "next": "TRF_FLOW_TRF_11_9"
+          },
+          {
+            "text": "Pending dues are in negative",
+            "next": "TRF_FLOW_TRF_11_10"
+          },
+          {
+            "text": "Wallet amount issue",
+            "next": "TRF_FLOW_TRF_11_11"
+          },
+          {
+            "text": "Payment > Late fee",
+            "next": "TRF_FLOW_TRF_11_12"
+          },
+          {
+            "text": "Pay in Full issue",
+            "next": "TRF_FLOW_TRF_11_13"
+          },
+          {
+            "text": "Payment > Unrecognized charge > Duplicate charge",
+            "next": "TRF_FLOW_TRF_17_1"
+          },
+          {
+            "text": "Payment > Payment Methods > Card is not accepted",
+            "next": "TRF_FLOW_TRF_27_1"
+          },
+          {
+            "text": "Payment > Murabha - Pay By Finance > Early Settlement",
+            "next": "TRF_FLOW_TRF_30_1"
+          },
+          {
+            "text": "2. For Payment Fraud Complaints",
+            "next": "TRF_FLOW_TRF_38_1"
+          },
+          {
+            "text": "Payment > Unrecognized charge > Suspected fraud",
+            "next": "TRF_FLOW_TRF_39_1"
+          }
+        ]
+      },
+      "step_trf_PROMOTIONS_CASHBACK": {
+        "prompt": "Transfers SLA → Promotions & Cashback — pick the exact situation (sheet source of truth):",
+        "options": [
+          {
+            "text": "Tamara Challenges",
+            "next": "TRF_FLOW_TRF_21_1"
+          },
+          {
+            "text": "Promotions & Cashback > Cashback",
+            "next": "TRF_FLOW_TRF_32_1"
+          },
+          {
+            "text": "Promotions & Cashback > Discount — Deals",
+            "next": "TRF_FLOW_TRF_33_1"
+          }
+        ]
+      },
+      "step_trf_REFUNDS_AND_CANCELLATIONS": {
+        "prompt": "Transfers SLA → Refunds and Cancellations — pick the exact situation (sheet source of truth):",
+        "options": [
+          {
+            "text": "Refund has not been triggered.",
+            "next": "TRF_FLOW_TRF_7_1"
+          },
+          {
+            "text": "Incorrect refund amount.",
+            "next": "TRF_FLOW_TRF_7_2"
+          },
+          {
+            "text": "Loan is not matching the order status (Verify the order and loan status on CS Hub. If the mismatch is confirme",
+            "next": "TRF_FLOW_TRF_7_3"
+          },
+          {
+            "text": "Refunds and Cancellations > Incorrect refund amount",
+            "next": "TRF_FLOW_TRF_15_1"
+          },
+          {
+            "text": "Refunds and Cancellations > Late Refund > Refund not processed",
+            "next": "TRF_FLOW_TRF_16_1"
+          },
+          {
+            "text": "Refunds and Cancellations > Wallet refund",
+            "next": "TRF_FLOW_TRF_18_1"
+          },
+          {
+            "text": "Refunds and Cancellations > Late Refund > Refund already processed",
+            "next": "TRF_FLOW_TRF_20_1"
+          },
+          {
+            "text": "Refunds and Cancellations > Refund Blocked by Merchant",
+            "next": "TRF_FLOW_TRF_35_1"
+          }
+        ]
+      },
+      "step_trf_SMART": {
+        "prompt": "Transfers SLA → Smart — pick the exact situation (sheet source of truth):",
+        "options": [
+          {
+            "text": "Smart Membership > Statement",
+            "next": "TRF_FLOW_TRF_8_1"
+          },
+          {
+            "text": "Smart Membership > How to subscribe",
+            "next": "TRF_FLOW_TRF_8_2"
+          },
+          {
+            "text": "Smart Membership > How to unsubscribe",
+            "next": "TRF_FLOW_TRF_8_3"
+          },
+          {
+            "text": "Smart Membership > About Tamara Smart Membership & Benefits (Cashback issue)",
+            "next": "TRF_FLOW_TRF_8_4"
+          }
+        ]
+      },
+      "step_trf_SMART_MEMBERSHIP": {
+        "prompt": "Transfers SLA → Smart Membership — pick the exact situation (sheet source of truth):",
+        "options": [
+          {
+            "text": "Smart Membership > Free Tier > Lavender",
+            "next": "TRF_FLOW_TRF_12_1"
+          }
+        ]
+      },
+      "step_trf_CLAIMS_SLA_TIER": {
+        "prompt": "Claims SLA — Step 1: What is the Merchant Tier?",
+        "options": [
+          {
+            "text": "T0",
+            "next": "step_trf_CLAIMS_SLA_BP_T0"
+          },
+          {
+            "text": "T1",
+            "next": "step_trf_CLAIMS_SLA_BP_T1"
+          },
+          {
+            "text": "T2",
+            "next": "step_trf_CLAIMS_SLA_BP_T2"
+          },
+          {
+            "text": "T3",
+            "next": "step_trf_CLAIMS_SLA_BP_T3"
+          }
+        ]
+      },
+      "step_trf_CLAIMS_SLA_BP_T0": {
+        "prompt": "Claims SLA — Step 2 (Tier T0): Is the customer Buyer Protection eligible?",
+        "options": [
+          {
+            "text": "Yes — Buyer Protection Eligible (✅)",
+            "next": "CLAIM_SLA_T0_T2_BP"
+          },
+          {
+            "text": "No — Buyer Protection Ineligible (❌)",
+            "next": "CLAIM_SLA_T0_T2_NO_BP"
+          }
+        ]
+      },
+      "step_trf_CLAIMS_SLA_BP_T1": {
+        "prompt": "Claims SLA — Step 2 (Tier T1): Is the customer Buyer Protection eligible?",
+        "options": [
+          {
+            "text": "Yes — Buyer Protection Eligible (✅)",
+            "next": "CLAIM_SLA_T0_T2_BP"
+          },
+          {
+            "text": "No — Buyer Protection Ineligible (❌)",
+            "next": "CLAIM_SLA_T0_T2_NO_BP"
+          }
+        ]
+      },
+      "step_trf_CLAIMS_SLA_BP_T2": {
+        "prompt": "Claims SLA — Step 2 (Tier T2): Is the customer Buyer Protection eligible?",
+        "options": [
+          {
+            "text": "Yes — Buyer Protection Eligible (✅)",
+            "next": "CLAIM_SLA_T0_T2_BP"
+          },
+          {
+            "text": "No — Buyer Protection Ineligible (❌)",
+            "next": "CLAIM_SLA_T0_T2_NO_BP"
+          }
+        ]
+      },
+      "step_trf_CLAIMS_SLA_BP_T3": {
+        "prompt": "Claims SLA — Step 2 (Tier T3): Is the customer Buyer Protection eligible?",
+        "options": [
+          {
+            "text": "Yes — Buyer Protection Eligible (✅)",
+            "next": "CLAIM_SLA_T3_BP"
+          },
+          {
+            "text": "No — Buyer Protection Ineligible (❌)",
             "next": "CLAIM_SLA_T3_NO_BP"
           }
         ]

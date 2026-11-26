@@ -510,14 +510,59 @@ def main():
         "uniqueType": "transfers_sla_browser",
     }
     cms["topics"] = [topic] + topics
-    cms.setdefault("tree", {})["transfers_sla"] = {
-        "step1": {"prompt": "Use the Transfers SLA dropdowns to select category and situation.", "options": []}
+    # Keep / rebuild category decision tree when present; always ensure Claims SLA entry
+    tree = cms.setdefault("tree", {})
+    tr = tree.get("transfers_sla")
+    if not isinstance(tr, dict) or not ((tr.get("step1") or {}).get("options")):
+        tree["transfers_sla"] = {
+            "step1": {
+                "prompt": "Transfers SLA — SOURCE OF TRUTH. Pick category first, then situation (use Claims SLA for Tier + Buyer Protection matrix):",
+                "options": [],
+            }
+        }
+        tr = tree["transfers_sla"]
+    step1 = tr.setdefault("step1", {"prompt": "", "options": []})
+    opts = step1.setdefault("options", [])
+    opts[:] = [
+        o
+        for o in opts
+        if not (
+            isinstance(o, dict)
+            and (
+                o.get("next") == "step_trf_CLAIMS_SLA_TIER"
+                or str(o.get("text", "")).strip() == "Claims SLA"
+            )
+        )
+    ]
+    opts.insert(0, {"text": "Claims SLA", "next": "step_trf_CLAIMS_SLA_TIER"})
+    tr["step_trf_CLAIMS_SLA_TIER"] = {
+        "prompt": "Claims SLA — Step 1: What is the Merchant Tier?",
+        "options": [
+            {"text": "T0", "next": "step_trf_CLAIMS_SLA_BP_T0"},
+            {"text": "T1", "next": "step_trf_CLAIMS_SLA_BP_T1"},
+            {"text": "T2", "next": "step_trf_CLAIMS_SLA_BP_T2"},
+            {"text": "T3", "next": "step_trf_CLAIMS_SLA_BP_T3"},
+        ],
     }
+    for tier, yes_leaf, no_leaf in [
+        ("T0", "CLAIM_SLA_T0_T2_BP", "CLAIM_SLA_T0_T2_NO_BP"),
+        ("T1", "CLAIM_SLA_T0_T2_BP", "CLAIM_SLA_T0_T2_NO_BP"),
+        ("T2", "CLAIM_SLA_T0_T2_BP", "CLAIM_SLA_T0_T2_NO_BP"),
+        ("T3", "CLAIM_SLA_T3_BP", "CLAIM_SLA_T3_NO_BP"),
+    ]:
+        tr[f"step_trf_CLAIMS_SLA_BP_{tier}"] = {
+            "prompt": f"Claims SLA — Step 2 (Tier {tier}): Is the customer Buyer Protection eligible?",
+            "options": [
+                {"text": "Yes — Buyer Protection Eligible (✅)", "next": yes_leaf},
+                {"text": "No — Buyer Protection Ineligible (❌)", "next": no_leaf},
+            ],
+        }
     cms.setdefault("policies", {})["transfers_sla"] = (
         "TRANSFERS SLA — SOURCE OF TRUTH\n"
         "• This topic mirrors Transfers SLA.xlsx.\n"
-        "• Select Category then Situation.\n"
+        "• Select Category then Situation — or choose Claims SLA for Tier + Buyer Protection.\n"
         "• Use Team / SLA / Status shown before escalating.\n"
+        "• Never communicate Action SLA to the customer.\n"
         f"• Sheet: {TRANSFERS_URL}"
     )
 
