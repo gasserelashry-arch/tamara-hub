@@ -1,12 +1,27 @@
-﻿PERMANENT AGENT LINK (FREE — no payment, laptop can be OFF)
-===========================================================
+﻿PERMANENT TAMARA-INTERNAL AGENT LINK
+====================================
 
-https://gasserelashry-arch.github.io/tamara-hub/
+No external cloud. Hub runs on Tamara network only.
+Agents must be on Tamara VPN or office LAN.
 
-How it works:
-- Agents always open the URL above (bookmark once).
-- You edit on localhost (http://127.0.0.1:8080), then run Publish_For_Agents.bat
-  to push updates to the permanent link.
-- No Render, no tunnel, no card.
+SHARE THIS WITH AGENTS (primary):
+  http://T-EGY0493:8080
 
-Note: First Pages enable can take 1-3 minutes. If 404, wait and refresh.
+Backup IPs (if hostname does not resolve):
+  http://10.130.10.113:8080
+  http://10.66.208.15:8080
+
+Machine: T-EGY0493
+Auto-start: Startup folder: C:\Users\gasser.elashry\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\TamaraHubAlwaysOn.cmd
+
+RULES:
+1) This machine must stay ON and logged into Windows for the link to work.
+2) Laptop shut down = hub offline (required without external hosting).
+3) For 24/7 with your laptop closed: ask Tamara IT for an always-on internal
+   VM/server, copy this package there, run Install_AlwaysOn_Internal.bat,
+   then share http://<server-hostname>:8080 with agents.
+
+Update Hub: open the same link, unlock AI Update Agent, save — agents on
+this same internal URL get live updates automatically.
+
+Admin password: admin_pass.txt (never share with agents).
