@@ -1021,6 +1021,77 @@
       padding: 9px 12px; border: 1.5px solid var(--border-soft); border-radius: var(--radius-sm);
       font-size: 12.5px; outline: none; margin-bottom: 10px; background: var(--input-bg); color: var(--text-bright);
     }
+    /* Topics search — unique shell (not shared with other .sidebar-search fields) */
+    .topic-search-shell {
+      position: relative;
+      margin-bottom: 12px;
+      padding: 8px 8px 8px 10px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(83,0,186,0.28), rgba(232,160,23,0.12));
+      border: 1.5px solid rgba(232,160,23,0.55);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 4px 14px rgba(74,0,130,0.22);
+    }
+    .topic-search-shell label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #ffd54f;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .topic-search-shell label::before {
+      content: "⌕";
+      font-size: 13px;
+      line-height: 1;
+      color: #e8a017;
+    }
+    #sidebar-filter.topic-search-input {
+      width: 100%;
+      margin: 0;
+      padding: 10px 12px 10px 12px;
+      border-radius: 8px;
+      border: 1.5px solid rgba(150,0,241,0.45);
+      background: rgba(12, 6, 24, 0.72);
+      color: #fff8e7;
+      font-weight: 650;
+      box-shadow: inset 0 0 0 1px rgba(232,160,23,0.12);
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    #sidebar-filter.topic-search-input::placeholder {
+      color: rgba(255, 213, 79, 0.55);
+      font-weight: 600;
+    }
+    #sidebar-filter.topic-search-input:focus {
+      outline: none;
+      border-color: #e8a017;
+      box-shadow: 0 0 0 3px rgba(232,160,23,0.28), inset 0 0 0 1px rgba(232,160,23,0.2);
+    }
+    html[data-theme="light"] .topic-search-shell {
+      background: linear-gradient(135deg, rgba(100,21,194,0.12), rgba(232,160,23,0.16));
+      border-color: #c9891a;
+      box-shadow: 0 3px 10px rgba(100,21,194,0.1);
+    }
+    html[data-theme="light"] .topic-search-shell label {
+      color: #6b21a8;
+    }
+    html[data-theme="light"] .topic-search-shell label::before {
+      color: #b45309;
+    }
+    html[data-theme="light"] #sidebar-filter.topic-search-input {
+      background: #fff;
+      border-color: #8b5cf6;
+      color: #2c2118;
+    }
+    html[data-theme="light"] #sidebar-filter.topic-search-input::placeholder {
+      color: #8b6f4a;
+    }
+    html[data-theme="light"] #sidebar-filter.topic-search-input:focus {
+      border-color: #b45309;
+      box-shadow: 0 0 0 3px rgba(180,83,9,0.22);
+    }
     .topic-list-scroll { overflow-y: auto; flex: 1; display: flex; flex-direction: column; gap: 4px; }
     .topic-menu-btn {
       text-align: left; background: var(--card-subtle); border: 1px solid transparent; padding: 9px 12px;
@@ -1330,8 +1401,10 @@
         <button type="button" class="topic-menu-btn" style="font-size:11px; opacity:0.9;" onclick="window.showTransfersQuickBrowser()" title="Optional dropdown browser">
           <span>Transfers quick browser</span>
         </button>
-        <label id="sidebar-filter-label" style="font-size:10px; font-weight:800; color:var(--gold-metallic); text-transform:uppercase; display:block; margin-bottom:4px;">Search topics</label>
-        <input type="text" class="sidebar-search" id="sidebar-filter" placeholder="Type topic name to filter the list..." oninput="renderSidebarTopics()">
+        <div class="topic-search-shell">
+          <label id="sidebar-filter-label" for="sidebar-filter">Search topics</label>
+          <input type="text" class="sidebar-search topic-search-input" id="sidebar-filter" placeholder="Type topic name to filter the list..." oninput="renderSidebarTopics()" autocomplete="off">
+        </div>
         <div class="topic-list-scroll" id="sidebar-topics-render"></div>
       </aside>
       <section class="decision-display">
