@@ -796,7 +796,7 @@
     }
     .container { max-width: 1480px; margin: 0 auto; position: relative; z-index: 1; }
 
-    /* === Greek stage — dark + light photo plates === */
+    /* === Greek stage — match approved light model + dark mauve frame === */
     #atlas-greek-stage {
       position: fixed;
       inset: 0;
@@ -804,7 +804,7 @@
       pointer-events: none;
       overflow: hidden;
       background-color: #07030d;
-      background-image: url('assets/atlas-greek-option-b.jpg?v=topframe3');
+      background-image: url('assets/atlas-greek-option-b.jpg?v=topframe4');
       background-position: center center;
       background-size: cover;
       background-repeat: no-repeat;
@@ -813,7 +813,6 @@
       background-color: #07030d;
       background-image: none;
     }
-    /* Soft center vignette so live UI stays readable over the plate */
     #atlas-greek-stage::after {
       content: '';
       position: absolute;
@@ -821,103 +820,141 @@
       background: radial-gradient(ellipse 62% 58% at 50% 48%, rgba(7,3,13,0.55) 0%, rgba(7,3,13,0.22) 55%, transparent 78%);
       pointer-events: none;
     }
-    /* Light mode: cream temple plate + purple meander matching banner */
+
+    /* Dark mode Greek panel — last photo: dusty rose on wine */
+    html[data-theme="dark"] #atlas-greek-stage::before {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; top: 0;
+      height: 26px;
+      z-index: 2;
+      background-color: #3d242c;
+      background-image: url('assets/atlas-greek-meander-dark.png');
+      background-repeat: repeat-x;
+      background-size: auto 26px;
+      background-position: center top;
+      border-bottom: 1px solid #6b4038;
+      box-shadow: 0 0 14px rgba(150, 91, 88, 0.35);
+    }
+    html[data-theme="dark"] .greek-meander-dark-bottom {
+      display: block !important;
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 26px;
+      z-index: 2;
+      background-color: #3d242c;
+      background-image: url('assets/atlas-greek-meander-dark.png');
+      background-repeat: repeat-x;
+      background-size: auto 26px;
+      background-position: center bottom;
+      border-top: 1px solid #6b4038;
+    }
+    html[data-theme="light"] .greek-meander-dark-bottom { display: none !important; }
+
+    /* Light mode: cream temple plate (approved model) */
     html[data-theme="light"] #atlas-greek-stage {
       display: block;
       background-color: #e8dcc8;
-      background-image: url('assets/atlas-greek-option-light.jpg?v=purpleframe1');
+      background-image: url('assets/atlas-greek-option-light.jpg?v=model2');
     }
     html[data-theme="light"] #atlas-greek-stage::after {
-      /* Strong center wash so verification sits on clear panel, not busy photo */
       background:
-        radial-gradient(ellipse 70% 64% at 50% 46%, rgba(250,246,240,0.92) 0%, rgba(250,246,240,0.78) 42%, rgba(250,246,240,0.35) 68%, transparent 86%);
+        radial-gradient(ellipse 72% 66% at 50% 46%, rgba(250,246,240,0.94) 0%, rgba(250,246,240,0.82) 40%, rgba(250,246,240,0.35) 68%, transparent 88%);
     }
     html[data-theme="light"] body {
       background-color: #e8dcc8;
       background-image: none;
     }
-    /* Extra crisp purple Greek-key rails matching banner (top + bottom) */
+    /* Light Greek rails — same purple as banner (#5300BA / #6415C2) */
     html[data-theme="light"] #atlas-greek-stage::before {
       content: '';
       position: absolute;
       left: 0; right: 0; top: 0;
-      height: 22px;
-      z-index: 1;
-      background-color: #4c1d95;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='22' viewBox='0 0 48 22'%3E%3Cpath fill='none' stroke='%23c4b5fd' stroke-width='2.2' d='M0 4h14v14H8V10h6V8H6v10h16V4h-8'/%3E%3Cpath fill='none' stroke='%23c4b5fd' stroke-width='2.2' d='M24 4h14v14h-6V10h6V8h-8v10h16V4h-8'/%3E%3C/svg%3E");
+      height: 24px;
+      z-index: 2;
+      background-color: #5300BA;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='24' viewBox='0 0 48 24'%3E%3Cpath fill='none' stroke='%23e9d5ff' stroke-width='2.4' d='M0 5h14v14H8V11h6V9H6v12h16V5h-8'/%3E%3Cpath fill='none' stroke='%23e9d5ff' stroke-width='2.4' d='M24 5h14v14h-6V11h6V9h-8v12h16V5h-8'/%3E%3C/svg%3E");
       background-repeat: repeat-x;
-      background-size: 48px 22px;
-      box-shadow: 0 10px 0 #4c1d95;
+      background-size: 48px 24px;
       border-bottom: 1px solid #7c3aed;
-      /* duplicate rail at bottom via gradient trick — use box + fixed bottom sibling via height full? */
     }
     html[data-theme="light"] .greek-meander-light-bottom {
       display: block !important;
       position: absolute;
       left: 0; right: 0; bottom: 0;
-      height: 22px;
-      z-index: 1;
-      background-color: #4c1d95;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='22' viewBox='0 0 48 22'%3E%3Cpath fill='none' stroke='%23c4b5fd' stroke-width='2.2' d='M0 4h14v14H8V10h6V8H6v10h16V4h-8'/%3E%3Cpath fill='none' stroke='%23c4b5fd' stroke-width='2.2' d='M24 4h14v14h-6V10h6V8h-8v10h16V4h-8'/%3E%3C/svg%3E");
+      height: 24px;
+      z-index: 2;
+      background-color: #5300BA;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='24' viewBox='0 0 48 24'%3E%3Cpath fill='none' stroke='%23e9d5ff' stroke-width='2.4' d='M0 5h14v14H8V11h6V9H6v12h16V5h-8'/%3E%3Cpath fill='none' stroke='%23e9d5ff' stroke-width='2.4' d='M24 5h14v14h-6V11h6V9h-8v12h16V5h-8'/%3E%3C/svg%3E");
       background-repeat: repeat-x;
-      background-size: 48px 22px;
+      background-size: 48px 24px;
       border-top: 1px solid #7c3aed;
     }
     html[data-theme="dark"] .greek-meander-light-bottom { display: none !important; }
 
-    /* Light banner: purple + slightly lighter purple edge */
+    /* Light top banner — purple + same Greek pattern color as rails */
     html[data-theme="light"] .top-nav {
-      background: linear-gradient(135deg, #3b0764 0%, #5300BA 42%, #6d28d9 100%) !important;
+      background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='18' viewBox='0 0 48 18'%3E%3Cpath fill='none' stroke='%23e9d5ff' stroke-opacity='0.55' stroke-width='1.8' d='M0 3h14v12H8V8h6V6H6v10h16V3h-8'/%3E%3Cpath fill='none' stroke='%23e9d5ff' stroke-opacity='0.55' stroke-width='1.8' d='M24 3h14v12h-6V8h6V6h-8v10h16V3h-8'/%3E%3C/svg%3E") repeat-x top / 48px 14px,
+        linear-gradient(135deg, #3b0764 0%, #5300BA 42%, #6415C2 100%) !important;
       border: 2px solid #7c3aed !important;
       box-shadow: 0 8px 26px rgba(83, 0, 186, 0.28) !important;
     }
     html[data-theme="light"] .top-nav::before {
-      background: linear-gradient(90deg, transparent, #c4b5fd, transparent) !important;
+      height: 4px !important;
+      background: repeating-linear-gradient(
+        90deg,
+        #5300BA 0 6px,
+        #e9d5ff 6px 8px,
+        #5300BA 8px 14px,
+        #e9d5ff 14px 16px
+      ) !important;
+      opacity: 0.95;
     }
 
-    /* Verification gate: navy card (easier on eyes than white; distinct from cream bg) */
+    /* Verification: lighter warm parchment (NOT blue/navy) — matches design, not same as marble */
     html[data-theme="light"] #gate-screen.gate-card {
-      background: linear-gradient(160deg, #1e3a5f 0%, #152a45 45%, #0f2338 100%) !important;
-      border: 2.5px solid #c9a227 !important;
-      box-shadow: 0 18px 42px rgba(15, 35, 56, 0.35), inset 0 1px 0 rgba(255,255,255,0.08) !important;
-      color: #f3f6fb !important;
+      background: linear-gradient(165deg, #f7f1e8 0%, #f0e6d8 55%, #ebe0d0 100%) !important;
+      border: 2.5px solid #6415C2 !important;
+      box-shadow: 0 16px 36px rgba(83, 0, 186, 0.16), inset 0 1px 0 rgba(255,255,255,0.85) !important;
+      color: #1a120b !important;
       position: relative;
       z-index: 2;
     }
-    /* applied: navy verification v2 */
     html[data-theme="light"] #gate-screen .check-item {
-      background: rgba(255, 255, 255, 0.08) !important;
-      border: 1.5px solid rgba(201, 162, 39, 0.45) !important;
-      color: #f3f6fb !important;
+      background: #fffaf3 !important;
+      border: 1.5px solid #c4b5fd !important;
+      color: #1a120b !important;
     }
     html[data-theme="light"] #gate-screen .check-item:hover {
-      background: rgba(255, 255, 255, 0.14) !important;
-      border-color: #d4af37 !important;
+      background: #f3e8ff !important;
+      border-color: #6415C2 !important;
     }
     html[data-theme="light"] #gate-screen h1,
     html[data-theme="light"] #gate-screen .check-item,
     html[data-theme="light"] #gate-screen .check-item * {
-      color: #f3f6fb !important;
+      color: #1a120b !important;
     }
     html[data-theme="light"] #gate-screen > span {
-      color: #e8c547 !important;
+      color: #6415C2 !important;
       font-weight: 800;
     }
     html[data-theme="light"] #gate-screen [style*="color:var(--text-muted)"],
     html[data-theme="light"] #gate-screen .check-item div[style*="color:var(--text-muted)"] {
-      color: #c5d0de !important;
+      color: #5b4636 !important;
     }
     html[data-theme="light"] #gate-screen .btn-gate-enter {
-      color: #e2e8f0 !important;
+      background: linear-gradient(135deg, #efe4d4, #e2d3bc) !important;
+      color: #3d2e22 !important;
+      border-color: #b8a48a !important;
     }
     html[data-theme="light"] #gate-screen .btn-gate-enter.ready,
     html[data-theme="light"] #gate-screen .btn-gate-enter:hover {
       background: linear-gradient(135deg, #d4af37, #aa8214) !important;
-      color: #0f172a !important;
+      color: #1a120b !important;
     }
 
-    /* Hide legacy SVG children if present */
-    #atlas-greek-stage > *:not(.greek-meander-light-bottom) { display: none !important; }
+    #atlas-greek-stage > *:not(.greek-meander-light-bottom):not(.greek-meander-dark-bottom) { display: none !important; }
     /* === end Greek stage === */
 
     /* Top Nav */
@@ -1456,6 +1493,7 @@
   <div class="greek-corner greek-corner-bl"></div>
   <div class="greek-corner greek-corner-br"></div>
   <div class="greek-meander-light-bottom" aria-hidden="true"></div>
+  <div class="greek-meander-dark-bottom" aria-hidden="true"></div>
 </div>
 <div class="container">
   <!-- Top Global Header -->
