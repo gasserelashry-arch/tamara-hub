@@ -432,7 +432,7 @@
       border: 1px solid #b8a48a;
     }
     html[data-theme="light"] .outcome-panel,
-    html[data-theme="light"] .gate-card,
+    html[data-theme="light"] .gate-card:not(#gate-screen),
     html[data-theme="light"] .workflow-main-panel {
       background: #faf6f0 !important;
       border-color: #6415C2 !important;
@@ -485,7 +485,7 @@
     html[data-theme="light"] body,
     html[data-theme="light"] .decision-display,
     html[data-theme="light"] .topics-sidebar,
-    html[data-theme="light"] .gate-card,
+    html[data-theme="light"] .gate-card:not(#gate-screen),
     html[data-theme="light"] .agent-card,
     html[data-theme="light"] .section-card,
     html[data-theme="light"] .outcome-panel,
@@ -884,6 +884,7 @@
       position: relative;
       z-index: 2;
     }
+    /* applied: navy verification v2 */
     html[data-theme="light"] #gate-screen .check-item {
       background: rgba(255, 255, 255, 0.08) !important;
       border: 1.5px solid rgba(201, 162, 39, 0.45) !important;
