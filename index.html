@@ -891,39 +891,12 @@
       opacity: 1;
       border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     }
-    /* Dark Greek frame — own strip ABOVE banner (tiny gap), pattern fully in-frame */
-    #greek-dark-frame {
-      display: none;
-    }
-    html[data-theme="dark"] #greek-dark-frame {
-      display: block;
-      width: 100%;
-      height: 26px;
-      margin: 0 0 8px; /* tiny space between frame and main tool banner */
-      padding: 0;
-      border-radius: 8px;
-      border: 1px solid rgba(201, 168, 74, 0.45);
-      background-color: #120c08;
-      background-image: url('assets/greek-meander-gold-frame.svg?v=gap1');
-      background-repeat: repeat-x;
-      background-size: 64px 24px;
-      background-position: center center;
-      box-sizing: border-box;
-      overflow: hidden; /* clips only the strip edges, not mid-pattern */
-      flex-shrink: 0;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.35);
-    }
-    html[data-theme="light"] #greek-dark-frame {
-      display: none !important;
-    }
-
-    /* Dark top banner — clean purple; frame is separate above (not attached) */
+    /* Dark top banner — clean only (no extra Greek strip) */
     html[data-theme="dark"] .top-nav {
       background: linear-gradient(145deg, #1b0430, #0f021c) !important;
       border: 1.5px solid var(--border-purple) !important;
       box-shadow: 0 10px 28px rgba(0,0,0,0.55) !important;
       padding-top: 14px !important;
-      overflow: visible;
       position: relative;
     }
     html[data-theme="dark"] .top-nav::before {
@@ -1518,8 +1491,6 @@
   <div class="greek-meander-dark-bottom" aria-hidden="true"></div>
 </div>
 <div class="container">
-  <!-- Dark-mode Greek frame: separate strip above banner, tiny gap, full pattern visible -->
-  <div id="greek-dark-frame" aria-hidden="true"></div>
   <!-- Top Global Header -->
   <header class="top-nav">
     <div class="brand-group">
