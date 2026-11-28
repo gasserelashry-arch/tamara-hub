@@ -10,7 +10,7 @@ if (-not (Test-Path $gh)) { $gh = 'gh' }
 Write-Host 'Publish checklist (recommended):' -ForegroundColor Cyan
 Write-Host '  1) Sync_Atlas_Recommended.bat (Transfers + KB mismatch + opsHealth)' -ForegroundColor Cyan
 Write-Host '  2) embed + push (this script)' -ForegroundColor Cyan
-Write-Host '  3) Open Pages URL with ?cb=<commit> and confirm Hub rev badge' -ForegroundColor Cyan
+Write-Host '  3) Open Pages URL with ?cb=<commit> and confirm Transfers SLA loads' -ForegroundColor Cyan
 Write-Host '  4) If agents see old content: Reload published hub (clear cache) or Ctrl+F5' -ForegroundColor Cyan
 Write-Host ''
 
@@ -20,6 +20,8 @@ if (Test-Path .\_patch_ops_ui.py) {
   Write-Host 'Refreshing ops UI / revision badge...' -ForegroundColor Yellow
   python .\_patch_ops_ui.py
 }
+Write-Host 'Hiding sheet/doc filenames from agent UI...' -ForegroundColor Yellow
+python .\_scrub_filenames_from_ui.py
 Write-Host 'Checking index.html JavaScript syntax (blocks frozen UI)...' -ForegroundColor Yellow
 python .\_check_index_js.py
 if ($LASTEXITCODE -ne 0) {
