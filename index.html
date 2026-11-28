@@ -875,29 +875,44 @@
       background: linear-gradient(90deg, transparent, #c4b5fd, transparent) !important;
     }
 
-    /* Verification gate: high-contrast card over photo (not washed into background) */
-    html[data-theme="light"] #gate-screen.gate-card,
-    html[data-theme="light"] .gate-card {
-      background: #ffffff !important;
-      border: 2.5px solid #6415C2 !important;
-      box-shadow: 0 16px 40px rgba(59, 7, 100, 0.22), 0 2px 0 rgba(255,255,255,0.9) inset !important;
-      color: #1a120b !important;
+    /* Verification gate: navy card (easier on eyes than white; distinct from cream bg) */
+    html[data-theme="light"] #gate-screen.gate-card {
+      background: linear-gradient(160deg, #1e3a5f 0%, #152a45 45%, #0f2338 100%) !important;
+      border: 2.5px solid #c9a227 !important;
+      box-shadow: 0 18px 42px rgba(15, 35, 56, 0.35), inset 0 1px 0 rgba(255,255,255,0.08) !important;
+      color: #f3f6fb !important;
       position: relative;
       z-index: 2;
     }
     html[data-theme="light"] #gate-screen .check-item {
-      background: #faf6f0 !important;
-      border: 1.5px solid #c4b5fd !important;
-      color: #1a120b !important;
+      background: rgba(255, 255, 255, 0.08) !important;
+      border: 1.5px solid rgba(201, 162, 39, 0.45) !important;
+      color: #f3f6fb !important;
+    }
+    html[data-theme="light"] #gate-screen .check-item:hover {
+      background: rgba(255, 255, 255, 0.14) !important;
+      border-color: #d4af37 !important;
     }
     html[data-theme="light"] #gate-screen h1,
     html[data-theme="light"] #gate-screen .check-item,
     html[data-theme="light"] #gate-screen .check-item * {
-      color: #1a120b !important;
+      color: #f3f6fb !important;
     }
     html[data-theme="light"] #gate-screen > span {
-      color: #6415C2 !important;
+      color: #e8c547 !important;
       font-weight: 800;
+    }
+    html[data-theme="light"] #gate-screen [style*="color:var(--text-muted)"],
+    html[data-theme="light"] #gate-screen .check-item div[style*="color:var(--text-muted)"] {
+      color: #c5d0de !important;
+    }
+    html[data-theme="light"] #gate-screen .btn-gate-enter {
+      color: #e2e8f0 !important;
+    }
+    html[data-theme="light"] #gate-screen .btn-gate-enter.ready,
+    html[data-theme="light"] #gate-screen .btn-gate-enter:hover {
+      background: linear-gradient(135deg, #d4af37, #aa8214) !important;
+      color: #0f172a !important;
     }
 
     /* Hide legacy SVG children if present */
