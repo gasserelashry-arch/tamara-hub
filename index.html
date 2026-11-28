@@ -935,6 +935,56 @@
     .btn-copy:hover { filter: brightness(1.1); transform: translateY(-1px); }
     .btn-copy.copied { background: var(--accent-green) !important; color: #fff !important; border-color: #047857 !important; }
 
+    /* Near-click toast notices (replaces blocking alert()) */
+    .atlas-toast-host {
+      position: fixed;
+      z-index: 99999;
+      pointer-events: none;
+      inset: 0;
+    }
+    .atlas-toast {
+      position: fixed;
+      max-width: min(340px, calc(100vw - 24px));
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 12.5px;
+      font-weight: 700;
+      line-height: 1.4;
+      color: #0f172a;
+      background: #fde68a;
+      border: 2px solid #b45309;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.2);
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(6px) scale(0.98);
+      transition: opacity 0.16s ease, transform 0.16s ease;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .atlas-toast.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .atlas-toast.ok {
+      background: #bbf7d0;
+      border-color: #047857;
+      color: #064e3b;
+    }
+    .atlas-toast.warn {
+      background: #fde68a;
+      border-color: #b45309;
+      color: #7c2d12;
+    }
+    .atlas-toast.err {
+      background: #fecaca;
+      border-color: #b91c1c;
+      color: #7f1d1d;
+    }
+    html[data-theme="light"] .atlas-toast {
+      box-shadow: 0 10px 24px rgba(15,23,42,0.18);
+    }
+
+
     /* Gate Screen */
     .gate-card {
       background: var(--card-bg); border: 2px solid var(--gold-metallic); border-radius: var(--radius-lg);
@@ -16183,6 +16233,75 @@
   </script>
   <script>
 
+
+  var __atlasLastPointer = { x: 24, y: 24, el: null };
+  document.addEventListener('pointerdown', function (ev) {
+    __atlasLastPointer.x = ev.clientX;
+    __atlasLastPointer.y = ev.clientY;
+    __atlasLastPointer.el = ev.target;
+  }, true);
+
+  function showAtlasToast(message, opts) {
+    opts = opts || {};
+    var text = String(message == null ? '' : message);
+    if (!text) return;
+    var host = document.getElementById('atlas-toast-host');
+    if (!host) {
+      host = document.createElement('div');
+      host.id = 'atlas-toast-host';
+      host.className = 'atlas-toast-host';
+      host.setAttribute('aria-live', 'polite');
+      document.body.appendChild(host);
+    }
+    var toast = document.createElement('div');
+    toast.className = 'atlas-toast';
+    var lower = text.toLowerCase();
+    if (opts.type === 'ok' || /^(✅|✔|copied|success|saved|applied|synced|imported|pulled)/i.test(text) || lower.indexOf('copied') !== -1) {
+      toast.classList.add('ok');
+    } else if (opts.type === 'err' || /^(❌|error|invalid|failed|could not)/i.test(text)) {
+      toast.classList.add('err');
+    } else if (opts.type === 'warn' || /^(⚠️|⚠|🔒|please|select|enter|unlock)/i.test(text)) {
+      toast.classList.add('warn');
+    } else {
+      toast.classList.add('ok');
+    }
+    toast.textContent = text;
+
+    var x = (opts.x != null ? opts.x : __atlasLastPointer.x);
+    var y = (opts.y != null ? opts.y : __atlasLastPointer.y);
+    var anchor = opts.el || __atlasLastPointer.el;
+    if (anchor && anchor.getBoundingClientRect) {
+      try {
+        var r = anchor.getBoundingClientRect();
+        if (r && r.width >= 0) {
+          x = r.left + Math.min(r.width * 0.5, 120);
+          y = r.top - 8;
+        }
+      } catch (e) {}
+    }
+    host.appendChild(toast);
+    // measure then clamp on screen
+    var tw = toast.offsetWidth || 240;
+    var th = toast.offsetHeight || 40;
+    var left = Math.max(12, Math.min(x - 20, window.innerWidth - tw - 12));
+    var top = y - th - 10;
+    if (top < 12) top = Math.min(window.innerHeight - th - 12, y + 18);
+    toast.style.left = left + 'px';
+    toast.style.top = top + 'px';
+    requestAnimationFrame(function () { toast.classList.add('show'); });
+    var life = opts.duration != null ? opts.duration : Math.min(4500, 1600 + text.length * 18);
+    setTimeout(function () {
+      toast.classList.remove('show');
+      setTimeout(function () { if (toast.parentNode) toast.parentNode.removeChild(toast); }, 180);
+    }, life);
+  }
+
+  // Non-blocking replacement for browser alert()
+  window.alert = function (message) {
+    showAtlasToast(message);
+  };
+  window.showAtlasToast = showAtlasToast;
+
 function stripEscalationSourceLine(text) {
   if (!text || typeof text !== 'string') return text || '';
   return String(text)
@@ -17215,7 +17334,7 @@ function initData() {
     var tplEl = document.getElementById('trf-out-template');
     if (!tplEl) return;
     navigator.clipboard.writeText(tplEl.innerText || '');
-    alert('Escalation template copied.');
+    showAtlasToast('Escalation template copied.');
   }
 
   function selectTopic(topicId) {
@@ -17319,7 +17438,7 @@ function initData() {
     var textEl = document.getElementById('before-escalating-text');
     if (!textEl || !textEl.innerText) return;
     navigator.clipboard.writeText(textEl.innerText);
-    alert('Before Escalating checklist copied.');
+    showAtlasToast('Before Escalating checklist copied.');
   }
 
   function resetWorkflowTopic() {
@@ -17473,7 +17592,7 @@ function initData() {
   }
   function copyCaseComment() {
     navigator.clipboard.writeText(document.getElementById('out-case-comment-content').innerText);
-    alert('Formatted Salesforce Case Comment copied!');
+    showAtlasToast('Formatted Salesforce Case Comment copied!');
   }
   function copyTextValue(val, btn) {
     navigator.clipboard.writeText(val);
@@ -17488,7 +17607,7 @@ function initData() {
     var el = document.getElementById(id);
     if (el) {
       navigator.clipboard.writeText(el.innerText);
-      alert('Copied to clipboard!');
+      showAtlasToast('Copied to clipboard!');
     }
   }
 
