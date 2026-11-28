@@ -17028,6 +17028,12 @@ function initData() {
   function renderRelatedTopics(topicId) {
     var bar = document.getElementById('related-topics-bar');
     if (!bar || !cmsData) return;
+    // Transfers SLA / quick browser: never show related topics from a previous topic
+    if (topicId === 'transfers_sla' || (document.getElementById('transfers-sla-panel') && document.getElementById('transfers-sla-panel').style.display === 'block')) {
+      bar.style.display = 'none';
+      bar.innerHTML = '';
+      return;
+    }
     var meta = (cmsData.topics || []).find(function(t) { return t.id === topicId; });
     var rel = (meta && meta.relatedTopics) ? meta.relatedTopics : [];
     if (!rel.length) {
@@ -17051,6 +17057,30 @@ function initData() {
       wrap.appendChild(b);
     });
     bar.appendChild(wrap);
+  }
+
+  function applyTransfersSlaHeader() {
+    activeTopic = 'transfers_sla';
+    var meta = cmsData && cmsData.topics ? cmsData.topics.find(function(t) { return t.id === 'transfers_sla'; }) : null;
+    var tagEl = document.getElementById('disp-topic-tag');
+    var nameEl = document.getElementById('disp-topic-name');
+    var descEl = document.getElementById('disp-topic-desc');
+    if (tagEl) tagEl.innerText = (meta && meta.tag) ? meta.tag : 'Topic 00';
+    if (nameEl) nameEl.innerText = (meta && meta.name) ? meta.name : 'Transfers SLA';
+    if (descEl) {
+      descEl.innerText = (meta && meta.desc)
+        ? meta.desc
+        : 'Transfers SLA.xlsx source of truth — pick category & situation for Team, SLA, Status, and escalation template.';
+    }
+    var bar = document.getElementById('related-topics-bar');
+    if (bar) {
+      bar.style.display = 'none';
+      bar.innerHTML = '';
+    }
+    renderPolicyPanel('transfers_sla');
+    renderBeforeEscalatingPanel('transfers_sla');
+    renderSidebarTopics();
+    updateHubRevisionBadge();
   }
 
   function showTransfersQuickBrowser() {
@@ -17131,6 +17161,7 @@ function initData() {
     var bePanel = document.getElementById('before-escalating-panel');
     if (panel) panel.style.display = show ? 'block' : 'none';
     if (show) {
+      applyTransfersSlaHeader();
       if (stepBox) stepBox.style.display = 'none';
       if (outcomeBox) outcomeBox.style.display = 'none';
       if (bePanel) bePanel.style.display = 'none';
@@ -17356,6 +17387,14 @@ function initData() {
 
     // Transfers SLA is a real category→situation flow (sheet source of truth).
     // Optional legacy dropdown browser stays available via showTransfersQuickBrowser().
+    if (topicId === 'transfers_sla') {
+      applyTransfersSlaHeader();
+      showTransfersSlaPanel(false);
+      resetWorkflowTopic();
+      renderRelatedTopics('transfers_sla');
+      updateHubRevisionBadge();
+      return;
+    }
     showTransfersSlaPanel(false);
     resetWorkflowTopic();
     renderRelatedTopics(topicId);
