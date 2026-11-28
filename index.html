@@ -891,37 +891,21 @@
       opacity: 1;
       border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     }
-    /* Dark top banner — keep only the thin dark edge above (NO yellow Greek strip) */
+    /* Dark top banner — clean purple only (no gold/yellow strip attached) */
     html[data-theme="dark"] .top-nav {
       background: linear-gradient(145deg, #1b0430, #0f021c) !important;
-      border: 1.5px solid rgba(212, 175, 55, 0.55) !important;
+      border: 1.5px solid var(--border-purple) !important;
       box-shadow: 0 10px 28px rgba(0,0,0,0.55) !important;
-      padding-top: 14px !important; /* room for thin dark cap only */
+      padding-top: 14px !important;
       overflow: hidden;
       position: relative;
     }
     html[data-theme="dark"] .top-nav::before {
-      content: '' !important;
-      position: absolute !important;
-      top: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      height: 8px !important;
-      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-      /* dark textured cap only — no yellow meander */
-      background:
-        repeating-linear-gradient(
-          90deg,
-          #1a120b 0px,
-          #24180f 1px,
-          #120c08 2px,
-          #1a120b 3px
-        ) !important;
-      opacity: 1 !important;
-      box-shadow: none !important;
-      border-bottom: 1px solid #d4af37;
-      z-index: 3;
-      pointer-events: none;
+      content: none !important;
+      display: none !important;
+      background: none !important;
+      border: none !important;
+      height: 0 !important;
     }
 
     /* Verification: lighter warm parchment (NOT blue/navy) — matches design, not same as marble */
