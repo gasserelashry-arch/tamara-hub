@@ -821,32 +821,13 @@
       pointer-events: none;
     }
 
-    /* Dark mode Greek panel — crisp SVG (dusty rose on wine) */
+    /* Dark: no full-page melting meander — Greek key is banner frame only */
     html[data-theme="dark"] #atlas-greek-stage::before {
-      content: '';
-      position: absolute;
-      left: 0; right: 0; top: 0;
-      height: 32px;
-      z-index: 2;
-      background-color: #3d242c;
-      background-image: url('assets/greek-meander-dark.svg?v=hq1');
-      background-repeat: repeat-x;
-      background-size: 80px 32px;
-      background-position: center top;
-      image-rendering: auto;
-      box-shadow: 0 4px 18px rgba(224, 176, 160, 0.18);
+      content: none !important;
+      display: none !important;
     }
     html[data-theme="dark"] .greek-meander-dark-bottom {
-      display: block !important;
-      position: absolute;
-      left: 0; right: 0; bottom: 0;
-      height: 32px;
-      z-index: 2;
-      background-color: #3d242c;
-      background-image: url('assets/greek-meander-dark.svg?v=hq1');
-      background-repeat: repeat-x;
-      background-size: 80px 32px;
-      background-position: center bottom;
+      display: none !important;
     }
     html[data-theme="light"] .greek-meander-dark-bottom { display: none !important; }
 
@@ -910,14 +891,33 @@
       opacity: 1;
       border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     }
-    /* Dark top banner subtle polish */
+    /* Dark top banner — purple body + sharp gold Greek KEY FRAME on top (like reference photo) */
     html[data-theme="dark"] .top-nav {
-      border: 2px solid rgba(224, 176, 160, 0.45) !important;
-      box-shadow: 0 10px 28px rgba(0,0,0,0.55), 0 0 0 1px rgba(212,175,55,0.15) !important;
+      background: linear-gradient(145deg, #1b0430, #0f021c) !important;
+      border: 1.5px solid #d4af37 !important;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.55) !important;
+      padding-top: 28px !important; /* room for frame strip */
+      overflow: hidden;
+      position: relative;
     }
     html[data-theme="dark"] .top-nav::before {
-      height: 3px !important;
-      background: linear-gradient(90deg, transparent, #e0b0a0, var(--gold-metallic), #e0b0a0, transparent) !important;
+      content: '' !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      height: 18px !important;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      background-color: #1a120b !important;
+      background-image: url('assets/greek-meander-gold-frame.svg?v=frame2') !important;
+      background-repeat: repeat-x !important;
+      background-size: 72px 18px !important;
+      background-position: center top !important;
+      opacity: 1 !important;
+      box-shadow: none !important;
+      border-bottom: 1px solid #d4af37;
+      z-index: 3;
+      pointer-events: none;
     }
 
     /* Verification: lighter warm parchment (NOT blue/navy) — matches design, not same as marble */
