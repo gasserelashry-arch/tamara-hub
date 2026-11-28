@@ -45,7 +45,7 @@ try {
 } catch {}
 
 # Only publish hub files — ignore local helper scripts / reports (they are not the agent site).
-git add -- index.html PUBLIC_LINK.txt Publish_For_Agents.ps1 Publish_For_Agents.bat assets/atlas-greek-option-b.jpg assets/atlas-greek-bg-plate.jpg assets/atlas-greek-option-light.jpg assets/greek-meander-light.svg assets/greek-meander-dark.svg assets/greek-meander-nav.svg assets/greek-meander-gold-frame.svg 2>$null
+git add -- index.html PUBLIC_LINK.txt Publish_For_Agents.ps1 Publish_For_Agents.bat assets/atlas-greek-option-b.jpg assets/atlas-greek-bg-plate.jpg assets/atlas-greek-option-light.jpg assets/greek-meander-light.svg assets/greek-meander-dark.svg assets/greek-meander-nav.svg assets/greek-meander-banner-gold.svg 2>$null
 
 # One-off author for this commit only (does NOT change global git config).
 $gitAuthorName = 'gasser.elashry'

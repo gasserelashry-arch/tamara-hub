@@ -891,20 +891,35 @@
       opacity: 1;
       border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     }
-    /* Dark top banner — clean only (no extra Greek strip) */
+    /* Dark mode ONLY — same purple banner as the approved light photo (exact fade + gold Greek frame on this banner only) */
     html[data-theme="dark"] .top-nav {
-      background: linear-gradient(145deg, #1b0430, #0f021c) !important;
-      border: 1.5px solid var(--border-purple) !important;
-      box-shadow: 0 10px 28px rgba(0,0,0,0.55) !important;
-      padding-top: 14px !important;
+      background: linear-gradient(135deg, #3b0764 0%, #5300BA 45%, #6415C2 100%) !important;
+      border: 2px solid #d4af37 !important;
+      box-shadow: 0 10px 28px rgba(59, 7, 100, 0.45) !important;
+      padding-top: 22px !important;
+      overflow: hidden;
       position: relative;
     }
     html[data-theme="dark"] .top-nav::before {
-      content: none !important;
-      display: none !important;
-      background: none !important;
+      content: '' !important;
+      display: block !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      height: 14px !important;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      background-color: #2a0850 !important;
+      background-image: url('assets/greek-meander-banner-gold.svg?v=panner1') !important;
+      background-repeat: repeat-x !important;
+      background-size: 64px 14px !important;
+      background-position: center top !important;
       border: none !important;
-      height: 0 !important;
+      border-bottom: 1px solid #d4af37 !important;
+      box-shadow: none !important;
+      opacity: 1 !important;
+      z-index: 3;
+      pointer-events: none;
     }
 
     /* Verification: lighter warm parchment (NOT blue/navy) — matches design, not same as marble */
